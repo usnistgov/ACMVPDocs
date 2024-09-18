@@ -1,0 +1,638 @@
+{
+    "SP-Template-Version": "5.8",
+    "lastUpdated": "September-09-2024",
+    "isPartOfEvidenceCatalogVersion": "1.0",
+    "isPartOfEvidenceCatalogDate": "July-11-2023",
+    "vendorName": "<Specify a Vendor Name for the SP>",
+	"moduleName": "<Speciry a Module Name for the SP>",
+	"version": "2.0",
+	"docVersion": "1.0",
+    "SecurityPolicyEvidence": {
+        "Section-1-General": {
+            "1.1-Overview": {
+                "overview-text": ""
+            },
+            "1.2-Security-Levels": {
+                "securityLevelsList" : [
+                    {
+                        "section1-level":""
+                    },
+                    {
+                        "section2-level":""
+                    },
+                    {
+                        "section3-level":""
+                    },
+                    {
+                        "section4-level":""
+                    },
+                    {
+                        "section5-level":""
+                    },
+                    {
+                        "section6-level":""
+                    },
+                    {
+                        "section7-level":""
+                    },
+                    {
+                        "section8-level":""
+                    },
+                    {
+                        "section9-level":""
+                    },
+                    {
+                        "section10-level":""
+                    },
+                    {
+                        "section11-level":""
+                    },
+                    {
+                        "section12-level":""
+                    },
+                    {
+                        "overall-level":""
+                    }
+                ]
+            },
+            "1.3-Additional-Information-[O]": {
+                "additionalInfo-text": ""
+            }
+        },
+        "Section-2-Cryptographic-Module-Specification": {
+            "2.1-Description": {
+                "purposeAndUse" :{
+                    "PurposeAndUse-text": ""
+                },
+                "moduleType": {
+                    "$ref": "ModuleSpecification.json#\/path\/to\/module-type"
+                },
+                "moduleEmbodiment": {
+                    "$ref": "ModuleSpecification.json#\/path\/to\/Module-embodiment"
+                },
+                "moduleCharacteristics-[O]": {
+                    "$ref": "ModuleSpecification.json#\/path\/to\/SubChip"
+                },
+                "cryptographicBoundary": {
+                    "cryptographicBoundary-text": ""
+                },
+                "TOEPP-[O]": {
+                    "text": "",
+                    "otherDiagrams-Photo-Text": "",
+                    "Block-Diagram": {
+                    "$ref": "ImageName.png"
+                    }
+                }
+            },
+            "2.2-Tested-and-Vendor-Affirmed-Module-Version-and-Information": {
+
+                "Tested-Module-Identification-Hardware": {
+                    "testedHwList-[O]": [
+                        {
+                            "modelPartNumber-[U]": "",
+                            "hardwareVersion": "",
+                            "firmwareVersion": "",
+                            "Processor": "",
+                            "nonSecurityRelevantDistinguishingFeatures-[O]":""
+                        }
+                    ]
+                },
+
+                "Tested-Module-Identification-Software-Firmware-Hybrid": {
+                    "testedSwFwHyList-[O]": [
+                        {
+                            "packageFileNames": "",
+                            "softwareFirmwareVersion": "",
+                            "nonSecurityRelevantDistinguishingFeatures-[O]": "",
+                            "integrityTestImplemented": ""
+                        }
+                    ]
+                },
+                "Tested-Module-Identification-Hybrid-Disjoint-Hardware": {
+                    "testedHyHwList-[O]": [
+                        {
+                            "modelPartNumber": "",
+                            "hardwareVersion": "",
+                            "firmwareVersion": "",
+                            "processors-[O]": "",
+                            "nonSecurityRelevantDistinguishingFeatures-[O]": ""
+                        }
+                    ]
+                },
+                "Tested-Operational-Environments-Software-Firmware-Hybrid": {
+                    "opEnvSwFwHyTestedList-[O]": [
+                        {
+                            "operatingSystem-guestOS": "",
+                            "hardwarePlatform": "",
+                            "processors": "",
+                            "PAA/PAI": "",
+                            "hypervisorAndHostOS-[O]": "",
+                            "versions": ""
+                        }
+                    ]
+                },
+                "Vendor-Affirmed-Operational-Environmental-Software-Firmware-Hybrid": {
+                    "opEnvSwFwHyVAList-[O]": [
+                        {
+                            "operatingSystem": "",
+                            "hardwarePlatform": ""
+                        }
+                    ]
+                }
+            },
+            "2.3-Excluded-Components": {
+                "ExclCompStatement-text": ""
+            },
+            "2.4-Modes-Of-Operation": {
+                "Modes-List-And-Description": {
+
+                    "modeOfOpList": [
+                        {
+                            "name-[U]": "",
+                            "description": "",
+                            "type": "",
+                            "statusIndicator": ""
+                        }
+                    ],
+                    "modeOfOp-text": ""
+                },
+                "Mode-Change-Instructions-and-Status-[O]": {
+                    "modeChangeInstructionsAndStatus-text": ""
+                },
+                "Degraded-Mode-Description-[O]": {
+                    "degradedMode-text": ""
+                }
+            },
+            "2.5-Algorithms": {
+                "Approved-Algorithms": {
+                    "cavpCertSet.cavpOeAlgoList": [
+                        {
+                            "algorithmName": "",
+                            "cavpCert": "",
+                            "algorithmProperties": "",
+                            "reference": ""
+                        }
+                    ],
+                    "approvedAlgorithms-text": ""
+                },
+                "Vendor-Affirmed-Algorithms": {
+                    "vendorAffirmedAlgoList": [
+                        {
+                            "algorithmName": "",
+                            "algorithmProperties": "",
+                            "implementation": "",
+                            "reference": ""
+                        }
+                    ],
+                    "vendorAffirmedAlgo-text": ""
+                },
+                "NonApproved-Allowed-Algorithms": {
+                    "nonApprovedAllowedAlgoList": [
+                        {
+                            "algorithmName": "",
+                            "algorithmProperties": "",
+                            "implementation": "",
+                            "reference": ""
+                        }
+                    ],
+                    "nonApprovedAllowedAlgo-text": ""
+                },
+                "NonApproved-Allowed-Algorithms-with-No-Security-Claimed": {
+                    "nonApprovedAllowedAlgoNSCList": [
+                       {
+                           "algorithm": "",
+                           "caveat": "",
+                           "use\/Function": ""
+                        }
+                    ],
+                    "nonApprovedAllowedAlgoNSC-text": ""
+                },
+                "NonApproved-Not-Allowed-Algorithms": {
+                    "nonApprovedNotAllowedAlgoList": [
+                       {
+                           "algorithm": "",
+                           "use\/Function": ""
+                       }
+                    ],
+                    "nonApprovedNotAllowedAlgo-text": ""
+                }
+            },
+            "2.6-Security-Function-Implementations": {
+                "secFunImplList": [
+                    {
+                        "name-[U]": "",
+                        "type": "",
+                        "description": "",
+                        "sfProperties-[O]": "",
+                        "algorithms-[M]": [
+                            {
+                                "CAVPalgorithm": "",
+                                "name": ""
+                            }
+                        ],
+                        "algorithmProperties-[O]-[M]": ""
+                    }
+                ],
+                "sfiDescription-text": ""
+            },
+            "2.7-Algorithm-Specific-Information": {
+                "AlgSpecificInfo-text": ""
+            },
+            "2.8-RBG-and-Entropy": {
+                "entropyCertNumList-[O]": [
+                    {
+                        "vendorName": "",
+                        "entropyCert": ""
+                    }
+                ],
+                "entropySourceList-[O]": [
+                    {
+                        "name-[U]": "",
+                        "type": "",
+                        "operationalEnvironment": "",
+                        "sampleSize": "",
+                        "entropyPerSample": "",
+                        "conditioningComponents": ""
+                    }
+                ],
+                "RBGandEntropy-text": ""
+            },
+            "2.9-Key-Generation": {
+                "keyGen-text": ""
+            },
+            "2.10-Key-Establishment": {
+                "keyEst-text": ""
+            },
+            "2.11-Industry-Protocols": {
+                "industryProtocols-text": ""
+            },
+            "2.12-Additional-Information-[O]": {
+                "additionalInfo-text": ""
+            }
+        },
+        "Section-3-Cryptographic-Module-Interfaces": {
+            "3.1-Ports-And-Interfaces": {
+                "portInterfaceList": [
+                    {
+                        "physicalPort": "",
+                        "logicalInterface": "",
+                        "dataThatPasses": ""
+                    }
+                ],
+                "portsAndInterfaces-text": ""
+            },
+            "3.2-Trusted-Channel-Specification-[O]": {
+                "trustedChannel-text": ""
+            },
+            "3.3-Control-Interface-Not-Inhibited-[O]": {
+                "controlInterface-text": ""
+            },
+            "3.4-Additional-Information-[O]": {
+                "additionalInfo-text": ""
+            }
+        },
+        "Section-4-Roles-Services-Authentication": {
+            "4.1-Authentication-Methods": {
+                "authMethodList-[O]": [
+                    {
+                        "name-[U]": "",
+                        "description": "",
+                        "mechanism": "",
+                        "strengthEachAttempt": "",
+                        "strengthPerMinute-[O]": ""
+                    }
+                ],
+                "authenticationMethods-text": ""
+            },
+            "4.2-Roles": {
+                "roleList": [
+                    {
+                        "name-[U]": "",
+                        "type": "",
+                        "operatorType": "",
+                        "authenticationMethods-[M]": ""
+                    }
+                ],
+                "roles-text": ""
+            },
+            "4.3-Approved-Services": {
+                "approvedServiceList": [
+                    {
+                        "name-[U]": "",
+                        "description": "",
+                        "indicator": "",
+                        "inputs": "",
+                        "outputs": "",
+                        "sfi-[M]": "",
+                        "rolesSSPAccess-[M]": ""
+                    }
+                ],
+                "approvedServices-text": ""
+            },
+            "4.4-Nonapproved-Services": {
+                "nonApprovedServiceList-[O]": [
+                    {
+                        "name-[U]": "",
+                        "description": "",
+                        "algorithmsAccessed": "",
+                        "role": ""
+                    }
+                ],
+                "nonApprovedServices-text": ""
+            },
+            "4.5-External-Software-Firmware-Loaded": {
+                "externalSwFwLoaded-text": ""
+            },
+            "4.6-Bypass-Actions-And-Status-[O]": {
+                "bypass-text": ""
+            },
+            "4.7-Cryptographic-Output-Actions-And-Status-[O]": {
+                "cryptoOutput-text": ""
+            },
+            "4.8-Additional-Information-[O]": {
+                "additionalInfo-text": ""
+            }
+        },
+        "Section-5-Software-Firmware-Security": {
+            "5.1-Integrity-Techniques": {
+                "integrityTechniques-text": ""
+            },
+            "5.2-Initiate-On-Demand": {
+                "onDemand-text": ""
+            },
+            "5.3-Open-Source-Parameters-[O]": {
+                "openSourceParameters-text": ""
+            },
+            "5.4-Additional-Information-[O]": {
+                "additionalInfo-text": ""
+            }
+        },
+        "Section-6-Operational-Environment": {
+            "6.1-Operational-Environment-Type-And-Requirements": {
+                "ReferenceToOEType": {
+                    "$ref": "ModuleSpecification.json#\/path\/to\/OpEnvType"
+                },
+                "howRequirementsSatisfied": {
+                    "howRequirementsSatisfied-text": ""
+                }
+            },
+            "6.2-Configuration-Settings-And-Restrictions-[O]": {
+                "configSettings-text": ""
+            },
+            "6.3-Additional-Information-[O]": {
+                "additionalInfo-text": ""
+            }
+        },
+        "Section-7-Physical-Security": {
+            "7.1-Mechanisms-And-Actions-Required-[O]": {
+                "phSecMechanismList-[O]": [
+                    {
+                        "physicalSecurityMechanism": "",
+                        "recommendedFrequency": "",
+                        "inspectionOrTestGuidanceDetails": ""
+                    }
+                ],
+                "mechanismsAndActions-text": "",
+                "mechanismsAndActions-photo": {
+                    "$ref": "ImageName.png"
+                }
+            },
+            "7.2-User-Placed-Tamper-Seals-[O]": {
+                "number": "",
+                "placement": "",
+                "surfacePreparation": "",
+                "operatorResponsibleForSecuringUnusedSeals": "",
+                "partNumbers": {
+                    "partNumbers-text": "",
+                    "partNumbers-photo": {
+                        "$ref": "ImageName.png"
+                    }
+                }
+            },
+            "7.3-Filler-Panels-[O]": {
+                "fillerPanels-text": "",
+                "fillerPanels-photo": {
+                    "$ref": "ImageName.png"
+                }
+            },
+            "7.4-Fault-Induction-Mitigation-[O]": {
+                "faultInduction-text": ""
+            },
+            "7.5-EFP-EFT-Information-[O]": {
+                "efpEftInfoList-[O]": [
+                    {
+                        "lowTempMeasurement": "",
+                        "lowTempEFPOrEFT": "",
+                        "lowTempResults": "",
+                        "highTempMeasurement": "",
+                        "highTempEFPorEFT": "",
+                        "highTempResults": "",
+                        "lowVoltMeasurement": "",
+                        "lowVoltEFPorEFT": "",
+                        "lowVoltResults": "",
+                        "highVoltMeasurement": "",
+                        "highVoltEFPorEFT": "",
+                        "highVoltResults": "" 
+                    }
+                ],
+                "EFPorEFT-text": ""
+            },
+            "7.6-Hardness-Testing-Temperature-Ranges-[O]": {
+                "hardnessTestTempList-[O]": [
+                    {
+                        "lowHardnessTemperatureMeasurement": "",
+                        "highHardnessTemperatureMeasurement": ""
+                    }
+                ],
+                "hardnessTesting-text": ""
+            },
+            "7.7-Additional-Information-[O]": {
+                "additionalInfo-text": ""
+            }
+        },
+        "Section-8-Non-Invasive-Security": {
+            "8.1-Mitigation-Techniques-[O]": {
+                "mitigationTechniques-text": ""
+            },
+            "8.2-Effectiveness-[O]": {
+                "effectiveness-text": ""
+            },
+            "8.3-Additional-Information-[O]": {
+                "additionalInfo-text": ""
+            }
+        },
+        "Section-9-Sensitive-Security-Parameters-Management": {
+            "9.1-Storage-Areas": {
+                "storageAreaList": [
+                    {
+                        "name-[U]": "",
+                        "description": "",
+                        "persistenceType": ""
+                    }
+                ],
+                "storageAreas-text": ""
+            },
+            "9.2-SSP-Input-Output-Methods": {
+                "sspInputOutputList": [
+                    {
+                        "name-[U]": "",
+                        "from": "",
+                        "to": "",
+                        "formatType": "",
+                        "distributionType": "",
+                        "entryType": "",
+                        "SFIorAlgorithm-[O]": ""
+                    }
+                ],
+                "inputOutputMethods-text": ""
+            },
+            "9.3-SSP-Zeroization-Methods": {
+                "sspZeroizationList": [
+                    {
+                        "method-[U]": "",
+                        "description": "",
+                        "rationale": "",
+                        "operatorInitiationCapability": ""
+                    }
+                ],
+                "zeroization-text": ""
+            },
+            "9.4-SSPs": {
+                "sspList-1": [
+                    {
+                        "name-[U]": "",
+                        "description": "",
+                        "size": "",
+                        "strength": "",
+                        "type": "",
+                        "generatedBy": "",
+                        "establishedBy": ""
+                    }
+                ],
+                "sspList-2": [
+                    {
+                        "usedBy": "",
+                        "inputsOutputs": "",
+                        "storage-[M]": "",
+                        "temporaryStorageDuration-[O]": "",
+                        "zeroization": "",
+                        "category": "",
+                        "relatedSSPs-[O]": ""
+                    }
+                ],
+                "ssp-text": ""
+            },
+            "9.5-Transitions-[O]": {
+                "transitions-text": ""
+            },
+            "9.6-Additional-Information-[O]": {
+                "additionalInfo-text": ""
+            }
+        },
+        "Section-10-Self-Tests": {
+            "10.1-Pre-Operational-Self-Tests": {
+                "preOpSelfTestList": [
+                    {
+                        "algorithm": "",
+                        "testProperties": "",
+                        "testMethod": "",
+                        "type": "",
+                        "indicator": "",
+                        "details": ""
+                    }
+                ],
+                "POST-text": ""
+            },
+            "10.2-Conditional-Self-Tests": {
+                "condSelfTestList": [
+                    {
+                        "algorithm": "",
+                        "testProperties": "",
+                        "testMethod": "",
+                        "type": "",
+                        "indicator": "",
+                        "details": "",
+                        "condition": ""
+                    }
+                ],
+                "CAST-text": ""
+            },
+            "10.3-Periodic-Self-Tests-Information": {
+                "preOpPeriodicSelfTestList": [
+                    {
+                        "algorithm": "",
+                        "testMethod": "",
+                        "type": "",
+                        "period": "",
+                        "periodicMethod": ""
+                    }
+                ],
+                "condPeriodicSelfTestList": [
+                    {
+                        "algorithm": "",
+                        "testMethod": "",
+                        "type": "",
+                        "period": "",
+                        "periodicMethod": ""
+                    }
+                ],
+                "periodicSelfTests-text": ""
+            },
+            "10.4-Error-States": {
+                "errorStateList": [
+                    {
+                        "stateName-[U]": "",
+                        "description": "",
+                        "conditions": "",
+                        "recoveryMethod": "",
+                        "indicator": ""
+                    }
+                ],
+                "errorStates-text": ""
+            },
+            "10.5-Operator-Initiation-of-Self-Tests-[O]": {
+                "operatorInitiation-text": ""
+            },
+            "10.6-Additional-Information-[O]": {
+                "additionalInfo-text": ""
+            }
+        },
+        "Section-11-Life-Cycle-Assurance": {
+            "11.1-Installation-Initialization-And-Startup-Procedures": {
+                "startupProcedures-text": ""
+            },
+            "11.2-Administrator-Guidance": {
+                "adminGuidance-text": ""
+            },
+            "11.3-Non-Administrator-Guidance": {
+                "nonadminGuidance-text": ""
+            },
+            "11.4-Design-And-Rules-[O]": {
+                "designAndRules-text": ""
+            },
+            "11.5-Maintenance-Requirements-[O]": {
+                "maintenanceReqs-text": ""
+            },
+            "11.6-End-Of-Life-[O]": {
+                "endOfLife-text": ""
+            },
+            "11.7-Additional-Information-[O]": {
+                "additionalInfo-text": ""
+            }
+        },
+        "Section-12-Mitigation-Of-Other-Attacks": {
+            "12.1-Attack-List-[O]": {
+                "attackList-text": ""
+            },
+            "12.2-Mitigation-Effectiveness-[O]": {
+                "mitigationEffectiveness-text": ""
+            },
+            "12.3-Guidance-And-Constraints-[O]": {
+                "guidanceAndConstraints-text": ""
+            },
+            "12.4-Additional-Information-[O]": {
+                "additionalInfo-text": ""
+            }
+        }
+    }
+}

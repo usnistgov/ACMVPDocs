@@ -1,0 +1,2613 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Appendix A. Technical Details from the Test Evidence (TE) Workstream &#8212; Automated Cryptographic Module Validation Project  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/content.css?v=59cd0ab0" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'te/technicalDetails';</script>
+    <script src="../_static/jquery.visible.js?v=5b129ffc"></script>
+    <script src="../_static/jquery.leaveNotice-nist.js?v=21f5b3a4"></script>
+    <script src="../_static/applyLeaveNotice.js?v=38741b1c"></script>
+    <script src="../_static/smoothNavScroll.js?v=2ce98a12"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Conclusion" href="../conclusion.html" />
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+
+    <link rel="stylesheet" href="https://pages.nist.gov/nist-header-footer/css/nist-combined.css">
+    <link rel="stylesheet" type="text/css" href="https://pages.nist.gov/leaveNotice/css/jquery.leaveNotice.css" />
+    <script src="https://pages.nist.gov/nist-header-footer/js/nist-header-footer.js" type="text/javascript" defer="defer"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RJSMY46M5C"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RJSMY46M5C');
+    </script>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Automated Cryptographic Module Validation Project  documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Automation of the NIST Cryptographic Module Validation Program
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Test Evidence Workstream</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../protocol/index.html">Protocol Workstream</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../infrastructure/index.html">Research Infrastructure Workstream</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conclusion.html">Conclusion</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Appendix A. Technical Details from the Test Evidence (TE) Workstream</a></li>
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/te/technicalDetails.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Appendix A. Technical Details from the Test Evidence (TE) Workstream</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Appendix A. Technical Details from the Test Evidence (TE) Workstream</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#a-1-tes-requiring-vendor-documentation">A.1. TEs Requiring Vendor Documentation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#a-2-tes-requiring-module-functional-test">A.2. TEs Requiring Module Functional Test</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-2-1-te-filters">A.2.1 TE Filters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-2-2-removing-assertions-not-separately-tested">A.2.2 Removing Assertions Not Separately Tested</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#a-3-complete-list-of-tes">A.3. Complete List of TEs</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <style> .gray {color:gray} </style><section id="appendix-a-technical-details-from-the-test-evidence-te-workstream">
+<h1>Appendix A. Technical Details from the Test Evidence (TE) Workstream<a class="headerlink" href="#appendix-a-technical-details-from-the-test-evidence-te-workstream" title="Link to this heading">#</a></h1>
+<p>The rest of this report provides additional technical details from the Test Evidence (TE) Workstream:</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#a-1-tes-requiring-vendor-documentation">TEs Requiring Vendor Documentation section</a>: categories and sub-categories of TEs based on reviewing the Security Policy (SP) or other vendor documentation</p></li>
+<li><p><a class="reference internal" href="#a-2-tes-requiring-module-functional-test">TEs Requiring Module Functional Test section</a>: TEs based on exercising/executing the module to test its functionality</p></li>
+<li><p><a class="reference internal" href="#a-3-complete-list-of-tes">Complete List of TEs section</a>: a complete list of TEs, each tagged by category</p></li>
+</ol>
+</section>
+<section id="a-1-tes-requiring-vendor-documentation">
+<h1>A.1. TEs Requiring Vendor Documentation<a class="headerlink" href="#a-1-tes-requiring-vendor-documentation" title="Link to this heading">#</a></h1>
+<p>The required documentation for a Federal Information Processing Standards (FIPS) validation is specified in NIST Special Publication 800-140A, which modifies the vendor documentation requirements of ISO/IEC 19790 Annex A. Hereafter, the vendor-documentation-dependent TEs will be indicated as <strong>140A-TE</strong>s. Those TEs require the tester to verify the presence and accuracy of information within the vendor documentation or to verify statements based on information from the documentation.</p>
+<p>The overall category of 140A-TEs, as opposed to the TEs depending on functional tests (hereafter <strong>FT-TE</strong>s), is relatively clear. They are indicated by the keyword “verify” as in the following examples:</p>
+<ol class="arabic simple">
+<li><p>“verify the name and version as indicated in AS04.13” (e.g., TE04.33.01)</p></li>
+<li><p>“verify the vendor documentation” (e.g., TE04.05.01)</p></li>
+<li><p>“verify that the vendor provided documentation” (e.g., TE05.05.01)</p></li>
+<li><p>“verify, by inspection and from the vendor documentation” (e.g., TE05.15.01)</p></li>
+<li><p>“verify the vendor documentation, and by inspection” (e.g., TE06.10.01), “verify by inspection, or from the vendor documentation” (e.g., TE07.15.01)</p></li>
+<li><p>“verify … as documented” (e.g., TE07.27.01)</p></li>
+<li><p>“verify … are documented” (e.g., TE07.33.01)</p></li>
+<li><p>“verify the vendor documentation shows … “ (e.g., TE10.09.01)</p></li>
+<li><p>“verify … through the procedure documented in …” (e.g., TE10.11.01)</p></li>
+</ol>
+<p>The 140A-TEs may or may not depend on the SP. They may depend on source code or other proprietary documentation. So, the <strong>140A-TE</strong>s can be further divided into three sub-categories as they relate to Security Policy (SP), Source Code (SC), and Other Documents (OD):</p>
+<ol class="arabic simple">
+<li><p><strong>SP-TE</strong>s: TEs depend on the information provided by the public-facing SP. NIST Special Publication 800-140Br1 is to be used in conjunction with ISO/IEC 19790 Annex B and ISO/IEC 24759 section 6.14. It also specifies the order of the SP. Some TEs explicitly identify the source of the vendor documentation in the SP. Ideally, Special Publication 800-140Br1 should require the SP to include all information to satisfy the SP-dependent TEs.</p></li>
+<li><p><strong>SC-TE</strong>s: TEs require source code review. It may not be intuitive that source code falls under vendor documentation. There are TEs that explicitly require code review or actual source code, verify some statement by (code) inspection, or verify <em>how</em> the specification is implemented. Source code handling often requires special care and attention. Therefore, we separate these SC-TEs from the TEs that depend on other vendor documentation.</p></li>
+<li><p><strong>OD-TE</strong>s: If a 140A-TE is neither an SP-TE nor an SC-TE, we designate it as an OD-TE, meaning the TE depends on an <em>O</em>ther <em>D</em>ocument such as a Finite State Model (FSM), Component List (CL), design document, user guidance, or configuration management manual.</p></li>
+</ol>
+<p>Here are some examples:</p>
+<ol class="arabic simple">
+<li><p>SP-TEs: 140B requires the SP to provide the information</p>
+<ol class="arabic simple">
+<li><p>TE04.47.01: <em>The tester shall verify that the security functions used to authenticate operators are all approved security functions.</em></p></li>
+<li><p>TE04.48.01: <em>The tester shall verify that the authentication mechanism used to authenticate operators is an approved one.</em></p></li>
+</ol>
+</li>
+<li><p>SC-TEs: TEs that depend on source code inspection</p>
+<ol class="arabic simple">
+<li><p>TE03.07.05: <em>The tester shall verify that the vendor documentation specifies how the cryptographic module ensures that all data output via the data output interface is to be inhibited during error states or self-test conditions. The tester shall also verify, by inspection of the design of the cryptographic module, that the data output interface is, in fact, logically or physically inhibited under these conditions.</em></p></li>
+<li><p>TE03.15.05: <em>The tester shall examine the applicable source code(s) to ensure that the identified component is actually validating the documented format.</em></p></li>
+</ol>
+</li>
+<li><p>OD-TEs: requires rationale of correctness, FSM or SW/FW CL</p>
+<ol class="arabic simple">
+<li><p>TE03.19.03: <em>The tester shall verify the correctness of any rationale provided by the vendor. The burden of proof is on the vendor; if there is any uncertainty or ambiguity, the tester shall require the vendor to produce additional information as needed.</em></p></li>
+<li><p>TE11.08.01: <em>The tester shall verify that the vendor has provided a description of the finite state model. This description shall contain the identification and description of all states of the module and a description of all corresponding state transitions. The tester shall verify that the descriptions of the state transitions include the internal module conditions, data inputs and control inputs that cause transitions from one state to another, data outputs and status outputs resulting from transitions from one state to another.</em></p></li>
+<li><p>TE11.16.01: <em>The tester shall use the list supplied by the vendor to verify that a source listing for each software or firmware component is contained in the module.</em></p></li>
+</ol>
+</li>
+</ol>
+<p>Let us look at an example TE that is assessed by reviewing the vendor documentation, and this TE’s associated AS and VE.</p>
+<p><strong>AS05.02</strong> states, “The documentation requirements specified in {ISO/IEC 19790:2012} A.2.5 shall be provided.” Following that, <strong>VE05.02.01</strong> states, “The vendor shall provide documentation as specified in ISO/IEC 19790:2012, A.2.5.” Lastly, the <strong>TE05.02.01</strong> for this section states, “The tester shall verify completeness of the documentation specified in ISO/IEC 19790:2012, A.2.5.”</p>
+<p>To fulfill <strong>TE05.02.01</strong>, the tester needs to check the documentation provided by the vendor and verify that it is present and complete. The example illustrates a documentation-type TE (i.e. 140A-TE). TEs of this type are ripe for automation because they only rely on checking for the presence of appropriate texts. The accuracy of the information provided for these TEs is later verified by subsequent tests and documentation reviews done during Functional Testing, Source Code Review, and Module Inspection.</p>
+<p>By exploring the relationship between VEs and TEs, it becomes apparent that if some VEs were in the form of a standardized SP, their corresponding TEs could be verified through automation. The NIST CMVP updated Special Publication 800-140B to specify the expected content of the SP and provide an SP template for all vendors and labs to use; Revision 1 was published in November 2023.</p>
+<p>The current NIST Web CRYPTIK Br1 v1.0.3 has built-in Module Information Structure (MIS) Tables and a search capability to look up and select Cryptographic Algorithm Validation Program (CAVP) certificates. The completed MIS Tables can be saved as a JSON file and be combined with other information in an SP Microsoft Word template to build the final SP.</p>
+<p>This TE WS is exploring an alternative method to generate the SP purely via JSON rather than implementing a hybrid approach that requires an SP Microsoft Word template to build the final SP[STRIKEOUT:.] Following the CMVP’s current SP Template v5.8, the NCCoE TE WS has developed an SP-evidence JSON file to satisfy all SP-TEs. The NCCoE Research Infrastructure WS is implementing the functionality on the ACMVP server for generating an SP in a PDF file based on the input SP-evidence JSON file. This functionality will be demoed at the ICMC24.</p>
+<p>Under the assumptions that the SP strictly follows Special Publication 800-140Br1 and that the required SP content is captured in MIS Tables or the other data entries in the SP-evidence JSON file, all SP-TEs can reference the relevant data points in the SP-evidence JSON file. The existence of the reference can be automatically checked. If the reference exists, the corresponding TE passes.</p>
+<p>SP-TEs must be satisfied by the information provided by the SP as specified in NIST Special Publication 800-140Br1, which we denote as <strong>140B-TEs</strong>. 140B-TEs is a subset of SP-TEs because a vendor may choose to include more information in the SP as required by Special Publication 800-140Br1.</p>
+<p>Furthermore, to maximize automation, all data points necessary to satisfy 140A-TEs should be captured in a standardized documentation-evidence JSON. This work needs to be incorporated and elaborated in the TE Evidence Catalog.</p>
+<p>Table 1 lists all of the TEs depending on the SP, regardless of whether the TE explicitly indicates the source of the vendor document to be the SP or whether Special Publication 800-140Br1 requires it, in column <strong>SP-TEs</strong>. The <strong>non-140B-but-140A-TEs</strong> column is not intended to duplicate the TEs from the SP-TEs column, but instead to capture all other TEs that depend on vendor documentation, which could be SP, source code, FSM, CL, design document, or other vendor proprietary documentation. For cases where the information needs to be in the SP and verified by (code) inspection or design document, the TEs (e.g., TE02.07.02) are listed under both columns, despite the duplication.</p>
+<p>TEs depending on source code review or inspection are a subset of the non-140B-but-140A-TEs column in the table. Some TEs have the explicit wording of “code” or “source code,” while others imply it via the phrase “by inspection” or “inspecting the module.” TEs requiring source code review are tagged as SC-TE in the <a class="reference internal" href="#a-3-complete-list-of-tes">Complete List of TEs section</a>.</p>
+<p>TEs requiring other documents are tagged as OD-TE in the <a class="reference internal" href="#a-3-complete-list-of-tes">Complete List of TEs section</a>.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id1">
+<caption><span class="caption-text">Table 1 – Dividing 140A-TEs into non-140B-TEs and SP-TEs</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head" rowspan="2"><p><strong>FIPS 140-3 Section Title</strong></p></th>
+<th class="head"><p><strong>140A-TEs</strong></p></th>
+<th class="head"><p><strong>140A-TEs</strong></p></th>
+</tr>
+<tr class="row-even"><th class="head"><p><strong>non-140B-but-140A-TEs</strong></p></th>
+<th class="head"><p><strong>SP-TEs</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-odd"><td><p>General</p></td>
+<td><p>None</p></td>
+<td><p>None</p></td>
+</tr>
+<tr class="row-even"><td><p>Cryptographic Module Specification</p></td>
+<td><p>TE02.03.02, TE02.07.01, TE02.07.02 (also SP-TE), TE02.10.01 (also SP-TE), TE02.10.02, TE02.13.02, TE02.17.09</p></td>
+<td><p>TE02.03.01, TE02.07.02, TE02.09.01, TE02.10.01, TE02.11.01, TE02.11.02, TE02.12.01, TE02.13.01, TE02.14.01, TE02.15.01, TE02.15.02, TE02.15.04, TE02.15.06, TE02.15.07, TE02.15.08, TE02.15.09, TE02.15.10, TE02.15.11, TE02.15.12, TE02.15.13, TE02.15.14, TE02.16.01, TE02.16.02, TE02.16.03, TE02.16.05, TE02.17.01, TE02.17.02, TE02.17.03, TE02.17.05, TE02.17.06, TE02.17.07, TE02.17.08, TE02.17.10, TE02.18.01, TE02.19.01, TE02.20.01, TE02.20.02, TE02.20.03, TE02.20.04, TE02.21.01, TE02.21.02, TE02.22.01, TE02.24.01, TE02.26.01, TE02.26.02, TE02.30.01</p></td>
+</tr>
+<tr class="row-odd"><td><p>Cryptographic Module Interfaces</p></td>
+<td><p>TE03.01.02 (also SP-TE), TE03.02.01, TE03.05.02, TE03.06.02, TE03.07.01, TE03.07.03, TE03.07.05, TE03.07.06, TE03.07.07, TE03.08.02, TE03.09.01, TE03.10.01, TE03.10.03, TE03.10.05, TE03.11.02, TE03.13.01, TE03.14.01, TE03.14.02, TE03.14.03, TE03.15.01, TE03.15.02, TE03.15.05, TE03.16.01, TE03.18.01, TE03.19.01, TE03.19.03</p></td>
+<td><p>TE03.01.01, TE03.01.02, TE03.01.03, TE03.02.02, TE03.03,01, TE03.04.01,</p></td>
+</tr>
+<tr class="row-even"><td><p>Roles, Services, and Authentication</p></td>
+<td><p>TE04.02.01, TE04.03.01, TE04.07.01, TE04.07.02, TE04.19.01, TE04.20.01, TE04.20.02, TE04.21.01, TE04.22.01, TE04.25.01, TE04.33.01, TE04.35.01, TE04.38.01, TE04.39.01, TE04.42.01, TE04.42.02, TE04.43.01, TE04.44.01, TE04.45.01, TE04.51.02, TE04.53.01, TE04.54.01, TE04.55.01</p></td>
+<td><p>TE04.05.01, TE04.06.01, TE04.11.01, TE04.13.02, TE04.14.01, TE04.18.01, TE04.37.01, TE04.47.01, TE04.48.01, TE04.50.01, TE04.50.02, TE04.51.01, TE04.56.01, TE04.56.02, TE04.59.01</p></td>
+</tr>
+<tr class="row-odd"><td><p>Software/Firmware Security</p></td>
+<td><p>TE05.02.01, TE05.04.01, TE05.05.01, TE05.05.03, TE05.05.04, TE05.05.06, TE05.06.01, TE05.06.05, TE05.07.01, TE05.08.02, TE05.11.01, TE05.12.01, TE05.12.02, TE05.13.01, TE05.13.02, TE05.13.04, TE05.13.06, TE05.13.07, TE05.15.01, TE05.15.02, TE05.16.01, TE05.16.02, TE05.20.01, TE05.23.01</p></td>
+<td><p>TE05.05.02, TE05.17.01</p></td>
+</tr>
+<tr class="row-even"><td><p>Operational Environment</p></td>
+<td><p>TE06.03.01, TE06.05.01, TE06.05.02, TE06.06.01, TE06.08.01, TE06.08.02, TE06.10.01, TE06.11.01, TE06.12.01, TE06.13.01, TE06.14.01, TE06.15.01, TE06.17.01, TE06.18.01, TE06.19.01, TE06.24.01, TE06.25.01, TE06.26.01, TE06.27.01, TE06.28.01</p></td>
+<td><p>TE06.07.01, TE06.09.01, TE06.20.01</p></td>
+</tr>
+<tr class="row-odd"><td><p>Physical Security</p></td>
+<td><p>TE07.10.01, TE07.11.01, TE07.12.01, TE07.15.01, TE07.15.02, TE07.19.01, TE07.20.01, TE07.25.01, TE07.26.01, TE07.33.01, TE07.35.01, TE07.37.01, TE07.37.02, TE07.39.01, TE07.39.02, TE07.39.03, TE07.39.04, TE07.41.01, TE07.42.01, TE07.43.01, TE07.44.01, TE07.45.01, TE07.46.01, TE07.47.01, TE07.48.01, TE07.50.01, TE07.50.02, TE07.50.03, TE07.51.01, TE07.51.02, TE07.51.03, TE07.51.04, TE07.51.05, TE07.51.07, TE07.53.01, TE07.55.01, TE07.57.01, TE07.60.01, TE07.65.01, TE07.65.02, TE07.65.03, TE07.65.04, TE07.65.05, TE07.65.06, TE07.65.07, TE07.67.01, TE07.71.01, TE07.73.01</p></td>
+<td><p>TE07.01.01, TE07.09.01, TE07.09.02, TE07.19.01, TE07.26.02, TE07.77.04, TE07.81.03</p></td>
+</tr>
+<tr class="row-even"><td><p>Non-Invasive Security</p></td>
+<td><p>Not yet enforced by the CMVP</p></td>
+<td><p>Not yet enforced by the CMVP</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sensitive Security Parameter Management</p></td>
+<td><p>TE09.01.01, TE09.02.01, TE09.03.01, TE09.05.01, TE09.08.02, TE09.14.01, TE09.16.01, TE09.16.02, TE09.21.01, TE09.23.01, TE09.23.02, TE09.23.04, TE09.24.01, TE09.25.01, TE09.27.01, TE09.28.06, TE09.29.01, TE09.29.02, TE09.31.01, TE09.32.01, TE09.36.01</p></td>
+<td><p>TE09.04.01, TE09.04.02, TE09.06.01, TE09.06.02, TE09.06.03, TE09.07.01, TE09.08.01, TE09.09.01, TE09.09.02, TE09.10.01, TE09.10.02, TE09.13.01, TE09.13.02, TE09.19.01, TE09.22.01, TE09.28.01, TE09.28.05, TE09.33.01, TE09.37.01</p></td>
+</tr>
+<tr class="row-even"><td><p>Self-Tests</p></td>
+<td><p>TE10.12.01, TE10.12.02, TE10.15.01, TE10.15.02, TE10.20.01, TE10.21.01, TE10.21.02, TE10.22.02, TE10.22.03, TE10.22.05, TE10.27.01, TE10.28.01, TE10.29.01, TE10.33.02, TE10.34.02, TE10.35.01, TE10.35.02, TE10.35.03, TE10.37.03, TE10.37.04, TE10.37.07, TE10.37.08, TE10.46.01, TE10.46.02, TE10.48.02, TE10.49.02, TE10.51.01, TE10.51.02, TE10.51.03</p></td>
+<td><p>TE10.07.01, TE10.07.02, TE10.08.01, TE10.08.02, TE10.09.01, TE10.09.02, TE10.24.01, TE10.25.01, TE10.33.01, TE10.34.01, TE10.37.01, TE10.37.02, TE10.53.01</p></td>
+</tr>
+<tr class="row-odd"><td><p>Life-Cycle Assurance</p></td>
+<td><p>TE11.01.01, TE11.03.01, TE11.04.01, TE11.04.02, TE11.04.03, TE11.04.04, TE11.05.01, TE11.06.01, TE11.08.01, TE11.08.02, TE11.08.03, TE11.08.04, TE11.08.05, TE11.08.07, TE11.08.08, TE11.08.10, TE11.08.11, TE11.08.12, TE11.13.01, TE11.15.01, TE11.15.02, TE11.16.01, TE11.17.01, TE11.18.01, TE11.19.01, TE11.21.01, TE11.23.01, TE11.24.01, TE11.25.01, TE11.26.01, TE11.28.01, TE11.28.02, TE11.28.03, TE11.29.01, TE11.29.02, TE11.30.01, TE11.31.01, TE11.33.01, TE11.34.01, TE11.38.03</p></td>
+<td><p>TE11.32.01, TE11.35.01, TE11.36.01, TE11.37.01, TE11.38.01, TE11.39.01</p></td>
+</tr>
+<tr class="row-even"><td><p>Mitigation of Other Attacks</p></td>
+<td><p>TE12.01.01, TE12.04.02</p></td>
+<td><p>TE12.02.01, TE12.04.01, TE12.04.03</p></td>
+</tr>
+<tr class="row-odd"><td><p>NIST Special Publication 800-140A</p></td>
+<td><p>TEA01.01</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>NIST Special Publication 800-140B (Cryptographic module security policy)</p></td>
+<td></td>
+<td><p>TEB.01.01, TEB.02.01, TEB.03.01, TEB.03.02</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="a-2-tes-requiring-module-functional-test">
+<h1>A.2. TEs Requiring Module Functional Test<a class="headerlink" href="#a-2-tes-requiring-module-functional-test" title="Link to this heading">#</a></h1>
+<p>TEs in this category require the tester to exercise and manipulate the module to test its functionality. To do this, testers rely on various pieces of evidence that include log file names, screenshots, or remote testing/video observation. In essence: the tester must directly see and interact with the module to ensure that it functions in the way specified by the vendor.</p>
+<p><strong>TE09.03.02</strong> is an example of this category. It states: “For each Sensitive Security Parameter (SSP) that can be entered, the tester shall first enter the SSP while assuming the correct entity. The tester shall then verify that entry is not possible when assuming an incorrect entity.” To fulfill this TE, the tester must assume specific entities and use the module as those assumed roles, testing that the module correctly identifies roles and grants only the appropriate SSP entry service to each entity.</p>
+<p>This category of TEs is the hardest to automate; however, we may address the work surrounding functional testing. Automation opportunities may be found in how the lab collects and prepares the test evidence (e.g., log files) from functional testing.</p>
+<p>Table 2 lists all TEs that require functional testing at specific Security Levels (SLs).</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id2">
+<caption><span class="caption-text">Table 2 - TEs Requiring Functional Testing</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>FIPS 140-3 Section Name</strong></p></th>
+<th class="head"><p><strong>TEs for SL 1-4</strong></p></th>
+<th class="head"><p><strong>TEs for SL 2-4</strong></p></th>
+<th class="head"><p><strong>TEs for SL 3-4</strong></p></th>
+<th class="head"><p><strong>TEs for SL 4</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>General</p></td>
+<td><p>N/A</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Module Specification</p></td>
+<td><p>TE02.10.01 (or SC-TE), TE02.12.01, TE02.13.03, TE02.15.03, TE02.15.05, TE02.16.04, TE02.17.02, TE02.17.04, TE02.19.02, TE02.22.02, TE02.24.02, TE02.26.03, TE02.26.04, TE02.26.05, TE02.28.01, TE02.28.02, TE02.30.02</p></td>
+<td><p>None</p></td>
+<td><p>None</p></td>
+<td><p>None</p></td>
+</tr>
+<tr class="row-even"><td><p>Module Interfaces</p></td>
+<td><p>TE03.01.04, TE03.02.01, TE03.05.01, TE03.05.02, TE03.06.01, TE03.06.02, TE03.07.02, TE03.07.04, TE03.07.08, TE03.08.01, TE03.08.02, TE03.09.02, TE03.10.02, TE03.10.04, TE03.11.01, TE03.11.03, TE03.13.02, TE03.14.03, TE03.15.02, TE03.15.03, TE03.15.04, TE03.15.06</p></td>
+<td><p>None</p></td>
+<td><p>TE03.16.01 (or SC-TE), TE03.18.01, TE03.18.02, TE03.19.02, TE03.19.04, TE03.20.01, TE03.21.01</p></td>
+<td><p>TE03.22.01</p></td>
+</tr>
+<tr class="row-odd"><td><p>Roles, Services, and Authentication</p></td>
+<td><p>TE04.02.02, TE04.02.03, TE04.07.03, TE04.11.02, TE04.13.01, TE04.13.03, TE04.14.02, TE04.15.01, TE04.19.02, TE04.19.03, TE04.20.01, TE04.20.03, TE04.21.02, TE04.22.02, TE04.23.01, TE04.25.02, TE04.25.03, TE04.28.01, TE04.29.01, TE04.32.01, TE04.33.01, TE04.34.01, TE04.35.02, TE04.37.02, TE04.38.02, TE04.39.02, TE04.39.03, TE04.39.04, TE04.43.02, TE04.44.02, TE04.56.02 (L1 only)</p></td>
+<td><p>TE04.37.02, TE04.38.02, TE04.45.02, TE04.45.02, TE04.45.03, TE04.52.01, TE04.53.01 (L2 only),</p>
+<p>TE04.54.02, TE04.54.03, TE04.55.02</p>
+</td>
+<td><p>TE04.39.02, TE04.39.03, TE04.39.04, TE04.42.03, TE04.42.04</p></td>
+<td><p>TE04.59.01</p></td>
+</tr>
+<tr class="row-even"><td><p>Software/Firmware Security</p></td>
+<td><p>TE05.05.05, TE05.05.07, TE05.06.02, TE05.06.03, TE05.06.04, TE05.06.06, TE05.07.01, TE05.08.01, TE05.08.02, TE05.11.01, TE05.11.02, TE05.12.02, TE05.13.01, TE05.13.02, TE05.13.03, TE05.13.04, TE05.13.05, TE05.13.06, TE05.13.08</p></td>
+<td><p>TE05.15.01, TE05.15.02, TE05.16.03, TE05.17.02</p></td>
+<td><p>TE05.20.01, TE05.23.01</p></td>
+<td><p>none</p></td>
+</tr>
+<tr class="row-odd"><td><p>Operational Environment</p></td>
+<td><p>TE06.05.01, TE06.05.02, TE06.05.03, TE06.06.01, TE06.06.02, TE06.08.01, TE06.08.02, TE06.08.03</p></td>
+<td><p>The following TEs are for L2 only:
+TE06.09.02, TE06.09.03, TE06.10.01, TE06.10.02, TE06.10.03, TE06.11.01, TE06.11.02, TE06.11.03, TE06.12.01, TE06.12.02, TE06.12.03, TE06.13.01, TE06.13.02, TE06.13.03, TE06.14.01, TE06.14.02, TE06.14.03, TE06.15.01, TE06.15.02, TE06.15.03, TE06.17.01, TE06.17.02, TE06.17.03, TE06.18.01, TE06.18.02, TE06.18.03, TE06.24.01, TE06.25.01, TE06.25.02, TE06.26.01, TE06.26.02, TE06.27.01, TE06.27.02, TE06.28.01, TE06.28.02, TE06.28.03, TE06.28.04</p></td>
+<td><p>None</p></td>
+<td><p>None</p></td>
+</tr>
+<tr class="row-even"><td><p>Physical Security</p></td>
+<td><p>TE07.01.02, TE07.10.02, TE07.11.02, TE07.13.01, TE07.15.01, TE07.37.01, TE07.43.01, TE07.60.01</p></td>
+<td><p>TE07.19.01, TE07.20.01, TE07.35.01, TE07.44.01, TE07.45.01, TE07.45.02, TE07.46.01, TE07.47.01, TE07.47.02, TE07.48.01, TE07.48.02, TE07.62.01, TE07.63.01</p></td>
+<td><p>TE07.25.01, TE07.26.01, TE07.27.01, TE07.37.03, TE07.39.03, TE07.39.04, TE07.39.05, TE07.39.06, TE07.50.02, TE07.50.03, TE07.51.04, TE07.51.05, TE07.51.06, TE07.51.08, TE07.51.09, TE07.65.04, TE07.65.05, TE07.65.06, TE07.65.08, TE07.65.09, TE07.77.01, TE07.77.02, TE07.77.03, TE07.81.01, TE07.81.02</p></td>
+<td><p>TE07.32.01, TE07.41.01, TE07.41.02, TE07.42.02, TE07.53.01, TE07.55.01, TE07.58.01, TE07.67.01, TE07.71.02</p></td>
+</tr>
+<tr class="row-odd"><td><p>Non-Invasive Security</p></td>
+<td><p>N/A</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>SSP Management</p></td>
+<td><p>TE09.01.02, TE09.01.03, TE09.02.02, TE09.03.02, TE09.03.03, TE09.13.03, TE09.14.02, TE09.16.03, TE09.18.01, TE09.18.02, TE09.21.02, TE09.21.03, TE09.21.04, TE09.22.01, TE09.24.02, TE09.25.02, TE09.27.02, TE09.28.02, TE09.28.03, TE09.28.04, TE09.33.02, TE09.36.02, TE09.37.02</p></td>
+<td><p>None</p></td>
+<td><p>None</p></td>
+<td><p>None</p></td>
+</tr>
+<tr class="row-odd"><td><p>Self-Tests</p></td>
+<td><p>TE10.07.03, TE10.07.04, TE10.07.05, TE10.08.03, TE10.09.03, TE10.10.01, TE10.10.02, TE10.11.01, TE10.15.01, TE10.15.02, TE10.21.01, TE10.21.02, TE10.21.03, TE10.21.04, TE10.22.01, TE10.22.04, TE10.25.02, TE10.27.01, TE10.28.02, TE10.34.03, TE10.35.04, TE10.37.05, TE10.37.06, TE10.37.09, TE10.46.03, TE10.46.04, TE10.48.01, TE10.48.03, TE10.49.01, TE10.49.03, TE10.53.02, TE10.53.03</p></td>
+<td></td>
+<td><p>TE10.12.03, TE10.12.04, TE10.12.05, TE10.54.01</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Life-Cycle Assurance</p></td>
+<td><p>TE11.08.06, TE11.08.09, TE11.11.01, TE11.13.02, TE11.32.02</p></td>
+<td></td>
+<td></td>
+<td><p>TE11.28.02, TE11.28.03, TE11.28.04</p></td>
+</tr>
+<tr class="row-odd"><td><p>Mitigation of Other Attacks</p></td>
+<td><p>N/A</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="a-2-1-te-filters">
+<h2>A.2.1 TE Filters<a class="headerlink" href="#a-2-1-te-filters" title="Link to this heading">#</a></h2>
+<p>Table 3 can be used to filter TEs based on module characteristics (“TE Filter Types” in the first column). This table is not an exhaustive list, and more filters could be discovered through use and further feedback.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id3">
+<caption><span class="caption-text">Table 3 - TE Filter Types and Example TEs within those Filters</span><a class="headerlink" href="#id3" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head" rowspan="2"><p><strong>TE Filter Types</strong></p></th>
+<th class="head" colspan="2"><p><strong>Sampling of TEs within Filters</strong></p></th>
+</tr>
+<tr class="row-even"><th class="head"><p><strong>Filter Sub-Categories</strong></p></th>
+<th class="head"><p><strong>Sample TEs within Sub-Categories</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-odd"><td rowspan="4"><p>Module Type</p></td>
+<td><p>Hardware</p></td>
+<td><p>TE11.17.01</p></td>
+</tr>
+<tr class="row-even"><td><p>Software</p></td>
+<td><p>TE11.15.01</p></td>
+</tr>
+<tr class="row-odd"><td><p>Firmware</p></td>
+<td><p>TE11.16.01</p></td>
+</tr>
+<tr class="row-even"><td><p>Hybrid</p></td>
+<td><p>TE02.18.01</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="4"><p>Security Level</p></td>
+<td><p>SL 1</p></td>
+<td><p>TE05.13.01</p></td>
+</tr>
+<tr class="row-even"><td><p>SL 2</p></td>
+<td><p>TE05.17.01</p></td>
+</tr>
+<tr class="row-odd"><td><p>SL 3</p></td>
+<td><p>TE03.21.01</p></td>
+</tr>
+<tr class="row-even"><td><p>SL 4</p></td>
+<td><p>TE07.41.01</p></td>
+</tr>
+<tr class="row-odd"><td><p>Embodiment Type</p></td>
+<td></td>
+<td><p>TE07.09.01</p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><p>Capabilities</p></td>
+<td><p>Bypass</p></td>
+<td><p>TE10.22.01</p></td>
+</tr>
+<tr class="row-odd"><td><p>Self-Initiated Cryptographic</p></td>
+<td><p>TE04.23.01</p></td>
+</tr>
+<tr class="row-even"><td rowspan="4"><p>SSP</p></td>
+<td><p>Manual Establishment</p></td>
+<td><p>TE10.07.01</p></td>
+</tr>
+<tr class="row-odd"><td><p>Automated Establishment</p></td>
+<td><p>TE09.10.02</p></td>
+</tr>
+<tr class="row-even"><td><p>Wireless Manual Entry/Output</p></td>
+<td><p>TE09.18.01</p></td>
+</tr>
+<tr class="row-odd"><td><p>Automated Entry/Output</p></td>
+<td><p>TE09.03.01</p></td>
+</tr>
+<tr class="row-even"><td rowspan="5"><p>Self-Tests</p></td>
+<td><p>Comparison Self-Test</p></td>
+<td><p>TE10.27.01</p></td>
+</tr>
+<tr class="row-odd"><td><p>Cryptographic Algorithm Self-Tests</p></td>
+<td><p>TE10.25.01</p></td>
+</tr>
+<tr class="row-even"><td><p>Pre-Operational Self-Tests</p></td>
+<td><p>TE10.53.01</p></td>
+</tr>
+<tr class="row-odd"><td><p>Comparison Self-Test</p></td>
+<td><p>TE10.33.01</p></td>
+</tr>
+<tr class="row-even"><td><p>Critical Functions</p></td>
+<td><p>TE10.24.01</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><p>Operational Environment Type</p></td>
+<td><p>Limited</p></td>
+<td><p>TE06.03.01</p></td>
+</tr>
+<tr class="row-even"><td><p>Non-Modifiable</p></td>
+<td><p>TE06.03.01</p></td>
+</tr>
+<tr class="row-odd"><td><p>Modifiable</p></td>
+<td><p>TE06.03.01</p></td>
+</tr>
+<tr class="row-even"><td><p>Excluded Components</p></td>
+<td></td>
+<td><p>TE02.13.01</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><p>Modes of Operation</p></td>
+<td><p>Approved</p></td>
+<td><p>TE02.10.01</p></td>
+</tr>
+<tr class="row-even"><td><p>Non-Approved</p></td>
+<td><p>TE02.20.01</p></td>
+</tr>
+<tr class="row-odd"><td><p>Degraded</p></td>
+<td><p>TE02.26.01</p></td>
+</tr>
+<tr class="row-even"><td rowspan="6"><p>Interfaces</p></td>
+<td><p>Data Input</p></td>
+<td><p>TE03.05.01</p></td>
+</tr>
+<tr class="row-odd"><td><p>Data Output</p></td>
+<td><p>TE03.06.01</p></td>
+</tr>
+<tr class="row-even"><td><p>Control Input</p></td>
+<td><p>TE03.08.01</p></td>
+</tr>
+<tr class="row-odd"><td><p>Control Output</p></td>
+<td><p>TE03.09.01</p></td>
+</tr>
+<tr class="row-even"><td><p>Status Output</p></td>
+<td><p>TE03.10.01</p></td>
+</tr>
+<tr class="row-odd"><td><p>Power Input</p></td>
+<td><p>TE03.13.01</p></td>
+</tr>
+<tr class="row-even"><td><p>Software/Firmware Loading</p></td>
+<td></td>
+<td><p>TE10.37.01</p></td>
+</tr>
+<tr class="row-odd"><td><p>Complete Image Replacement</p></td>
+<td></td>
+<td><p>TE04.33.01</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The CMVP provided <a class="reference external" href="https://csrc.nist.gov/csrc/media/Projects/cryptographic-module-validation-program/documents/fips%20140-3/Module%20Processes/SupplementalItems-V3.0.0.pdf">Module Supplemental Information</a> (V3.0.0 as of 2024-09-04). While this does capture many filterable items, it is not currently used to filter the set of TEs for the module under test.</p>
+<p>The TE WS produces the TETables.json file to reflect the TE classification documented in this paper. The ACMVP server will incorporate the TETables.json file to generate a fitting set of TEs for a given module specification.</p>
+<p>The TE WS will work on completing the filter/mapping of TE Filter Types to their respective TEs.</p>
+</section>
+<section id="a-2-2-removing-assertions-not-separately-tested">
+<h2>A.2.2 Removing Assertions Not Separately Tested<a class="headerlink" href="#a-2-2-removing-assertions-not-separately-tested" title="Link to this heading">#</a></h2>
+<p>Some assertions are not separately tested, nor do they depend on the completion of other assertions and their TEs. For example: <strong>AS05.22</strong> is not separately tested, but is instead tested as part of <strong>AS05.05</strong>. Table 4 highlights some assertions which are not separately tested. Since testing these assertions are dependent on testing the assertion(s) that it points to, an approach is to use these assertions to further automate the report writing process. In this instance, the AS that is not separately tested could be marked as completed once the appropriate associated AS, VE, and TE are completed. This automation could take the form of a simple checking mechanic akin to the SP dependent TEs referenced in <em>Table 1</em>.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id4">
+<caption><span class="caption-text">Table 4 - Assertions not separately tested</span><a class="headerlink" href="#id4" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>FIPS 140-3 Section Title</strong></p></th>
+<th class="head"><p><strong>Assertions Not Separately Tested</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>General</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>Cryptographic Module Specification</p></td>
+<td><p>AS02.01, AS02.02, AS02.04, AS02.05, AS02.06, AS02.08, AS02.25, AS02.26, AS02.29, AS02.31, AS02.32</p></td>
+</tr>
+<tr class="row-even"><td><p>Cryptographic Module Interfaces</p></td>
+<td><p>AS03.12, AS03.17</p></td>
+</tr>
+<tr class="row-odd"><td><p>Roles, Services, and Authentication</p></td>
+<td><p>AS04.01, AS04.05, AS04.08, AS04.09, AS04.10, AS04.12, AS04.16, AS04.17, AS04.24, AS04.26, AS04.27, AS04.30, AS04.31, AS04.36, AS04.40, AS04.41, AS04.46, AS04.49, AS04.57, AS04.58</p></td>
+</tr>
+<tr class="row-even"><td><p>Software/Firmware Security</p></td>
+<td><p>AS05.01, AS05.03, AS05.09, AS05.10, AS05.14, AS05.18, AS05.19, AS05.21, AS05.22</p></td>
+</tr>
+<tr class="row-odd"><td><p>Operational Environment</p></td>
+<td><p>AS06.01, AS06.02, AS06.04, AS06.09, AS06.16, AS06.21, AS06.22, AS06.23, AS06.29</p></td>
+</tr>
+<tr class="row-even"><td><p>Physical Security</p></td>
+<td><p>AS07.02, AS07.03, AS07.04, AS07.05, AS07.06, AS07.07, AS07.08, AS07.14, AS07.16, AS07.17, AS07.18, AS.07.21, AS07.22, AS07.23, AS07.24, AS07.28, AS07.29, AS07.30, AS07.31, AS07.34, AS07.36, AS07.38, AS07.40, AS07.49, AS07.52, AS07.54, AS07.56, AS07.59, AS07.61, AS07.64, AS07.66, AS07.68, AS07.69, AS07.70, AS07.72, AS07.74, AS07.75, AS07.76, AS07.78, AS07.79, AS07.80, AS07.81, AS07.82, AS07.83, AS07.84, AS07.85, AS07.86</p></td>
+</tr>
+<tr class="row-odd"><td><p>Non-Invasive Security</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p>Sensitive Security Parameter Management</p></td>
+<td><p>AS09.11, AS09.12, AS09.15, AS09.17, AS09.20, AS09.26, AS09.30, AS09.34, AS09.35</p></td>
+</tr>
+<tr class="row-odd"><td><p>Self-Tests</p></td>
+<td><p>AS10.01, AS10.02, AS10.03, AS10.04, AS10.05, AS10.06, AS10.13, AS10.14, AS10.16, AS10.17, AS10.18, AS10.19, AS10.23, AS10.26, AS10.30, AS10.31, AS10.32, AS10.32, AS10.36, AS10.38, AS10.39, AS10.40, AS10.41, AS10.42, AS10.43, AS10.44, AS10.45, AS10.47, AS10.50, AS10.52, AS10.55</p></td>
+</tr>
+<tr class="row-even"><td><p>Life-Cycle Assurance</p></td>
+<td><p>AS11.02, AS11.07, AS11.09, AS11.10, AS11.12, AS11.14, AS11.20, AS11.22, AS11.27</p></td>
+</tr>
+<tr class="row-odd"><td><p>Mitigation of Other Attacks</p></td>
+<td><p>None</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="a-3-complete-list-of-tes">
+<h1>A.3. Complete List of TEs<a class="headerlink" href="#a-3-complete-list-of-tes" title="Link to this heading">#</a></h1>
+<p>The table below provides a complete list of TEs, classified into four categories (i.e., SP-TE, OD-TE, SC-TC, FT-TE) and their potential combinations:</p>
+<ol class="arabic simple">
+<li><p><strong>SP-TE:</strong> TEs depending on the SP</p></li>
+<li><p><strong>SC-TE:</strong> TEs depending on source code review or inspection</p></li>
+<li><p><strong>OD-TE:</strong> TEs depending on other vendor documentation</p></li>
+<li><p><strong>FT-TE:</strong> TEs depending on functional testing</p></li>
+<li><p><strong>SP-TE/OD-TE:</strong> TEs depending on vendor documentation, regardless whether it is SP <em>or</em> not</p></li>
+<li><p><strong>SC-TE/SP-TE:</strong> TEs depending on source code review <em>or</em> on the SP</p></li>
+<li><p><strong>SP-TE, FT-TE:</strong> TE depending on the SP <em>and</em> on functional testing</p></li>
+<li><p><strong>SC-TE, FT-TE:</strong> TE depending on source code review <em>and</em> on functional testing</p></li>
+</ol>
+<p>Grayed-out TEs are those not currently required by the CMVP.</p>
+<p>The OD-TEs depend on proprietary vendor documentation. Therefore, they do not belong to the SP-TE category.</p>
+<p>Examples:</p>
+<ol class="arabic simple">
+<li><p>FT-TE:</p>
+<ol class="arabic simple">
+<li><p>The tester shall verify, by exercising the module, that the status indicator is provided when the trusted channel is in use. (e.g., TE03.21.01)</p></li>
+<li><p>The tester shall verify that an identity-based authentication mechanism is employed for all services utilizing the trusted channel. (e.g., TE03.20.01)</p></li>
+</ol>
+</li>
+<li><p>SP-TE, FT-TE or SP-TE/OD-TE, FT-TE:</p>
+<ol class="arabic simple">
+<li><p>The tester shall use the vendor documentation to assess multi-factor identity-based authentication. (e.g., TE04.59.01)</p></li>
+<li><p>The tester shall verify from the vendor documentation and by inspection that the approved authentication mechanism implemented in the operating system meets the applicable requirements. (TE04.53.01)</p></li>
+</ol>
+</li>
+<li><p>FT-TE, SP-TE or FT-TE, SP-TE/ OD-TE:</p>
+<ol class="arabic simple">
+<li><p>The tester shall invoke the approved mode of operation using the vendor provided instructions found in the non-proprietary security policy. (e.g., TE02.19.02)</p></li>
+<li><p>The tester shall verify that the module implements a bypass capability as specified in the vendor documentation. (e.g., TE04.18.01)</p></li>
+</ol>
+</li>
+</ol>
+<div class="pst-scrollable-table-container"><table class="table">
+<tbody>
+<tr class="row-odd"><td><p>TE02.03.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE02.03.02</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE02.07.01</p></td>
+<td><p>SC-TE, SP-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE02.07.02</p></td>
+<td><p>SC-TE, SP-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE02.09.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE02.10.01</p></td>
+<td><p>SP-TE, SC-TE/FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE02.10.02</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE02.11.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE02.11.02</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE02.12.01</p></td>
+<td><p>SP-TE, FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE02.13.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE02.13.02</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE02.13.03</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE02.14.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE02.15.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE02.15.02</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE02.15.03</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE02.15.04</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE02.15.05</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE02.15.06</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE02.15.07</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE02.15.08</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE02.15.09</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE02.15.10</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE02.15.11</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE02.15.12</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE02.15.13</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE02.15.14</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE02.16.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE02.16.02</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE02.16.03</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE02.16.04</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE02.16.05</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE02.17.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE02.17.02</p></td>
+<td><p>SP-TE, FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE02.17.03</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE02.17.04</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE02.17.05</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE02.17.06</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE02.17.07</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE02.17.08</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE02.17.09</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE02.17.10</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE02.18.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE02.19.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE02.19.02</p></td>
+<td><p>FT-TE, SP-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE02.20.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE02.20.02</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE02.20.03</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE02.20.04</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE02.21.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE02.21.02</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE02.22.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE02.22.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE02.24.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE02.24.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE02.26.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE02.26.02</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE02.26.03</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE02.26.04</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE02.26.05</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE02.28.01</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE02.28.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE02.30.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE02.30.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE03.01.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE03.01.02</p></td>
+<td><p>SP-TE, SC-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE03.01.03</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE03.01.04</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE03.02.01</p></td>
+<td><p>SC-TE, FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE03.02.02</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE03.03.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE03.04.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE03.05.01</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE03.05.02</p></td>
+<td><p>SP-TE/OD-TE, FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE03.06.01</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE03.06.02</p></td>
+<td><p>SP-TE/OD-TE, FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE03.07.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE03.07.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE03.07.03</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE03.07.04</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE03.07.05</p></td>
+<td><p>SP-TE/OD-TE, SC-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE03.07.06</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE03.07.07</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE03.07.08</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE03.08.01</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE03.08.02</p></td>
+<td><p>FT-TE, SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE03.09.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE03.09.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE03.10.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE03.10.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE03.10.03</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE03.10.04</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE03.10.05</p></td>
+<td><p>SC-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE03.11.01</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE03.11.02</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE03.11.03</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE03.13.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE03.13.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE03.14.01</p></td>
+<td><p>SC-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE03.14.02</p></td>
+<td><p>SC-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE03.14.03</p></td>
+<td><p>FT-TE, SC-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE03.15.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE03.15.02</p></td>
+<td><p>FT-TE, SC-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE03.15.03</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE03.15.04</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE03.15.05</p></td>
+<td><p>SC-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE03.15.06</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE03.16.01</p></td>
+<td><p>SP-TE/OD-TE, SC-TE/FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE03.18.01</p></td>
+<td><p>SP-TE/OD-TE, FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE03.18.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE03.19.01</p></td>
+<td><p>SP-TE/OD-TE, SC-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE03.19.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE03.19.03</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE03.19.04</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE03.20.01</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE03.21.01</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE03.22.01</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE04.02.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE04.02.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE04.02.03</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE04.03.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE04.05.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE04.06.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE04.07.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE04.07.02</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE04.07.03</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE04.11.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE04.11.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE04.13.01</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE04.13.02</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE04.13.03</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE04.14.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE04.14.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE04.15.01</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE04.18.01</p></td>
+<td><p>FT-TE, SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE04.19.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE04.19.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE04.19.03</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE04.20.01</p></td>
+<td><p>FT-TE, SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE04.20.02</p></td>
+<td><p>OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE04.20.03</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE04.21.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE04.21.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE04.22.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE04.22.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE04.23.01</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE04.25.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE04.25.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE04.25.03</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE04.28.01</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE04.29.01</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE04.32.01</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE04.33.01</p></td>
+<td><p>FT-TE, SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE04.34.01</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE04.35.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE04.35.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE04.37.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE04.37.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE04.38.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE04.38.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE04.39.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE04.39.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE04.39.03</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE04.39.04</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE04.42.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE04.42.02</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE04.42.03</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE04.42.04</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE04.43.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE04.43.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE04.44.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE04.44.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE04.45.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE04.45.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE04.45.03</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE04.47.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE04.48.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE04.50.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE04.50.02</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE04.51.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE04.51.02</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE04.52.01</p></td>
+<td><p>SP-TE/OD-TE, FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE04.53.01</p></td>
+<td><p>SP-TE/OD-TE, FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE04.54.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE04.54.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE04.54.03</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE04.55.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE04.55.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE04.56.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE04.56.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE04.59.01</p></td>
+<td><p>SP-TE, FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE05.02.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE05.04.01</p></td>
+<td><p>SC-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE05.05.01</p></td>
+<td><p>SC-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE05.05.02</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE05.05.03</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE05.05.04</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE05.05.05</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE05.05.06</p></td>
+<td><p>SC-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE05.05.07</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE05.06.01</p></td>
+<td><p>SC-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE05.06.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE05.06.03</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE05.06.04</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE05.06.05</p></td>
+<td><p>SC-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE05.06.06</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE05.07.01</p></td>
+<td><p>SP-TE/OD-TE, FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE05.08.01</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE05.08.02</p></td>
+<td><p>FT-TE, SC-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE05.11.01</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE05.11.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE05.12.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE05.12.02</p></td>
+<td><p>FT-TE, SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE05.13.01</p></td>
+<td><p>FT-TE, SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE05.13.02</p></td>
+<td><p>FT-TE, SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE05.13.03</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE05.13.04</p></td>
+<td><p>FT-TE, SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE05.13.05</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE05.13.06</p></td>
+<td><p>FT-TE, SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE05.13.07</p></td>
+<td><p>SC-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE05.13.08</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE05.15.01</p></td>
+<td><p>FT-TE, SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE05.15.02</p></td>
+<td><p>FT-TE, SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE05.16.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE05.16.02</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE05.16.03</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE05.17.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE05.17.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE05.20.01</p></td>
+<td><p>SC-TE, FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE05.23.01</p></td>
+<td><p>FT-TE, SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE06.03.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE06.05.01</p></td>
+<td><p>SP-TE/OD-TE, FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE06.05.02</p></td>
+<td><p>SP-TE/OD-TE, FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE06.05.03</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE06.06.01</p></td>
+<td><p>SP-TE/OD-TE, FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE06.06.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE06.07.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE06.08.01</p></td>
+<td><p>SP-TE/OD-TE, FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE06.08.02</p></td>
+<td><p>SP-TE/OD-TE, FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE06.08.03</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE06.09.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE06.09.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE06.09.03</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE06.10.01</p></td>
+<td><p>SP-TE/OD-TE, FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE06.10.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE06.10.03</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE06.11.01</p></td>
+<td><p>SP-TE/OD-TE, FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE06.11.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE06.11.03</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE06.12.01</p></td>
+<td><p>SP-TE/OD-TE, FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE06.12.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE06.12.03</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE06.13.01</p></td>
+<td><p>SP-TE/OD-TE, FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE06.13.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE06.13.03</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE06.14.01</p></td>
+<td><p>SP-TE/OD-TE, FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE06.14.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE06.14.03</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE06.15.01</p></td>
+<td><p>SP-TE/OD-TE, FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE06.15.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE06.15.03</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE06.17.01</p></td>
+<td><p>SP-TE/OD-TE, FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE06.17.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE06.17.03</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE06.18.01</p></td>
+<td><p>SP-TE/OD-TE, FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE06.18.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE06.18.03</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE06.19.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE06.20.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE06.24.01</p></td>
+<td><p>SP-TE/OD-TE, FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE06.25.01</p></td>
+<td><p>SP-TE/OD-TE, FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE06.25.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE06.26.01</p></td>
+<td><p>SP-TE/OD-TE, FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE06.26.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE06.27.01</p></td>
+<td><p>SP-TE/OD-TE, FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE06.27.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE06.28.01</p></td>
+<td><p>SP-TE/OD-TE, FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE06.28.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE06.28.03</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE06.28.04</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE07.01.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE07.01.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE07.09.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE07.09.02</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE07.10.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE07.10.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE07.11.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE07.11.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE07.12.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE07.13.01</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE07.15.01</p></td>
+<td><p>FT-TE, SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE07.15.02</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE07.19.01</p></td>
+<td><p>FT-TE, SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE07.20.01</p></td>
+<td><p>FT-TE, SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE07.25.01</p></td>
+<td><p>FT-TE, SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE07.26.01</p></td>
+<td><p>SP-TE/OD-TE FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE07.26.02</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE07.27.01</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE07.32.01</p></td>
+<td><p>SP-TE/OD-TE, FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE07.33.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE07.35.01</p></td>
+<td><p>FT-TE, SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE07.37.01</p></td>
+<td><p>FT-TE, SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE07.37.02</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE07.37.03</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE07.39.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE07.39.02</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE07.39.03</p></td>
+<td><p>FT-TE, SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE07.39.04</p></td>
+<td><p>FT-TE, SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE07.39.05</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE07.39.06</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE07.41.01</p></td>
+<td><p>FT-TE, SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE07.41.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE07.42.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE07.42.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE07.43.01</p></td>
+<td><p>FT-TE, SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE07.44.01</p></td>
+<td><p>FT-TE, SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE07.45.01</p></td>
+<td><p>FT-TE, SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE07.45.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE07.46.01</p></td>
+<td><p>FT-TE, SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE07.47.01</p></td>
+<td><p>FT-TE, SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE07.47.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE07.48.01</p></td>
+<td><p>FT-TE, SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE07.48.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE07.50.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE07.50.02</p></td>
+<td><p>FT-TE, SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE07.50.03</p></td>
+<td><p>FT-TE, SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE07.51.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE07.51.02</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE07.51.03</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE07.51.04</p></td>
+<td><p>FT-TE, SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE07.51.05</p></td>
+<td><p>FT-TE, SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE07.51.06</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE07.51.07</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE07.51.08</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE07.51.09</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE07.53.01</p></td>
+<td><p>SP-TE/OD-TE, FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE07.55.01</p></td>
+<td><p>SP-TE/OD-TE, FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE07.57.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE07.58.01</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE07.60.01</p></td>
+<td><p>FT-TE, SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE07.62.01</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE07.63.01</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE07.65.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE07.65.02</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE07.65.03</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE07.65.04</p></td>
+<td><p>FT-TE, SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE07.65.05</p></td>
+<td><p>FT-TE, SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE07.65.06</p></td>
+<td><p>FT-TE, SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE07.65.07</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE07.65.08</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE07.65.09</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE07.67.01</p></td>
+<td><p>SP-TE/OD-TE, FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE07.71.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE07.71.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE07.73.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE07.77.01</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE07.77.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE07.77.03</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE07.77.04</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE07.81.01</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE07.81.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE07.81.03</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="gray">TE08.03.01</span></p></td>
+<td><p><span class="gray">SP-TE/OD-TE</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="gray">TE08.04.01</span></p></td>
+<td><p><span class="gray">SP-TE/OD-TE</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="gray">TE08.05.01</span></p></td>
+<td><p><span class="gray">SP-TE/OD-TE</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="gray">TE08.06.01</span></p></td>
+<td><p><span class="gray">SP-TE/OD-TE</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="gray">TE08.07.01</span></p></td>
+<td><p><span class="gray">SP-TE/OD-TE</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>TE09.01.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE09.01.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE09.01.03</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE09.02.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE09.02.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE09.03.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE09.03.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE09.03.03</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE09.04.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE09.04.02</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE09.05.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE09.06.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE09.06.02</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE09.06.03</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE09.07.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE09.08.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE09.08.02</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE09.09.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE09.09.02</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE09.10.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE09.10.02</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE09.13.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE09.13.02</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE09.13.03</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE09.14.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE09.14.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE09.16.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE09.16.02</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE09.16.03</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE09.18.01</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE09.18.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE09.19.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE09.21.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE09.21.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE09.21.03</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE09.21.04</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE09.22.01</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE09.23.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE09.23.02</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE09.23.04</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE09.24.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE09.24.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE09.25.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE09.25.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE09.27.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE09.27.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE09.28.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE09.28.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE09.28.03</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE09.28.04</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE09.28.05</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE09.28.06</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE09.29.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE09.29.02</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE09.31.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE09.32.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE09.33.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE09.33.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE09.36.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE09.36.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE09.37.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE09.37.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE10.07.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE10.07.02</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE10.07.03</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE10.07.04</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE10.07.05</p></td>
+<td><p>FT-TE/SC-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE10.08.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE10.08.02</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE10.08.03</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE10.09.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE10.09.02</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE10.09.03</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE10.10.01</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE10.10.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE10.11.01</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE10.12.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE10.12.02</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE10.12.03</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE10.12.04</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE10.12.05</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE10.15.01</p></td>
+<td><p>SP-TE/OD-TE, FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE10.15.02</p></td>
+<td><p>SC-TE/OD-TE, FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE10.20.01</p></td>
+<td><p>SC-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE10.21.01</p></td>
+<td><p>SP-TE/OD-TE, FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE10.21.02</p></td>
+<td><p>FT-TE, SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE10.21.03</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE10.21.04</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE10.22.01</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE10.22.02</p></td>
+<td><p>SC-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE10.22.03</p></td>
+<td><p>SC-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE10.22.04</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE10.22.05</p></td>
+<td><p>SC-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE10.24.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE10.24.02</p></td>
+<td><p>SC-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE10.25.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE10.25.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE10.27.01</p></td>
+<td><p>FT-TE, SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE10.28.01</p></td>
+<td><p>SP-TE/OD-TE, SC-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE10.28.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE10.29.01</p></td>
+<td><p>SC-TE, SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE10.33.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE10.33.02</p></td>
+<td><p>SC-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE10.34.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE10.34.02</p></td>
+<td><p>SP-TE/OD-TE, SC-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE10.34.03</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE10.35.01</p></td>
+<td><p>SP-TE/OD-TE, SC-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE10.35.02</p></td>
+<td><p>SP-TE/OD-TE, SC-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE10.35.03</p></td>
+<td><p>SP-TE/OD-TE, SC-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE10.35.04</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE10.37.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE10.37.02</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE10.37.03</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE10.37.04</p></td>
+<td><p>SC-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE10.37.05</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE10.37.06</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE10.37.07</p></td>
+<td><p>SC-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE10.37.08</p></td>
+<td><p>SC-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE10.37.09</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE10.46.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE10.46.02</p></td>
+<td><p>SC-TE, SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE10.46.03</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE10.46.04</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE10.48.01</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE10.48.02</p></td>
+<td><p>SC-TE, SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE10.48.03</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE10.49.01</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE10.49.02</p></td>
+<td><p>SC-TE, SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE10.49.03</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE10.51.01</p></td>
+<td><p>SC-TE, SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE10.51.02</p></td>
+<td><p>SC-TE, SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE10.51.03</p></td>
+<td><p>SC-TE, SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE10.53.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE10.53.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE10.53.03</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE10.54.01</p></td>
+<td><p>FT-TE, SC-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE11.01.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE11.03.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE11.04.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE11.04.02</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE11.04.03</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE11.04.04</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE11.05.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE11.06.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE11.08.01</p></td>
+<td><p>OD(FSM)-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE11.08.02</p></td>
+<td><p>OD(FSM)-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE11.08.03</p></td>
+<td><p>OD(FSM)-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE11.08.04</p></td>
+<td><p>OD(FSM)-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE11.08.05</p></td>
+<td><p>OD(FSM)-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE11.08.06</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE11.08.07</p></td>
+<td><p>OD(FSM)-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE11.08.08</p></td>
+<td><p>OD(FSM)-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE11.08.09</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE11.08.10</p></td>
+<td><p>OD(FSM)-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE11.08.11</p></td>
+<td><p>OD(FSM)-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE11.08.12</p></td>
+<td><p>OD(FSM)-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE11.11.01</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE11.13.01</p></td>
+<td><p>OD(FSM)-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE11.13.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE11.15.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE11.15.02</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE11.16.01</p></td>
+<td><p>SC-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE11.17.01</p></td>
+<td><p>SC-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE11.18.01</p></td>
+<td><p>SC-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE11.19.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE11.21.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE11.23.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE11.24.01</p></td>
+<td><p>SC-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE11.25.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE11.26.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE11.28.01</p></td>
+<td><p>SC-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE11.28.02</p></td>
+<td><p>FT-TE, SC-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE11.28.03</p></td>
+<td><p>FT-TE, SC-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE11.28.04</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE11.29.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE11.29.02</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE11.30.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE11.31.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE11.32.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE11.32.02</p></td>
+<td><p>FT-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE11.33.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE11.34.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE11.35.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE11.36.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE11.37.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE11.38.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE11.38.03</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE11.39.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE12.01.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE12.02.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE12.04.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TE12.04.02</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TE12.04.03</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TEA01.01</p></td>
+<td><p>SP-TE/OD-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TEB01.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TEB02.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-odd"><td><p>TEB03.01</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+<tr class="row-even"><td><p>TEB03.02</p></td>
+<td><p>SP-TE</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../conclusion.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Conclusion</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Appendix A. Technical Details from the Test Evidence (TE) Workstream</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#a-1-tes-requiring-vendor-documentation">A.1. TEs Requiring Vendor Documentation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#a-2-tes-requiring-module-functional-test">A.2. TEs Requiring Module Functional Test</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-2-1-te-filters">A.2.1 TE Filters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-2-2-removing-assertions-not-separately-tested">A.2.2 Removing Assertions Not Separately Tested</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#a-3-complete-list-of-tes">A.3. Complete List of TEs</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<p>
+  
+    By NIST<br/>
+  
+</p>
+
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+<footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        <div class="disclaimer">
+          <strong>Disclaimer:</strong> Certain commercial equipment, instruments, or
+          materials are identified in this documentation to foster understanding. Such
+          identification does not imply recommendation or endorsement by the National
+          Institute of Standards and Technology, nor does it imply that the materials
+          or equipment identified are necessarily the best available for the purpose.
+        </div>
+      </p>
+    </div>
+</footer>
+  </body>
+</html>
