@@ -1,6 +1,8 @@
 # README
 
-AMVPDocs will host documents for public discussion related to the Automated Cryptographic Module Validation Project (AMVP or ACVMP) run through the National Cybersecurity Center of Excellence (NCCoE). For information on the project see: https://www.nccoe.nist.gov/automation-nist-cryptographic-module-validation-program.
+This repository hosts documents for public discussion related to the Automated Cryptographic Module Validation Project (AMVP or ACVMP) run through the National Cybersecurity Center of Excellence (NCCoE). For information on the project see: https://www.nccoe.nist.gov/automation-nist-cryptographic-module-validation-program.
+
+See https://pages.nist.gov/ACMVPDocs/ for the most recent status report.
 
 ## Contact
 
