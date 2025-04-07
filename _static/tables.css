@@ -1,0 +1,9 @@
+/* Remove purple hover effect on tables */
+table.table tbody tr:hover {
+    background-color: transparent !important;
+    }
+    
+    .table tbody tr:hover {
+    background-color: transparent !important;
+    }
+    

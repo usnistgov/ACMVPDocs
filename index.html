@@ -16,17 +16,19 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
@@ -34,16 +36,19 @@
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="_static/content.css?v=59cd0ab0" />
+    <link rel="stylesheet" type="text/css" href="_static/breadcrumbs.css?v=84f9056b" />
+    <link rel="stylesheet" type="text/css" href="_static/tables.css?v=1ae3e97c" />
   
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
 
     <script src="_static/jquery.js?v=5d32c60e"></script>
     <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
     <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
@@ -66,6 +71,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
 
     <link rel="stylesheet" href="https://pages.nist.gov/nist-header-footer/css/nist-combined.css">
     <link rel="stylesheet" type="text/css" href="https://pages.nist.gov/leaveNotice/css/jquery.leaveNotice.css" />
@@ -92,19 +98,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="search.html"
       method="get">
@@ -112,7 +107,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search..."
          aria-label="Search..."
          autocomplete="off"
@@ -120,8 +114,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -139,7 +133,8 @@
       
         
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -169,15 +164,11 @@
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -191,13 +182,19 @@
         <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="te/index.html">Test Evidence Workstream</a></li>
-<li class="toctree-l1"><a class="reference internal" href="protocol/index.html">Protocol Workstream</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="protocol/index.html">Protocol Workstream</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="protocol/technicalDetails.html">Protocol Workstream Technical Details</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="protocol/securityConsiderations.html">Security Considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="protocol/login.html">Login</a></li>
+<li class="toctree-l3"><a class="reference internal" href="protocol/versioning.html">Versioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="protocol/messaging.html">Messaging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="protocol/errorResponses.html">Error Responses</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="infrastructure/index.html">Research Infrastructure Workstream</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusion.html">Conclusion</a></li>
-<li class="toctree-l1"><a class="reference internal" href="te/technicalDetails.html">Appendix A. Technical Details from the Test Evidence (TE) Workstream</a></li>
-
-
-
 </ul>
 
     </div>
@@ -305,24 +302,16 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
+</button>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -348,7 +337,13 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">Abstract</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#audience">Audience</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#collaborators">Collaborators</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#collaborators-and-acknowledgments">Collaborators and Acknowledgments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#updates-since-icmc-2024">Updates since ICMC 2024</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-evidence-workstream">Test Evidence Workstream</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#protocol-workstream">Protocol Workstream</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#research-infrastructure-workstream">Research Infrastructure Workstream</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -362,18 +357,20 @@ document.write(`
                   
   <section id="automation-of-the-nist-cryptographic-module-validation-program">
 <h1>Automation of the NIST Cryptographic Module Validation Program<a class="headerlink" href="#automation-of-the-nist-cryptographic-module-validation-program" title="Link to this heading">#</a></h1>
-<p><strong>September 2024 Status Report</strong></p>
-<p>September 18, 2024</p>
+<p><strong>April 2025 Status Report</strong></p>
+<p>April 8, 2025</p>
 <section id="abstract">
 <h2>Abstract<a class="headerlink" href="#abstract" title="Link to this heading">#</a></h2>
-<p>The Cryptographic Module Validation Program (CMVP) validates third-party assertions that cryptographic module implementations satisfy the requirements of Federal Information Processing Standards (FIPS) Publication 140-3, Security Requirements for Cryptographic Modules. The NIST National Cybersecurity Center of Excellence (NCCoE) has undertaken the Automated Cryptographic Module Validation Project (ACMVP) to support improvement in the efficiency and timeliness of CMVP operations and processes. The goal is to demonstrate a suite of automated tools that would permit organizations to perform testing of their cryptographic products according to the requirements of FIPS 140-3, then directly report the results to NIST using appropriate protocols. This is a status report of progress made so far with the ACMVP and the planned next steps for the project.</p>
+<p>The Cryptographic Module Validation Program (CMVP) validates third-party assertions that cryptographic module implementations satisfy the requirements of Federal Information Processing Standards (FIPS) Publication 140-3, Security Requirements for Cryptographic Modules. The NIST National Cybersecurity Center of Excellence (NCCoE) has undertaken the Automated Cryptographic Module Validation Project (ACMVP) to support improvement in the efficiency and timeliness of CMVP operations and processes. The goal is to demonstrate a suite of automated tools that would permit organizations to perform testing of their cryptographic products according to the requirements of FIPS 140-3, then directly report the results to NIST using appropriate protocols.</p>
+<p>This is the second status report for the project, which describes progress made since September 2024 with the ACMVP and the planned next steps for the project. The project is divided into three workstreams: the <a class="reference internal" href="te/index.html#test-evidence-workstream"><span class="std std-ref">Test Evidence (TE) Workstream</span></a> <a class="reference internal" href="protocol/index.html#protocol-workstream"><span class="std std-ref">Protocol Workstream</span></a>, and the <a class="reference internal" href="infrastructure/index.html#research-infrastructure-workstream"><span class="std std-ref">Research Infrastructure Workstream</span></a>. Each is a focused effort in its own right. The combined impact of these workstreams will result in improvements to the overall automation of the CMVP.</p>
+<p>An overview of the project, its goals, and prior update of work accomplished are found in the <a class="reference external" href="https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.37.ipd.pdf">September 2024 status report</a>.</p>
 </section>
 <section id="audience">
 <h2>Audience<a class="headerlink" href="#audience" title="Link to this heading">#</a></h2>
-<p>The primary audience for this report is technology, security, and privacy program managers and architects, and software developers, engineers, and IT professionals.</p>
+<p>The primary audience for this report is technology, security, and privacy program managers and architects, software developers, engineers, and IT professionals, especially those involved with the CMVP, accredited cryptography and security testing labs, and conformance offices at companies that produce security software and hardware.</p>
 </section>
-<section id="collaborators">
-<h2>Collaborators<a class="headerlink" href="#collaborators" title="Link to this heading">#</a></h2>
+<section id="collaborators-and-acknowledgments">
+<h2>Collaborators and Acknowledgments<a class="headerlink" href="#collaborators-and-acknowledgments" title="Link to this heading">#</a></h2>
 <p>Collaborators participating in this project submitted their capabilities in response to an open call in the Federal Register for all sources of relevant security capabilities from academia and industry (vendors and integrators). The following respondents with relevant capabilities or product components signed a Cooperative Research and Development Agreement (CRADA) to collaborate with NIST in a consortium to build this example solution.</p>
 <ul class="simple">
 <li><p>Acumen Security</p></li>
@@ -382,24 +379,72 @@ document.write(`
 <li><p>atsec</p></li>
 <li><p>AWS</p></li>
 <li><p>Cisco</p></li>
+<li><p>Katalyst</p></li>
 <li><p>Lightship Security</p></li>
 <li><p>Microsoft</p></li>
 <li><p>NXP Semiconductors</p></li>
 <li><p>SUSE</p></li>
 </ul>
+<p>Contributors to each workstream are listed in the corresponding sections below. Additionally, the following people and organizations contributed to the project outside of a workstream: Courtney Maatta, Rochelle Casey, Alicia Squires, Margaret Salter, Tim Ness, Damian Zell, Derrick Williams III, Jeff Wright, Mickey Iqbal, and David Browning of Amazon; Dave Hawes, Gavin O’Brien, Tim Hall, Matt Scholl, Cherilyn Pascoe, Jim St. Pierre, Kevin Stine, Ann Rickerds, Shawn Winhoven, Jeffrey J McIntyre, Anil Das, Edgar Garay, Jim Simmons, Rob Densock, and Blair Heiserman of NIST; William Barker of Strativia LLC; Karen Scarfone of Scarfone Cybersecurity; and Heather Flanagan of Spherical Cow Consulting.</p>
+<p>The project team recognizes and appreciates Apostol Vassilev of NIST for leading the project at the inception and kicking off the project and formulating the three workstreams and associated activities.</p>
 <p>Certain commercial entities, equipment, products, or materials may be identified by name or company logo or other insignia in order to acknowledge their participation in this collaboration or to describe an experimental procedure or concept adequately. Such identification is not intended to imply special status or relationship with NIST or recommendation or endorsement by NIST or NCCoE; neither is it intended to imply that the entities, equipment, products, or materials are necessarily the best available for the purpose.</p>
 <p><strong>NIST Technical Series Policies</strong></p>
 <p><a class="reference external" href="https://doi.org/10.6028/NIST-TECHPUBS.CROSSMARK-POLICY">Copyright, Use, and Licensing Statements</a></p>
 <p><strong>Public Comment Period</strong></p>
-<p>September 18, 2024 - October 18, 2024</p>
+<p>April 8, 2025 - May 15, 2025</p>
 <p><strong>Submit Comments</strong></p>
 <p><a class="reference external" href="mailto:applied-crypto-testing&#37;&#52;&#48;nist&#46;gov">applied-crypto-testing<span>&#64;</span>nist<span>&#46;</span>gov</a></p>
 <p>National Institute of Standards and Technology
 Attn: Applied Cybersecurity Division, Information Technology Laboratory
 100 Bureau Drive (Mail Stop 2000) Gaithersburg, MD 20899-2000</p>
 <p>All comments are subject to release under the Freedom of Information Act (FOIA).</p>
+</section>
+<section id="updates-since-icmc-2024">
+<h2>Updates since ICMC 2024<a class="headerlink" href="#updates-since-icmc-2024" title="Link to this heading">#</a></h2>
+<p>Due to the shift in the ICMC schedule, only six months have passed between ICMC 2024 and ICMC 2025. The team accomplished the following across the three workstreams during that time:</p>
+<section id="test-evidence-workstream">
+<h3>Test Evidence Workstream<a class="headerlink" href="#test-evidence-workstream" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Defined test methods for functional testing TEs to allow for more specific information and automation to be applied to the evidence collected.</p></li>
+<li><p>Improved the TE filtering coverage via thorough review of all sections of FIPS 140-3.</p></li>
+</ul>
+</section>
+<section id="protocol-workstream">
+<h3>Protocol Workstream<a class="headerlink" href="#protocol-workstream" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Added automated rule processing on submissions with instant feedback. This is intended to catch inconsistencies and inaccuracies a CMVP reviewer would otherwise need to catch during their review of a submission. Feedback is provided instantly to the submitter and is required to be corrected before the submission is accepted.</p></li>
+<li><p>Added the source code evidence payloads to capture how source code TEs are evaluated by the lab.</p></li>
+<li><p>Flushed out the protocol to provide a more complete API for labs to interact with their submissions.</p></li>
+</ul>
+</section>
+<section id="research-infrastructure-workstream">
+<h3>Research Infrastructure Workstream<a class="headerlink" href="#research-infrastructure-workstream" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Tools Researched:</dt><dd><ul>
+<li><p>Amazon RDS for SQL Server, AWS Database Migration Service (DMS), AWS CodeBuild, AWS CodePipeline, AWS CodeDeploy, Amazon ECS, Amazon EC2, ECS Fargate, EKS Auto Mode, Amazon Elastic Container Registry (ECR), Nginx Reverse Proxy, AWS Application Load Balancer (ALB), Amazon API Gateway, Microsoft Windows Containers, Linux Containers, GitHub, Amazon S3</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Outcomes:</dt><dd><ul>
+<li><p>Migrated legacy databases to a managed, scalable cloud platform.</p></li>
+<li><p>Automated builds, testing, and deployments through a CI/CD pipeline.</p></li>
+<li><p>Containerized core applications for faster deployments and improved maintainability.</p></li>
+<li><p>Replaced legacy web servers with scalable, modern cloud-based routing and authentication.</p></li>
+<li><p>Enabled secure, flexible authentication using mutual TLS and API keys.</p></li>
+<li><p>Reduced deployment downtime and improved system resilience.</p></li>
+<li><p>Streamlined developer workflows and accelerated update cycles.</p></li>
+<li><p>Lowered operational complexity and infrastructure overhead.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
 <div class="toctree-wrapper compound">
 </div>
+</section>
 </section>
 </section>
 
@@ -430,7 +475,8 @@ Attn: Applied Cybersecurity Division, Information Technology Laboratory
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -441,7 +487,13 @@ Attn: Applied Cybersecurity Division, Information Technology Laboratory
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">Abstract</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#audience">Audience</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#collaborators">Collaborators</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#collaborators-and-acknowledgments">Collaborators and Acknowledgments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#updates-since-icmc-2024">Updates since ICMC 2024</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-evidence-workstream">Test Evidence Workstream</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#protocol-workstream">Protocol Workstream</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#research-infrastructure-workstream">Research Infrastructure Workstream</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
@@ -465,8 +517,8 @@ Attn: Applied Cybersecurity Division, Information Technology Laboratory
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
 <footer class="footer mt-5 mt-md-0">
     <div class="container">
       <p>
