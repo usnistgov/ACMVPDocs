@@ -117,3 +117,4 @@ ___________________________________
    protocol/index.rst
    infrastructure/index.rst
    conclusion.rst
+   te/tables/tetables.rst
