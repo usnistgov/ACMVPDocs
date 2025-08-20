@@ -1,0 +1,19 @@
+
+== Architecture
+
+A server/client/proxy model is used where the roles are defined as:
+
+* AMV Client/Proxy - Communicates with the AMV server using Java Script Object Notation (JSON <<RFC7159>>) and submits registration for various resources and test evidence that is module-centric.
+* AMV Server - Maintains registration information and processes test evidence for module validation requests.
+
+
+=== Terminology
+
+The following terms are consistently used throughout this document and *SHOULD* be used throughout its extensions:
+
+* Registration - The JSON from the client to the server that describes the capabilities for which the client is seeking test cases and a validation. Evidence required will be broken into individual Test evidenceSets.
+* Request - The JSON sent from the server to the client defining a single Test evidenceSet to use as inputs for testing. Exactly one request will exist for each Test evidenceSet.
+* Response - The JSON from the client providing the desired output for each of the Test Cases defined in the corresponding Request file. These are linked via the Test evidenceSet evId. As exactly one request exists for each esId, one response will exist for each request.
+* Disposition - The JSON from the server after the Response is submitted by the client detailing the correctness of the Test Evidence. A "passed" disposition indicates that the particular test in the Test evidenceSet is ready for validation.
+* OE - Operational Environment - The specific hardware and/or software the client's cryptographic implementation uses to run.
+

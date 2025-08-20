@@ -1,0 +1,105 @@
+
+[[login]]
+== Login
+
+A login endpoint is mentioned throughout the document and how to authenticate is defined by the server. The following defines how the login endpoint to establish a session and obtain a <<jwtAuthFlows>>. 
+
+* *passcode* - `string`, a property for providing a passcode value
+* *accessToken* - `string`, a JWT associated with the current user for which renewal of the expiration is desired
+
+=== Request
+
+There are two forms of a login request. There is the initial form which just provides the authentication
+information without any JWT, and there is a renewal login that allows a user to obtain a new JWT containing the
+claims from an expired JWT in order to access a resource protected with those claims.
+
+*POST /login* (Initial)
+
+[source,json]
+----
+{
+    "amvVersion": "1.0",
+    "passcode": "{passcode}"
+}
+
+----
+
+*POST /login* (Renewal)
+
+[source,json]
+----
+{
+    "amvVersion": "1.0",
+    "passcode": "{passcode}",
+    "accessToken": "{jwt value}"
+}
+----
+
+=== Response
+
+[source,json]
+----
+{
+    "accessToken": "{jwt value}",
+    "amvVersion": "1.0"
+ }
+----
+
+[[multiRefresh]]
+=== Multi Refresh JWT
+
+This endpoint can be utilized for refreshing multiple JWTs with a single POST.  Because a JWT with claims is issued for each test session created and clients have the option of performing more than one test session at a time, a mechanism for refreshing multiple JWTs across multiple test sessions simultaneously *MAY* be made available.
+
+==== Request
+
+*POST /login/refresh*
+
+[source,json]
+----
+{
+    "passcode": "{passcode}",
+    "accessToken": [
+      "{jwt1}",
+      "{jwt2}",
+      "..."
+    ]
+}
+----
+
+==== Response
+
+[source,json]
+----
+{
+    "accessToken": [
+      "{newJwt1}",
+      "{newJwt2}",
+      "..."
+    ],
+}
+----
+
+Note the order of JWTs between the request and response is preserved.
+
+In the event of an error ocurring during any of the above requests, the AMVP server *MUST* respond with a error response formatted as defined by section 11 of this specification. The category codes and error codes to use are defined by Table 1 below.
+
+[[login_error_table_1.0]]
+.Errors related to login requests
+|===
+| Category Code | Scenario | Error code
+.4+| 1 | Expected an access token but was not provided | 1
+| A provided access token did not verify | 2
+| A provided access token has expired | 3
+| The provided "passcode" was incorrect | 4
+.1+| 2 | Provided payload is not valid JSON | 1
+.6+| 3 | JSON payload not in array format | 1
+| JSON missing initial expected amvVersion | 2
+| Provided amvVersion is invalid or not supported | 3
+| JSON missing other expected value | 4
+| Wrong data type used for expected value | 5
+| Data for given value is invalid | 6
+
+|===
+Note: The login endpoints are unique in that the payload contents are specific to the end user for authentication. This is why the errors fall under category 1 instead of category 3, which handles more general cases of all other semantically incorrect JSON.
+
+When using the multi refresh JWT process described above, the AMVP server *SHALL* include an error object for each separate JWT that encounters an error.

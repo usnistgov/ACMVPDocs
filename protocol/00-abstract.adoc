@@ -1,0 +1,6 @@
+
+[#abstract]
+== Abstract
+
+The AMV Protocol provides a method for communicating between a cryptographic module's registration/evidence submission agent and a validation authority for the purposes of registering the various resources associated with the module as well as submitting test evidence. This communication protocol is used in coordination with ACVTS and ESVTS systems to automate cryptographic module validations.
+
