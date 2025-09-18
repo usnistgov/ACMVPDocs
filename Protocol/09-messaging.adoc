@@ -1,0 +1,995 @@
+
+== Messaging and Workflow
+
+The general flow of the protocol is to:
+
+0. Login to the system
+1. Register a module via `POST /amvp/v1/modules`
+2. Receive the `moduleId` via `GET /amvp/v1/requests/<id>`
+3. Create a certificate request session via `POST /amvp/v1/certRequests`
+4. Submit functional test evidence (FT-TE) via `POST /amvp/v1/certRequests/<id>/evidence`
+5. Submit source code test evidence (SC-TE) via `POST /amvp/v1/certRequests/<id>/sourceCode`
+6. Submit security policy evidence via `POST /amvp/v1/certRequests/<id>/securityPolicy`
+7. Receive the validation certificate via `GET /amvp/v1/certRequests/<id>`
+
+Details on the specific requests, payloads, and responses are covered in this section.
+
+=== Resource Registration Exchange
+
+The registration will utilize the URI resources <<xml_uriResources>> to register various resources associated with the module as well as module specific capabilities. This exchange will consist of several message exchanges and will provide a detailed list of module capabilities to be registered, see <<xml_regmsgFlows>>. A set of URI resources are also available to retrieve and manage the available metadata. The registration can be performed at any time prior to formal algorithm testing, formal entropy testing and the formal module validation request. 
+
+=== Test Evidence Exchange
+
+The test evidence exchange consists of the AMV client initiating a certRequest and then requesting evidenceSet(s) associated with the request. A evidenceSet may require a test to be performed or some documentation to be gathered and then presented to the server as test evidence. The client *MAY* retreive and process the evidenceSets in order and *MAY* retreive a evidenceSet and immediately return results or request all of the evidenceSets and return results at a later time. The client repeats this process until all of the evidenceSets in the certRequest list have been processed. Once a evidenceSet result has been POSTed to the server the client may request success/failure results from the server at any time, however if evidenceSets have not been completed the overall status will be incomplete. A message flow overview is described below <<xml_msgFlows>>.
+
+=== Module Validation Request
+
+Once a certRequest result has successfully completed the client will receive a module validation certificate, via GET on the certRequest session.
+
+=== Message Flows
+
+Message flows are provided in Appendix A, but the content and responses provided here are the expected content.
+
+[[requests]]
+=== Requests
+
+Some resource operations make a request to modify or create data. To facilitate an out-of-band approval step, where data can be inspected to insure it meets the business requirements of the validation authority which operates the server, the operations will return a `request` url that can be used to obtain information about the status and disposition of the requested modification. Whether or how an authority implements an approval step is outside the scope of this specification.
+
+A request resource is not externally updateable, but *SHOULD* update based on server processing. The properties for a request response:
+
+* *url* - `string`, identifier for this resource
+* *status* - `string`, one of:
+** *initial* - initial state of the request, created
+** *processing* - server is processing the request
+** *approved* - the requested operation was successfully processed
+** *rejected* - the requested operation was rejected and no change was made
+* *message* - `string`, a placeholder for any message describing a rejection
+* *approvedUrl* - `string`, a link to the resource which was created or modified as a result of the requested operation
+
+[[request_get]]
+==== Request Information
+
+*GET /requests/{requestId}*
+
+Retrieve Information for a specific request
+
+===== Response
+
+[source,json]
+....
+
+    {
+        "url": "/amvp/v1/requests/2",
+        "status": "approved",
+        "approvedUrl" : "/amvp/v1/vendors/2",
+        "amvVersion": "1.0"
+    }
+
+....
+
+[[modules_post]]
+==== Register a new Module
+
+*POST /modules*
+
+Register a new module.
+
+===== Request
+
+The client *shall* provide the following properties to register a new module.
+
+[source,json]
+....
+
+    {
+        "amvVersion": "1.0",
+        "schemaVersion": "initial",
+        "moduleInfo": {
+            "name": "NIST Postman Test Module",
+            "count": 1,
+            "description": "NIST Postman Test Module",
+            "embodiment": "Single Chip",
+            "type": "software",
+            "opEnvType": "Intel X86_64",
+            "submissionLevel": "Level 1",
+            "itar": false,
+            "overallSecurityLevel": 1
+        },
+        "secLevels":
+        [
+            {
+                "section": 1,
+                "level": 1
+            },
+            {
+                "section": 2,
+                "level": 1
+            },
+            {
+                "section": 3,
+                "level": 1
+            },
+            {
+                "section": 4,
+                "level": 1
+            },
+            {
+                "section": 5,
+                "level": 1
+            },
+            {
+                "section": 6,
+                "level": 1
+            },
+            {
+                "section": 7,
+                "level": 1
+            },
+            {
+                "section": 8,
+                "level": 1
+            },
+            {
+                "section": 9,
+                "level": 1
+            },
+            {
+                "section": 10,
+                "level": 1
+            },
+            {
+                "section": 11,
+                "level": 1
+            },
+            {
+                "section": 12,
+                "level": 1
+            }
+        ],
+        "implementsOtar": true,
+        "hasNonApprovedMode": true,
+        "requiresInitialization": true,
+        "hasExcludedComponents": true,
+        "hasDegradedMode": false,
+        "hasPPAorPAI": false,
+        "hasEmbeddedOrBoundModule": false,
+        "hasCriticalFunctions": false,
+        "hasNonApprovedAlgorithmsInApprovedMode": false,
+        "hasExternalInputDevice": false,
+        "hasExternalOutputDevice": false,
+        "usesTrustedChannel": true,
+        "supportsConcurrentOperators": true,
+        "usesIdentityBasedAuthentication": true,
+        "hasMaintenanceRole": true,
+        "allowsOperatorToChangeRoles": false,
+        "hasDefaultAuthenticationData": true,
+        "usesEDC": true,
+        "allowsExternalLoadingOfSoftwareOrFirmware": false,
+        "containsNonReconfigurableMemory": true,
+        "usesOpenSource": false,
+        "providesMaintenanceAccessInterface": false,
+        "hasVentilationOrSlits": false,
+        "hasRemovableCover": false,
+        "hasTamperSeals": false,
+        "hasOperatorAppliedTamperSeals": false,
+        "hasEFPorEFT": false,
+        "outputsSensitiveDataAsPlaintext": false,
+        "supportsManualSSPEntry": true,
+        "usesSplitKnowledge": true,
+        "hasCVE": true,
+        "hasAdditionalMitigations": false,
+        "usesOtherCurve": true,
+        "supportsBypassCapability": false,
+        "hasOTPMemory": false
+    }
+
+....
+
+===== Response
+
+Reply is a request response as described in <<requests>>. If `status` is `approved` the `approvedUrl` returned will be the identifier of the module resource which was created. The url of any resources provided would be available through the <<module_get>> operation.
+
+[[module_get]]
+==== Retrieve information for a Module
+
+*GET /modules/{moduleId}*
+
+Returns information about a specific module. The information is provided based on the `moduleInfo` section registered with the module. 
+
+===== Response
+
+[source,json]
+----
+
+    {
+        "id": 165,
+        "name": "OpenSSL FIPS Provider",
+        "description": "FIPS Provider V3.0.0",
+        "embodiment": "Single Chip",
+        "type": "software",
+        "opEnvType": "Intel X86_64",
+        "overallSecurityLevel": 1,
+        "amvVersion": "1.0"
+    }
+
+----
+
+[[certRequest]]
+=== Certificate Request Sessions
+
+[[certRequests_post]]
+==== Create a New Certificate Request Session
+
+*POST /certRequests*
+
+Create a new Certificate Request Session.
+
+===== Request
+
+----
+
+    {
+        "amvVersion": "1.0",
+        "moduleId": 1,
+        "vendorId": 1,
+        "contacts": [
+            "CVP-000000"
+        ]
+    }
+
+----
+
+===== Response
+
+The `accessToken` is a <<RFC7519>> which *MUST* be supplied as described in <<jwtToken>> in order to access the Certificate Request Session.
+
+[source,json]
+....
+
+    {
+        "url": "/amvp/v1/certRequests/2",
+        "moduleId": 1,
+        "vendorId": 1,
+        "status": "initial",
+        "accessToken" : "eyJhbGciOiJIUzI1NiIsInR5cCI6Ik (truncated)",
+        "amvVersion": "1.0",
+    }
+
+....
+
+[[certRequest_get]]
+==== Certificate Request Session Information
+
+*GET /certRequests/{certRequestId}*
+
+Returns information about the specific Certificate Request Session. Several different responses could be provided depending on the status of the `certRequest`. 
+
+===== Response
+
+If the `certRequest` is still in the `initial` state, the following response will be provided, indicating the client to try to access the resource again after `retry` seconds.
+
+[source,json]
+....
+
+    {
+        "amvVersion": "1.0",
+        "certRequestId": 2,
+        "retry": 30,
+        "status": "initial"
+    }
+
+....
+
+If the `certRequest` is in the `ready` state, the following response will be provided. This indicates which test requirements the server determined to be applicable to the module based on the registration. The client *shall* provide evidence for each test requirement and the client *shall* provide security policy information in order for the `certRequest` to advance to the `requirementsSubmitted` state.
+
+[source,json]
+....
+{
+    "url": "/amvp/v1/certRequests/2",
+    "moduleId": 1,
+    "vendorId": 1,
+    "status": "ready",
+    "expectedFunctionalTestEvidence": [
+        {
+            "testRequirement": "TE02.12.01"
+        }
+    ],
+    "expectedSourceCodeEvidence": [
+        {
+            "testRequirement": "TE02.07.01"
+        },
+        {
+            "testRequirement": "TE02.07.02"
+        },
+        {
+            "testRequirement": "TE02.10.01"
+        }
+    ],
+    "missingSecurityPolicySection": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+    ],
+    "amvVersion": "1.0"
+}
+....
+
+If the `certRequest's` FT-TE, SC-TE, and SP-TE evidence are submitted, it will be in the `requirementSubmitted` state, the following response will be provided. The FT-TE and SC-TE status will either be in `Processing` or `Submitted` state. The SP-TE can be in `Processing` or `PendingGeneration` state.
+
+[source,json]
+....
+{
+    "url": "/amvp/v1/certRequests/745",
+    "moduleId": 262,
+    "vendorId": 1,
+    "status": "RequirementsSubmitted",
+    "securityPolicyStatus": "PendingGeneration",
+    "functionalTestStatus": "Submitted",
+    "sourceCodeStatus": "Submitted",
+    "amvVersion": "1.0"
+}
+....
+
+After FT-TE, SC-TE, and SP-TE evidence are POSTed and SP-TE is PUTed, the following response will be provided. 
+
+[source,json]
+....
+{
+    "url": "/amvp/v1/certRequests/746",
+    "moduleId": 263,
+    "vendorId": 1,
+    "status": "RequirementsSubmitted",
+    "securityPolicyStatus": "Submitted",
+    "functionalTestStatus": "Submitted",
+    "sourceCodeStatus": "Submitted",
+    "amvVersion": "1.0"
+}
+....
+==== Certificate Request Functional Test Evidence (FT-TE) Submission
+
+*POST /certRequests/{certRequestId}/evidence*
+
+This endpoint allows a client to submit functional test evidence as requested during the `GET /certRequests/{certRequestId}`. Each test requirement is stored individually on the server and can be overwritten at any time with another POST. Subsequent `GET /certRequests/{certRequestId}` will update to reflect any remaining test requirements that need evidence submitted. 
+
+[source,json]
+....
+{
+    "amvVersion": "1.0",
+ 
+    "functionalTest":
+    {
+      "document":
+      {
+        "base-catalogVersion": "3.0",
+        "base-lastUpdated": "October-16-2023",
+        "functionalTesting-EC": "0.6",
+        "functionalTesting-lastUpdated": "October-29-2024"
+      },
+      "defaults":
+      {
+        "access": "physical remote observed",
+        "technique": "debugger simulation emulation harness manual other",
+        "description": "description of test procedure",
+        "harnessID": "",
+        "setup": "String - reference into Catalog",
+        "errorInduction": "description of modifications",
+        "results":
+        {
+            "digest": "####",
+            "fileLocation": "directory or location of test evidence",
+            "integrityMechanism": "SHA2-256"
+        }
+      },
+      "testEvidence":
+      [
+        {
+            "teList":
+            [
+                "TE02.12.01"
+            ],
+            "description": "Verify that versioning info identifies distinct components.",
+            "access": "physical",
+            "technique": "debugger simulation emulation harness manual other",
+            "harnessId": "String - UUID for debugger",
+            "setup": "reference into Catalog",
+            "errorInduction": "description of",
+            "results":
+            {
+                "digest": "########",
+                "fileLocation": "location of test evidence",
+                "integrityMechanism": "SHA2-512"
+            }
+        }
+      ]
+    }
+}
+....
+
+==== Certificate Request Source Code Evidence (SC-TE) Submission
+
+*POST /certRequests/{certRequestId}/sourcecode*
+
+This endpoint allows a client to submit source code evidence as requested during the `GET /certRequests/{certRequestId}`. Each test requirement is stored individually on the server and can be overwritten at any time with another POST. Subsequent `GET /certRequests/{certRequestId}` will update to reflect any remaining test requirements that need evidence submitted. 
+
+[source,json]
+....
+{
+    "amvVersion": "1.0",
+    "sourceCode": {
+        "document": {
+            "base-catalogVersion": "3.0",
+            "base-lastUpdated": "October-16-2023",
+            "sourceCode-EC": "0.6",
+            "sourceCode-lastUpdated": "October-29-2024"
+        },
+        "defaults": {
+            "access": "physical remote observed",
+            "technique": "tool-assisted manual script other",
+            "description": "description of test procedure (e.g., how the input to test is provided and how the output is observed)",
+            "results": {
+                "digest": "####",
+                "fileLocation": "directory or location of test evidence",
+                "integrityMechanism": "SHA2-256"
+            }
+        },
+        "testEvidence": [
+            {
+                "teList": [
+                    "TE02.10.01",
+                    "TE02.07.01",
+                    "TE02.07.02"
+                ],
+                "file": [
+                    "full path to file"
+                ],
+                "function": "Source code method/function(s)",
+                "lines": "Source code line numbers",
+                "description": "Summarize how the source code review aspect of the TE was accomplished.",
+                "input": "may not always be applicable",
+                "output": "may not always be applicable",
+                "status": "",
+                "results": {
+                    "digest": "########",
+                    "fileLocation": "location of test evidence",
+                    "integrityMechanism": "SHA2-512"
+                }
+            }
+        ]
+    }
+}
+....
+
+==== Certificate Request Security Policy Submission
+
+*POST /certRequests/{certRequestId}/securityPolicy*
+
+This endpoint allows a client to submit missing security policy information as requested during the `GET /certRequests/{certRequestId}`. Each security policy is stored individually on the server and can be overwritten at any time with another POST. Subsequent `GET /certRequests/{certRequestId}` will update to reflect any remaining security policy sections that need information submitted. 
+
+[source,json]
+....
+ {
+    "amvVersion": "1.0",
+    "securityPolicy": 
+	{
+        "general": {
+            "overallDescription": "dolore aliqua dolor",
+            "securityLevels": {
+                "overall": 1,
+                "section1": 2,
+                "section2": 3,
+                "section3": 2,
+                "section4": 4,
+                "section5": 2,
+                "section6": 4,
+                "section7": 1,
+                "section8": 4,
+                "section9": 2,
+                "section10": 3,
+                "section11": 4,
+                "section12": 4
+            }
+        },
+        "cryptographicModuleSpecification": {
+            "description": {
+                "purposeAndUse": "occaecat amet dolor consequat",
+                "referenceToSubchip": "qui incididunt adipisicing tempor sit",
+                "cryptographicBoundary": "Excepteur",
+                "TOEPP": "sed officia dolor Duis in"
+            },
+            "blockDiagram": "elit eu Excepteur",
+            "testedSoftwareFirmwareHybrid": [
+                {
+                    "packagesFilenames": "ut adipisicing cupidatat",
+                    "softwareFirmwareVersion": "eiusmod",
+                    "nonSecurityRelevantDistinguishingFeatures": "non",
+                    "integrityTestImplemented": "Ut culpa occaecat"
+                }
+            ],
+            "excludedComponents": "Ut occaecat",
+            "degradedMode": "voluptate consectetur",
+            "modeChangeInstructionsAndStatus": "esse",
+            "algorithms": [
+                {
+                    "algorithmName": "magna",
+                    "cavpCertNumbers": "minim",
+                    "algorithmCapabilities": "quis aliquip",
+                    "oe": "adipisicing exercitation fugiat cupidatat do",
+                    "reference": "aliquip enim Ut qui sunt"
+                },
+                {
+                    "algorithmName": "sint in Ut exercitation Lorem",
+                    "cavpCertNumbers": "in minim",
+                    "algorithmCapabilities": "mollit dolor officia aliqua",
+                    "oe": "et adipisicing cupidatat aute reprehenderit",
+                    "reference": "voluptate"
+                },
+                {
+                    "algorithmName": "sint consequat reprehenderit pariatur fugiat",
+                    "cavpCertNumbers": "nisi ex minim",
+                    "algorithmCapabilities": "dolor do exercitation",
+                    "oe": "occaecat",
+                    "reference": "sint ut Excepteur cupidatat dolore"
+                },
+                {
+                    "algorithmName": "reprehenderit consectetur exercitation",
+                    "cavpCertNumbers": "Lorem incididunt pariatur nostrud dolore",
+                    "algorithmCapabilities": "voluptate",
+                    "oe": "sunt cupidatat ipsum ad",
+                    "reference": "officia consequat"
+                }
+            ],
+            "algorithmSpecificInformation": "incididunt"
+        },
+        "cryptographicModuleInterfaces": {
+            "portsAndInterfaces": {
+                "text": "sit adipisicing enim elit proident",
+                "portInterfaces": [
+                    {
+                        "port": "As a software-only module, the module does not have physical ports. Physical ports are interpreted to be the physical ports of the hardware platforms on which it runs.",
+                        "logicalInterface": "Data Input",
+                        "data": "API input parameters for data."
+                    },
+                    {
+                        "port": "As a software-only module, the module does not have physical ports. Physical ports are interpreted to be the physical ports of the hardware platforms on which it runs.",
+                        "logicalInterface": "Data Output",
+                        "data": "API output parameters for data."
+                    },
+                    {
+                        "port": "As a software-only module, the module does not have physical ports. Physical ports are interpreted to be the physical ports of the hardware platforms on which it runs.",
+                        "logicalInterface": "Control Output",
+                        "data": "API function calls."
+                    },
+                    {
+                        "port": "As a software-only module, the module does not have physical ports. Physical ports are interpreted to be the physical ports of the hardware platforms on which it runs.",
+                        "logicalInterface": "Status Output",
+                        "data": "API return codes, error message."
+                    }
+                ]
+            },
+            "trustChannelSpec": "ut irure non",
+            "controlInterfaceNotInhibited": "mollit voluptate in",
+            "additionalInformation": "tempor aliqua quis do minim"
+        },
+        "rolesServicesAuthentication": {
+            "authenticationMethods": {
+                "authenticationMethodsList": [
+                    {
+                        "name": "abc",
+                        "description": "def",
+                        "mechanism": "ghi",
+                        "strengthPerAttempt": "jkl",
+                        "strengthPerMinute": "mno"
+                    }
+                ],
+                "text": "The module does not support authentication. The module does not support concurrent operators."
+            },
+            "roles": [
+                {
+                    "name": "Crypto Officer",
+                    "type": "Role",
+                    "operatorType": "CO",
+                    "authenticationMethods": "N/A (Implicitly assumed)"
+                }
+            ],
+            "approvedServices": {
+                "approvedServicesList": [
+                    {
+                        "name": "Encryption",
+                        "description": "Encryption",
+                        "indicator": "Return value 1 from the function FIPS_service_indicator_check_approved()",
+                        "inputs": "Plaintext, key",
+                        "outputs": "Ciphertext",
+                        "sfi": "AES CBC, CTR, ECB listed in the Approved Algorithms Table",
+                        "roles": "CO",
+                        "sspAccess": "W, E"
+                    },
+                    {
+                        "name": "Decryption",
+                        "description": "Decryption",
+                        "indicator": "Return value 1 from the function FIPS_service_indicator_check_approved()",
+                        "inputs": "Ciphertext, key",
+                        "outputs": "Plaintext",
+                        "sfi": "AES CBC, CTR, ECB listed in the Approved Algorithms Table",
+                        "roles": "CO",
+                        "sspAccess": "W, E"
+                    }
+                ],
+                "text": "For the above table, the convention below applies when specifying the access permissions (types) that the service has for each SSP.\n\bG = Generate: The module generates or derives the SSP.\n\bR = Read: The SSP is read from the module (e.g., the SSP is output).\n\bW = Write: The SSP is updated, imported, or written to the module.\n\bE = Execute: The module uses the SSP in performing a cryptographic operation.\n\bZ = Zeroize: The module zeroizes the SSP.\nFor the role, CO indicates “Crypto Officer”.\nThe module implements a service indicator that indicates whether the invoked service is approved. The service indicator is a return value 1 from the FIPS_service_indicator_check_approved function. This function is used together with two other functions. The usage is as follows:\n\bSTEP 1: Should be called before invoking the service.\nint before = FIPS_service_indicator_before_call();\n\bSTEP 2: Make a service call i.e., API function for performing a service.\nfunc;\n\bSTEP 3: Should be called after invoking the service.\nint after = FIPS_service_indicator_after_call();\n\bSTEP 4: Return value 1 indicates approved service was invoked.\nint Return= FIPS_service_indicator_check_approved(before, after);\nAlternatively, all the above steps can be done by using a single call using the function CALL_SERVICE_AND_CHECK_APPROVED(approved, func)."
+            },
+            "nonApprovedServices": [
+                {
+                    "name": "Encryption",
+                    "description": "Encryption",
+                    "algorithmsAccessed": "AES, DES, Triple-DES listed in the Non-Approved Algorithms Table",
+                    "role": "CO"
+                },
+                {
+                    "name": "Decryption",
+                    "description": "Decryption",
+                    "algorithmsAccessed": "AES, DES, Triple-DES listed in the Non-Approved Algorithms Table",
+                    "role": "CO"
+                }
+            ],
+            "externalSoftwareFirmwareLoaded": "The module does not support loading of external software or firmware."
+        },
+        "softwareFirmwareSecurity": {
+            "integrityTechniques": "sint pariatur aliquip fugiat",
+            "initiateOnDemand": "mollit anim",
+            "openSourceParameters": "anim veniam velit ad voluptate",
+            "additionalInformation": "Nothing else to add."
+        },
+        "operationalEnvironment": {},
+        "physicalSecurity": {},
+        "noninvasiveSecurity": {},
+        "sensitiveSecurityParameterManagement": {
+            "storageAreas": {
+                "storageAreaList": [
+                    {
+                        "name": "sed ut",
+                        "description": "id proident ad",
+                        "persistenceType": "aliqua"
+                    },
+                    {
+                        "name": "ut Ut et",
+                        "description": "ea dolore sit laborum voluptate",
+                        "persistenceType": "in"
+                    },
+                    {
+                        "name": "esse qui Lorem quis",
+                        "description": "do laboris irure proident dolor",
+                        "persistenceType": "amet"
+                    },
+                    {
+                        "name": "esse id laborum",
+                        "description": "consectetur deserunt tempor",
+                        "persistenceType": "ad elit aliquip in et"
+                    },
+                    {
+                        "name": "nostrud",
+                        "description": "consectetur aute eiusmod",
+                        "persistenceType": "deserunt magna"
+                    }
+                ],
+                "text": "nulla aliquip reprehenderit anim"
+            },
+            "inputOutputMethods": {
+                "sspInputOutputList": [
+                    {
+                        "name": "adipisicing officia quis fugiat irure",
+                        "from": "est Duis ut velit",
+                        "to": "non do eu velit",
+                        "formatType": "qui ut eu",
+                        "distributionType": "officia",
+                        "entryType": "magna occaecat eiusmod non sunt",
+                        "SFIOrAlgorithm": "occaecat aliqua labore"
+                    },
+                    {
+                        "name": "occaecat anim voluptate est",
+                        "from": "do laboris minim exercitation",
+                        "to": "in",
+                        "formatType": "exercitation dolor",
+                        "distributionType": "ex",
+                        "entryType": "culpa commodo non",
+                        "SFIOrAlgorithm": "consectetur nisi ut Lorem"
+                    },
+                    {
+                        "name": "elit amet in sit",
+                        "from": "sit magna",
+                        "to": "dolore laboris irure Lorem veniam",
+                        "formatType": "et deserunt est elit",
+                        "distributionType": "do magna id dolor amet",
+                        "entryType": "Excepteur ut",
+                        "SFIOrAlgorithm": "velit reprehenderit voluptate mollit"
+                    },
+                    {
+                        "name": "ex do eu anim",
+                        "from": "minim",
+                        "to": "ut nulla culpa elit",
+                        "formatType": "aliquip",
+                        "distributionType": "Duis deserunt eiusmod Lorem fugiat",
+                        "entryType": "fugiat esse magna Ut veniam",
+                        "SFIOrAlgorithm": "aute eiusmod consequat cillum"
+                    }
+                ],
+                "text": "enim reprehenderit occaecat"
+            },
+            "sspZeroizationMethods": {
+                "sspZeroizationList": [
+                    {
+                        "method": "aliqua occaecat sunt",
+                        "description": "eiusmod aliqua dolor quis",
+                        "rationale": "est",
+                        "operatorInitiationCapability": "incididunt sit aliqua"
+                    },
+                    {
+                        "method": "Duis",
+                        "description": "ex dolor anim nisi",
+                        "rationale": "aute est dolore non",
+                        "operatorInitiationCapability": "Lorem"
+                    },
+                    {
+                        "method": "et",
+                        "description": "ipsum",
+                        "rationale": "eu ipsum Ut cupidatat",
+                        "operatorInitiationCapability": "veniam nulla irure"
+                    },
+                    {
+                        "method": "aute labore tempor quis",
+                        "description": "pariatur quis",
+                        "rationale": "esse ut",
+                        "operatorInitiationCapability": "qui elit deserunt in veniam"
+                    }
+                ],
+                "text": ""
+            },
+            "ssps": {
+                "sspList": [
+                    {
+                        "name": "anim aliqua voluptate Ut nostrud",
+                        "description": "exercitation et cillum dolore",
+                        "size": "dolor adipisicing incididunt",
+                        "strength": "laborum ad Ut in",
+                        "type": "officia enim",
+                        "generatedBy": "sunt et adipisicing ad in",
+                        "establishedBy": "irure",
+                        "usedBy": "do ea voluptate",
+                        "inputOutput": "aliqua aliquip quis",
+                        "storage": "sint ipsum exercitation Lorem enim",
+                        "temporaryStorageDuration": "non enim",
+                        "zeroization": "consectetur cupidatat ad",
+                        "category": "et",
+                        "relatedSSPs": "nulla"
+                    }
+                ],
+                "text": "dolor minim"
+            },
+            "transitions": "deserunt velit",
+            "additionalInformation": "exercitation"
+        },
+        "selfTests": {
+            "preOperationalSelfTests": {
+                "preOperationalSelfTestList": [
+                    {
+                        "algorithm": "Excepteur sunt sint enim veniam",
+                        "implementation": "do Excepteur qui",
+                        "testProperties": "magna irure sunt",
+                        "testMethod": "ad tempor voluptate officia occaecat",
+                        "type": "quis laborum veniam occaecat",
+                        "indicator": "sunt",
+                        "details": "ea Duis esse"
+                    },
+                    {
+                        "algorithm": "dolor",
+                        "implementation": "magna do",
+                        "testProperties": "anim Duis adipisicing elit",
+                        "testMethod": "reprehenderit",
+                        "type": "est eu irure",
+                        "indicator": "proident elit",
+                        "details": "sed dolore"
+                    }
+                ],
+                "text": "quis"
+            },
+            "conditionalSelfTests": {
+                "conditionalSelfTestList": [
+                    {
+                        "algorithm": "veniam proident consectetur est",
+                        "implementation": "Excepteur",
+                        "testProperties": "officia deserunt in do",
+                        "testMethod": "ad tempor incididunt sint aute",
+                        "type": "Lorem",
+                        "indicator": "non in commodo nisi amet",
+                        "details": "ullamco irure",
+                        "condition": "sit in tempor"
+                    }
+                ],
+                "text": "dolor sit Lorem nulla"
+            },
+            "preOperationalPeriodicSelfTests": {
+                "preOperationalPeriodicSelfTestList": [
+                    {
+                        "algorithm": "ex velit",
+                        "implementation": "esse enim velit dolor ex",
+                        "testProperties": "ullamco elit ad",
+                        "testMethod": "id aliqua adipisicing cillum ut",
+                        "type": "irure Ut officia ea",
+                        "indicator": "sit",
+                        "details": "cupidatat cillum ad magna",
+                        "period": "irure veniam amet",
+                        "periodicMethod": "dolor do Excepteur aute"
+                    },
+                    {
+                        "algorithm": "ut id consectetur magna",
+                        "implementation": "labore officia enim deserunt irure",
+                        "testProperties": "deserunt",
+                        "testMethod": "dolor",
+                        "type": "amet dolore pariatur laborum Ut",
+                        "indicator": "anim",
+                        "details": "ullamco",
+                        "period": "dolore",
+                        "periodicMethod": "laboris id Excepteur"
+                    }
+                ],
+                "text": "consectetur adipisicing"
+            },
+            "conditionalPeriodicSelfTests": {
+                "conditionalPeriodicSelfTestList": [
+                    {
+                        "algorithm": "in nostrud amet ipsum sed",
+                        "implementation": "et aliquip in sit reprehenderit",
+                        "testProperties": "magna",
+                        "testMethod": "occaecat sed dolore est",
+                        "type": "Duis culpa sunt veniam labore",
+                        "indicator": "eu magna laboris eiusmod",
+                        "details": "in aute",
+                        "period": "incididunt laboris non pariatur Duis",
+                        "periodicMethod": "consectetur veniam adipisicing"
+                    },
+                    {
+                        "algorithm": "Duis eu ex ipsum sit",
+                        "implementation": "Lorem ullamco culpa fugiat eiusmod",
+                        "testProperties": "in officia",
+                        "testMethod": "incididunt ut Lorem",
+                        "type": "dolore labore consectetur nostrud",
+                        "indicator": "pariatur cupidatat officia ullamco ipsum",
+                        "details": "veniam eiusmod deserunt ullamco ut",
+                        "period": "esse aute commodo veniam",
+                        "periodicMethod": "et ad"
+                    },
+                    {
+                        "algorithm": "est ad elit",
+                        "implementation": "qui",
+                        "testProperties": "ad proident dolor ut",
+                        "testMethod": "sint nulla in est",
+                        "type": "elit qui ad eu sunt",
+                        "indicator": "Lorem aute voluptate",
+                        "details": "dolor",
+                        "period": "proident voluptate aute quis sint",
+                        "periodicMethod": "proident officia est culpa aute"
+                    }
+                ],
+                "text": "id"
+            }
+        },
+        "lifeCycleAssurance": {
+            "installationInitializationAndStartupProcedures": "elit dolor eu officia",
+            "administratorGuidance": "mollit voluptate magna",
+            "nonAdministratorGuidance": "magna qui veniam ad",
+            "designAndRules": "nisi in",
+            "maintenanceRequirements": "Lorem",
+            "endOfLife": "esse enim",
+            "additionalInformation": "id ut"
+        },
+        "mitigationOfOtherAttacks": {
+            "attacks": "Duis",
+            "mitigationEffectiveness": "amet labore commodo",
+            "guidanceAndConstraints": "mollit pariatur",
+            "additionalInformation": "dolor"
+        }
+    }
+}
+ 
+....
+
+==== Security Policy Information PDF Generation
+
+*PUT /certRequests/{certRequestId}/securityPolicy*
+
+This endpoint allows a client to generate security policy information in PDF format. Security Policy must be submitted before this action. 
+[source,json]
+....
+ {
+    "amvVersion": "1.0"
+ }
+  
+....
+
+After PUT request, the following response will be provided. To view the PDF file generation status, use GET certRequests/{cerRequestId} as above. "securityPolicyStatus" will become "submitted" after PDF file is generated.
+
+===== Response
+
+[source,json]
+....
+
+
+{
+    "url": "/amvp/v1/certRequests/549",
+    "moduleId": 190,
+    "vendorId": 1,
+    "status": "requirementsSubmitted",
+    "securityPolicyStatus": "processing",
+    "functionalTestStatus": "submitted",
+    "sourceCodeStatus": "submitted",
+    "amvVersion": "1.0"
+}
+
+....
+
+==== Get Security Policy Information in PDF Format
+
+*GET /certRequests/{certRequestId}/securityPolicy*
+
+This endpoint allows a client to get security policy information as a pdf file. 
+
+===== Response
+
+[source,json]
+....
+
+{
+    "status": "Success",
+    "content": "JVBERi0xLjQKJZOMi54gUmVwb3J0TGFiI(truncated) "
+    "digest": "qXHfhkXrVJQlTk4Wsa1RwfqmxPS8jxPvZfz4XwjGSOc=",
+    "dateTime": "2025-01-23T18:22:51.717",
+    "amvVersion": "1.0"
+}
+
+....
+
+==== Post Certify
+
+*POST /certRequests/{certRequestId}/certify*
+
+This endpoint allows a client to certify the certificate. 
+
+===== Response
+
+[source,json]
+....
+
+{
+    "url": "/amvp/v1/certRequests/549",
+    "moduleId": 190,
+    "vendorId": 1,
+    "status": "requirementsSubmitted",
+    "securityPolicyStatus": "submitted",
+    "functionalTestStatus": "submitted",
+    "sourceCodeStatus": "submitted",
+    "amvVersion": "1.0"
+}
+....
+
+After POST /certify request completed, GET /certRequests/{certRequestId} request will have the status as "approved"
+
+[source,json]
+....
+
+{
+    "certRequestId": 549,
+    "moduleId": 190,
+    "status": "approved",
+    "validationCertificate": "AMV-10",
+    "amvVersion": "1.0"
+}
+....
+
+

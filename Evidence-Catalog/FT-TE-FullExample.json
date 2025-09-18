@@ -1,0 +1,1040 @@
+{
+  "amvVersion": "0.1",
+  "document": {
+    "schema": "functionalTest",
+    "version": "1.0"
+  },
+  "functionalTest": {
+    "testEvidence": [
+      {
+        "teList": [
+          "02.12.01"
+        ],
+        "access": "observed",
+        "technique": "manual",
+        "description": "Verify that versioning info identifies distinct components.",
+        "setup": "reference into Catalog",
+        "errorInduction": "description of modifications made to the module or its OE to induce an error for the purpose of performing negative testing",
+        "results": {
+          "summary": "Summary of the results, why does the result mean the requirement is met",
+          "digest": "##############",
+          "fileLocation": "Functional-Test/Services-Testing/Show-Version",
+          "integrityMechanism": "SHA2-512"
+        }
+      },
+      {
+        "teList": [
+          "02.13.03"
+        ],
+        "description": "Attempt incorrect operation of excluded components (if claimed)",
+        "access": "observed",
+        "technique": "debugger",
+        "setup": "reference into Catalog",
+        "errorInduction": "description of modifications made to the module or its OE to induce an error for the purpose of performing negative testing",
+        "results": {
+          "summary": "Summary of the results, why does the result mean the requirement is met",
+          "digest": "##############",
+          "fileLocation": "Functional-Test/Services-Testing/Excluded-Component-Test",
+          "integrityMechanism": "SHA2-512"
+        }
+      },
+      {
+        "teList": [
+          "02.15.03"
+        ],
+        "description": "HW/Hybrid Module: Verify continuous boundary and no-uncontrolled interfaces",
+        "access": "observed",
+        "technique": "manual",
+        "setup": "reference into Catalog",
+        "errorInduction": "description of modifications made to the module or its OE to induce an error for the purpose of performing negative testing",
+        "results": {
+          "summary": "Summary of the results, why does the result mean the requirement is met",
+          "digest": "##############",
+          "fileLocation": "Functional-Test/Module-Components",
+          "integrityMechanism": "SHA2-512"
+        }
+      },
+      {
+        "teList": [
+          "02.15.05",
+          "02.16.04",
+          "02.17.04"
+        ],
+        "description": "Excluded components (if claimed) not leading to uncontrolled",
+        "access": "observed",
+        "technique": "debugger",
+        "setup": "reference into Catalog",
+        "errorInduction": "description of modifications made to the module or its OE to induce an error for the purpose of performing negative testing",
+        "results": {
+          "summary": "Summary of the results, why does the result mean the requirement is met",
+          "digest": "##############",
+          "fileLocation": "Functional-Test/Services-Testing/Excluded-Component-Test",
+          "integrityMechanism": "SHA2-512"
+        }
+      },
+      {
+        "teList": [
+          "02.16.02",
+          "02.17.02"
+        ],
+        "description": "SW/FW/Hybrid Module: Verify the list of module components matches the set of components actually used.",
+        "access": "observed",
+        "technique": "debugger",
+        "setup": "reference into Catalog",
+        "errorInduction": "description of modifications made to the module or its OE to induce an error for the purpose of performing negative testing",
+        "results": {
+          "summary": "Summary of the results, why does the result mean the requirement is met",
+          "digest": "##############",
+          "fileLocation": "Functional-Test/Module-Components",
+          "integrityMechanism": "SHA2-512"
+        }
+      },
+      {
+        "teList": [
+          "02.19.02"
+        ],
+        "description": "Verify approved mode of operation",
+        "access": "observed",
+        "technique": "debugger",
+        "setup": "reference into Catalog",
+        "errorInduction": "description of modifications made to the module or its OE to induce an error for the purpose of performing negative testing",
+        "results": {
+          "summary": "Summary of the results, why does the result mean the requirement is met",
+          "digest": "##############",
+          "fileLocation": "Functional-Test/Services-Testing/Approved-Mode-Services/Approved-Mode-Verification",
+          "integrityMechanism": "SHA2-512"
+        }
+      },
+      {
+        "teList": [
+          "02.22.02"
+        ],
+        "description": "Verify CSP separation between modes",
+        "access": "observed",
+        "technique": "debugger",
+        "setup": "reference into Catalog",
+        "errorInduction": "description of modifications made to the module or its OE to induce an error for the purpose of performing negative testing",
+        "results": {
+          "summary": "Summary of the results, why does the result mean the requirement is met",
+          "digest": "##############",
+          "fileLocation": "Functional-Test/Services-Testing/Approved-Mode-Services/CSP-Separation",
+          "integrityMechanism": "SHA2-512"
+        }
+      },
+      {
+        "teList": [
+          "02.24.02"
+        ],
+        "description": "Verify service indicator",
+        "access": "observed",
+        "technique": "debugger",
+        "setup": "reference into Catalog",
+        "errorInduction": "description of modifications made to the module or its OE to induce an error for the purpose of performing negative testing",
+        "results": {
+          "summary": "Summary of the results, why does the result mean the requirement is met",
+          "digest": "##############",
+          "fileLocation": "Functional-Test/Services-Testing/Service-Indicator-Test",
+          "integrityMechanism": "SHA2-512"
+        }
+      },
+      {
+        "teList": [
+          "02.26.03",
+          "02.26.04",
+          "02.26.05",
+          "02.28.01",
+          "02.28.02",
+          "02.30.02"
+        ],
+        "description": "Verify degraded mode of operation (if claimed)",
+        "access": "observed",
+        "technique": "debugger",
+        "setup": "reference into Catalog",
+        "errorInduction": "description of modifications made to the module or its OE to induce an error for the purpose of performing negative testing",
+        "results": {
+          "summary": "Summary of the results, why does the result mean the requirement is met",
+          "digest": "##############",
+          "fileLocation": "Functional-Test/FSM-States-Testing/Degraded-State-Testing",
+          "integrityMechanism": "SHA2-512"
+        }
+      },
+      {
+        "teList": [
+          "03.01.04",
+          "03.02.01",
+          "03.14.03",
+          "03.15.03",
+          "03.15.04",
+          "03.15.06"
+        ],
+        "description": "Verify module interfaces",
+        "access": "observed",
+        "technique": "debugger",
+        "setup": "reference into Catalog",
+        "errorInduction": "description of modifications made to the module or its OE to induce an error for the purpose of performing negative testing",
+        "results": {
+          "summary": "03.01.04, 03.02.01 and 03.14.03: The logs related to interface verification are documented /Module-Interface-Verification/\n 03.15.03, 03.15.04 and 03.15.06: The logs related to input format validation required are documented here: /Input-Format-Verification/ folder",
+          "digest": "##############",
+          "fileLocation": "Functional-Test/Module-Interface-Verification",
+          "integrityMechanism": "SHA2-512"
+        }
+      },
+      {
+        "teList": [
+          "03.05.01",
+          "03.05.02"
+        ],
+        "description": "Verify data input interface",
+        "access": "observed",
+        "technique": "debugger",
+        "setup": "reference into Catalog",
+        "errorInduction": "description of modifications made to the module or its OE to induce an error for the purpose of performing negative testing",
+        "results": {
+          "summary": "Summary of the results, why does the result mean the requirement is met",
+          "digest": "##############",
+          "fileLocation": "Functional-Test/Module-Interface-Verification/Data-Input",
+          "integrityMechanism": "SHA2-512"
+        }
+      },
+      {
+        "teList": [
+          "03.06.01",
+          "03.06.02",
+          "03.07.01",
+          "03.07.02",
+          "03.07.04",
+          "03.07.08"
+        ],
+        "description": "Verify data output interface",
+        "access": "observed",
+        "technique": "debugger",
+        "setup": "reference into Catalog",
+        "errorInduction": "description of modifications made to the module or its OE to induce an error for the purpose of performing negative testing",
+        "results": {
+          "summary": "Summary of the results, why does the result mean the requirement is met",
+          "digest": "##############",
+          "fileLocation": "Functional-Test/Module-Interface-Verification/Data-Output",
+          "integrityMechanism": "SHA2-512"
+        }
+      },
+      {
+        "teList": [
+          "03.08.01",
+          "03.08.02"
+        ],
+        "description": "Verify control input interface",
+        "access": "observed",
+        "technique": "debugger",
+        "setup": "reference into Catalog",
+        "errorInduction": "description of modifications made to the module or its OE to induce an error for the purpose of performing negative testing",
+        "results": {
+          "summary": "Summary of the results, why does the result mean the requirement is met",
+          "digest": "##############",
+          "fileLocation": "Functional-Test/Module-Interface-Verification/Control-Input",
+          "integrityMechanism": "SHA2-512"
+        }
+      },
+      {
+        "teList": [
+          "03.09.02",
+          "03.10.02",
+          "03.10.04"
+        ],
+        "description": "Verify control output interface (if applicable)",
+        "access": "observed",
+        "technique": "debugger",
+        "setup": "reference into Catalog",
+        "errorInduction": "description of modifications made to the module or its OE to induce an error for the purpose of performing negative testing",
+        "results": {
+          "summary": "Summary of the results, why does the result mean the requirement is met",
+          "digest": "##############",
+          "fileLocation": "Functional-Test/Module-Interface-Verification/Control-Output",
+          "integrityMechanism": "SHA2-512"
+        }
+      },
+      {
+        "teList": [
+          "03.11.01",
+          "03.11.03"
+        ],
+        "description": "Verify status output interface",
+        "access": "observed",
+        "technique": "debugger",
+        "setup": "reference into Catalog",
+        "errorInduction": "description of modifications made to the module or its OE to induce an error for the purpose of performing negative testing",
+        "results": {
+          "summary": "Summary of the results, why does the result mean the requirement is met",
+          "digest": "##############",
+          "fileLocation": "Functional-Test/Module-Interface-Verification/Status-Output",
+          "integrityMechanism": "SHA2-512"
+        }
+      },
+      {
+        "teList": [
+          "03.13.02"
+        ],
+        "description": "Verify Power interface (Not applicable to SW modules)",
+        "access": "observed",
+        "technique": "manual",
+        "setup": "reference into Catalog",
+        "errorInduction": "description of modifications made to the module or its OE to induce an error for the purpose of performing negative testing",
+        "results": {
+          "summary": "Summary of the results, why does the result mean the requirement is met",
+          "digest": "##############",
+          "fileLocation": "Functional-Test/Module-Interface-Verification/Power-Interface",
+          "integrityMechanism": "SHA2-512"
+        }
+      },
+      {
+        "teList": [
+          "03.18.02",
+          "03.19.02",
+          "03.19.04",
+          "03.20.01",
+          "03.21.01"
+        ],
+        "description": "Trusted Channel (Security Level 3 and 4)",
+        "access": "observed",
+        "technique": "debugger",
+        "setup": "reference into Catalog",
+        "errorInduction": "description of modifications made to the module or its OE to induce an error for the purpose of performing negative testing",
+        "results": {
+          "summary": "Summary of the results, why does the result mean the requirement is met",
+          "digest": "##############",
+          "fileLocation": "Functional-Test/Module-Interface-Verification/Trusted-Channel",
+          "integrityMechanism": "SHA2-512"
+        }
+      },
+      {
+        "teList": [
+          "03.22.01"
+        ],
+        "description": "Trusted Channel (Security Level 4)",
+        "access": "observed",
+        "technique": "debugger",
+        "setup": "reference into Catalog",
+        "errorInduction": "description of modifications made to the module or its OE to induce an error for the purpose of performing negative testing",
+        "results": {
+          "summary": "Summary of the results, why does the result mean the requirement is met",
+          "digest": "##############",
+          "fileLocation": "Functional-Test/Module-Interface-Verification/Trusted-Channel",
+          "integrityMechanism": "SHA2-512"
+        }
+      },
+      {
+        "teList": [
+          "04.02.02",
+          "04.02.03"
+        ],
+        "description": "Verify Concurrent operators (if applicable)",
+        "access": "observed",
+        "technique": "debugger",
+        "setup": "reference into Catalog",
+        "errorInduction": "description of modifications made to the module or its OE to induce an error for the purpose of performing negative testing",
+        "results": {
+          "summary": "Summary of the results, why does the result mean the requirement is met",
+          "digest": "##############",
+          "fileLocation": "Functional-Test/Services-Testing/Concurrent-Operator",
+          "integrityMechanism": "SHA2-512"
+        }
+      },
+      {
+        "teList": [
+          "04.07.03"
+        ],
+        "description": "Verify zeroization when exiting Maintenance Role (if applicable)",
+        "access": "observed",
+        "technique": "debugger",
+        "setup": "reference into Catalog",
+        "errorInduction": "description of modifications made to the module or its OE to induce an error for the purpose of performing negative testing",
+        "results": {
+          "summary": "Summary of the results, why does the result mean the requirement is met",
+          "digest": "##############",
+          "fileLocation": "Functional-Test/Services-Testing/Maintenance-Role",
+          "integrityMechanism": "SHA2-512"
+        }
+      },
+      {
+        "teList": [
+          "04.11.02"
+        ],
+        "description": "Verify input/output for all services",
+        "access": "observed",
+        "technique": "debugger",
+        "setup": "reference into Catalog",
+        "errorInduction": "description of modifications made to the module or its OE to induce an error for the purpose of performing negative testing",
+        "results": {
+          "summary": "Summary of the results, why does the result mean the requirement is met",
+          "digest": "##############",
+          "fileLocation": "Functional-Test/Services-Testing",
+          "integrityMechanism": "SHA2-512"
+        }
+      },
+      {
+        "teList": [
+          "04.13.01",
+          "04.13.02",
+          "04.13.03"
+        ],
+        "description": "Verify versioning information",
+        "access": "observed",
+        "technique": "debugger",
+        "setup": "reference into Catalog",
+        "errorInduction": "description of modifications made to the module or its OE to induce an error for the purpose of performing negative testing",
+        "results": {
+          "summary": "Summary of the results, why does the result mean the requirement is met",
+          "digest": "##############",
+          "fileLocation": "Functional-Test/Services-Testing/Show-Version",
+          "integrityMechanism": "SHA2-512"
+        }
+      },
+      {
+        "teList": [
+          "04.14.02"
+        ],
+        "description": "Verify Show Status indicator",
+        "access": "observed",
+        "technique": "debugger",
+        "setup": "reference into Catalog",
+        "errorInduction": "description of modifications made to the module or its OE to induce an error for the purpose of performing negative testing",
+        "results": {
+          "summary": "Summary of the results, why does the result mean the requirement is met",
+          "digest": "##############",
+          "fileLocation": "Functional-Test/Services-Testing/Show-Status",
+          "integrityMechanism": "SHA2-512"
+        }
+      },
+      {
+        "teList": [
+          "04.15.01"
+        ],
+        "description": "Verify pre-operational self-test",
+        "access": "observed",
+        "technique": "debugger",
+        "setup": "reference into Catalog",
+        "errorInduction": "description of modifications made to the module or its OE to induce an error for the purpose of performing negative testing",
+        "results": {
+          "summary": "The logs related to pre-operational testing are documented here: Pre-operational-Bypass-Test-Verification/ ,/ Pre-operational-Critical-functional-Test-Verification, /Pre-operational-Integrity-Test-Verification",
+          "digest": "##############",
+          "fileLocation": "Functional-Test/FSM-States-Testing/Self-Test-State-Testing",
+          "integrityMechanism": "SHA2-512"
+        }
+      },
+      {
+        "teList": [
+          "04.18.01",
+          "04.19.02",
+          "04.19.03",
+          "04.20.01",
+          "04.20.03",
+          "04.21.02",
+          "04.22.02"
+        ],
+        "description": "Verify Bypass capability (if applicable)",
+        "access": "observed",
+        "technique": "debugger",
+        "setup": "reference into Catalog",
+        "errorInduction": "description of modifications made to the module or its OE to induce an error for the purpose of performing negative testing",
+        "results": {
+          "summary": "Summary of the results, why does the result mean the requirement is met",
+          "digest": "##############",
+          "fileLocation": "Functional-Test/Services-Testing/Bypass-Test",
+          "integrityMechanism": "SHA2-512"
+        }
+      },
+      {
+        "teList": [
+          "04.23.01",
+          "04.25.01",
+          "04.25.02",
+          "04.25.03"
+        ],
+        "description": "Verify self-initiated crypto output capability (if applicable)",
+        "access": "observed",
+        "technique": "debugger",
+        "setup": "reference into Catalog",
+        "errorInduction": "description of modifications made to the module or its OE to induce an error for the purpose of performing negative testing",
+        "results": {
+          "summary": "Summary of the results, why does the result mean the requirement is met",
+          "digest": "##############",
+          "fileLocation": "Functional-Test/Services-Testing/Self-Initiated-Crypto-Output-Capability",
+          "integrityMechanism": "SHA2-512"
+        }
+      },
+      {
+        "teList": [
+          "04.28.01",
+          "04.29.01",
+          "04.32.01",
+          "04.33.01",
+          "04.34.01",
+          "04.35.02",
+          "05.13.08"
+        ],
+        "description": "Verify SW/FW Loading (if applicable)",
+        "access": "observed",
+        "technique": "debugger",
+        "setup": "reference into Catalog",
+        "errorInduction": "description of modifications made to the module or its OE to induce an error for the purpose of performing negative testing",
+        "results": {
+          "summary": "The logs related to data output inhibition are documented here: /Module-Interface-Verification/Data-Output/Inhibition-During-SW-FW-Loading/\n The logs related to software/firmware loading are documented here: Functional-Test/Services-Testing/SW-FW-Loading",
+          "digest": "##############",
+          "fileLocation": "Functional-Test/",
+          "integrityMechanism": "SHA2-512"
+        }
+      },
+      {
+        "teList": [
+          "04.37.02",
+          "04.38.02"
+        ],
+        "description": "Verify Role based authentication (Security Level 2, 3, and 4)",
+        "access": "observed",
+        "technique": "debugger",
+        "setup": "reference into Catalog",
+        "errorInduction": "description of modifications made to the module or its OE to induce an error for the purpose of performing negative testing",
+        "results": {
+          "summary": "Summary of the results, why does the result mean the requirement is met",
+          "digest": "##############",
+          "fileLocation": "Functional-Test/Services-Testing/Authentication-Test",
+          "integrityMechanism": "SHA2-512"
+        }
+      },
+      {
+        "teList": [
+          "04.39.02",
+          "04.39.03",
+          "04.39.04",
+          "04.42.03",
+          "04.42.04"
+        ],
+        "description": "Verify Identity based authentication (Security Level 3 and 4)",
+        "access": "observed",
+        "technique": "debugger",
+        "setup": "reference into Catalog",
+        "errorInduction": "description of modifications made to the module or its OE to induce an error for the purpose of performing negative testing",
+        "results": {
+          "summary": "Summary of the results, why does the result mean the requirement is met",
+          "digest": "##############",
+          "fileLocation": "Functional-Test/Services-Testing/Authentication-Test",
+          "integrityMechanism": "SHA2-512"
+        }
+      },
+      {
+        "teList": [
+          "04.43.02",
+          "04.44.02"
+        ],
+        "description": "Verify Operator authentication (Security Level 1, 2, 3, and 4)",
+        "access": "observed",
+        "technique": "debugger",
+        "setup": "reference into Catalog",
+        "errorInduction": "description of modifications made to the module or its OE to induce an error for the purpose of performing negative testing",
+        "results": {
+          "summary": "Summary of the results, why does the result mean the requirement is met",
+          "digest": "##############",
+          "fileLocation": "Functional-Test/Services-Testing/Authentication-Test",
+          "integrityMechanism": "SHA2-512"
+        }
+      },
+      {
+        "teList": [
+          "04.45.02",
+          "04.45.03",
+          "04.47.01",
+          "04.48.01",
+          "04.52.01",
+          "04.54.02",
+          "04.54.03",
+          "04.55.02"
+        ],
+        "description": "Verify Operator authentication (Security Level 2, 3, and 4)",
+        "access": "observed",
+        "technique": "debugger",
+        "setup": "reference into Catalog",
+        "errorInduction": "description of modifications made to the module or its OE to induce an error for the purpose of performing negative testing",
+        "results": {
+          "summary": "Summary of the results, why does the result mean the requirement is met",
+          "digest": "##############",
+          "fileLocation": "Functional-Test/Services-Testing/Authentication-Test",
+          "integrityMechanism": "SHA2-512"
+        }
+      },
+      {
+        "teList": [
+          "04.53.01"
+        ],
+        "description": "Verify OS based authentication (Security Level 2)",
+        "access": "observed",
+        "technique": "debugger",
+        "setup": "reference into Catalog",
+        "errorInduction": "description of modifications made to the module or its OE to induce an error for the purpose of performing negative testing",
+        "results": {
+          "summary": "Summary of the results, why does the result mean the requirement is met",
+          "digest": "##############",
+          "fileLocation": "Functional-Test/Services-Testing/Authentication-Test",
+          "integrityMechanism": "SHA2-512"
+        }
+      },
+      {
+        "teList": [
+          "04.56.02"
+        ],
+        "description": "Verify Operator authentication (Security Level 1)",
+        "access": "observed",
+        "technique": "debugger",
+        "setup": "reference into Catalog",
+        "errorInduction": "description of modifications made to the module or its OE to induce an error for the purpose of performing negative testing",
+        "results": {
+          "summary": "Summary of the results, why does the result mean the requirement is met",
+          "digest": "##############",
+          "fileLocation": "Functional-Test/Services-Testing/Authentication-Test",
+          "integrityMechanism": "SHA2-512"
+        }
+      },
+      {
+        "teList": [
+          "04.59.01",
+          "09.24.02"
+        ],
+        "description": "Verify Multi-factor, ID-based Operator authentication (Security Level 4)",
+        "access": "observed",
+        "technique": "debugger",
+        "setup": "reference into Catalog",
+        "errorInduction": "description of modifications made to the module or its OE to induce an error for the purpose of performing negative testing",
+        "results": {
+          "summary": "Summary of the results, why does the result mean the requirement is met",
+          "digest": "##############",
+          "fileLocation": "Functional-Test/Services-Testing/Authentication-Test",
+          "integrityMechanism": "SHA2-512"
+        }
+      },
+      {
+        "teList": [
+          "05.05.05"
+        ],
+        "description": "Verify determination of pass or fail of software/firmware integrity test (Security Level 1, 2, 3, and 4",
+        "access": "observed",
+        "technique": "debugger",
+        "setup": "reference into Catalog",
+        "errorInduction": "description of modifications made to the module or its OE to induce an error for the purpose of performing negative testing",
+        "results": {
+          "summary": "Summary of the results, why does the result mean the requirement is met",
+          "digest": "##############",
+          "fileLocation": "Functional-Test/FSM-States-Testing/Self-Test-State-Testing/Pre-operational-Integrity-Test-Verification",
+          "integrityMechanism": "SHA2-512"
+        }
+      },
+      {
+        "teList": [
+          "05.05.07",
+          "05.06.06",
+          "05.08.01",
+          "05.08.02",
+          "05.11.01",
+          "05.11.02",
+          "05.12.02",
+          "05.13.03",
+          "05.13.04",
+          "05.13.05"
+        ],
+        "description": "Verify SW/FW Security (Security Level 1, 2, 3, and 4)",
+        "access": "observed",
+        "technique": "debugger",
+        "setup": "reference into Catalog",
+        "errorInduction": "description of modifications made to the module or its OE to induce an error for the purpose of performing negative testing",
+        "results": {
+          "summary": "05.05.07,05.06.06 and 05.08.01: The logs related to integrity test failure are documented here: /FSM-States-Testing/Error-State-Testing/Integrity-failure\n 05.08.02: The logs related to intermediate value zeroization during integrity test  p/FSM-States-Testing/Self-Test-State-Testing/\n 05.11.01 and 05.11.02: The logs related to on-demand Integrity test are documented here: /Services-Testing/On-demand-TestPre-operational-Integrity-Test-Verification\n 05.12.01: The logs related to interface verification are documented here: /Module-Interface-Verification\n 05.13.03, 05.13.04 and 05.13.05: The logs related to software or firmware loading are documented here: /Services-Testing/SW-FW-Loading",
+          "digest": "##############",
+          "fileLocation": "/Functional-Test/",
+          "integrityMechanism": "SHA2-512"
+        }
+      },
+      {
+        "teList": [
+          "05.06.02"
+        ],
+        "description": "Verify Error Detection, if implemented (Security Level 1, 2, 3, and 4)",
+        "access": "observed",
+        "technique": "debugger",
+        "setup": "reference into Catalog",
+        "errorInduction": "description of modifications made to the module or its OE to induce an error for the purpose of performing negative testing",
+        "results": {
+          "summary": "Summary of the results, why does the result mean the requirement is met",
+          "digest": "##############",
+          "fileLocation": "Functional-Test/FSM-States-Testing/Self-Test-State-Testing/Pre-operational-Integrity-Test-Verification",
+          "integrityMechanism": "SHA2-512"
+        }
+      },
+      {
+        "teList": [
+          "05.06.03"
+        ],
+        "description": "Verify hash or MAC integrity test, if implemented (All Security Levels)",
+        "access": "observed",
+        "technique": "debugger",
+        "setup": "reference into Catalog",
+        "errorInduction": "description of modifications made to the module or its OE to induce an error for the purpose of performing negative testing",
+        "results": {
+          "summary": "Summary of the results, why does the result mean the requirement is met",
+          "digest": "##############",
+          "fileLocation": "Functional-Test/FSM-States-Testing/Self-Test-State-Testing/Pre-operational-Integrity-Test-Verification",
+          "integrityMechanism": "SHA2-512"
+        }
+      },
+      {
+        "teList": [
+          "05.06.04"
+        ],
+        "description": "Verify digital signature integrity test, if implemented (Security Level 1, 2, 3, and 4)",
+        "access": "observed",
+        "technique": "debugger",
+        "setup": "reference into Catalog",
+        "errorInduction": "description of modifications made to the module or its OE to induce an error for the purpose of performing negative testing",
+        "results": {
+          "summary": "Summary of the results, why does the result mean the requirement is met",
+          "digest": "##############",
+          "fileLocation": "Functional-Test/FSM-States-Testing/Self-Test-State-Testing/Pre-operational-Integrity-Test-Verification",
+          "integrityMechanism": "SHA2-512"
+        }
+      },
+      {
+        "teList": [
+          "05.13.01",
+          "05.13.02"
+        ],
+        "description": "Verify if software/firmware loading capability exists (Security Level 1, 2, 3, and 4)",
+        "access": "observed",
+        "technique": "debugger",
+        "setup": "reference into Catalog",
+        "errorInduction": "description of modifications made to the module or its OE to induce an error for the purpose of performing negative testing",
+        "results": {
+          "summary": "Summary of the results, why does the result mean the requirement is met",
+          "digest": "##############",
+          "fileLocation": "Functional-Test/Services-Testing/SW-FW-Loading",
+          "integrityMechanism": "SHA2-512"
+        }
+      },
+      {
+        "teList": [
+          "05.13.06"
+        ],
+        "description": "Verify Crypto Officer must perform software/firmware loading (Security Level 1, 2, 3, and 4)",
+        "access": "observed",
+        "technique": "debugger",
+        "setup": "reference into Catalog",
+        "errorInduction": "description of modifications made to the module or its OE to induce an error for the purpose of performing negative testing",
+        "results": {
+          "summary": "Summary of the results, why does the result mean the requirement is met",
+          "digest": "##############",
+          "fileLocation": "Functional-Test/Services-Testing/SW-FW-Loading",
+          "integrityMechanism": "SHA2-512"
+        }
+      },
+      {
+        "teList": [
+          "05.15.01",
+          "05.15.02",
+          "05.16.03",
+          "05.17.02"
+        ],
+        "description": "Verify SW/FW Security (Security Level 2, 3, and 4)",
+        "access": "observed",
+        "technique": "debugger",
+        "setup": "reference into Catalog",
+        "errorInduction": "description of modifications made to the module or its OE to induce an error for the purpose of performing negative testing",
+        "results": {
+          "summary": "05.15.01, 05.15.02:The logs related to component verification are documented here: /Module-Components/\n 05.16.03: The logs related to service verification are documented here: /Services-Testing/\n 05.17.02: The logs related to integrity verification are documented here: /Error-State-Testing/Integrity-failure/",
+          "digest": "##############",
+          "fileLocation": "Functional-Test/",
+          "integrityMechanism": "SHA2-512"
+        }
+      },
+      {
+        "teList": [
+          "05.20.01"
+        ],
+        "description": "Verify approved signature applied to all software and firmware components(Security Level 3 and 4)",
+        "access": "observed",
+        "technique": "debugger",
+        "setup": "reference into Catalog",
+        "errorInduction": "description of modifications made to the module or its OE to induce an error for the purpose of performing negative testing",
+        "results": {
+          "summary": "Summary of the results, why does the result mean the requirement is met",
+          "digest": "##############",
+          "fileLocation": "/Functional-Test/FSM-States-Testing/Self-Test-State-Testing/Pre-operational-Integrity-Test-Verification",
+          "integrityMechanism": "SHA2-512"
+        }
+      },
+      {
+        "teList": [
+          "06.05.01",
+          "06.05.02",
+          "06.05.03",
+          "06.06.01",
+          "06.06.02",
+          "06.08.01",
+          "06.08.03"
+        ],
+        "description": "Verify OS process/memory management",
+        "access": "observed",
+        "technique": "debugger",
+        "setup": "reference into Catalog",
+        "errorInduction": "description of modifications made to the module or its OE to induce an error for the purpose of performing negative testing",
+        "results": {
+          "summary": "Summary of the results, why does the result mean the requirement is met",
+          "digest": "##############",
+          "fileLocation": "Functional-Test/OE-realted-Tests",
+          "integrityMechanism": "SHA2-512"
+        }
+      },
+      {
+        "teList": [
+          "09.01.02",
+          "09.01.03",
+          "09.02.02",
+          "09.03.02",
+          "09.03.03",
+          "09.14.02",
+          "09.16.03",
+          "09.25.02",
+          "09.27.02"
+        ],
+        "description": "Verify SSP Management",
+        "access": "observed",
+        "technique": "debugger",
+        "setup": "reference into Catalog",
+        "errorInduction": "description of modifications made to the module or its OE to induce an error for the purpose of performing negative testing",
+        "results": {
+          "summary": "09.01.02,09.01.03 and 09.27.02: The logs related to SSP protection are documented here: /SSP-Protection/\n09.03.02, 09.03.03 and 09.25.02: The logs related to SSP association are documented here:/SSP-association/\n 09.14.02: The logs related to encrypted SSP entry are documented here:/SSP-Encryption/\n09.16.03: The logs related to plaintext CSP output are documented here:/CSP-Plaintext-Output/",
+          "digest": "##############",
+          "fileLocation": "/Functional-Test/SSP-Testing/",
+          "integrityMechanism": "SHA2-512"
+        }
+      },
+      {
+        "teList": [
+          "09.21.02",
+          "09.21.03",
+          "09.21.04",
+          "09.22.01"
+        ],
+        "description": "Verify SSP Management (Security Level 3 and 4)",
+        "access": "observed",
+        "technique": "debugger",
+        "setup": "reference into Catalog",
+        "errorInduction": "description of modifications made to the module or its OE to induce an error for the purpose of performing negative testing",
+        "results": {
+          "summary": "Summary of the results, why does the result mean the requirement is met",
+          "digest": "##############",
+          "fileLocation": "/Functional-Test/SSP-Testing/Split-Knowledge",
+          "integrityMechanism": "SHA2-512"
+        }
+      },
+      {
+        "teList": [
+          "09.28.02",
+          "09.28.03",
+          "09.28.04"
+        ],
+        "description": "Verify SSP Zeroization (Security Level 1, 2, 3, and 4)",
+        "access": "observed",
+        "technique": "debugger",
+        "setup": "reference into Catalog",
+        "errorInduction": "description of modifications made to the module or its OE to induce an error for the purpose of performing negative testing",
+        "results": {
+          "summary": "Summary of the results, why does the result mean the requirement is met",
+          "digest": "##############",
+          "fileLocation": "Functional-Test/Services-Testing/Zeroization",
+          "integrityMechanism": "SHA2-512"
+        }
+      },
+      {
+        "teList": [
+          "09.33.02"
+        ],
+        "description": "Verify SSP Zeroization (Security Level 2, 3, and 4)",
+        "access": "observed",
+        "technique": "debugger",
+        "setup": "reference into Catalog",
+        "errorInduction": "description of modifications made to the module or its OE to induce an error for the purpose of performing negative testing",
+        "results": {
+          "summary": "Summary of the results, why does the result mean the requirement is met",
+          "digest": "##############",
+          "fileLocation": "Functional-Test/Services-Testing/Zeroization",
+          "integrityMechanism": "SHA2-512"
+        }
+      },
+      {
+        "teList": [
+          "09.36.02",
+          "09.37.02"
+        ],
+        "description": "Verify SSP Zeroization (Security Level 4)",
+        "access": "observed",
+        "technique": "debugger",
+        "setup": "reference into Catalog",
+        "errorInduction": "description of modifications made to the module or its OE to induce an error for the purpose of performing negative testing",
+        "results": {
+          "summary": "Summary of the results, why does the result mean the requirement is met",
+          "digest": "##############",
+          "fileLocation": "Functional-Test/Services-Testing/Zeroization",
+          "integrityMechanism": "SHA2-512"
+        }
+      },
+      {
+        "teList": [
+          "10.07.03",
+          "10.08.03",
+          "10.09.03",
+          "10.10.01",
+          "10.10.02",
+          "10.28.02"
+        ],
+        "description": "Verify self-tests error handling",
+        "access": "observed",
+        "technique": "debugger",
+        "setup": "reference into Catalog",
+        "errorInduction": "description of modifications made to the module or its OE to induce an error for the purpose of performing negative testing",
+        "results": {
+          "summary": "\n10.07.03: All failure logs documented in the individual folders:\n 1.Integrity-failure \n2.Load-Test-failure\n 3.Conditional-Pair-Wise-Test-Failure\n 4.Entropy-Test-failure 5.Bypass-Test-failure\n 6.Critical-functional-Test-failure\n 7.CAST-failure.\n : Error Recovery logs are present in: /Error-Recovery/ folder. \n 10.08.03: All logs related to verification of the error indicator present in /Error-Indicator/ folder. \n10.09.03:All logs related to verification of cryptographic operation inhibition present in /All-Crypto-Inhibited-in-ErrorState/ \n 10.10.01 and 10.10.02: All logs related to verification of degraded mode in /CAST-FailedCrypto-Inhibited-in-DegradedMode", 
+          "digest": "##############",
+          "fileLocation": "Functional-Test/FSM-States-Testing/Error-State-Testing/",
+          "integrityMechanism": "SHA2-512"
+        }
+      },
+      {
+        "teList": [
+          "10.07.04"
+        ],
+        "description": "Verify self-tests run in all modes (approved and non-approved)",
+        "access": "observed",
+        "technique": "debugger",
+        "setup": "reference into Catalog",
+        "errorInduction": "description of modifications made to the module or its OE to induce an error for the purpose of performing negative testing",
+        "results": {
+          "summary": "The logs indicating successful verification that self test are completed documented in the individual folders: \n 1. CAST-Test-Verification \n2.Conditional-Bypass-Test-Verification \n3.Conditional-Critical-functional-Test-Verification 4.Conditional-Load-Test-Verification \n5.Conditional-Manual-Entry-Test-Verifiation 6.Conditional-Pair-Wise-Test-Verification \n 7.Entropy-Test-Verification 8.Pre-operational-Bypass-Test-Verification \n9.Pre-operational-Critical-functional-Test-Verification \n10.Pre-operational-Integrity-Test-Verification",
+          "digest": "##############",
+          "fileLocation": "Functional-Test/FSM-States-Testing/Self-Test-State-Testing",
+          "integrityMechanism": "SHA2-512"
+        }
+      },
+      {
+        "teList": [
+          "10.25.02",
+          "10.27.01"
+        ],
+        "description": "Verify conditional self-tests are performed as specified and prior to the first operational use of each algorithm",
+        "access": "observed",
+        "technique": "debugger",
+        "setup": "reference into Catalog",
+        "errorInduction": "description of modifications made to the module or its OE to induce an error for the purpose of performing negative testing",
+        "results": {
+          "summary": "The logs indicating successful verification that conditional self-tests are completed documented in the individual folders:\n 1.Conditional-Bypass-Test-Verification \n2.Conditional-Critical-functional-Test-Verification \n 3.Conditional-Load-Test-Verification \n4.Conditional-Manual-Entry-Test-Verifiation 5.Conditional-Pair-Wise-Test-Verification",
+          "digest": "##############",
+          "fileLocation": "Functional-Test/FSM-States-Testing/Self-Test-State-Testing",
+          "integrityMechanism": "SHA2-512"
+        }
+      },
+      {
+        "teList": [
+          "10.35.04"
+        ],
+        "description": "Verify pair-wise consistency tests",
+        "access": "observed",
+        "technique": "debugger",
+        "setup": "reference into Catalog",
+        "errorInduction": "description of modifications made to the module or its OE to induce an error for the purpose of performing negative testing",
+        "results": {
+          "summary": "The logs indicating successful verification of pair-wise consistency tests are  documented here: /Self-Test-State-Testing/Conditional-Pair-Wise-Test-Verification. \nThe logs indicating pair-wise consistency tests failure handling are documented here: /Error-State-Testing/Conditional-Pair-Wise-Test-failure.",
+          "digest": "##############",
+          "fileLocation": "Functional-Test/FSM-States-Testing",
+          "integrityMechanism": "SHA2-512"
+        }
+      },
+      {
+        "teList": [
+          "10.53.02",
+          "10.53.03"
+        ],
+        "description": "Verify the initiation of self-tests on demand",
+        "access": "observed",
+        "technique": "debugger",
+        "setup": "reference into Catalog",
+        "errorInduction": "description of modifications made to the module or its OE to induce an error for the purpose of performing negative testing",
+        "results": {
+          "summary": "Summary of the results, why does the result mean the requirement is met",
+          "digest": "##############",
+          "fileLocation": "Functional-Test/Services-Testing/On-demand-Test",
+          "integrityMechanism": "SHA2-512"
+        }
+      },
+      {
+        "teList": [
+          "10.54.01"
+        ],
+        "description": "Verify of the periodic self-tests at (Security level 3 and 4)",
+        "access": "observed",
+        "technique": "debugger",
+        "setup": "reference into Catalog",
+        "errorInduction": "N/A",
+        "results": {
+          "summary": "Summary of the results, why does the result mean the requirement is met",
+          "digest": "##############",
+          "fileLocation": "Functional-Test/Services-Testing/Periodic-Self-Test",
+          "integrityMechanism": "SHA2-512"
+        }
+      },
+      {
+        "teList": [
+          "11.08.06",
+          "11.08.09",
+          "11.11.01"
+        ],
+        "description": "Module Verification with FSM",
+        "access": "observed",
+        "technique": "debugger",
+        "setup": "reference into Catalog",
+        "errorInduction": "description of modifications made to the module or its OE to induce an error for the purpose of performing negative testing",
+        "results": {
+          "summary": "Summary of the results, why does the result mean the requirement is met",
+          "digest": "##############",
+          "fileLocation": "Functional-Test/FSM-States-Testing",
+          "integrityMechanism": "SHA2-512"
+        }
+      },
+      {
+        "teList": [
+          "11.13.02"
+        ],
+        "description": "Verify Role Change Behavior",
+        "access": "observed",
+        "technique": "debugger",
+        "setup": "reference into Catalog",
+        "errorInduction": "description of modifications made to the module or its OE to induce an error for the purpose of performing negative testing",
+        "results": {
+          "summary": "Summary of the results, why does the result mean the requirement is met",
+          "digest": "##############",
+          "fileLocation": "Functional-Test/FSM-States-Testing/User-State-Testing",
+          "integrityMechanism": "SHA2-512"
+        }
+      },
+      {
+        "teList": [
+          "11.32.02"
+        ],
+        "description": "Perform module installation",
+        "access": "observed",
+        "technique": "debugger",
+        "setup": "reference into Catalog",
+        "errorInduction": "description of modifications made to the module or its OE to induce an error for the purpose of performing negative testing",
+        "results": {
+          "summary": "Summary of the results, why does the result mean the requirement is met",
+          "digest": "##############",
+          "fileLocation": "Functional-Test/Module-Installation",
+          "integrityMechanism": "SHA2-512"
+        }
+      }
+    ]
+  }
+}
