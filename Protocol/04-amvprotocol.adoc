@@ -13,7 +13,7 @@ The AMV protocol will utilize existing mechanisms for transport coordinated with
 +-----------------------------------------------+
 | HTTP[S] message transfer and signaling        |
 +-----------------------------------------------+
-| TLS for transport security(recommended)       |
+| TLS for transport security (recommended)      |
 +-----------------------------------------------+
 | TCP for transport                             |
 |_______________________________________________|
@@ -51,16 +51,18 @@ An empty cell for a resource and HTTP Method combination denotes that the server
 .Resources and their Available Operations
 |===
 | Resource | GET (read) | POST (create) | PUT (update) | DELETE
-
-| /modules | | <<modules_post>> | |
-| /requests/{requestId} | <<request_get>> | | |
-| /modules/{moduleId} | <<module_get>> | | |
 | /certRequests | | <<certRequest_post>> | |
+| /modules/{moduleId} | <<module_get>> | | |
 | /certRequests/{certRequestId} | <<certRequest_get>> | | | 
+| /certRequests/{certRequestId}/prerequisiteCertificates | | <<certRequest_post>> | |
 | /certRequests/{certRequestId}/evidence | | <<certRequest_post>> | |
 | /certRequests/{certRequestId}/sourceCode | | <<certRequest_post>> | |
 | /certRequests/{certRequestId}/securityPolicy | <<certRequest_get>> | <<certRequest_post>> | <<certRequest_put>> |
+| /certRequests/{certRequestId}/securityPolicy/template | | <<certRequest_post>> | |
+| /certRequests/{certRequestId}/otherDocumentation | | <<certRequest_post>> | |
 | /certRequests/{certRequestId}/certify | | <<certRequest_post>> | |
+| /schemas/{endpoint} | <<schemas_get>> |  | |
+| /schemas/{endpoint}/{version} | <<schemas_get>> | | |
 |===
 
 The resource path is appended to the path prefix to form the URI used with an HTTP Method to perform the desired AMVP operation. For example to create a new test session using the "/certRequests" resource is "/amvp/v1/certRequests" (assuming an empty context). To create a new certificate request session, the AMVP client would use the following HTTP request-line:

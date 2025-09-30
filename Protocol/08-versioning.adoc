@@ -5,12 +5,8 @@ The version of the AMVP protocol will be carried with each message and will cont
 The version is represented in all messages to and from the server with the following format.
 
 ```
-[
   {
-    "amvVersion": "1.0"
-  },
-  {
+    "amvVersion": "0.1",
     <message payload>
   }
-]
 ```

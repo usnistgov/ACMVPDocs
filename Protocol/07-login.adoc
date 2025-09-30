@@ -18,7 +18,7 @@ claims from an expired JWT in order to access a resource protected with those cl
 [source,json]
 ----
 {
-    "amvVersion": "1.0",
+    "amvVersion": "0.1",
     "passcode": "{passcode}"
 }
 
@@ -29,7 +29,7 @@ claims from an expired JWT in order to access a resource protected with those cl
 [source,json]
 ----
 {
-    "amvVersion": "1.0",
+    "amvVersion": "0.1",
     "passcode": "{passcode}",
     "accessToken": "{jwt value}"
 }
@@ -41,7 +41,7 @@ claims from an expired JWT in order to access a resource protected with those cl
 ----
 {
     "accessToken": "{jwt value}",
-    "amvVersion": "1.0"
+    "amvVersion": "0.1"
  }
 ----
 
@@ -57,6 +57,7 @@ This endpoint can be utilized for refreshing multiple JWTs with a single POST.  
 [source,json]
 ----
 {
+    "amvVersion": "0.1",
     "passcode": "{passcode}",
     "accessToken": [
       "{jwt1}",
@@ -76,6 +77,7 @@ This endpoint can be utilized for refreshing multiple JWTs with a single POST.  
       "{newJwt2}",
       "..."
     ],
+    "amvVersion": "0.1"
 }
 ----
 

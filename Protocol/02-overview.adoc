@@ -4,14 +4,14 @@
 
 AMVP has the following goals:
 
-* To communicate registration information  for one to many cryptographic modules for lab, vendor, module and OE.
+* To communicate registration information for one to many cryptographic modules for lab, vendor, module and OE.
 * To submit test evidence as defined by FIPS SP800-140Br1.
 * To enable automated registration and test evidence submission with minimal human interaction.
-* To provide extensibility that can be used to introduce registration for new module types new test evidence as needed.
+* To provide extensibility that can be used to introduce registration for new module types and new test evidence as needed.
 * To be compatible with emerging automated validation systems wherever possible, especially the FIPS-140 Cryptographic Module Validation Program.
 
 
-AMVP defines how to communicate registration information, test evidence and validation requests with a validation authority.  It is dependent upon existing technologies such as HTTPS, JSON and TLS to perform the message exchanges. In addition it is dependent on  submissions to the validation authority from ACVP and the ESV protocol. The relationship between the three protocols can be summarized as follows.
+AMVP defines how to communicate registration information, test evidence and validation requests with a validation authority.  It is dependent upon existing technologies such as HTTPS, JSON and TLS to perform the message exchanges. In addition it is dependent on submissions to the validation authority from ACVP and the ESV protocol. The relationship between the three protocols can be summarized as follows.
 
 * AMVP registers the lab, vendor, module and OE information.
 * ACVP performs algorithm testing on an OE and submits the results assigned to the module/OE registered by AMVP.

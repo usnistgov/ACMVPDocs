@@ -117,10 +117,11 @@ However, the expiration period length impacts both the security and protocol ove
 periods reduce the overhead but increase the window for attacks. Attempting to access a service with an
 expired JWT *SHALL* result in a "401 Unauthorized" HTTP status code.
 
-A client may renew an expired JWT access token using the mechanism shown in <<xml_figureRenewalFlows>>below.
+A client may renew an expired JWT access token using the mechanism shown in <<xml_figureRenewalFlows>> below.
 
 [[xml_figureRenewalFlows]]
 [align=center,alt=,type=]
+.Renewal Flows
 JWT access token renewal flows. All exchanges shown are over HTTP.
 
 ....

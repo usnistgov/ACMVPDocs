@@ -5,8 +5,8 @@ In the event of an unexpected error occuring within the protocol, the AMVP serve
 
 [source,json]
 ----
-[
-  {"amvVersion": "{amvp-version}"},
+{
+  "amvVersion": "{amvp-version}",
   {
     "category": 0,
     "description": "{description of category}",
@@ -21,7 +21,8 @@ In the event of an unexpected error occuring within the protocol, the AMVP serve
       },
     ]
   }
-]
+}
+
 ----
 
 The integer value for "category" *MUST* match a category code defined in table 1 below. 
