@@ -4,24 +4,24 @@ Test Evidence Workstream
 Introduction
 -------------
 
-The structured application of test evidence (TE) filtering proposed by the Test Evidence (TE) Workstream plays a crucial role in streamlining the validation process for cryptographic modules under FIPS 140-3. By leveraging both basic and supplemental filters, the evaluation process ensures that only relevant test evidence is considered, reducing redundancy while maintaining rigorous security standards. This approach enhances efficiency, supports automation, and enables a more scalable validation framework. As the TE Workstream continues refining these methodologies, the integration of well-defined filtering criteria will further strengthen the Cryptographic Module Validation Program (CMVP), improving consistency and accuracy in compliance assessments.
+The structured application of test evidence filtering proposed by the Test Evidence (TE) Workstream plays a crucial role in streamlining the validation process for cryptographic modules under FIPS 140-3. By leveraging both basic and supplemental filters, the evaluation process ensures that only relevant test evidence is considered, reducing redundancy while maintaining rigorous security standards. This approach enhances efficiency, supports automation, and enables a more scalable validation framework. As the TE Workstream continues refining these methodologies, integrating well-defined filtering criteria will further strengthen the CMVP, improving consistency and accuracy in compliance assessments.
 
-The September 2024 Status Report (https://doi.org/10.6028/NIST.CSWP.37.ipd) of Automation of the NIST Cryptographic Module Validation Program (ACMVP) summarizes the NCCoE ACMVP project, including the deliverables from the TE Workstream. Since the publication of that report, the TE Workstream has been working to complete:
+The September 2024 Status Report (https://doi.org/10.6028/NIST.CSWP.37.ipd) summarizes the NCCoE ACMVP project, including the deliverables from the TE Workstream. Since the publication of that report, the TE Workstream has been working to complete:
 
 - Test methods for functional testing TEs
 - Improvement of TE filtering coverage
 
-The ACMVP TE Workstream is led by Yi Mao of atsec and Shawn Geddis of Katalyst under the NCCoE ACMVP leadership of Murugiah Souppaya  and Chris Celi of NIST. The workstream is in debt to the invaluable contributions from Alex Calis of NIST CMVP. The workstream benefited from contributions from the atsec team, including but not limited to Stephan Mueller, Walker Riley, and Swapneela Unkule; the Intertek Acumen Security team led by James Reardon with Chris Bell, Sowndar Gillan Gopi, and Rutwij Kulkarni; the AEGISOLVE team including but not limited to Travis Spann, Javier Martel, Mike McCarl, and Debbie Harrington; Ryan Thomas of Lightship Security; Barry Fussell and Andrew Karcher of Cisco; Alicia Squires and Courtney Maatta of Amazon; Marc Ireland of NXP; Mike Grimm of Microsoft; Ivan Teblin and Blaine Stone of SUSE; and Michael Dimond of the MITRE Corporation.
+The ACMVP TE Workstream is led by Yi Mao of atsec and Shawn Geddis of Katalyst under the NCCoE ACMVP leadership of Murugiah Souppaya and Chris Celi of NIST. The workstream is in debt to the invaluable contributions from Alex Calis of NIST CMVP. The workstream benefited from contributions from the atsec team members including Stephan Mueller, Walker Riley, and Swapneela Unkule; the Intertek Acumen Security team led by James Reardon with Chris Bell, Sowndar Gillan Gopi, and Rutwij Kulkarni; the AEGISOLVE team members including Travis Spann, Javier Martel, Mike McCarl, and Debbie Harrington; Ryan Thomas of Lightship Security; Barry Fussell and Andrew Karcher of Cisco; Alicia Squires and Courtney Maatta of Amazon; Marc Ireland of NXP; Mike Grimm of Microsoft; Ivan Teblin and Blaine Stone of SUSE; and Michael Dimond of the MITRE Corporation.
 
 Test Methods for Functional Testing TEs
 -----------------------------------------
 
-The diverse set of cryptographic modules and their varying restrictive operating environments can create challenges in choosing the right approach and selection of an appropriate toolset to capture the evaluation TE. The CMVP provides some limited guidance, but it is necessary to identify which test methods are relevant to the granularity of individual TEs.
+The diverse set of cryptographic modules and their varying restrictive operating environments can create challenges in choosing the right approach and selecting an appropriate toolset to capture the evaluation TE. The CMVP provides some limited guidance, but it is necessary to identify which test methods are relevant to the granularity of individual TEs.
 
 Testing Access
 ________________
 
-There is frequently a challenge in accessing the operational environment for effective testing of a cryptographic module. There are allowances for various methodologies to follow for accommodating these challenges. For any given evaluation, it is assumed by default that the Testing Access used for all TEs is the same; however, any given TE might in fact require an alternate allowed Testing Access method to be used.    
+Accessing the operational environment for effective testing of a cryptographic module is a persistent challenge and allowances for various methodologies to follow for accommodating these challenges exist. For any given evaluation, it is assumed by default that the Testing Access used for all TEs is the same; however, any given TE might in fact require an alternate allowed Testing Access method to be used.
 
 The Testing Access methods are as follows:
    **Physical**
@@ -36,31 +36,29 @@ The Testing Access methods are as follows:
 Selection Criteria
 ___________________
 
-The challenge is now to assign only the appropriate test methods to each of the identified TEs. Drawing from CMVP, Lab and original vendor expertise, the criteria can be used to refine the test methods to be used for each TE.
+The current challenge is to assign only the appropriate test methods to each of the identified TEs. Drawing from CMVP, lab, and original vendor expertise, the criteria can be used to refine the test methods to be used for each TE. Test methods are the defined techniques that can be utilized while ensuring confidence of capturing actual module operation under real-world conditions and enabling efficient evidence gathering workflow. Only a limited set of test method categories exist for the team to focus on in their pursuit, which can best be described as:
 
-Test Methods are the defined techniques which can be utilized while ensuring confidence of capturing actual module operation under real-world conditions yet enabling an efficient evidence gathering workflow. There are a limited set of test method categories to focus on in our pursuit. These test methods can best be described as:
+- Debugger: The ability to run or halt the target program using breakpoints, step through code line by line, and display or modify the contents of memory, CPU registers, and stack frames
 
-- Debugger: The ability to run or halt the target program using breakpoints, step through code line by line, and display or modify the contents of memory, CPU registers, and stack frames.
+- Simulation: Imitates representation of the functioning of one system or process by means of the functioning of another
 
-- Simulation: Imitates representation of the functioning of one system or process by means of the functioning of another.
-
-- Emulation: Hardware or software that permits programs written for one environment to be run unaltered on another environment.
+- Emulation: Hardware or software that permits programs written for one environment to be run unaltered on another environment
 
 - Harness: Hardware or software that manipulates an operating environment with the purpose of triggering events and capturing the corresponding responses or results.
 
 - Manual: Action(s) by a user to perform a set of designated steps for the purpose of triggering events and capturing the corresponding responses or results.
 
-- Other:  Due to the diversity and complexity of operating environments, the toolset needed to perform the gathering of relevant TE may not fit precisely within the above five test methods. This warrants the need for a catch all method that enables the tester to comprehensively describe the methodology used to capture the TE.
+- Other:  Due to the diversity and complexity of operating environments, the toolset needed to perform the gathering of relevant TE may not fit precisely within the above five test methods, which warrants the need for a catch-all method that enables the tester to comprehensively describe the methodology used to capture the TE.
 
 Debugger
 ''''''''''
 
-There is no clearly articulated interpretation of when and how a Debugger can and should be used. Much of this is drawn from lab empirical evidence.
+No clearly articulated interpretation of when and how a debugger can and should be used is available as much of what is known comes from lab empirical evidence.
 
 Simulation and/or Emulation
 ''''''''''''''''''''''''''''
 
-Drawing from guidance currently provided by CMVP in the `Management Manual, dated 12/17/2024, Version 2.3 <https://csrc.nist.gov/csrc/media/Projects/cryptographic-module-validation-program/documents/fips%20140-3/FIPS-140-3-CMVP%20Management%20Manual.pdf>`__, Labs may apply emulators or simulators depending on the type of testing results to be achieved. There are three broad areas of focus during the testing of a cryptographic module: operational testing of the module at the module's defined boundary, operational fault induction testing, and algorithm testing.
+Drawing from guidance currently provided by CMVP in the `Management Manual, Version 2.3 <https://csrc.nist.gov/csrc/media/Projects/cryptographic-module-validation-program/documents/fips%20140-3/FIPS-140-3-CMVP%20Management%20Manual.pdf>`__, labs may apply emulators or simulators depending on the type of testing results to be achieved. There are three broad areas of focus during the testing of a cryptographic module: operational testing of the module at the module's defined boundary, operational fault induction testing, and algorithm testing.
 
 1. **Operational Testing** - Emulation or simulation is prohibited for the operational testing of a cryptographic module. Actual testing of the cryptographic module must be performed utilizing the defined ports and interfaces and services that a module provides. A test harness or a modified version to induce an error may be utilized; however, no changes to code or circuitry responsible for the tested response may be made.
 
@@ -75,356 +73,358 @@ Drawing from guidance currently provided by CMVP in the `Management Manual, date
 Harness
 ''''''''''
 
-There is no clearly articulated interpretation of when and how a Test Harness can and should be used. Much of this is drawn from experienced vendors that developed specialized test harnesses around their respective modules and within the restricted operating environments.
+No clearly articulated interpretation of when and how a test harness can and should be used is available as much of what is known comes from experienced vendors that developed specialized test harnesses around their respective modules and within the restricted operating environments.
 
 Manual
 ''''''''''
 
-There is no clearly articulated interpretation of when and how a Manual process can and should be used. Much of this is drawn from the need for human interaction to trigger events or an inability to trigger the steps in an automated approach.
+No clearly articulated interpretation of when and how a manual process can and should be used is available as much of what is known comes from the need for human interaction to trigger events or an inability to trigger the steps in an automated approach.
 
 Other
 ''''''
 
-As noted earlier, due to the diversity and complexity of operating environments, the toolset needed to perform the gathering of relevant TE may not fit precisely within the above five test methods. Therefore, there is a need for a catch all method that enables the tester to comprehensively describe the methodology used to capture the TE.
+As noted earlier, due to the diversity and complexity of operating environments, the toolset needed to perform the gathering of relevant TE may not fit precisely within the above five test methods. Therefore, a need for a catch-all method that enables the tester to comprehensively describe the methodology used to capture the TE exists.
 
 Test Methods Allowed
 _______________________
 
 The following table maps the allowed Test Methods to the grouping of associated TEs for purpose of condensing the resulting table.
 
-+-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
-| **TE (TE**\ ##.##.##\ **)** |                                  **Test Method**                                      |
-+=============================+=================+===============+==============+=============+============+===========+
-|                             | **Debugger**    | **Simulator** | **Emulator** | **Harness** | **Manual** | **Other** |
-+-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
-| 02.12.01                    | **X**           | **X**         | **X**        | **X**       |   √        | √         |
-+-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
-| 02.13.03                    | **X**           | **X**         | **X**        | √           | **X**      | √         |
-+-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
-| 02.15.03                    | **X**           | **X**         | **X**        | **X**       | √          | √         |
-+-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
-| 02.15.05,                   | √               | **X**         | **X**        | **X**       | √          | √         |
-|                             |                 |               |              |             |            |           |
-| 02.16.04,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 02.17.04                    |                 |               |              |             |            |           |
-+-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
-| 02.16.02,                   | **X**           | **X**         | **X**        | √           | **X**      | √         |
-|                             |                 |               |              |             |            |           |
-| 02.17.02                    |                 |               |              |             |            |           |
-+-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
-| 02.19.02                    | √               | **X**         | **X**        | √           | √          | √         |
-+-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
-| 02.22.02                    | √               | **X**         | **X**        | √           | **X**      | √         |
-+-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
-| 02.24.02                    | √               | **X**         | **X**        | √           | √          | √         |
-+-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
-| 02.26.03,                   | √               | **X**         | **X**        | √           | **X**      | √         |
-|                             |                 |               |              |             |            |           |
-| 02.26.04,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 02.26.05,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 02.28.01,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 02.28.02,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 02.30.02                    |                 |               |              |             |            |           |
-+-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
-| 03.01.04,                   | √               | **X**         | **X**        | √           | √          | √         |
-|                             |                 |               |              |             |            |           |
-| 03.02.01,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 03.14.03,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 03.15.03,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 03.15.04,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 03.15.06                    |                 |               |              |             |            |           |
-+-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
-| 03.05.01,                   | √               | **X**         | **X**        | √           | √          | √         |
-|                             |                 |               |              |             |            |           |
-| 03.05.02                    |                 |               |              |             |            |           |
-+-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
-| 03.06.01,                   | √               | **X**         | **X**        | √           | √          | √         |
-|                             |                 |               |              |             |            |           |
-| 03.06.02,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 03.07.01,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 03.07.02,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 03.07.04,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 03.07.08                    |                 |               |              |             |            |           |
-+-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
-| 03.08.01,                   | √               | √             | **X**        | √           | √          | √         |
-|                             |                 |               |              |             |            |           |
-| 03.08.02                    |                 |               |              |             |            |           |
-+-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
-| 03.09.02,                   | √               | √             | **X**        | √           | √          | √         |
-|                             |                 |               |              |             |            |           |
-| 03.10.02,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 03.10.04                    |                 |               |              |             |            |           |
-+-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
-| 03.11.01,                   | √               | **X**         | **X**        | √           | √          | √         |
-|                             |                 |               |              |             |            |           |
-| 03.11.03                    |                 |               |              |             |            |           |
-+-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
-| 03.13.02                    | **X**           | **X**         | **X**        | **X**       |   √        | √         |
-+-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
-| 03.18.02,                   | √               | **X**         | **X**        | √           | √          | √         |
-|                             |                 |               |              |             |            |           |
-| 03.19.02,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 03.19.04,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 03.20.01,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 03.21.01                    |                 |               |              |             |            |           |
-+-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
-| 03.22.01                    | √               | **X**         | **X**        | √           | √          | √         |
-+-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
-| 04.02.02,                   | √               | **X**         | **X**        | √           | √          | √         |
-|                             |                 |               |              |             |            |           |
-| 04.02.03                    |                 |               |              |             |            |           |
-+-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
-| 04.07.03                    | √               | **X**         | **X**        | √           | √          | √         |
-+-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
-| 04.11.02                    | √               | **X**         | **X**        | √           | √          | √         |
-+-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
-| 04.13.01,                   |   √             |   √           |   √          |   √         |   √        | √         |
-|                             |                 |               |              |             |            |           |
-| 04.13.02,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 04.13.03                    |                 |               |              |             |            |           |
-+-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
-| 04.14.02                    | √               | **X**         | **X**        | √           | √          | √         |
-+-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
-| 04.15.01                    | √               | **X**         | **X**        | √           | √          | √         |
-+-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
-| 04.18.01,                   | √               | **X**         | **X**        | √           | √          | √         |
-|                             |                 |               |              |             |            |           |
-| 04.19.02,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 04.19.03,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 04.20.01,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 04.20.03,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 04.21.02,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 04.22.02                    |                 |               |              |             |            |           |
-+-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
-| 04.23.01,                   | √               | **X**         | **X**        | √           | √          | √         |
-|                             |                 |               |              |             |            |           |
-| 04.25.01,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 04.25.02,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 04.25.03                    |                 |               |              |             |            |           |
-+-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
-| 04.28.01,                   |   √             |   √           |   √          |   √         |   √        | √         |
-|                             |                 |               |              |             |            |           |
-| 04.29.01,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 04.32.01,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 04.33.01,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 04.34.01,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 04.35.02,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 05.13.08                    |                 |               |              |             |            |           |
-+-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
-| 04.37.02,                   | √               | **X**         | **X**        | √           | √          | √         |
-|                             |                 |               |              |             |            |           |
-| 04.38.02                    |                 |               |              |             |            |           |
-+-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
-| 04.39.02,                   | √               | **X**         | **X**        | √           | √          | √         |
-|                             |                 |               |              |             |            |           |
-| 04.39.03,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 04.39.04,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 04.42.03,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 04.42.04                    |                 |               |              |             |            |           |
-+-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
-| 04.43.02,                   | √               | **X**         | **X**        | √           | √          | √         |
-|                             |                 |               |              |             |            |           |
-| 04.44.02                    |                 |               |              |             |            |           |
-+-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
-| 04.45.02,                   | √               | **X**         | **X**        | √           | √          | √         |
-|                             |                 |               |              |             |            |           |
-| 04.45.03,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 04.47.01,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 04.48.01,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 04.52.01,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 04.54.02,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 04.54.03,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 04.55.02                    |                 |               |              |             |            |           |
-+-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
-| 04.53.01                    |   √             |   √           |   √          |   √         |   √        | √         |
-+-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
-| 04.56.02                    | √               | **X**         | **X**        | √           | √          | √         |
-+-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
-| 04.59.01                    | √               | **X**         | **X**        | √           | √          | √         |
-+-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
-| 05.05.05                    |   √             |   √           |   √          |   √         |   √        | √         |
-+-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
-| 05.05.07,                   | √               | **X**         | **X**        | √           | √          | √         |
-|                             |                 |               |              |             |            |           |
-| 05.06.06,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 05.08.01,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 05.08.02,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 05.11.01,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 05.11.02,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 05.12.02,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 05.13.03,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 05.13.04,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 05.13.05                    |                 |               |              |             |            |           |
-+-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
-| 05.06.02                    |   √             |   √           |   √          |   √         |   √        | √         |
-+-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
-| 05.06.03                    | √               | **X**         | **X**        | √           | √          | √         |
-+-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
-| 05.06.04                    | √               | **X**         | **X**        | √           | √          | √         |
-+-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
-| 05.13.01,                   | √               | **X**         | **X**        | √           | √          | √         |
-|                             |                 |               |              |             |            |           |
-| 05.13.02                    |                 |               |              |             |            |           |
-+-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
-| 05.13.06                    | √               | **X**         | **X**        | √           | √          | √         |
-+-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
-| 05.15.01,                   | √               | **X**         | **X**        | √           | √          | √         |
-|                             |                 |               |              |             |            |           |
-| 05.15.02,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 05.16.03,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 05.17.02                    |                 |               |              |             |            |           |
-+-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
-| 05.20.01                    |   √             |   √           |   √          |   √         |   √        | √         |
-+-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
-| 05.23.01                    |   √             |   √           |   √          |   √         |   √        | √         |
-+-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
-| 06.05.01,                   |   √             |   √           |   √          |   √         |   √        | √         |
-|                             |                 |               |              |             |            |           |
-| 06.05.02,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 06.05.03,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 06.06.01,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 06.06.02,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 06.08.01,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 06.08.03                    |                 |               |              |             |            |           |
-+-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
-| 06.06.02,                   |   √             |   √           |   √          |   √         |   √        | √         |
-|                             |                 |               |              |             |            |           |
-| 06.08.03                    |                 |               |              |             |            |           |
-+-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
-| 09.01.02,                   | √               | **X**         | **X**        | √           | √          | √         |
-|                             |                 |               |              |             |            |           |
-| 09.01.03,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 09.02.02,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 09.03.02,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 09.03.03,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 09.14.02,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 09.16.03,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 09.25.02,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 09.27.02                    |                 |               |              |             |            |           |
-+-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
-| 09.21.02,                   | √               | **X**         | **X**        | √           | √          | √         |
-|                             |                 |               |              |             |            |           |
-| 09.21.03,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 09.21.04,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 09.22.01                    |                 |               |              |             |            |           |
-+-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
-| 09.24.02                    | √               | **X**         | **X**        | √           | √          | √         |
-+-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
-| 09.28.02,                   | √               | **X**         | **X**        | √           | √          | √         |
-|                             |                 |               |              |             |            |           |
-| 09.28.03,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 09.28.04                    |                 |               |              |             |            |           |
-+-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
-| 09.33.02                    | √               | **X**         | **X**        | √           | √          | √         |
-+-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
-| 09.36.02,                   | √               | **X**         | **X**        | √           | √          | √         |
-|                             |                 |               |              |             |            |           |
-| 09.37.02                    |                 |               |              |             |            |           |
-+-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
-| 10.07.03,                   | √               | **X**         | **X**        | √           | √          | √         |
-|                             |                 |               |              |             |            |           |
-| 10.08.03,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 10.09.03,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 10.10.01,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 10.10.02,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 10.28.02                    |                 |               |              |             |            |           |
-+-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
-| 10.07.04                    | √               | **X**         | **X**        | √           | √          | √         |
-+-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
-| 10.25.02,                   | √               | **X**         | **X**        | √           | √          | √         |
-|                             |                 |               |              |             |            |           |
-| 10.27.01                    |                 |               |              |             |            |           |
-+-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
-| 10.35.04                    | √               | √             | **X**        | √           | √          | √         |
-+-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
-| 10.53.02,                   | √               | **X**         | **X**        | √           | √          | √         |
-|                             |                 |               |              |             |            |           |
-| 10.53.03                    |                 |               |              |             |            |           |
-+-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
-| 11.08.06,                   | √               | **X**         | **X**        | √           | √          | √         |
-|                             |                 |               |              |             |            |           |
-| 11.08.09,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 11.11.01                    |                 |               |              |             |            |           |
-+-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
-| 11.13.02                    | √               | **X**         | **X**        | √           | √          | √         |
-+-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
-| 11.28.02,                   |   √             |   √           |   √          |   √         |   √        | √         |
-|                             |                 |               |              |             |            |           |
-| 11.28.03,                   |                 |               |              |             |            |           |
-|                             |                 |               |              |             |            |           |
-| 11.28.04                    |                 |               |              |             |            |           |
-+-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
-| 11.32.02                    | √               | **X**         | **X**        | √           | √          | √         |
-+-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
+.. table:: Table 1: Test Methods Allowed
+
+   +-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
+   | **TE (TE**\ ##.##.##\ **)** |                                  **Test Method**                                      |
+   +=============================+=================+===============+==============+=============+============+===========+
+   |                             | **Debugger**    | **Simulator** | **Emulator** | **Harness** | **Manual** | **Other** |
+   +-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
+   | 02.12.01                    | **X**           | **X**         | **X**        | **X**       |   √        | √         |
+   +-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
+   | 02.13.03                    | **X**           | **X**         | **X**        | √           | **X**      | √         |
+   +-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
+   | 02.15.03                    | **X**           | **X**         | **X**        | **X**       | √          | √         |
+   +-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
+   | 02.15.05,                   | √               | **X**         | **X**        | **X**       | √          | √         |
+   |                             |                 |               |              |             |            |           |
+   | 02.16.04,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 02.17.04                    |                 |               |              |             |            |           |
+   +-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
+   | 02.16.02,                   | **X**           | **X**         | **X**        | √           | **X**      | √         |
+   |                             |                 |               |              |             |            |           |
+   | 02.17.02                    |                 |               |              |             |            |           |
+   +-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
+   | 02.19.02                    | √               | **X**         | **X**        | √           | √          | √         |
+   +-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
+   | 02.22.02                    | √               | **X**         | **X**        | √           | **X**      | √         |
+   +-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
+   | 02.24.02                    | √               | **X**         | **X**        | √           | √          | √         |
+   +-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
+   | 02.26.03,                   | √               | **X**         | **X**        | √           | **X**      | √         |
+   |                             |                 |               |              |             |            |           |
+   | 02.26.04,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 02.26.05,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 02.28.01,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 02.28.02,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 02.30.02                    |                 |               |              |             |            |           |
+   +-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
+   | 03.01.04,                   | √               | **X**         | **X**        | √           | √          | √         |
+   |                             |                 |               |              |             |            |           |
+   | 03.02.01,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 03.14.03,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 03.15.03,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 03.15.04,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 03.15.06                    |                 |               |              |             |            |           |
+   +-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
+   | 03.05.01,                   | √               | **X**         | **X**        | √           | √          | √         |
+   |                             |                 |               |              |             |            |           |
+   | 03.05.02                    |                 |               |              |             |            |           |
+   +-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
+   | 03.06.01,                   | √               | **X**         | **X**        | √           | √          | √         |
+   |                             |                 |               |              |             |            |           |
+   | 03.06.02,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 03.07.01,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 03.07.02,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 03.07.04,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 03.07.08                    |                 |               |              |             |            |           |
+   +-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
+   | 03.08.01,                   | √               | √             | **X**        | √           | √          | √         |
+   |                             |                 |               |              |             |            |           |
+   | 03.08.02                    |                 |               |              |             |            |           |
+   +-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
+   | 03.09.02,                   | √               | √             | **X**        | √           | √          | √         |
+   |                             |                 |               |              |             |            |           |
+   | 03.10.02,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 03.10.04                    |                 |               |              |             |            |           |
+   +-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
+   | 03.11.01,                   | √               | **X**         | **X**        | √           | √          | √         |
+   |                             |                 |               |              |             |            |           |
+   | 03.11.03                    |                 |               |              |             |            |           |
+   +-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
+   | 03.13.02                    | **X**           | **X**         | **X**        | **X**       |   √        | √         |
+   +-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
+   | 03.18.02,                   | √               | **X**         | **X**        | √           | √          | √         |
+   |                             |                 |               |              |             |            |           |
+   | 03.19.02,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 03.19.04,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 03.20.01,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 03.21.01                    |                 |               |              |             |            |           |
+   +-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
+   | 03.22.01                    | √               | **X**         | **X**        | √           | √          | √         |
+   +-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
+   | 04.02.02,                   | √               | **X**         | **X**        | √           | √          | √         |
+   |                             |                 |               |              |             |            |           |
+   | 04.02.03                    |                 |               |              |             |            |           |
+   +-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
+   | 04.07.03                    | √               | **X**         | **X**        | √           | √          | √         |
+   +-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
+   | 04.11.02                    | √               | **X**         | **X**        | √           | √          | √         |
+   +-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
+   | 04.13.01,                   |   √             |   √           |   √          |   √         |   √        | √         |
+   |                             |                 |               |              |             |            |           |
+   | 04.13.02,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 04.13.03                    |                 |               |              |             |            |           |
+   +-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
+   | 04.14.02                    | √               | **X**         | **X**        | √           | √          | √         |
+   +-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
+   | 04.15.01                    | √               | **X**         | **X**        | √           | √          | √         |
+   +-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
+   | 04.18.01,                   | √               | **X**         | **X**        | √           | √          | √         |
+   |                             |                 |               |              |             |            |           |
+   | 04.19.02,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 04.19.03,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 04.20.01,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 04.20.03,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 04.21.02,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 04.22.02                    |                 |               |              |             |            |           |
+   +-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
+   | 04.23.01,                   | √               | **X**         | **X**        | √           | √          | √         |
+   |                             |                 |               |              |             |            |           |
+   | 04.25.01,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 04.25.02,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 04.25.03                    |                 |               |              |             |            |           |
+   +-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
+   | 04.28.01,                   |   √             |   √           |   √          |   √         |   √        | √         |
+   |                             |                 |               |              |             |            |           |
+   | 04.29.01,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 04.32.01,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 04.33.01,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 04.34.01,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 04.35.02,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 05.13.08                    |                 |               |              |             |            |           |
+   +-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
+   | 04.37.02,                   | √               | **X**         | **X**        | √           | √          | √         |
+   |                             |                 |               |              |             |            |           |
+   | 04.38.02                    |                 |               |              |             |            |           |
+   +-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
+   | 04.39.02,                   | √               | **X**         | **X**        | √           | √          | √         |
+   |                             |                 |               |              |             |            |           |
+   | 04.39.03,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 04.39.04,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 04.42.03,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 04.42.04                    |                 |               |              |             |            |           |
+   +-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
+   | 04.43.02,                   | √               | **X**         | **X**        | √           | √          | √         |
+   |                             |                 |               |              |             |            |           |
+   | 04.44.02                    |                 |               |              |             |            |           |
+   +-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
+   | 04.45.02,                   | √               | **X**         | **X**        | √           | √          | √         |
+   |                             |                 |               |              |             |            |           |
+   | 04.45.03,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 04.47.01,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 04.48.01,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 04.52.01,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 04.54.02,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 04.54.03,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 04.55.02                    |                 |               |              |             |            |           |
+   +-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
+   | 04.53.01                    |   √             |   √           |   √          |   √         |   √        | √         |
+   +-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
+   | 04.56.02                    | √               | **X**         | **X**        | √           | √          | √         |
+   +-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
+   | 04.59.01                    | √               | **X**         | **X**        | √           | √          | √         |
+   +-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
+   | 05.05.05                    |   √             |   √           |   √          |   √         |   √        | √         |
+   +-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
+   | 05.05.07,                   | √               | **X**         | **X**        | √           | √          | √         |
+   |                             |                 |               |              |             |            |           |
+   | 05.06.06,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 05.08.01,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 05.08.02,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 05.11.01,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 05.11.02,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 05.12.02,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 05.13.03,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 05.13.04,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 05.13.05                    |                 |               |              |             |            |           |
+   +-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
+   | 05.06.02                    |   √             |   √           |   √          |   √         |   √        | √         |
+   +-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
+   | 05.06.03                    | √               | **X**         | **X**        | √           | √          | √         |
+   +-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
+   | 05.06.04                    | √               | **X**         | **X**        | √           | √          | √         |
+   +-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
+   | 05.13.01,                   | √               | **X**         | **X**        | √           | √          | √         |
+   |                             |                 |               |              |             |            |           |
+   | 05.13.02                    |                 |               |              |             |            |           |
+   +-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
+   | 05.13.06                    | √               | **X**         | **X**        | √           | √          | √         |
+   +-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
+   | 05.15.01,                   | √               | **X**         | **X**        | √           | √          | √         |
+   |                             |                 |               |              |             |            |           |
+   | 05.15.02,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 05.16.03,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 05.17.02                    |                 |               |              |             |            |           |
+   +-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
+   | 05.20.01                    |   √             |   √           |   √          |   √         |   √        | √         |
+   +-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
+   | 05.23.01                    |   √             |   √           |   √          |   √         |   √        | √         |
+   +-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
+   | 06.05.01,                   |   √             |   √           |   √          |   √         |   √        | √         |
+   |                             |                 |               |              |             |            |           |
+   | 06.05.02,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 06.05.03,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 06.06.01,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 06.06.02,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 06.08.01,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 06.08.03                    |                 |               |              |             |            |           |
+   +-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
+   | 06.06.02,                   |   √             |   √           |   √          |   √         |   √        | √         |
+   |                             |                 |               |              |             |            |           |
+   | 06.08.03                    |                 |               |              |             |            |           |
+   +-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
+   | 09.01.02,                   | √               | **X**         | **X**        | √           | √          | √         |
+   |                             |                 |               |              |             |            |           |
+   | 09.01.03,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 09.02.02,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 09.03.02,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 09.03.03,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 09.14.02,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 09.16.03,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 09.25.02,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 09.27.02                    |                 |               |              |             |            |           |
+   +-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
+   | 09.21.02,                   | √               | **X**         | **X**        | √           | √          | √         |
+   |                             |                 |               |              |             |            |           |
+   | 09.21.03,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 09.21.04,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 09.22.01                    |                 |               |              |             |            |           |
+   +-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
+   | 09.24.02                    | √               | **X**         | **X**        | √           | √          | √         |
+   +-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
+   | 09.28.02,                   | √               | **X**         | **X**        | √           | √          | √         |
+   |                             |                 |               |              |             |            |           |
+   | 09.28.03,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 09.28.04                    |                 |               |              |             |            |           |
+   +-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
+   | 09.33.02                    | √               | **X**         | **X**        | √           | √          | √         |
+   +-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
+   | 09.36.02,                   | √               | **X**         | **X**        | √           | √          | √         |
+   |                             |                 |               |              |             |            |           |
+   | 09.37.02                    |                 |               |              |             |            |           |
+   +-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
+   | 10.07.03,                   | √               | **X**         | **X**        | √           | √          | √         |
+   |                             |                 |               |              |             |            |           |
+   | 10.08.03,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 10.09.03,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 10.10.01,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 10.10.02,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 10.28.02                    |                 |               |              |             |            |           |
+   +-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
+   | 10.07.04                    | √               | **X**         | **X**        | √           | √          | √         |
+   +-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
+   | 10.25.02,                   | √               | **X**         | **X**        | √           | √          | √         |
+   |                             |                 |               |              |             |            |           |
+   | 10.27.01                    |                 |               |              |             |            |           |
+   +-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
+   | 10.35.04                    | √               | √             | **X**        | √           | √          | √         |
+   +-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
+   | 10.53.02,                   | √               | **X**         | **X**        | √           | √          | √         |
+   |                             |                 |               |              |             |            |           |
+   | 10.53.03                    |                 |               |              |             |            |           |
+   +-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
+   | 11.08.06,                   | √               | **X**         | **X**        | √           | √          | √         |
+   |                             |                 |               |              |             |            |           |
+   | 11.08.09,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 11.11.01                    |                 |               |              |             |            |           |
+   +-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
+   | 11.13.02                    | √               | **X**         | **X**        | √           | √          | √         |
+   +-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
+   | 11.28.02,                   |   √             |   √           |   √          |   √         |   √        | √         |
+   |                             |                 |               |              |             |            |           |
+   | 11.28.03,                   |                 |               |              |             |            |           |
+   |                             |                 |               |              |             |            |           |
+   | 11.28.04                    |                 |               |              |             |            |           |
+   +-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
+   | 11.32.02                    | √               | **X**         | **X**        | √           | √          | √         |
+   +-----------------------------+-----------------+---------------+--------------+-------------+------------+-----------+
 
 Improvement of TE Filtering Coverage
 -------------------------------------
@@ -433,17 +433,17 @@ TE filters serve as a pivotal mechanism to streamline the classification and eva
 
 With the growing complexity of cryptographic modules and the need for efficient validation, TE filters are designed to:
 
-- Target Specific Needs: Focus on applicable tests by narrowing down evidence requirements based on module attributes such as type, security level, and operational environment.
+- Target specific needs through focusing on applicable tests by narrowing down evidence requirements based on module attributes such as type, security level, and operational environment
 
-- Reduce Redundancy: Minimize repetitive validation steps by filtering out TEs that are not relevant to a given module's configuration or features.
+- Reduce redundancy through minimizing repetitive validation steps by filtering out TEs that are not relevant to a given module's configuration or features
 
-- Enhance Automation: Support automated workflows by integrating filters into structured JSON schemas, aligning with automation tools like Web Cryptik.
+- Enhance automation through supporting automated workflows by integrating filters into structured JSON schemas, aligning with automation tools like Web-Cryptik
 
 This document delves into the methodologies and criteria for applying TE filters, the implementation of filtering mechanisms, and their role in achieving a more efficient and scalable CMVP. By leveraging these filters, vendors and validators can focus on precise compliance requirements, reducing manual overhead while maintaining robust security standards.
 
-The following table is excerpted from ISO/IEC 19790:2012(2014), which is the base of FIPS 140-3. It provides a structured summary of the FIPS 140-3 security requirements across various requirement areas. It outlines the security levels applicable to each category, specifying the testing expectations and security assurances needed to meet compliance. The table serves as a reference for understanding how different cryptographic module components must align with FIPS 140-3 standards, ensuring consistent evaluation and validation. Each requirement area focuses on distinct security aspects, such as module specifications, authentication mechanisms, physical security, and lifecycle assurance, enabling a comprehensive approach to cryptographic module validation.
+The following table is excerpted from ISO/IEC 19790:2012 (2014), which is the base of FIPS 140-3 and provides a structured summary of the FIPS 140-3 security requirements across various requirement areas. It outlines the security levels applicable to each category, specifying the testing expectations and security assurances needed to meet compliance. The table serves as a reference for understanding how different cryptographic module components must align with FIPS 140-3 standards, ensuring consistent evaluation and validation. Each requirement area focuses on distinct security aspects, such as module specifications, authentication mechanisms, physical security, and lifecycle assurance, enabling a comprehensive approach to cryptographic module validation.
 
-.. table:: Table 1: Summary of FIPS 140-3 Security Requirements
+.. table:: Table 2: Summary of FIPS 140-3 Security Requirements
 
    +----------------------+----------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
    | **Requirement Area** |                                        |    **FIPS 140-3 Security Level**                                                                                                                                                                                                                                                                                                                                                                                 |                                                                                         |                                                                                                                                        |                                                                                                                                                   |
@@ -497,11 +497,11 @@ The following table is excerpted from ISO/IEC 19790:2012(2014), which is the bas
    | 12                   | **Mitigation of Other Attacks**        | Specification of mitigation of attacks for which no testable requirements are currently available                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | Specification of mitigation of attacks with testable requirements                                                                                 |
    +----------------------+----------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
 
-Building on the summary of FIPS 140-3 security requirements in Table 1, Table 2 provides a more granular analysis of the number of security requirements per ISO/IEC 24759:2014(2015), which is a companion document to ISO/IEC 19790 specifying the derived test requirements, across different implementation areas. This table categorizes security requirements based on the module's type being Software (SW), Firmware (FW), Hardware (HW), SW-HW hybrid (SW-H), or FW-HW hybrid (FW-H), and further differentiates them by security levels. The breakdown facilitates a clearer understanding of the distribution of TE requirements, highlighting how various module implementations align with compliance expectations at each level.
+Building on the summary of FIPS 140-3 security requirements in Table 2, Table 3 provides a more granular analysis of the number of security requirements per ISO/IEC 24759:2014(2015), which is a companion document to ISO/IEC 19790 specifying the derived test requirements, across different implementation areas. This table categorizes security requirements based on the module's type being Software (SW), Firmware (FW), Hardware (HW), SW-HW hybrid (SW-H), or FW-HW hybrid (FW-H), and further differentiates them by security levels. The breakdown facilitates a clearer understanding of the distribution of TE requirements, highlighting how various module implementations align with compliance expectations at each level.
 
 The number of total TEs and percentage of applicable TEs will indicate how many TEs are not applicable. By filtering out these non-applicable TEs with public consensus, the CSTL can more directly perform the required testing.
 
-.. table:: Table 2: An overview of the number of Security Requirements
+.. table:: Table 3: An overview of the number of Security Requirements
 
    +------------------+---------------+----------------------+---------+---------+---------+---------+----------------------+---------+---------+---------+---------+----------------------+---------+---------+---------+---------+----------------------+---------+---------+---------+---------+
    | **Area**         | **Total TEs** | **Security Level 1** |         |         |         |         | **Security Level 2** |         |         |         |         | **Security Level 3** |         |         |         |         | **Security Level 4** |         |         |         |         |
@@ -539,16 +539,18 @@ The number of total TEs and percentage of applicable TEs will indicate how many 
    | **% Applicable** | **100**       | **56**               | **59**  | **60**  | **63**  | **64**  | **69**               | **75**  | **75**  | **78**  | **79**  | **66**               | **79**  | **80**  | **83**  | **84**  | **68**               | **83**  | **84**  | **87**  | **88**  |
    +------------------+---------------+----------------------+---------+---------+---------+---------+----------------------+---------+---------+---------+---------+----------------------+---------+---------+---------+---------+----------------------+---------+---------+---------+---------+
 
-The Area 2 TEs for a software module from security level 1 through level 4 are listed in Table 3. This area's requirements are about Cryptographic Module Specification, and they are the same for all four security levels. The unified area 2 requirements are reflected by the numbers of TEs in the red rectangle boxes on Table 2.
+We recognize that software implementations only support levels 1 and 2. However:
 
-The Area 7 TEs for a software module from security level 1 through level 4 are listed in Table 4. The Physical Security requirements in Area 7 are incremental for cryptographic modules from a low security level to a higher level. The numbers of TEs in the green rectangle boxes on Table 2 illustrate this trend.
+- The Area 2 TEs include requirements from security level 1 through level 4, which are listed in Table 4. This area's requirements are about Cryptographic Module Specification and are the same for all four security levels. The unified area 2 requirements are reflected by the numbers of TEs in the red rectangle boxes on Table 3.
 
-Table 3 and Table 4 in :ref:`TEs Impacted by Basic TE Filters` serve as examples of how the basic TE Filters work by listing all applicable TEs and non-applicable TEs for a given type of module at any possible security level. A complete set of TE tables elaborating on Table 2 is provided in the Appendix of this status report.
+- The Area 7 TEs include requirements from security level 1 through level 4, which are listed in Table 5. The Physical Security requirements in Area 7 are incremental for cryptographic modules from a low security level to a higher level. The numbers of TEs in the green rectangle boxes on Table 3 illustrate this trend.
+
+Table 4 and Table 5 in :ref:`TEs Impacted by Basic TE Filters` serve as examples of how the basic TE Filters work by listing all applicable TEs and non-applicable TEs for a given type of module at any possible security level. A complete set of TE tables elaborating on Table 3 is provided in the Appendix of this status report.
 
 TE Filtering Criteria
 __________________________
 
-The TE Filtering criteria consists of the Module Information and Supplemental Information from the Web-Cryptik as the base. The CMVP provided `Module Supplemental Information <https://csrc.nist.gov/csrc/media/Projects/cryptographic-module-validation-program/documents/fips%2520140-3/Module%2520Processes/SupplementalItems-V3.0.0.pdf>`__ (V3.0.0 as of 2024-09-04), but this is not currently used to tailor the set of TEs to fit the module under test.
+The TE Filtering criteria consists of the Module Information and Supplemental Information from the Web-Cryptik as the base. The CMVP provided `Module Supplemental Information <https://csrc.nist.gov/csrc/media/Projects/cryptographic-module-validation-program/documents/fips%2520140-3/Module%2520Processes/SupplementalItems-V3.0.0.pdf>`__ (V3.0.0 as of 2024-09-04) but is not currently used to tailor the set of TEs to fit the module under test.
 
 In the CMVP's Module Supplemental Information (MSI) document, most Supplemental Information questions map to the security assertions (AS), test requirement (TE), implementation guidance (IG), and security policy (SP), but a few questions are not mapped to any of these and are left blank. The list below reflects the CMVP's current MSI document. The TE Workstream provides a complete mapping of MSI questions to relevant TEs in :ref:`Table 5: TEs Affected by the Supplemental Filtering Properties <te impacted by supplemental te filters>`.
 
@@ -558,7 +560,7 @@ By reviewing all TEs contained in the Web-Cryptik Br1 v1.0.6, The TE Workstream 
    - Module Embodiment: Single Chip, Multi-Chip Embedded, Multi-Chip Standalone
    - Module Type: Software, Hardware, Firmware, Software-hybrid, Firmware-hybrid
    - Operational Environment: modifiable, limited, non-modifiable
-   - Section Level: Per Table 1, area 6 is not applicable to Level 3 and Level 4
+   - Section Level: Per Table 2, area 6 is not applicable to Level 3 and Level 4
 - Supplemental Filters
    - Cryptographic module specification
       - Does the module implement OTAR? - IG D.C 
@@ -627,13 +629,11 @@ By reviewing all TEs contained in the Web-Cryptik Br1 v1.0.6, The TE Workstream 
 TEs Impacted by Basic TE Filters
 _________________________________
 
-To ensure a structured approach to TE filtering, it is necessary to categorize TEs based on the security level and module type. Table 3 presents a detailed breakdown of the TEs applicable to different security levels for software modules, illustrating how filtering criteria refine the validation scope. By segmenting TEs according to security requirements, this table helps streamline the testing process, ensuring that only the relevant test evidence is considered for a given module configuration. This targeted approach enhances efficiency while maintaining rigorous security standards.
+To ensure a structured approach to TE filtering, it is necessary to categorize TEs based on the security level and module type. Table 4 presents a detailed breakdown of the TEs applicable to different security levels for software modules, illustrating how filtering criteria refine the validation scope. By segmenting TEs according to security requirements, this table helps streamline the testing process, ensuring that only the relevant test evidence is considered for a given module configuration, which enhances efficiency while maintaining rigorous security standards.
 
-Table 3 lists the Area 2 Cryptographic Module Specification TEs for a software module from security level 1 through level 4, and Table 4 lists the Area 7 Physical Security TEs for all four security levels.
+The team recognizes that software implementations only support levels 1 and 2. However, Table 4 lists the Area 2 Cryptographic Module Specification TEs required from security level 1 through level 4, and Table 5 lists the Area 7 Physical Security TEs for all four security levels.
 
-Table 3 lists the Area 2 Cryptographic Module Specification TEs for a software module from security level 1 through level 4, and Table 4 lists the Area 7 Physical Security TEs for all four security levels.
-
-.. table:: Table 3: Area 2 TEs Filtered by Security Level for Software Modules
+.. table:: Table 4: Area 2 TEs Filtered by Security Level for Software Modules
 
    +-------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | **Sec Lvl** | **Applicable TEs**                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | **Non-Applicable TEs**                                                                                                                                                                                                                                                                                     | **TEs N/A due to Module Type**                                                                                                                                                                                                                                                                             |
@@ -647,9 +647,9 @@ Table 3 lists the Area 2 Cryptographic Module Specification TEs for a software m
    | **4**       | TE02.03.01, TE02.03.02, TE02.07.01, TE02.07.02, TE02.09.01, TE02.10.01, TE02.10.02, TE02.11.01, TE02.11.02, TE02.12.01, TE02.13.01, TE02.13.02, TE02.13.03, TE02.14.01, TE02.16.01, TE02.16.02, TE02.16.03, TE02.16.04, TE02.16.05, TE02.19.01, TE02.19.02, TE02.20.01, TE02.20.02, TE02.20.03, TE02.20.04, TE02.21.01, TE02.21.02, TE02.22.01, TE02.22.02, TE02.24.01, TE02.24.02, TE02.26.01, TE02.26.02, TE02.26.03, TE02.26.04, TE02.26.05, TE02.28.01, TE02.28.02, TE02.30.01, TE02.30.02 | TE02.15.01, TE02.15.02, TE02.15.03, TE02.15.04, TE02.15.05, TE02.15.06, TE02.15.07, TE02.15.08, TE02.15.09, TE02.15.10, TE02.15.11, TE02.15.12, TE02.15.13, TE02.15.14, TE02.17.01, TE02.17.02, TE02.17.03, TE02.17.04, TE02.17.05, TE02.17.06, TE02.17.07, TE02.17.08, TE02.17.09, TE02.17.10, TE02.18.01 | TE02.15.01, TE02.15.02, TE02.15.03, TE02.15.04, TE02.15.05, TE02.15.06, TE02.15.07, TE02.15.08, TE02.15.09, TE02.15.10, TE02.15.11, TE02.15.12, TE02.15.13, TE02.15.14, TE02.17.01, TE02.17.02, TE02.17.03, TE02.17.04, TE02.17.05, TE02.17.06, TE02.17.07, TE02.17.08, TE02.17.09, TE02.17.10, TE02.18.01 |
    +-------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-While Table 3 focuses on the impact of TE filtering for software modules, the filtering criteria must also be applied to hardware-based implementations. Table 4 extends this analysis by examining TEs specific to single-chip hardware modules, mapping the applicable security requirements to different security levels. This comparison highlights the distinctions in validation approaches between software and hardware modules, ensuring that the filtering process remains consistent and comprehensive across various module types.
+While Table 4 focuses on the impact of TE filtering for software modules, the filtering criteria must also be applied to hardware-based implementations. Table 5 extends this analysis by examining TEs specific to single-chip hardware modules, mapping the applicable security requirements to different security levels. This comparison highlights the distinctions in validation approaches between software and hardware modules, ensuring that the filtering process remains consistent and comprehensive across various module types.
 
-.. table:: Table 4: Area 7 TEs Filtered by Security Level for Single Chip Hardware Modules
+.. table:: Table 5: Area 7 TEs Filtered by Security Level for Single Chip Hardware Modules
 
    +---------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | Sec Lvl | Applicable TEs                                                                                                                                                                                                                                                                                                                                                                                                                                                         | Non-Applicable TEs                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | TEs N/A due to Module Type/Embodiment                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
@@ -668,9 +668,9 @@ While Table 3 focuses on the impact of TE filtering for software modules, the fi
 TE Impacted by Supplemental TE Filters
 ________________________________________
 
-In addition to the basic TE filtering criteria, supplemental filters further refine the selection of applicable test evidence based on specific module properties and security features. Table 5 highlights the TEs affected by these supplemental filtering properties, which include factors such as authentication mechanisms, cryptographic output capabilities, tamper response measures, and other specialized security attributes. By applying these filters, the validation process can be optimized to focus on the most relevant security assurances while reducing redundant or inapplicable tests. This targeted approach enhances the efficiency and accuracy of the TE selection process.
+In addition to the basic TE filtering criteria, supplemental filters further refine the selection of applicable test evidence based on specific module properties and security features. Table 6 highlights the TEs affected by these supplemental filtering properties, which include factors such as authentication mechanisms, cryptographic output capabilities, tamper response measures, and other specialized security attributes. By applying these filters, the validation process can be optimized to focus on the most relevant security assurances while reducing redundant or inapplicable tests, which enhances the efficiency and accuracy of the TE selection process.
 
-.. table:: Table 5: TEs Affected by the Supplemental Filtering Properties
+.. table:: Table 6: TEs Affected by the Supplemental Filtering Properties
 
    +------------------------------------------------------------------------+---------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------+
    | **Filter Property**                                                    | **Include If True** | **Exclude If False**                                                                                                                                                                                                                                                                                                                                       | **Number of Affected TEs** |
@@ -750,7 +750,7 @@ In addition to the basic TE filtering criteria, supplemental filters further ref
    | **Total number of TEs affected by the supplemental filter properties**                                                                                                                                                                                                                                                                                                                                                                                    | **192**                    |
    +------------------------------------------------------------------------+---------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------+
 
-Note: The total number of the TEs affected by the supplemental filter properties is not the sum of the numbers in the column of "Number of Affected TEs" (i.e., 218) because some TEs are affected by multiple filter properties and so appear multiple times in Table 5: TEs Affected by the Supplemental Filtering Properties.
+Note: The total number of the TEs affected by the supplemental filter properties is not the sum of the numbers in the column of "Number of Affected TEs" (i.e., 218) because some TEs are affected by multiple filter properties and so appear multiple times in Table 6.
 
 Removing ASes not separately tested
 -------------------------------------
@@ -761,7 +761,7 @@ These ASes depend on the completion of other ASes and their TEs. For example: **
 
 The TE Workstream does not address the dependency at the TE level (e.g., TE10.28.02 and TE10.34.03) as opposed to the AS level.
 
-.. table:: Table 6: Assertions (ASs) not separately tested
+.. table:: Table 7: Assertions (ASs) not separately tested
 
    +-----------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | FIPS 140-3 Section Title                | ASes not separately tested                                                                                                                                                                                                                                                                                                                                                                                                             |
@@ -790,44 +790,3 @@ The TE Workstream does not address the dependency at the TE level (e.g., TE10.28
    +-----------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | Mitigation of Other Attacks             | None                                                                                                                                                                                                                                                                                                                                                                                                                                   |
    +-----------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-
-Acronyms and Initialisms
----------------------------
-
-+----------------+--------------------------------------------------------+
-| **ACMVP**      | Automated Cryptographic Module Validation Project      |
-+----------------+--------------------------------------------------------+
-| **AS**         | Assertion                                              |
-+----------------+--------------------------------------------------------+
-| **CMVP**       | Cryptographic Module Validation Program                |
-+----------------+--------------------------------------------------------+
-| **FIPS**       | Federal Information Processing Standards               |
-+----------------+--------------------------------------------------------+
-| **NCCoE**      | National Cybersecurity Center of Excellence            |
-+----------------+--------------------------------------------------------+
-| **SP**         | Security Policy                                        |
-+----------------+--------------------------------------------------------+
-| **TE**         | Test Evidence                                          |
-+----------------+--------------------------------------------------------+
-| **VE**         | Vendor Evidence                                        |
-+----------------+--------------------------------------------------------+
-
-
-Bibliography / Additional References
----------------------------------------
-
-[1] National Institute of Standards and Technology, "Federal Information Processing Standards Publications (FIPS PUBS) 140-3: Security Requirements for Cryptographic Modules," 2019. [Online]. Available: https://doi.org/10.6028/NIST.FIPS.140-3.
-
-[2] National Institute of Standards and Technology and Canadian Center for Cyber Security, "Draft FIPS 140-3- Cryptographic Module Validation Program Management Manual, Version 1.1," July 2022. [Online]. Available: https://csrc.nist.gov/Projects/cryptographic-module-validation-program/cmvp-fips-140-3-management-manual.
-
-[3] National Institute of Standards and Technology and National Cybersecurity Center of Excellence, "Automation of the Cryptographic Module Validation Program," September 2022. [Online]. Available: https://www.nccoe.nist.gov/automation-nist-cryptographic-module-validation-program.
-
-[4] National Institute of Standards and Technology and Canadian Center for Cyber Security, "FIPS 140-3 Regression Testing Table to Be Upcoming in FIPS 140-3 Management Manual," NIST, Washington D. C., 2022.
-
-[5] D. Hawes, A. Calis and R. Crombie, "CMVP Security Policy Requirements: CMVP Validation Authority Updates to ISO/IEC 24759 and ISO/IEC 19790 Annex B (2nd Public Draft)," October 2022. [Online]. Available: https://csrc.nist.gov/publications/detail/sp/800-140b/rev-1/draft.
-
-[6] D. Hawes, A. Calis and R. Crombie, "CMVP Security Policy Requirements: CMVP Validation Authority Updates to ISO/IEC 24759 and ISO/IEC 19790 Annex B," May 2022. [Online]. Available: https://csrc.nist.gov/publications/detail/sp/800-140b/rev-1/archive/2022-05-12.
-
-[7] ISO, ISO/IEC 24759:2017: Information Technology — Security Techniques — Test Requirements for Cryptographic Modules, Geneva, Switzerland: International Organization for Standardization, 2017.
-
-[8] ISO, ISO/IEC 19790:2012: Information Technology — Security Techniques — Security Requirements for Cryptographic Modules, Geneva, Switzerland: International Organization for Standardization, 2012.

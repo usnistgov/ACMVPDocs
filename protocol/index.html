@@ -16,33 +16,30 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/content.css?v=59cd0ab0" />
     <link rel="stylesheet" type="text/css" href="../_static/tables.css?v=1ae3e97c" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../_static/jquery.js?v=5d32c60e"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
@@ -58,7 +55,6 @@
     <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'protocol/index';</script>
     <script src="../_static/jquery.visible.js?v=5b129ffc"></script>
     <script src="../_static/jquery.leaveNotice-nist.js?v=21f5b3a4"></script>
@@ -71,7 +67,6 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
 
     <link rel="stylesheet" href="https://pages.nist.gov/nist-header-footer/css/nist-combined.css">
     <link rel="stylesheet" type="text/css" href="https://pages.nist.gov/leaveNotice/css/jquery.leaveNotice.css" />
@@ -98,8 +93,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -107,6 +113,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search..."
          aria-label="Search..."
          autocomplete="off"
@@ -114,8 +121,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -131,8 +138,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -162,11 +168,15 @@
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -193,6 +203,7 @@
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../infrastructure/index.html">Research Infrastructure Workstream</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../conclusion.html">Conclusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../te/tables/tetables.html">Appendix: TE Tables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../te/tables/area2.html">Area 2 Tables</a></li>
 
@@ -403,16 +414,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -436,10 +455,7 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contributions-and-acknowledgements">Contributions and Acknowledgements</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proof-of-concept-server-features">Proof-of-Concept Server Features</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#server-implementation">Server Implementation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#client-implementations">Client Implementations</a><ul class="nav section-nav flex-column">
@@ -466,47 +482,43 @@
 </div>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
-<p>The Protocol Workstream is defining the interactions between automated CMVP server assets and the NCCoE ACMVP clients supporting a proof-of-concept of automation capabilities. This section captures the progress made since the last report was released in September 2024.</p>
-<section id="contributions-and-acknowledgements">
-<h3>Contributions and Acknowledgements<a class="headerlink" href="#contributions-and-acknowledgements" title="Link to this heading">#</a></h3>
-<p>The ACMVP Protocol Workstream is led by Barry Fussell and Andrew Karcher of Cisco  and Chris Celi of NIST with contributions from Panos Kampanakis of Amazon, Michael McCarl and Deborah Harrington of AEGISOLVE, Alex Thurston of Lightship, Stephan Mueller and Walker Riley of atsec, Mike Grimm of Microsoft, Robert Staples of NIST, and Raoul Gabiam, Michael Dimond, Kyle Vitale, Doris Rui, and Matthew Fortes of the MITRE Corporation.</p>
-<p>The Protocol Workstream is responsible for defining the interactions between automated CMVP server assets and the NCCoE ACMVP clients supporting a proof-of-concept of automation capabilities. This section captures the progress made since the last report was released in September 2024.</p>
-</section>
+<p>The Protocol Workstream defines the interactions between automated CMVP server assets and the NCCoE ACMVP clients supporting a proof-of-concept of automation capabilities. This section captures the progress made since the last report in September 2024.</p>
+<p>The ACMVP Protocol Workstream is led by Barry Fussell and Andrew Karcher of Cisco and Chris Celi of NIST with contributions from Panos Kampanakis of Amazon, Michael McCarl and Deborah Harrington of AEGISOLVE, Alex Thurston of Lightship, Stephan Mueller and Walker Riley of atsec, Mike Grimm of Microsoft, Robert Staples of NIST, and Raoul Gabiam, Michael Dimond, Kyle Vitale, Doris Rui, and Matthew Fortes of the MITRE Corporation.</p>
 </section>
 <section id="proof-of-concept-server-features">
 <h2>Proof-of-Concept Server Features<a class="headerlink" href="#proof-of-concept-server-features" title="Link to this heading">#</a></h2>
 <p>The proof-of-concept server currently implements the following features:
-- Two-factor authentication using TOTP and mTLS. This system improves the TOTP from ACVP by allowing a user to maintain multiple seeds for simultaneous connections.
-- Module registration that defines the security levels, embodiment, and other properties of the cryptographic module. This is used to automatically determine which TEs are applicable to the cryptographic module.
-- Module evidence submission that prompts a client to provide evidence addressing TEs that are applicable to the cryptographic module. The system will inform you which TEs have not yet been addressed by the submission to ensure completeness.
-- Module security policy submission defined entirely in JSON. The system will generate the security policy automatically, allowing the client to retrieve the completed PDF. This ensures that all sections are present and completed.
-- Awards a validation certificate once all evidence and security policy information are completed.
-- Comment rounds handled through the API.
-- Automatic processing of functional test evidence (FE-TEs) based on the test type selected by the lab.
-- Accept source code test evidence based on the test procedure selected by the lab.</p>
+- Two-factor authentication using TOTP and mTLS, which improves the TOTP from ACVP by allowing a user to maintain multiple seeds for simultaneous connections
+- Module registration that defines the security levels, embodiment, and other properties of the cryptographic module and automatically determines which TEs are applicable to the cryptographic module
+- Module evidence submission that prompts a client to provide evidence addressing TEs that are applicable to the cryptographic module and will show which TEs have not yet been addressed by the submission to ensure completeness
+- Module security policy submission defined entirely in JSON, which will generate the security policy automatically, allowing the client to retrieve the completed PDF, and ensures that all sections are present and completed.
+- The awarding of a validation certificate once all evidence and security policy information are completed
+- Automatic processing of functional test evidence (FE-TEs) based on the test type selected by the lab
+- Acceptance of source code test evidence based on the test procedure selected by the lab</p>
 </section>
 <section id="server-implementation">
 <h2>Server Implementation<a class="headerlink" href="#server-implementation" title="Link to this heading">#</a></h2>
-<p>The server uses much of the same infrastructure as ACVP and ESV. This is intentional in order to keep the same team available to maintain the systems once they are integrated by the CMVP. This is mainly C# applications along with SQL Server databases.</p>
-<p>The server development team is also using this opportunity to re-evaluate the required security assurances within NIST to see if any improvements can be brought back into the rest of the CMVP applications. This includes the requirement for 2FA, separation between internal and external systems, ITAR restrictions, and other elements that are a part of the ACVP and ESV systems.</p>
+<p>The server uses much of the same infrastructure as ACVP and ESV, which is intended to keep the same team available to maintain the systems once they are integrated by the CMVP. The system is comprised of C# and Python applications along with SQL Server databases.</p>
+<p>The server development team is also using this opportunity to re-evaluate the required security assurances within NIST to see if any improvements can be implemented into the rest of the CMVP applications, which includes the requirement for Two-Factor authentication, separation between internal and external systems, International Traffic and Arms Restrictions (ITAR), and other elements of the ACVP and ESV systems.</p>
 </section>
 <section id="client-implementations">
 <h2>Client Implementations<a class="headerlink" href="#client-implementations" title="Link to this heading">#</a></h2>
+<p>This section describes the two open source clients, Libamvp and ACVP Proxy, that provide foundational code for developers to build upon when interfacing with the server.</p>
 <section id="libamvp-cisco">
 <h3>Libamvp - Cisco<a class="headerlink" href="#libamvp-cisco" title="Link to this heading">#</a></h3>
-<p>Libamvp is an example client for the AMVP protocol developed by Cisco engineers. It is C based and interacts with the server by parsing user-generated JSON. It is intended to be a simple tool to showcase the protocol and assist developers as they create workflows for the generation and submission of AMVP data. Libamvp can create modules and certification requests, submit all required evidence and security policy info, retrieve security policy PDFs, check for the status of a certification request, and more, as development continues.</p>
+<p>Libamvp is an example client for the AMVP protocol developed by Cisco engineers. It is C based and interacts with the server by parsing user-generated JSON and is intended to be a simple tool to showcase the protocol and assist developers as they create workflows for the generation and submission of AMVP data. Libamvp can create modules and certification requests, submit all required evidence and security policy information, retrieve security policy PDFs, check for the status of a certification request, and other actions, as development continues.</p>
 <p>Libamvp can be found here: <a class="github reference external" href="https://github.com/cisco/libamvp">cisco/libamvp</a>.</p>
 </section>
 <section id="acvp-proxy-atsec">
 <h3>ACVP Proxy - atsec<a class="headerlink" href="#acvp-proxy-atsec" title="Link to this heading">#</a></h3>
-<p>The client is called the ACVP Proxy and is supported by atsec information security corp. Albeit the name, it provides the interface to access the NIST ACVP, ESVP, and AMVP services. The code is open sourced and available at the public repository: <a class="github reference external" href="https://github.com/smuellerDD/acvpproxy">smuellerDD/acvpproxy</a>.</p>
-<p>The ACVP Proxy has many options and allows a flexible deployment. It is extendable to cover an arbitrary number of IUT definitions. The ACVP Proxy implements the entire interaction with the NIST servers to obtain the data from the server and upload all required data to the server.</p>
+<p>The client is called the ACVP Proxy and is supported by atsec information security corp. It provides the interface to access the NIST ACVP, ESVP, and AMVP services using an open sourced code that is available at the public repository: <a class="github reference external" href="https://github.com/smuellerDD/acvpproxy">smuellerDD/acvpproxy</a>.</p>
+<p>The ACVP Proxy has many options, allows a flexible deployment, and is extendable to cover an arbitrary number of IUT definitions. The AVP Proxy implements the entire interaction with the NIST servers to obtain the data from the server and upload all required data to the server.</p>
 </section>
 </section>
 <section id="accessing-the-acmvp-demo-server">
 <h2>Accessing the ACMVP Demo Server<a class="headerlink" href="#accessing-the-acmvp-demo-server" title="Link to this heading">#</a></h2>
-<p>Here are the instructions and steps to request access to the upcoming Demo environment.</p>
-<p>Send a CSR (Certificate Signing Request) file to the CMVP via the Secure File Communication service found at the URL <a class="reference external" href="https://sfc.doc.gov">https://sfc.doc.gov</a>. Please note that, due to policy, a CSR cannot be accepted via email or email attachment; it must be sent through the SFC system. To establish an account on SFC, send an email to <a class="reference external" href="mailto:amvp-demo&#37;&#52;&#48;nist&#46;gov">amvp-demo<span>&#64;</span>nist<span>&#46;</span>gov</a>.</p>
+<p>Here are the instructions and steps to request access to the upcoming demo environment:</p>
+<p>Send a CSR (Certificate Signing Request) file to the CMVP via the Secure File Communication service found at the URL <a class="reference external" href="https://sfc.doc.gov">https://sfc.doc.gov</a>. Due to policy, a CSR cannot be accepted via email or email attachment and must be sent through the SFC system. To establish an account on SFC, send an email to <a class="reference external" href="mailto:amvp-demo&#37;&#52;&#48;nist&#46;gov">amvp-demo<span>&#64;</span>nist<span>&#46;</span>gov</a>.</p>
 <p>Please send the CSR file in PEM format following these requirements:</p>
 <ol class="arabic">
 <li><p>Use this naming convention for your CSR:</p>
@@ -541,19 +553,21 @@ openssl<span class="w"> </span>req<span class="w"> </span>-new<span class="w"> <
 </div>
 </div></blockquote>
 </li>
-<li><p>Upon receipt of your CSR file, the CMVP will validate that it meets the above stated requirements. If there are any issues, the CMVP will point out via email response what needs to be corrected.</p></li>
-<li><p>Once the certificate is generated, notification will be sent with the certificate and TOTP seed via an SFC message. The credentials will be valid immediately upon receipt.</p></li>
+<li><p>Upon receipt of the CSR file, the CMVP will validate that it meets the above stated requirements and will point out via email response what needs to be corrected if there are any issues</p></li>
+<li><p>Once the certificate is generated, a notification will be sent with the certificate and TOTP seed via an SFC message and the credentials will be valid immediately upon receipt</p></li>
 </ol>
 <p>Users are expected to protect the key pair from unauthorized use and to notify NIST in the event the keypair becomes compromised in any way.</p>
-<p>Note that per policy, SFC accounts and attachments are only valid for 2 calendar weeks from when the invitation email is sent. If you already have an active SFC account, it may be used it to send the CSR file, but please begin the process by sending the initial request to <a class="reference external" href="mailto:amvp-demo&#37;&#52;&#48;nist&#46;gov">amvp-demo<span>&#64;</span>nist<span>&#46;</span>gov</a>.</p>
-<p>Note that external SFC accounts will go dormant after 2 weeks by NIST policy - this is normal behavior. After the certificate is exchanged, there is no further need for SFC. Additionally the account can be reinstated at any point in time by going through the same process.</p>
+<p>Note that per policy, SFC accounts and attachments are only valid for two calendar weeks from when the invitation email is sent. Existing SFC accounts may be used to send the CSR file but it is advised to begin the process by sending the initial request to <a class="reference external" href="mailto:amvp-demo&#37;&#52;&#48;nist&#46;gov">amvp-demo<span>&#64;</span>nist<span>&#46;</span>gov</a>.</p>
+<p>Note that external SFC accounts will go dormant after two weeks by NIST policy, which is normal behavior. After the certificate is exchanged, there is no further need for SFC.</p>
+<p>Additionally, the account can be reinstated at any point in time by going through the same process.</p>
 </section>
 <section id="planned-work">
 <h2>Planned Work<a class="headerlink" href="#planned-work" title="Link to this heading">#</a></h2>
-<p>The work is still in progress. Here are some features that will be addressed over the next six months:</p>
+<p>The work is still in progress. Here are some features that will be addressed by Fall 2025:</p>
 <ul class="simple">
-<li><p>Continue developing automated checklist rules to ensure submissions are as correct as possible before entering the hands of a reviewer.</p></li>
-<li><p>Add reviewer comment rounds to the protocol and implementations rather than handle them out of band over encrypted email.</p></li>
+<li><p>Continue developing automated checklist rules to ensure submissions are as correct as possible before entering the hands of a reviewer</p></li>
+<li><p>Add reviewer comment rounds to the protocol and implementations rather than handle them out of band over encrypted email</p></li>
+<li><p>Begin integrating ACMVP research products into the production CMVP workflows</p></li>
 </ul>
 </section>
 </section>
@@ -594,8 +608,7 @@ openssl<span class="w"> </span>req<span class="w"> </span>-new<span class="w"> <
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -604,10 +617,7 @@ openssl<span class="w"> </span>req<span class="w"> </span>-new<span class="w"> <
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contributions-and-acknowledgements">Contributions and Acknowledgements</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proof-of-concept-server-features">Proof-of-Concept Server Features</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#server-implementation">Server Implementation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#client-implementations">Client Implementations</a><ul class="nav section-nav flex-column">
@@ -640,8 +650,8 @@ openssl<span class="w"> </span>req<span class="w"> </span>-new<span class="w"> <
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 <footer class="footer mt-5 mt-md-0">
     <div class="container">
       <p>

@@ -16,33 +16,30 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/content.css?v=59cd0ab0" />
     <link rel="stylesheet" type="text/css" href="../_static/tables.css?v=1ae3e97c" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../_static/jquery.js?v=5d32c60e"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
@@ -58,7 +55,6 @@
     <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'te/index';</script>
     <script src="../_static/jquery.visible.js?v=5b129ffc"></script>
     <script src="../_static/jquery.leaveNotice-nist.js?v=21f5b3a4"></script>
@@ -71,7 +67,6 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
 
     <link rel="stylesheet" href="https://pages.nist.gov/nist-header-footer/css/nist-combined.css">
     <link rel="stylesheet" type="text/css" href="https://pages.nist.gov/leaveNotice/css/jquery.leaveNotice.css" />
@@ -98,8 +93,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -107,6 +113,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search..."
          aria-label="Search..."
          autocomplete="off"
@@ -114,8 +121,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -131,8 +138,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -162,11 +168,15 @@
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -403,16 +413,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -457,8 +475,6 @@
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-ases-not-separately-tested">Removing ASes not separately tested</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acronyms-and-initialisms">Acronyms and Initialisms</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bibliography-additional-references">Bibliography / Additional References</a></li>
 </ul>
             </nav>
         </div>
@@ -474,20 +490,20 @@
 <h1>Test Evidence Workstream<a class="headerlink" href="#test-evidence-workstream" title="Link to this heading">#</a></h1>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
-<p>The structured application of test evidence (TE) filtering proposed by the Test Evidence (TE) Workstream plays a crucial role in streamlining the validation process for cryptographic modules under FIPS 140-3. By leveraging both basic and supplemental filters, the evaluation process ensures that only relevant test evidence is considered, reducing redundancy while maintaining rigorous security standards. This approach enhances efficiency, supports automation, and enables a more scalable validation framework. As the TE Workstream continues refining these methodologies, the integration of well-defined filtering criteria will further strengthen the Cryptographic Module Validation Program (CMVP), improving consistency and accuracy in compliance assessments.</p>
-<p>The September 2024 Status Report (<a class="reference external" href="https://doi.org/10.6028/NIST.CSWP.37.ipd">https://doi.org/10.6028/NIST.CSWP.37.ipd</a>) of Automation of the NIST Cryptographic Module Validation Program (ACMVP) summarizes the NCCoE ACMVP project, including the deliverables from the TE Workstream. Since the publication of that report, the TE Workstream has been working to complete:</p>
+<p>The structured application of test evidence filtering proposed by the Test Evidence (TE) Workstream plays a crucial role in streamlining the validation process for cryptographic modules under FIPS 140-3. By leveraging both basic and supplemental filters, the evaluation process ensures that only relevant test evidence is considered, reducing redundancy while maintaining rigorous security standards. This approach enhances efficiency, supports automation, and enables a more scalable validation framework. As the TE Workstream continues refining these methodologies, integrating well-defined filtering criteria will further strengthen the CMVP, improving consistency and accuracy in compliance assessments.</p>
+<p>The September 2024 Status Report (<a class="reference external" href="https://doi.org/10.6028/NIST.CSWP.37.ipd">https://doi.org/10.6028/NIST.CSWP.37.ipd</a>) summarizes the NCCoE ACMVP project, including the deliverables from the TE Workstream. Since the publication of that report, the TE Workstream has been working to complete:</p>
 <ul class="simple">
 <li><p>Test methods for functional testing TEs</p></li>
 <li><p>Improvement of TE filtering coverage</p></li>
 </ul>
-<p>The ACMVP TE Workstream is led by Yi Mao of atsec and Shawn Geddis of Katalyst under the NCCoE ACMVP leadership of Murugiah Souppaya  and Chris Celi of NIST. The workstream is in debt to the invaluable contributions from Alex Calis of NIST CMVP. The workstream benefited from contributions from the atsec team, including but not limited to Stephan Mueller, Walker Riley, and Swapneela Unkule; the Intertek Acumen Security team led by James Reardon with Chris Bell, Sowndar Gillan Gopi, and Rutwij Kulkarni; the AEGISOLVE team including but not limited to Travis Spann, Javier Martel, Mike McCarl, and Debbie Harrington; Ryan Thomas of Lightship Security; Barry Fussell and Andrew Karcher of Cisco; Alicia Squires and Courtney Maatta of Amazon; Marc Ireland of NXP; Mike Grimm of Microsoft; Ivan Teblin and Blaine Stone of SUSE; and Michael Dimond of the MITRE Corporation.</p>
+<p>The ACMVP TE Workstream is led by Yi Mao of atsec and Shawn Geddis of Katalyst under the NCCoE ACMVP leadership of Murugiah Souppaya and Chris Celi of NIST. The workstream is in debt to the invaluable contributions from Alex Calis of NIST CMVP. The workstream benefited from contributions from the atsec team members including Stephan Mueller, Walker Riley, and Swapneela Unkule; the Intertek Acumen Security team led by James Reardon with Chris Bell, Sowndar Gillan Gopi, and Rutwij Kulkarni; the AEGISOLVE team members including Travis Spann, Javier Martel, Mike McCarl, and Debbie Harrington; Ryan Thomas of Lightship Security; Barry Fussell and Andrew Karcher of Cisco; Alicia Squires and Courtney Maatta of Amazon; Marc Ireland of NXP; Mike Grimm of Microsoft; Ivan Teblin and Blaine Stone of SUSE; and Michael Dimond of the MITRE Corporation.</p>
 </section>
 <section id="test-methods-for-functional-testing-tes">
 <h2>Test Methods for Functional Testing TEs<a class="headerlink" href="#test-methods-for-functional-testing-tes" title="Link to this heading">#</a></h2>
-<p>The diverse set of cryptographic modules and their varying restrictive operating environments can create challenges in choosing the right approach and selection of an appropriate toolset to capture the evaluation TE. The CMVP provides some limited guidance, but it is necessary to identify which test methods are relevant to the granularity of individual TEs.</p>
+<p>The diverse set of cryptographic modules and their varying restrictive operating environments can create challenges in choosing the right approach and selecting an appropriate toolset to capture the evaluation TE. The CMVP provides some limited guidance, but it is necessary to identify which test methods are relevant to the granularity of individual TEs.</p>
 <section id="testing-access">
 <h3>Testing Access<a class="headerlink" href="#testing-access" title="Link to this heading">#</a></h3>
-<p>There is frequently a challenge in accessing the operational environment for effective testing of a cryptographic module. There are allowances for various methodologies to follow for accommodating these challenges. For any given evaluation, it is assumed by default that the Testing Access used for all TEs is the same; however, any given TE might in fact require an alternate allowed Testing Access method to be used.</p>
+<p>Accessing the operational environment for effective testing of a cryptographic module is a persistent challenge and allowances for various methodologies to follow for accommodating these challenges exist. For any given evaluation, it is assumed by default that the Testing Access used for all TEs is the same; however, any given TE might in fact require an alternate allowed Testing Access method to be used.</p>
 <dl>
 <dt>The Testing Access methods are as follows:</dt><dd><p><strong>Physical</strong>
 Testing a module directly by lab personnel within a controlled lab environment.</p>
@@ -500,23 +516,22 @@ Testing a module by vendor personnel within a controlled lab environment while l
 </section>
 <section id="selection-criteria">
 <h3>Selection Criteria<a class="headerlink" href="#selection-criteria" title="Link to this heading">#</a></h3>
-<p>The challenge is now to assign only the appropriate test methods to each of the identified TEs. Drawing from CMVP, Lab and original vendor expertise, the criteria can be used to refine the test methods to be used for each TE.</p>
-<p>Test Methods are the defined techniques which can be utilized while ensuring confidence of capturing actual module operation under real-world conditions yet enabling an efficient evidence gathering workflow. There are a limited set of test method categories to focus on in our pursuit. These test methods can best be described as:</p>
+<p>The current challenge is to assign only the appropriate test methods to each of the identified TEs. Drawing from CMVP, lab, and original vendor expertise, the criteria can be used to refine the test methods to be used for each TE. Test methods are the defined techniques that can be utilized while ensuring confidence of capturing actual module operation under real-world conditions and enabling efficient evidence gathering workflow. Only a limited set of test method categories exist for the team to focus on in their pursuit, which can best be described as:</p>
 <ul class="simple">
-<li><p>Debugger: The ability to run or halt the target program using breakpoints, step through code line by line, and display or modify the contents of memory, CPU registers, and stack frames.</p></li>
-<li><p>Simulation: Imitates representation of the functioning of one system or process by means of the functioning of another.</p></li>
-<li><p>Emulation: Hardware or software that permits programs written for one environment to be run unaltered on another environment.</p></li>
+<li><p>Debugger: The ability to run or halt the target program using breakpoints, step through code line by line, and display or modify the contents of memory, CPU registers, and stack frames</p></li>
+<li><p>Simulation: Imitates representation of the functioning of one system or process by means of the functioning of another</p></li>
+<li><p>Emulation: Hardware or software that permits programs written for one environment to be run unaltered on another environment</p></li>
 <li><p>Harness: Hardware or software that manipulates an operating environment with the purpose of triggering events and capturing the corresponding responses or results.</p></li>
 <li><p>Manual: Action(s) by a user to perform a set of designated steps for the purpose of triggering events and capturing the corresponding responses or results.</p></li>
-<li><p>Other:  Due to the diversity and complexity of operating environments, the toolset needed to perform the gathering of relevant TE may not fit precisely within the above five test methods. This warrants the need for a catch all method that enables the tester to comprehensively describe the methodology used to capture the TE.</p></li>
+<li><p>Other:  Due to the diversity and complexity of operating environments, the toolset needed to perform the gathering of relevant TE may not fit precisely within the above five test methods, which warrants the need for a catch-all method that enables the tester to comprehensively describe the methodology used to capture the TE.</p></li>
 </ul>
 <section id="debugger">
 <h4>Debugger<a class="headerlink" href="#debugger" title="Link to this heading">#</a></h4>
-<p>There is no clearly articulated interpretation of when and how a Debugger can and should be used. Much of this is drawn from lab empirical evidence.</p>
+<p>No clearly articulated interpretation of when and how a debugger can and should be used is available as much of what is known comes from lab empirical evidence.</p>
 </section>
 <section id="simulation-and-or-emulation">
 <h4>Simulation and/or Emulation<a class="headerlink" href="#simulation-and-or-emulation" title="Link to this heading">#</a></h4>
-<p>Drawing from guidance currently provided by CMVP in the <a class="reference external" href="https://csrc.nist.gov/csrc/media/Projects/cryptographic-module-validation-program/documents/fips%20140-3/FIPS-140-3-CMVP%20Management%20Manual.pdf">Management Manual, dated 12/17/2024, Version 2.3</a>, Labs may apply emulators or simulators depending on the type of testing results to be achieved. There are three broad areas of focus during the testing of a cryptographic module: operational testing of the module at the module’s defined boundary, operational fault induction testing, and algorithm testing.</p>
+<p>Drawing from guidance currently provided by CMVP in the <a class="reference external" href="https://csrc.nist.gov/csrc/media/Projects/cryptographic-module-validation-program/documents/fips%20140-3/FIPS-140-3-CMVP%20Management%20Manual.pdf">Management Manual, Version 2.3</a>, labs may apply emulators or simulators depending on the type of testing results to be achieved. There are three broad areas of focus during the testing of a cryptographic module: operational testing of the module at the module’s defined boundary, operational fault induction testing, and algorithm testing.</p>
 <ol class="arabic simple">
 <li><p><strong>Operational Testing</strong> - Emulation or simulation is prohibited for the operational testing of a cryptographic module. Actual testing of the cryptographic module must be performed utilizing the defined ports and interfaces and services that a module provides. A test harness or a modified version to induce an error may be utilized; however, no changes to code or circuitry responsible for the tested response may be made.</p></li>
 <li><p><strong>Operational Fault Induction Testing</strong> - An emulator or simulator may be utilized for fault induction to test a cryptographic module’s transition to error states as a complement to the source code review. Rationale must be provided for the applicable TE as to why a method does not exist to induce the actual module into the error state for testing.</p></li>
@@ -530,21 +545,22 @@ Testing a module by vendor personnel within a controlled lab environment while l
 </section>
 <section id="harness">
 <h4>Harness<a class="headerlink" href="#harness" title="Link to this heading">#</a></h4>
-<p>There is no clearly articulated interpretation of when and how a Test Harness can and should be used. Much of this is drawn from experienced vendors that developed specialized test harnesses around their respective modules and within the restricted operating environments.</p>
+<p>No clearly articulated interpretation of when and how a test harness can and should be used is available as much of what is known comes from experienced vendors that developed specialized test harnesses around their respective modules and within the restricted operating environments.</p>
 </section>
 <section id="manual">
 <h4>Manual<a class="headerlink" href="#manual" title="Link to this heading">#</a></h4>
-<p>There is no clearly articulated interpretation of when and how a Manual process can and should be used. Much of this is drawn from the need for human interaction to trigger events or an inability to trigger the steps in an automated approach.</p>
+<p>No clearly articulated interpretation of when and how a manual process can and should be used is available as much of what is known comes from the need for human interaction to trigger events or an inability to trigger the steps in an automated approach.</p>
 </section>
 <section id="other">
 <h4>Other<a class="headerlink" href="#other" title="Link to this heading">#</a></h4>
-<p>As noted earlier, due to the diversity and complexity of operating environments, the toolset needed to perform the gathering of relevant TE may not fit precisely within the above five test methods. Therefore, there is a need for a catch all method that enables the tester to comprehensively describe the methodology used to capture the TE.</p>
+<p>As noted earlier, due to the diversity and complexity of operating environments, the toolset needed to perform the gathering of relevant TE may not fit precisely within the above five test methods. Therefore, a need for a catch-all method that enables the tester to comprehensively describe the methodology used to capture the TE exists.</p>
 </section>
 </section>
 <section id="test-methods-allowed">
 <h3>Test Methods Allowed<a class="headerlink" href="#test-methods-allowed" title="Link to this heading">#</a></h3>
 <p>The following table maps the allowed Test Methods to the grouping of associated TEs for purpose of condensing the resulting table.</p>
-<div class="pst-scrollable-table-container"><table class="table">
+<div class="pst-scrollable-table-container"><table class="table" id="id1">
+<caption><span class="caption-text">Table 1: Test Methods Allowed</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p><strong>TE (TE</strong>##.##.##<strong>)</strong></p></th>
 <th class="head" colspan="6"><p><strong>Test Method</strong></p></th>
@@ -1193,14 +1209,14 @@ Testing a module by vendor personnel within a controlled lab environment while l
 <p>TE filters serve as a pivotal mechanism to streamline the classification and evaluation of TE, ensuring that only relevant and applicable tests are conducted based on specific module characteristics. A proper set of applicable TEs tailored by a given module specification refines the required assessments and optimizes the validation process.</p>
 <p>With the growing complexity of cryptographic modules and the need for efficient validation, TE filters are designed to:</p>
 <ul class="simple">
-<li><p>Target Specific Needs: Focus on applicable tests by narrowing down evidence requirements based on module attributes such as type, security level, and operational environment.</p></li>
-<li><p>Reduce Redundancy: Minimize repetitive validation steps by filtering out TEs that are not relevant to a given module’s configuration or features.</p></li>
-<li><p>Enhance Automation: Support automated workflows by integrating filters into structured JSON schemas, aligning with automation tools like Web Cryptik.</p></li>
+<li><p>Target specific needs through focusing on applicable tests by narrowing down evidence requirements based on module attributes such as type, security level, and operational environment</p></li>
+<li><p>Reduce redundancy through minimizing repetitive validation steps by filtering out TEs that are not relevant to a given module’s configuration or features</p></li>
+<li><p>Enhance automation through supporting automated workflows by integrating filters into structured JSON schemas, aligning with automation tools like Web-Cryptik</p></li>
 </ul>
 <p>This document delves into the methodologies and criteria for applying TE filters, the implementation of filtering mechanisms, and their role in achieving a more efficient and scalable CMVP. By leveraging these filters, vendors and validators can focus on precise compliance requirements, reducing manual overhead while maintaining robust security standards.</p>
-<p>The following table is excerpted from ISO/IEC 19790:2012(2014), which is the base of FIPS 140-3. It provides a structured summary of the FIPS 140-3 security requirements across various requirement areas. It outlines the security levels applicable to each category, specifying the testing expectations and security assurances needed to meet compliance. The table serves as a reference for understanding how different cryptographic module components must align with FIPS 140-3 standards, ensuring consistent evaluation and validation. Each requirement area focuses on distinct security aspects, such as module specifications, authentication mechanisms, physical security, and lifecycle assurance, enabling a comprehensive approach to cryptographic module validation.</p>
-<div class="pst-scrollable-table-container"><table class="table" id="id1">
-<caption><span class="caption-text">Table 1: Summary of FIPS 140-3 Security Requirements</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
+<p>The following table is excerpted from ISO/IEC 19790:2012 (2014), which is the base of FIPS 140-3 and provides a structured summary of the FIPS 140-3 security requirements across various requirement areas. It outlines the security levels applicable to each category, specifying the testing expectations and security assurances needed to meet compliance. The table serves as a reference for understanding how different cryptographic module components must align with FIPS 140-3 standards, ensuring consistent evaluation and validation. Each requirement area focuses on distinct security aspects, such as module specifications, authentication mechanisms, physical security, and lifecycle assurance, enabling a comprehensive approach to cryptographic module validation.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id2">
+<caption><span class="caption-text">Table 2: Summary of FIPS 140-3 Security Requirements</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p><strong>Requirement Area</strong></p></th>
 <th class="head"></th>
@@ -1319,10 +1335,10 @@ Testing a module by vendor personnel within a controlled lab environment while l
 </tbody>
 </table>
 </div>
-<p>Building on the summary of FIPS 140-3 security requirements in Table 1, Table 2 provides a more granular analysis of the number of security requirements per ISO/IEC 24759:2014(2015), which is a companion document to ISO/IEC 19790 specifying the derived test requirements, across different implementation areas. This table categorizes security requirements based on the module’s type being Software (SW), Firmware (FW), Hardware (HW), SW-HW hybrid (SW-H), or FW-HW hybrid (FW-H), and further differentiates them by security levels. The breakdown facilitates a clearer understanding of the distribution of TE requirements, highlighting how various module implementations align with compliance expectations at each level.</p>
+<p>Building on the summary of FIPS 140-3 security requirements in Table 2, Table 3 provides a more granular analysis of the number of security requirements per ISO/IEC 24759:2014(2015), which is a companion document to ISO/IEC 19790 specifying the derived test requirements, across different implementation areas. This table categorizes security requirements based on the module’s type being Software (SW), Firmware (FW), Hardware (HW), SW-HW hybrid (SW-H), or FW-HW hybrid (FW-H), and further differentiates them by security levels. The breakdown facilitates a clearer understanding of the distribution of TE requirements, highlighting how various module implementations align with compliance expectations at each level.</p>
 <p>The number of total TEs and percentage of applicable TEs will indicate how many TEs are not applicable. By filtering out these non-applicable TEs with public consensus, the CSTL can more directly perform the required testing.</p>
-<div class="pst-scrollable-table-container"><table class="table" id="id2">
-<caption><span class="caption-text">Table 2: An overview of the number of Security Requirements</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
+<div class="pst-scrollable-table-container"><table class="table" id="id3">
+<caption><span class="caption-text">Table 3: An overview of the number of Security Requirements</span><a class="headerlink" href="#id3" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p><strong>Area</strong></p></th>
 <th class="head"><p><strong>Total TEs</strong></p></th>
@@ -1720,12 +1736,15 @@ Testing a module by vendor personnel within a controlled lab environment while l
 </tbody>
 </table>
 </div>
-<p>The Area 2 TEs for a software module from security level 1 through level 4 are listed in Table 3. This area’s requirements are about Cryptographic Module Specification, and they are the same for all four security levels. The unified area 2 requirements are reflected by the numbers of TEs in the red rectangle boxes on Table 2.</p>
-<p>The Area 7 TEs for a software module from security level 1 through level 4 are listed in Table 4. The Physical Security requirements in Area 7 are incremental for cryptographic modules from a low security level to a higher level. The numbers of TEs in the green rectangle boxes on Table 2 illustrate this trend.</p>
-<p>Table 3 and Table 4 in <a class="reference internal" href="#tes-impacted-by-basic-te-filters"><span class="std std-ref">TEs Impacted by Basic TE Filters</span></a> serve as examples of how the basic TE Filters work by listing all applicable TEs and non-applicable TEs for a given type of module at any possible security level. A complete set of TE tables elaborating on Table 2 is provided in the Appendix of this status report.</p>
+<p>We recognize that software implementations only support levels 1 and 2. However:</p>
+<ul class="simple">
+<li><p>The Area 2 TEs include requirements from security level 1 through level 4, which are listed in Table 4. This area’s requirements are about Cryptographic Module Specification and are the same for all four security levels. The unified area 2 requirements are reflected by the numbers of TEs in the red rectangle boxes on Table 3.</p></li>
+<li><p>The Area 7 TEs include requirements from security level 1 through level 4, which are listed in Table 5. The Physical Security requirements in Area 7 are incremental for cryptographic modules from a low security level to a higher level. The numbers of TEs in the green rectangle boxes on Table 3 illustrate this trend.</p></li>
+</ul>
+<p>Table 4 and Table 5 in <a class="reference internal" href="#tes-impacted-by-basic-te-filters"><span class="std std-ref">TEs Impacted by Basic TE Filters</span></a> serve as examples of how the basic TE Filters work by listing all applicable TEs and non-applicable TEs for a given type of module at any possible security level. A complete set of TE tables elaborating on Table 3 is provided in the Appendix of this status report.</p>
 <section id="te-filtering-criteria">
 <h3>TE Filtering Criteria<a class="headerlink" href="#te-filtering-criteria" title="Link to this heading">#</a></h3>
-<p>The TE Filtering criteria consists of the Module Information and Supplemental Information from the Web-Cryptik as the base. The CMVP provided <a class="reference external" href="https://csrc.nist.gov/csrc/media/Projects/cryptographic-module-validation-program/documents/fips%2520140-3/Module%2520Processes/SupplementalItems-V3.0.0.pdf">Module Supplemental Information</a> (V3.0.0 as of 2024-09-04), but this is not currently used to tailor the set of TEs to fit the module under test.</p>
+<p>The TE Filtering criteria consists of the Module Information and Supplemental Information from the Web-Cryptik as the base. The CMVP provided <a class="reference external" href="https://csrc.nist.gov/csrc/media/Projects/cryptographic-module-validation-program/documents/fips%2520140-3/Module%2520Processes/SupplementalItems-V3.0.0.pdf">Module Supplemental Information</a> (V3.0.0 as of 2024-09-04) but is not currently used to tailor the set of TEs to fit the module under test.</p>
 <p>In the CMVP’s Module Supplemental Information (MSI) document, most Supplemental Information questions map to the security assertions (AS), test requirement (TE), implementation guidance (IG), and security policy (SP), but a few questions are not mapped to any of these and are left blank. The list below reflects the CMVP’s current MSI document. The TE Workstream provides a complete mapping of MSI questions to relevant TEs in <a class="reference internal" href="#te-impacted-by-supplemental-te-filters"><span class="std std-ref">Table 5: TEs Affected by the Supplemental Filtering Properties</span></a>.</p>
 <p>By reviewing all TEs contained in the Web-Cryptik Br1 v1.0.6, The TE Workstream completed the list of criteria, including the basic filters and supplemental filters, as the following:</p>
 <ul class="simple">
@@ -1734,7 +1753,7 @@ Testing a module by vendor personnel within a controlled lab environment while l
 <li><p>Module Embodiment: Single Chip, Multi-Chip Embedded, Multi-Chip Standalone</p></li>
 <li><p>Module Type: Software, Hardware, Firmware, Software-hybrid, Firmware-hybrid</p></li>
 <li><p>Operational Environment: modifiable, limited, non-modifiable</p></li>
-<li><p>Section Level: Per Table 1, area 6 is not applicable to Level 3 and Level 4</p></li>
+<li><p>Section Level: Per Table 2, area 6 is not applicable to Level 3 and Level 4</p></li>
 </ul>
 </dd>
 </dl>
@@ -1870,11 +1889,10 @@ Testing a module by vendor personnel within a controlled lab environment while l
 </section>
 <section id="tes-impacted-by-basic-te-filters">
 <h3>TEs Impacted by Basic TE Filters<a class="headerlink" href="#tes-impacted-by-basic-te-filters" title="Link to this heading">#</a></h3>
-<p>To ensure a structured approach to TE filtering, it is necessary to categorize TEs based on the security level and module type. Table 3 presents a detailed breakdown of the TEs applicable to different security levels for software modules, illustrating how filtering criteria refine the validation scope. By segmenting TEs according to security requirements, this table helps streamline the testing process, ensuring that only the relevant test evidence is considered for a given module configuration. This targeted approach enhances efficiency while maintaining rigorous security standards.</p>
-<p>Table 3 lists the Area 2 Cryptographic Module Specification TEs for a software module from security level 1 through level 4, and Table 4 lists the Area 7 Physical Security TEs for all four security levels.</p>
-<p>Table 3 lists the Area 2 Cryptographic Module Specification TEs for a software module from security level 1 through level 4, and Table 4 lists the Area 7 Physical Security TEs for all four security levels.</p>
-<div class="pst-scrollable-table-container"><table class="table" id="id3">
-<caption><span class="caption-text">Table 3: Area 2 TEs Filtered by Security Level for Software Modules</span><a class="headerlink" href="#id3" title="Link to this table">#</a></caption>
+<p>To ensure a structured approach to TE filtering, it is necessary to categorize TEs based on the security level and module type. Table 4 presents a detailed breakdown of the TEs applicable to different security levels for software modules, illustrating how filtering criteria refine the validation scope. By segmenting TEs according to security requirements, this table helps streamline the testing process, ensuring that only the relevant test evidence is considered for a given module configuration, which enhances efficiency while maintaining rigorous security standards.</p>
+<p>The team recognizes that software implementations only support levels 1 and 2. However, Table 4 lists the Area 2 Cryptographic Module Specification TEs required from security level 1 through level 4, and Table 5 lists the Area 7 Physical Security TEs for all four security levels.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id4">
+<caption><span class="caption-text">Table 4: Area 2 TEs Filtered by Security Level for Software Modules</span><a class="headerlink" href="#id4" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p><strong>Sec Lvl</strong></p></th>
 <th class="head"><p><strong>Applicable TEs</strong></p></th>
@@ -1906,9 +1924,9 @@ Testing a module by vendor personnel within a controlled lab environment while l
 </tbody>
 </table>
 </div>
-<p>While Table 3 focuses on the impact of TE filtering for software modules, the filtering criteria must also be applied to hardware-based implementations. Table 4 extends this analysis by examining TEs specific to single-chip hardware modules, mapping the applicable security requirements to different security levels. This comparison highlights the distinctions in validation approaches between software and hardware modules, ensuring that the filtering process remains consistent and comprehensive across various module types.</p>
-<div class="pst-scrollable-table-container"><table class="table" id="id4">
-<caption><span class="caption-text">Table 4: Area 7 TEs Filtered by Security Level for Single Chip Hardware Modules</span><a class="headerlink" href="#id4" title="Link to this table">#</a></caption>
+<p>While Table 4 focuses on the impact of TE filtering for software modules, the filtering criteria must also be applied to hardware-based implementations. Table 5 extends this analysis by examining TEs specific to single-chip hardware modules, mapping the applicable security requirements to different security levels. This comparison highlights the distinctions in validation approaches between software and hardware modules, ensuring that the filtering process remains consistent and comprehensive across various module types.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id5">
+<caption><span class="caption-text">Table 5: Area 7 TEs Filtered by Security Level for Single Chip Hardware Modules</span><a class="headerlink" href="#id5" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Sec Lvl</p></th>
 <th class="head"><p>Applicable TEs</p></th>
@@ -1948,9 +1966,9 @@ Testing a module by vendor personnel within a controlled lab environment while l
 </section>
 <section id="te-impacted-by-supplemental-te-filters">
 <h3>TE Impacted by Supplemental TE Filters<a class="headerlink" href="#te-impacted-by-supplemental-te-filters" title="Link to this heading">#</a></h3>
-<p>In addition to the basic TE filtering criteria, supplemental filters further refine the selection of applicable test evidence based on specific module properties and security features. Table 5 highlights the TEs affected by these supplemental filtering properties, which include factors such as authentication mechanisms, cryptographic output capabilities, tamper response measures, and other specialized security attributes. By applying these filters, the validation process can be optimized to focus on the most relevant security assurances while reducing redundant or inapplicable tests. This targeted approach enhances the efficiency and accuracy of the TE selection process.</p>
-<div class="pst-scrollable-table-container"><table class="table" id="id5">
-<caption><span class="caption-text">Table 5: TEs Affected by the Supplemental Filtering Properties</span><a class="headerlink" href="#id5" title="Link to this table">#</a></caption>
+<p>In addition to the basic TE filtering criteria, supplemental filters further refine the selection of applicable test evidence based on specific module properties and security features. Table 6 highlights the TEs affected by these supplemental filtering properties, which include factors such as authentication mechanisms, cryptographic output capabilities, tamper response measures, and other specialized security attributes. By applying these filters, the validation process can be optimized to focus on the most relevant security assurances while reducing redundant or inapplicable tests, which enhances the efficiency and accuracy of the TE selection process.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id6">
+<caption><span class="caption-text">Table 6: TEs Affected by the Supplemental Filtering Properties</span><a class="headerlink" href="#id6" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p><strong>Filter Property</strong></p></th>
 <th class="head"><p><strong>Include If True</strong></p></th>
@@ -2145,7 +2163,7 @@ Testing a module by vendor personnel within a controlled lab environment while l
 </tbody>
 </table>
 </div>
-<p>Note: The total number of the TEs affected by the supplemental filter properties is not the sum of the numbers in the column of “Number of Affected TEs” (i.e., 218) because some TEs are affected by multiple filter properties and so appear multiple times in Table 5: TEs Affected by the Supplemental Filtering Properties.</p>
+<p>Note: The total number of the TEs affected by the supplemental filter properties is not the sum of the numbers in the column of “Number of Affected TEs” (i.e., 218) because some TEs are affected by multiple filter properties and so appear multiple times in Table 6.</p>
 </section>
 </section>
 <section id="removing-ases-not-separately-tested">
@@ -2153,8 +2171,8 @@ Testing a module by vendor personnel within a controlled lab environment while l
 <p>Some assertions (ASes) are not separately tested, and they do not have associated TEs.</p>
 <p>These ASes depend on the completion of other ASes and their TEs. For example: <strong>AS05.22</strong> is not separately tested but is instead tested as part of <strong>AS05.05</strong>. Table 6 highlights ASes that are not separately tested. Since these ASes are conditional in nature, a solution to the problem of these assertions that could be utilized is to use these assertions to further automate the report writing process. In this instance, the AS that is not separately tested could be omitted from the report template provided by the NCCoE ACMVP server if the server will include ASes in addition to TEs.</p>
 <p>The TE Workstream does not address the dependency at the TE level (e.g., TE10.28.02 and TE10.34.03) as opposed to the AS level.</p>
-<div class="pst-scrollable-table-container"><table class="table" id="id6">
-<caption><span class="caption-text">Table 6: Assertions (ASs) not separately tested</span><a class="headerlink" href="#id6" title="Link to this table">#</a></caption>
+<div class="pst-scrollable-table-container"><table class="table" id="id7">
+<caption><span class="caption-text">Table 7: Assertions (ASs) not separately tested</span><a class="headerlink" href="#id7" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>FIPS 140-3 Section Title</p></th>
 <th class="head"><p>ASes not separately tested</p></th>
@@ -2201,49 +2219,6 @@ Testing a module by vendor personnel within a controlled lab environment while l
 </table>
 </div>
 </section>
-<section id="acronyms-and-initialisms">
-<h2>Acronyms and Initialisms<a class="headerlink" href="#acronyms-and-initialisms" title="Link to this heading">#</a></h2>
-<div class="pst-scrollable-table-container"><table class="table">
-<tbody>
-<tr class="row-odd"><td><p><strong>ACMVP</strong></p></td>
-<td><p>Automated Cryptographic Module Validation Project</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>AS</strong></p></td>
-<td><p>Assertion</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>CMVP</strong></p></td>
-<td><p>Cryptographic Module Validation Program</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>FIPS</strong></p></td>
-<td><p>Federal Information Processing Standards</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>NCCoE</strong></p></td>
-<td><p>National Cybersecurity Center of Excellence</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>SP</strong></p></td>
-<td><p>Security Policy</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>TE</strong></p></td>
-<td><p>Test Evidence</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>VE</strong></p></td>
-<td><p>Vendor Evidence</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
-<section id="bibliography-additional-references">
-<h2>Bibliography / Additional References<a class="headerlink" href="#bibliography-additional-references" title="Link to this heading">#</a></h2>
-<p>[1] National Institute of Standards and Technology, “Federal Information Processing Standards Publications (FIPS PUBS) 140-3: Security Requirements for Cryptographic Modules,” 2019. [Online]. Available: <a class="reference external" href="https://doi.org/10.6028/NIST.FIPS.140-3">https://doi.org/10.6028/NIST.FIPS.140-3</a>.</p>
-<p>[2] National Institute of Standards and Technology and Canadian Center for Cyber Security, “Draft FIPS 140-3- Cryptographic Module Validation Program Management Manual, Version 1.1,” July 2022. [Online]. Available: <a class="reference external" href="https://csrc.nist.gov/Projects/cryptographic-module-validation-program/cmvp-fips-140-3-management-manual">https://csrc.nist.gov/Projects/cryptographic-module-validation-program/cmvp-fips-140-3-management-manual</a>.</p>
-<p>[3] National Institute of Standards and Technology and National Cybersecurity Center of Excellence, “Automation of the Cryptographic Module Validation Program,” September 2022. [Online]. Available: <a class="reference external" href="https://www.nccoe.nist.gov/automation-nist-cryptographic-module-validation-program">https://www.nccoe.nist.gov/automation-nist-cryptographic-module-validation-program</a>.</p>
-<p>[4] National Institute of Standards and Technology and Canadian Center for Cyber Security, “FIPS 140-3 Regression Testing Table to Be Upcoming in FIPS 140-3 Management Manual,” NIST, Washington D. C., 2022.</p>
-<p>[5] D. Hawes, A. Calis and R. Crombie, “CMVP Security Policy Requirements: CMVP Validation Authority Updates to ISO/IEC 24759 and ISO/IEC 19790 Annex B (2nd Public Draft),” October 2022. [Online]. Available: <a class="reference external" href="https://csrc.nist.gov/publications/detail/sp/800-140b/rev-1/draft">https://csrc.nist.gov/publications/detail/sp/800-140b/rev-1/draft</a>.</p>
-<p>[6] D. Hawes, A. Calis and R. Crombie, “CMVP Security Policy Requirements: CMVP Validation Authority Updates to ISO/IEC 24759 and ISO/IEC 19790 Annex B,” May 2022. [Online]. Available: <a class="reference external" href="https://csrc.nist.gov/publications/detail/sp/800-140b/rev-1/archive/2022-05-12">https://csrc.nist.gov/publications/detail/sp/800-140b/rev-1/archive/2022-05-12</a>.</p>
-<p>[7] ISO, ISO/IEC 24759:2017: Information Technology — Security Techniques — Test Requirements for Cryptographic Modules, Geneva, Switzerland: International Organization for Standardization, 2017.</p>
-<p>[8] ISO, ISO/IEC 19790:2012: Information Technology — Security Techniques — Security Requirements for Cryptographic Modules, Geneva, Switzerland: International Organization for Standardization, 2012.</p>
-</section>
 </section>
 
 
@@ -2282,8 +2257,7 @@ Testing a module by vendor personnel within a controlled lab environment while l
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -2313,8 +2287,6 @@ Testing a module by vendor personnel within a controlled lab environment while l
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-ases-not-separately-tested">Removing ASes not separately tested</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acronyms-and-initialisms">Acronyms and Initialisms</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bibliography-additional-references">Bibliography / Additional References</a></li>
 </ul>
   </nav></div>
 
@@ -2338,8 +2310,8 @@ Testing a module by vendor personnel within a controlled lab environment while l
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 <footer class="footer mt-5 mt-md-0">
     <div class="container">
       <p>
