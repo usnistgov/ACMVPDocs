@@ -103,10 +103,15 @@ Celi C, Souppaya M, Barker W, Scarfone K, Geddis S, Gabiam R, Mueller S, Mao Y, 
 **Author ORCID iDs**
 
 Chris Celi: 0000-0001-9979-6819
+
 Alex Calis: 0000-0003-1937-8129
+
 Murugiah Souppaya: 0000-0002-8055-8527
+
 William Barker: 0000-0002-4113-8861
+
 Karen Scarfone: 0000-0001-6334-9486
+
 Raoul Gabiam: 0009-0000-7458-8028
 
 **Public Comment Period**
