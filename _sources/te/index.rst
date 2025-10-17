@@ -58,7 +58,7 @@ No clearly articulated interpretation of when and how a debugger can and should 
 Simulation and/or Emulation
 ''''''''''''''''''''''''''''
 
-Drawing from guidance currently provided by CMVP in the `Management Manual, Version 2.3 <https://csrc.nist.gov/csrc/media/Projects/cryptographic-module-validation-program/documents/fips%20140-3/FIPS-140-3-CMVP%20Management%20Manual.pdf>`__, labs may apply emulators or simulators depending on the type of testing results to be achieved. There are three broad areas of focus during the testing of a cryptographic module: operational testing of the module at the module's defined boundary, operational fault induction testing, and algorithm testing.
+Drawing from guidance currently provided by CMVP in the `Management Manual, Version 2.3 <https://csrc.nist.gov/csrc/media/Projects/cryptographic-module-validation-program/documents/fips%20140-3/FIPS-140-3-CMVP%20Management%20Manual.pdf>`__ :ref:`[4] <ref-4>`, labs may apply emulators or simulators depending on the type of testing results to be achieved. There are three broad areas of focus during the testing of a cryptographic module: operational testing of the module at the module's defined boundary, operational fault induction testing, and algorithm testing.
 
 1. **Operational Testing** - Emulation or simulation is prohibited for the operational testing of a cryptographic module. Actual testing of the cryptographic module must be performed utilizing the defined ports and interfaces and services that a module provides. A test harness or a modified version to induce an error may be utilized; however, no changes to code or circuitry responsible for the tested response may be made.
 
@@ -441,7 +441,7 @@ With the growing complexity of cryptographic modules and the need for efficient 
 
 This document delves into the methodologies and criteria for applying TE filters, the implementation of filtering mechanisms, and their role in achieving a more efficient and scalable CMVP. By leveraging these filters, vendors and validators can focus on precise compliance requirements, reducing manual overhead while maintaining robust security standards.
 
-The following table is excerpted from ISO/IEC 19790:2012 (2014), which is the base of FIPS 140-3 and provides a structured summary of the FIPS 140-3 security requirements across various requirement areas. It outlines the security levels applicable to each category, specifying the testing expectations and security assurances needed to meet compliance. The table serves as a reference for understanding how different cryptographic module components must align with FIPS 140-3 standards, ensuring consistent evaluation and validation. Each requirement area focuses on distinct security aspects, such as module specifications, authentication mechanisms, physical security, and lifecycle assurance, enabling a comprehensive approach to cryptographic module validation.
+The following table is excerpted from ISO/IEC 19790:2012 (2014) :ref:`[5] <ref-5>`, which is the base of FIPS 140-3 and provides a structured summary of the FIPS 140-3 security requirements across various requirement areas. It outlines the security levels applicable to each category, specifying the testing expectations and security assurances needed to meet compliance. The table serves as a reference for understanding how different cryptographic module components must align with FIPS 140-3 standards, ensuring consistent evaluation and validation. Each requirement area focuses on distinct security aspects, such as module specifications, authentication mechanisms, physical security, and lifecycle assurance, enabling a comprehensive approach to cryptographic module validation.
 
 .. table:: Table 2: Summary of FIPS 140-3 Security Requirements
 
@@ -501,6 +501,14 @@ Building on the summary of FIPS 140-3 security requirements in Table 2, Table 3 
 
 The number of total TEs and percentage of applicable TEs will indicate how many TEs are not applicable. By filtering out these non-applicable TEs with public consensus, the CSTL can more directly perform the required testing.
 
+.. raw:: html
+
+   <style> .red { background-color: red; color: white; } </style>
+   <style> .g { background-color: green; color: white; } </style>
+
+.. role:: red
+.. role:: g
+
 .. table:: Table 3: An overview of the number of Security Requirements
 
    +------------------+---------------+----------------------+---------+---------+---------+---------+----------------------+---------+---------+---------+---------+----------------------+---------+---------+---------+---------+----------------------+---------+---------+---------+---------+
@@ -508,7 +516,7 @@ The number of total TEs and percentage of applicable TEs will indicate how many 
    +==================+===============+======================+=========+=========+=========+=========+======================+=========+=========+=========+=========+======================+=========+=========+=========+=========+======================+=========+=========+=========+=========+
    |                  |               | SW                   | FW      | HW      | SW-H    | FW-H    | SW                   | FW      | HW      | SW-H    | FW-H    | SW                   | FW      | HW      | SW-H    | FW-H    | SW                   | FW      | HW      | SW-H    | FW-H    |
    +------------------+---------------+----------------------+---------+---------+---------+---------+----------------------+---------+---------+---------+---------+----------------------+---------+---------+---------+---------+----------------------+---------+---------+---------+---------+
-   | **2**            | 65            | 40                   | 45      | 49      | 55      | 60      | 40                   | 45      | 49      | 55      | 60      | 40                   | 45      | 49      | 55      | 60      | 40                   | 45      | 49      | 55      | 60      |
+   | **2**            | 65            | :red:`40`            | 45      | 49      | 55      | 60      | :red:`40`            | 45      | 49      | 55      | 60      | :red:`40`            | 45      | 49      | 55      | 60      | :red:`40`            | 45      | 49      | 55      | 60      |
    +------------------+---------------+----------------------+---------+---------+---------+---------+----------------------+---------+---------+---------+---------+----------------------+---------+---------+---------+---------+----------------------+---------+---------+---------+---------+
    | **3**            | 53            | 41                   | 43      | 43      | 43      | 43      | 41                   | 43      | 43      | 43      | 43      | 46                   | 48      | 52      | 52      | 52      | 47                   | 49      | 53      | 53      | 53      |
    +------------------+---------------+----------------------+---------+---------+---------+---------+----------------------+---------+---------+---------+---------+----------------------+---------+---------+---------+---------+----------------------+---------+---------+---------+---------+
@@ -518,7 +526,7 @@ The number of total TEs and percentage of applicable TEs will indicate how many 
    +------------------+---------------+----------------------+---------+---------+---------+---------+----------------------+---------+---------+---------+---------+----------------------+---------+---------+---------+---------+----------------------+---------+---------+---------+---------+
    | **6**            | 50            | 10                   | 10      | 10      | 10      | 10      | 50                   | 50      | 50      | 50      | 50      | 0                    | 0       | 0       | 0       | 0       | 0                    | 0       | 0       | 0       | 0       |
    +------------------+---------------+----------------------+---------+---------+---------+---------+----------------------+---------+---------+---------+---------+----------------------+---------+---------+---------+---------+----------------------+---------+---------+---------+---------+
-   | **7**            | 82            | 0                    | 14      | 14      | 14      | 14      | 0                    | 27      | 27      | 27      | 27      | 0                    | 69      | 69      | 69      | 69      | 0                    | 78      | 78      | 78      | 78      |
+   | **7**            | 82            | 0                    | 14      |:g:`14`  | 14      | 14      | 0                    | 27      | :g:`27` | 27      | 27      | 0                    | 69      | :g:`69` | 69      | 69      | 0                    | 78      | :g:`78` | 78      | 78      |
    +------------------+---------------+----------------------+---------+---------+---------+---------+----------------------+---------+---------+---------+---------+----------------------+---------+---------+---------+---------+----------------------+---------+---------+---------+---------+
    | **8**            | 5             | 3                    | 3       | 3       | 3       | 3       | 3                    | 3       | 3       | 3       | 3       | 4                    | 4       | 4       | 4       | 4       | 4                    | 4       | 4       | 4       | 4       |
    +------------------+---------------+----------------------+---------+---------+---------+---------+----------------------+---------+---------+---------+---------+----------------------+---------+---------+---------+---------+----------------------+---------+---------+---------+---------+
@@ -541,9 +549,9 @@ The number of total TEs and percentage of applicable TEs will indicate how many 
 
 We recognize that software implementations only support levels 1 and 2. However:
 
-- The Area 2 TEs include requirements from security level 1 through level 4, which are listed in Table 4. This area's requirements are about Cryptographic Module Specification and are the same for all four security levels. The unified area 2 requirements are reflected by the numbers of TEs in the red rectangle boxes on Table 3.
+- The Area 2 TEs include requirements from security level 1 through level 4, which are listed in Table 4. This area's requirements are about Cryptographic Module Specification and are the same for all four security levels. The unified area 2 requirements are reflected by the numbers of TEs in highlighted in red on Table 3.
 
-- The Area 7 TEs include requirements from security level 1 through level 4, which are listed in Table 5. The Physical Security requirements in Area 7 are incremental for cryptographic modules from a low security level to a higher level. The numbers of TEs in the green rectangle boxes on Table 3 illustrate this trend.
+- The Area 7 TEs include requirements from security level 1 through level 4, which are listed in Table 5. The Physical Security requirements in Area 7 are incremental for cryptographic modules from a low security level to a higher level. The numbers of TEs highlighted in green on Table 3 illustrate this trend.
 
 Table 4 and Table 5 in :ref:`TEs Impacted by Basic TE Filters` serve as examples of how the basic TE Filters work by listing all applicable TEs and non-applicable TEs for a given type of module at any possible security level. A complete set of TE tables elaborating on Table 3 is provided in the Appendix of this status report.
 

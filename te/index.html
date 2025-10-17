@@ -203,7 +203,9 @@
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../infrastructure/index.html">Research Infrastructure Workstream</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../conclusion.html">Conclusion</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="tables/tetables.html">Appendix: TE Tables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix-a.html">Appendix A. List of Symbols, Abbreviations, and Acronyms</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="tables/tetables.html">Appendix B: TE Tables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="tables/area2.html">Area 2 Tables</a></li>
 
 
@@ -531,7 +533,7 @@ Testing a module by vendor personnel within a controlled lab environment while l
 </section>
 <section id="simulation-and-or-emulation">
 <h4>Simulation and/or Emulation<a class="headerlink" href="#simulation-and-or-emulation" title="Link to this heading">#</a></h4>
-<p>Drawing from guidance currently provided by CMVP in the <a class="reference external" href="https://csrc.nist.gov/csrc/media/Projects/cryptographic-module-validation-program/documents/fips%20140-3/FIPS-140-3-CMVP%20Management%20Manual.pdf">Management Manual, Version 2.3</a>, labs may apply emulators or simulators depending on the type of testing results to be achieved. There are three broad areas of focus during the testing of a cryptographic module: operational testing of the module at the module’s defined boundary, operational fault induction testing, and algorithm testing.</p>
+<p>Drawing from guidance currently provided by CMVP in the <a class="reference external" href="https://csrc.nist.gov/csrc/media/Projects/cryptographic-module-validation-program/documents/fips%20140-3/FIPS-140-3-CMVP%20Management%20Manual.pdf">Management Manual, Version 2.3</a> <a class="reference internal" href="../references.html#ref-4"><span class="std std-ref">[4]</span></a>, labs may apply emulators or simulators depending on the type of testing results to be achieved. There are three broad areas of focus during the testing of a cryptographic module: operational testing of the module at the module’s defined boundary, operational fault induction testing, and algorithm testing.</p>
 <ol class="arabic simple">
 <li><p><strong>Operational Testing</strong> - Emulation or simulation is prohibited for the operational testing of a cryptographic module. Actual testing of the cryptographic module must be performed utilizing the defined ports and interfaces and services that a module provides. A test harness or a modified version to induce an error may be utilized; however, no changes to code or circuitry responsible for the tested response may be made.</p></li>
 <li><p><strong>Operational Fault Induction Testing</strong> - An emulator or simulator may be utilized for fault induction to test a cryptographic module’s transition to error states as a complement to the source code review. Rationale must be provided for the applicable TE as to why a method does not exist to induce the actual module into the error state for testing.</p></li>
@@ -1214,7 +1216,7 @@ Testing a module by vendor personnel within a controlled lab environment while l
 <li><p>Enhance automation through supporting automated workflows by integrating filters into structured JSON schemas, aligning with automation tools like Web-Cryptik</p></li>
 </ul>
 <p>This document delves into the methodologies and criteria for applying TE filters, the implementation of filtering mechanisms, and their role in achieving a more efficient and scalable CMVP. By leveraging these filters, vendors and validators can focus on precise compliance requirements, reducing manual overhead while maintaining robust security standards.</p>
-<p>The following table is excerpted from ISO/IEC 19790:2012 (2014), which is the base of FIPS 140-3 and provides a structured summary of the FIPS 140-3 security requirements across various requirement areas. It outlines the security levels applicable to each category, specifying the testing expectations and security assurances needed to meet compliance. The table serves as a reference for understanding how different cryptographic module components must align with FIPS 140-3 standards, ensuring consistent evaluation and validation. Each requirement area focuses on distinct security aspects, such as module specifications, authentication mechanisms, physical security, and lifecycle assurance, enabling a comprehensive approach to cryptographic module validation.</p>
+<p>The following table is excerpted from ISO/IEC 19790:2012 (2014) <a class="reference internal" href="../references.html#ref-5"><span class="std std-ref">[5]</span></a>, which is the base of FIPS 140-3 and provides a structured summary of the FIPS 140-3 security requirements across various requirement areas. It outlines the security levels applicable to each category, specifying the testing expectations and security assurances needed to meet compliance. The table serves as a reference for understanding how different cryptographic module components must align with FIPS 140-3 standards, ensuring consistent evaluation and validation. Each requirement area focuses on distinct security aspects, such as module specifications, authentication mechanisms, physical security, and lifecycle assurance, enabling a comprehensive approach to cryptographic module validation.</p>
 <div class="pst-scrollable-table-container"><table class="table" id="id2">
 <caption><span class="caption-text">Table 2: Summary of FIPS 140-3 Security Requirements</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
 <thead>
@@ -1337,7 +1339,8 @@ Testing a module by vendor personnel within a controlled lab environment while l
 </div>
 <p>Building on the summary of FIPS 140-3 security requirements in Table 2, Table 3 provides a more granular analysis of the number of security requirements per ISO/IEC 24759:2014(2015), which is a companion document to ISO/IEC 19790 specifying the derived test requirements, across different implementation areas. This table categorizes security requirements based on the module’s type being Software (SW), Firmware (FW), Hardware (HW), SW-HW hybrid (SW-H), or FW-HW hybrid (FW-H), and further differentiates them by security levels. The breakdown facilitates a clearer understanding of the distribution of TE requirements, highlighting how various module implementations align with compliance expectations at each level.</p>
 <p>The number of total TEs and percentage of applicable TEs will indicate how many TEs are not applicable. By filtering out these non-applicable TEs with public consensus, the CSTL can more directly perform the required testing.</p>
-<div class="pst-scrollable-table-container"><table class="table" id="id3">
+<style> .red { background-color: red; color: white; } </style>
+<style> .g { background-color: green; color: white; } </style><div class="pst-scrollable-table-container"><table class="table" id="id3">
 <caption><span class="caption-text">Table 3: An overview of the number of Security Requirements</span><a class="headerlink" href="#id3" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p><strong>Area</strong></p></th>
@@ -1390,22 +1393,22 @@ Testing a module by vendor personnel within a controlled lab environment while l
 </tr>
 <tr class="row-odd"><td><p><strong>2</strong></p></td>
 <td><p>65</p></td>
-<td><p>40</p></td>
+<td><p><span class="red">40</span></p></td>
 <td><p>45</p></td>
 <td><p>49</p></td>
 <td><p>55</p></td>
 <td><p>60</p></td>
-<td><p>40</p></td>
+<td><p><span class="red">40</span></p></td>
 <td><p>45</p></td>
 <td><p>49</p></td>
 <td><p>55</p></td>
 <td><p>60</p></td>
-<td><p>40</p></td>
+<td><p><span class="red">40</span></p></td>
 <td><p>45</p></td>
 <td><p>49</p></td>
 <td><p>55</p></td>
 <td><p>60</p></td>
-<td><p>40</p></td>
+<td><p><span class="red">40</span></p></td>
 <td><p>45</p></td>
 <td><p>49</p></td>
 <td><p>55</p></td>
@@ -1507,22 +1510,22 @@ Testing a module by vendor personnel within a controlled lab environment while l
 <td><p>82</p></td>
 <td><p>0</p></td>
 <td><p>14</p></td>
-<td><p>14</p></td>
+<td><p><span class="g">14</span></p></td>
 <td><p>14</p></td>
 <td><p>14</p></td>
 <td><p>0</p></td>
 <td><p>27</p></td>
-<td><p>27</p></td>
+<td><p><span class="g">27</span></p></td>
 <td><p>27</p></td>
 <td><p>27</p></td>
 <td><p>0</p></td>
 <td><p>69</p></td>
-<td><p>69</p></td>
+<td><p><span class="g">69</span></p></td>
 <td><p>69</p></td>
 <td><p>69</p></td>
 <td><p>0</p></td>
 <td><p>78</p></td>
-<td><p>78</p></td>
+<td><p><span class="g">78</span></p></td>
 <td><p>78</p></td>
 <td><p>78</p></td>
 </tr>
@@ -1738,8 +1741,8 @@ Testing a module by vendor personnel within a controlled lab environment while l
 </div>
 <p>We recognize that software implementations only support levels 1 and 2. However:</p>
 <ul class="simple">
-<li><p>The Area 2 TEs include requirements from security level 1 through level 4, which are listed in Table 4. This area’s requirements are about Cryptographic Module Specification and are the same for all four security levels. The unified area 2 requirements are reflected by the numbers of TEs in the red rectangle boxes on Table 3.</p></li>
-<li><p>The Area 7 TEs include requirements from security level 1 through level 4, which are listed in Table 5. The Physical Security requirements in Area 7 are incremental for cryptographic modules from a low security level to a higher level. The numbers of TEs in the green rectangle boxes on Table 3 illustrate this trend.</p></li>
+<li><p>The Area 2 TEs include requirements from security level 1 through level 4, which are listed in Table 4. This area’s requirements are about Cryptographic Module Specification and are the same for all four security levels. The unified area 2 requirements are reflected by the numbers of TEs in highlighted in red on Table 3.</p></li>
+<li><p>The Area 7 TEs include requirements from security level 1 through level 4, which are listed in Table 5. The Physical Security requirements in Area 7 are incremental for cryptographic modules from a low security level to a higher level. The numbers of TEs highlighted in green on Table 3 illustrate this trend.</p></li>
 </ul>
 <p>Table 4 and Table 5 in <a class="reference internal" href="#tes-impacted-by-basic-te-filters"><span class="std std-ref">TEs Impacted by Basic TE Filters</span></a> serve as examples of how the basic TE Filters work by listing all applicable TEs and non-applicable TEs for a given type of module at any possible security level. A complete set of TE tables elaborating on Table 3 is provided in the Appendix of this status report.</p>
 <section id="te-filtering-criteria">

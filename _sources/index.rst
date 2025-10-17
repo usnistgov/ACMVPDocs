@@ -5,36 +5,36 @@ Automation of the NIST Cryptographic Module Validation Program
 
 Initial Public Draft
 
-+----------------------------------------+----------------------------+
-| **Christopher Celi**                   | **Raoul Gabiam**           |
-|                                        |                            |
-| **Alex Calis**                         | The MITRE Corporation      |
-|                                        |                            |
-| **Murugiah Souppaya**                  | |                          |
-|                                        |                            |
-| Computer Security Division             | **Stephan Mueller**        |
-|                                        |                            |
-| Information Technology Laboratory      | **Yi Mao**                 |
-|                                        |                            |
-| |                                      | atsec information security |
-|                                        |                            |
-| **William Barker**                     | |                          |
-|                                        |                            |
-| Strativia LLC                          | **Barry Fussell**          |
-|                                        |                            |
-| |                                      | **Andrew Karcher**         |
-|                                        |                            | 
-| **Karen Scarfone**                     | Cisco                      |
-|                                        |                            |
-| Scarfone Cybersecurity                 | |                          |
-|                                        |                            |
-| |                                      | **Douglas Boldt**          |
-|                                        |                            |
-| **Shawn Geddis**                       | Amazon Web Services        |
-|                                        |                            |
-| Katalyst                               |                            |
-|                                        |                            |
-+----------------------------------------+----------------------------+
++----------------------------------------+------------------------------+
+| **Christopher Celi**                   | **Raoul Gabiam**             |
+|                                        |                              |
+| **Alex Calis**                         | *The MITRE Corporation*      |
+|                                        |                              |
+| **Murugiah Souppaya**                  |                              |
+|                                        |                              |
+| *Computer Security Division*           | **Stephan Mueller**          |
+|                                        |                              |
+| *Information Technology Laboratory*    | **Yi Mao**                   |
+|                                        |                              |
+|                                        | *atsec information security* |
+|                                        |                              |
+| **William Barker**                     |                              |
+|                                        |                              |
+| *Strativia LLC*                        | **Barry Fussell**            |
+|                                        |                              |
+|                                        | **Andrew Karcher**           |
+|                                        |                              | 
+| **Karen Scarfone**                     | *Cisco*                      |
+|                                        |                              |
+| *Scarfone Cybersecurity*               |                              |
+|                                        |                              |
+|                                        | **Douglas Boldt**            |
+|                                        |                              |
+| **Shawn Geddis**                       | *Amazon Web Services*        |
+|                                        |                              |
+| *Katalyst*                             |                              |
+|                                        |                              |
++----------------------------------------+------------------------------+
 
 September 10, 2025
 
@@ -144,4 +144,5 @@ All comments are subject to release under the Freedom of Information Act (FOIA).
    infrastructure/index.rst
    conclusion.rst
    references.rst
+   appendix-a.rst
    te/tables/tetables.rst

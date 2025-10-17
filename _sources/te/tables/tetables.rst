@@ -1,5 +1,5 @@
-Appendix: TE Tables 
-====================
+Appendix B: TE Tables 
+======================
 
 The tables in this section depict applicable TEs for each combination of the basic filtering criteria based on TETables_v2.3.03.json developed by the NCCoE ACMVP project team.
 
