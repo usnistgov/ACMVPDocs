@@ -96,11 +96,7 @@
             "Condition": {
                 "StringEquals": {
                     "ec2:ImageID": [
-                        "ami-05b10e08d247fb927",
-                        "ami-04b4f1a9cf54c11d0",
-                        "ami-07fa5275316057f54",
-                        "ami-001adaa5c3ee02e10",
-                        "ami-0893df1bd754c3189"
+                        "insert_ami_ID"
                     ]
                 }
             }
@@ -112,7 +108,7 @@
             "Resource": "*",
             "Condition": {
                 "StringEquals": {
-                    "ec2:Owner": "812042602356"
+                    "ec2:Owner": "insert_owner"
                 }
             }
         },

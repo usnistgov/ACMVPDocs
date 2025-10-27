@@ -246,7 +246,7 @@
         {
             "Effect": "Allow",
             "Action": "ec2:ModifyVpcEndpointServicePermissions",
-            "Resource": "arn:aws:ec2:us-east-1:576123348125:vpc-endpoint-service/*"
+            "Resource": "<insert_ARN>"
         },
         {
             "Effect": "Allow",
@@ -261,7 +261,7 @@
             "Resource": "*",
             "Condition": {
                 "StringEquals": {
-                    "aws:PrincipalArn": "arn:aws:sts::576123348125:assumed-role/AWSReservedSSO_L0127_Staff_e09d078d0c98e880/kvitale@mitre.org"
+                    "aws:PrincipalArn": "<insert_ARN>"
                 }
             },
             "Sid": "AllowUserGetRolePolicy"
