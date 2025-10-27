@@ -1,0 +1,722 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'This template deploys VPCs, Subnets, and IAM Roles across one Availability Zone.'
+#Adam commented out Metadata block for the AWS CLI to use this YML
+#Metadata:
+#  'AWS::CloudFormation::Interface':
+#    ParameterGroups:
+#      - Label:
+#          default: Prefix for naming resources
+#        Parameters:
+#          - Namespace
+#      - Label:
+#          default: Region Configuration
+#        Parameters:
+#          - RegionAZ1Name
+#          - RegionAZ2Name
+#      - Label:
+#          default: VPC Configuration
+#        Parameters:
+#          - VPCProduction
+#          - VPCDevelopment
+#          - VPCTest
+#      - Label:
+#          default: Private Subnet Configuration
+#        Parameters:
+#          - SubnetAPrivateProduction
+#          - SubnetBPrivateProduction
+#          - SubnetAPrivateDevelopment
+#          - SubnetBPrivateDevelopment
+#          - SubnetAPrivateTest
+#          - SubnetBPrivateTest
+
+Parameters:
+  Namespace:
+    Description: All resource names will start with this name
+    Type: 'String'
+  Labname:
+    Description: Name of the project lab
+    Type: 'String'
+  AMI:
+    Description: AMI ID
+    Type: 'String'
+  keypair:
+    Description: keypair name
+    Type: 'String'
+  AccountNumber:
+    Description: Project account number
+    Type: 'String'
+#Adam commented out these parameters. AZ will be retrieved dynamically below
+#  RegionAZ1Name:
+#    Description: Availability Zone 1 Name in Region
+#    Type: 'AWS::EC2::AvailabilityZone::Name'
+
+#  RegionAZ2Name:
+#    Description: Availability Zone 2 Name in Region
+#    Type: 'AWS::EC2::AvailabilityZone::Name'
+  VPCCIDRA:
+    Description: CIDR block for VPC Production
+    Type: String
+    Default: 10.252.24.0/24
+    ConstraintDescription: CIDR block parameter must be in the form x.x.x.x/16-28
+    AllowedPattern: >-
+      ^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\/(1[6-9]|2[0-8]))$
+  VPCCIDRB:
+    Description: CIDR block for VPC Development
+    Type: String
+    Default: 10.252.25.0/24
+    ConstraintDescription: CIDR block parameter must be in the form x.x.x.x/16-28
+    AllowedPattern: >-
+      ^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\/(1[6-9]|2[0-8]))$
+  VPCCIDRC:
+    Description: CIDR block for VPC Test
+    Type: String
+    Default: 10.252.26.0/24
+    ConstraintDescription: CIDR block parameter must be in the form x.x.x.x/16-28
+    AllowedPattern: >-
+      ^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\/(1[6-9]|2[0-8]))$
+  SubnetAPrivateProductionCIDR:
+    Description: CIDR block for the private subnet in VPC Production availability zone A
+    Type: String
+    Default: 10.252.24.0/26
+    ConstraintDescription: CIDR block parameter must be in the form x.x.x.x/16-28
+    AllowedPattern: >-
+      ^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\/(1[6-9]|2[0-8]))$
+  SubnetBPrivateProductionCIDR:
+    Description: CIDR block for the private subnet in VPC Production availability zone B
+    Type: String
+    Default: 10.252.24.64/26
+    ConstraintDescription: CIDR block parameter must be in the form x.x.x.x/16-28
+    AllowedPattern: >-
+      ^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\/(1[6-9]|2[0-8]))$
+  SubnetLambdaAPrivateProductionCIDR:
+    Description: CIDR block for the private lambda subnet in VPC Production availability zone A
+    Type: String
+    Default: 10.252.24.128/26
+    ConstraintDescription: CIDR block parameter must be in the form x.x.x.x/16-30
+    AllowedPattern: >-
+      ^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\/(1[6-9]|2[0-8]))$
+  SubnetLambdaBPrivateProductionCIDR:
+    Description: CIDR block for the private lambda subnet in VPC Production availability zone B
+    Type: String
+    Default: 10.252.24.192/26
+    ConstraintDescription: CIDR block parameter must be in the form x.x.x.x/16-30
+    AllowedPattern: >-
+      ^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\/(1[6-9]|2[0-8]))$
+  SubnetAPrivateDevelopmentCIDR:
+    Description: CIDR block for the private subnet in VPC Development availability zone A
+    Type: String
+    Default: 10.252.25.0/26
+    ConstraintDescription: CIDR block parameter must be in the form x.x.x.x/16-28
+    AllowedPattern: >-
+      ^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\/(1[6-9]|2[0-8]))$
+  SubnetBPrivateDevelopmentCIDR:
+    Description: CIDR block for the private subnet in VPC Development availability zone B
+    Type: String
+    Default: 10.252.25.64/26
+    ConstraintDescription: CIDR block parameter must be in the form x.x.x.x/16-28
+    AllowedPattern: >-
+      ^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\/(1[6-9]|2[0-8]))$
+  SubnetAPrivateTestCIDR:
+    Description: CIDR block for the private subnet in VPC Test availability zone A
+    Type: String
+    Default: 10.252.26.0/26
+    ConstraintDescription: CIDR block parameter must be in the form x.x.x.x/16-28
+    AllowedPattern: >-
+      ^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\/(1[6-9]|2[0-8]))$
+  SubnetBPrivateTestCIDR:
+    Description: CIDR block for the private subnet in VPC Test availability zone B
+    Type: String
+    Default: 10.252.26.64/26
+    ConstraintDescription: CIDR block parameter must be in the form x.x.x.x/16-28
+    AllowedPattern: >-
+      ^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\/(1[6-9]|2[0-8]))$
+
+Resources:
+  VPCProduction:
+    Type: 'AWS::EC2::VPC'
+    Properties:
+      CidrBlock: !Ref VPCCIDRA
+      EnableDnsSupport: true
+      EnableDnsHostnames: true
+      Tags:
+        - Key: Name
+          Value: !Sub "${Namespace}-Prod"
+        - Key: Lab
+          Value: !Sub "${Namespace}-Prod"
+
+  VPCDevelopment:
+    Type: 'AWS::EC2::VPC'
+    Properties:
+      CidrBlock: !Ref VPCCIDRB
+      EnableDnsSupport: true
+      EnableDnsHostnames: true
+      Tags:
+        - Key: Name
+          Value: !Sub "${Namespace}-Dev"
+        - Key: Lab
+          Value: !Sub "${Namespace}-Dev"
+
+  VPCTest:
+    Type: 'AWS::EC2::VPC'
+    Properties:
+      CidrBlock: !Ref VPCCIDRC
+      EnableDnsSupport: true
+      EnableDnsHostnames: true
+      Tags:
+        - Key: Name
+          Value: !Sub "${Namespace}-Test"
+        - Key: Lab
+          Value: !Sub "${Namespace}-Test"
+
+  SecGroupLambda:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Security group to handle the lambda function
+      GroupName: LambdaFunctionSG
+      VpcId: !Ref VPCProduction
+
+  SecGroupProduction:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Prod Environment Security Group
+      GroupName: !Sub "${Labname}-Prod"
+      SecurityGroupIngress: 
+        - IpProtocol: icmp
+          FromPort: 8
+          ToPort: -1
+          CidrIp: 10.0.0.0/8
+      VpcId: !Ref VPCProduction
+
+
+  SecGroupDevelopment:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Dev Environment Security Group
+      GroupName: !Sub "${Labname}-Dev"
+      SecurityGroupIngress: 
+        - IpProtocol: icmp
+          FromPort: 8
+          ToPort: -1
+          CidrIp: 10.0.0.0/8
+      VpcId: !Ref VPCDevelopment
+
+  SecGroupTest:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Test Environment Security Group
+      GroupName: !Sub "${Labname}-Test"
+      SecurityGroupIngress: 
+        - IpProtocol: icmp
+          FromPort: 8
+          ToPort: -1
+          CidrIp: 10.0.0.0/8
+      VpcId: !Ref VPCTest
+
+
+  SubnetAPrivateProduction:
+    Type: 'AWS::EC2::Subnet'
+    Properties:
+      VpcId: !Ref VPCProduction
+      #AvailabilityZone: !Ref RegionAZ1Name
+      AvailabilityZone: 
+        Fn::Select: 
+          - 0
+          - Fn::GetAZs: ""
+      CidrBlock: !Ref SubnetAPrivateProductionCIDR
+      Tags:
+        - Key: Name
+          Value: !Sub "${Namespace}-SubnetAProd"
+
+  SubnetBPrivateProduction:
+    Type: 'AWS::EC2::Subnet'
+    Properties:
+      VpcId: !Ref VPCProduction
+      #AvailabilityZone: !Ref RegionAZ1Name
+      AvailabilityZone: 
+        Fn::Select: 
+          - 1
+          - Fn::GetAZs: ""
+      CidrBlock: !Ref SubnetBPrivateProductionCIDR
+      Tags:
+        - Key: Name
+          Value: !Sub "${Namespace}-SubnetBProd"
+
+  SubnetLambdaAPrivateProduction:
+    Type: 'AWS::EC2::Subnet'
+    Properties:
+      VpcId: !Ref VPCProduction
+      #AvailabilityZone: !Ref RegionAZ1Name
+      AvailabilityZone: 
+        Fn::Select: 
+          - 3
+          - Fn::GetAZs: ""
+      CidrBlock: !Ref SubnetLambdaAPrivateProductionCIDR
+      Tags:
+        - Key: Name
+          Value: !Sub "${Namespace}-SubnetLambdaAProd"
+
+  SubnetLambdaBPrivateProduction:
+    Type: 'AWS::EC2::Subnet'
+    Properties:
+      VpcId: !Ref VPCProduction
+      #AvailabilityZone: !Ref RegionAZ1Name
+      AvailabilityZone: 
+        Fn::Select: 
+          - 4
+          - Fn::GetAZs: ""
+      CidrBlock: !Ref SubnetLambdaBPrivateProductionCIDR
+      Tags:
+        - Key: Name
+          Value: !Sub "${Namespace}-SubnetLambdaBProd"
+
+  SubnetAPrivateDevelopment:
+    Type: 'AWS::EC2::Subnet'
+    Properties:
+      VpcId: !Ref VPCDevelopment
+#      AvailabilityZone: !Ref RegionAZ1Name
+      AvailabilityZone: 
+        Fn::Select: 
+          - 0
+          - Fn::GetAZs: ""
+      CidrBlock: !Ref SubnetAPrivateDevelopmentCIDR
+      Tags:
+        - Key: Name
+          Value: !Sub "${Namespace}-SubnetADev"
+
+  EC2InstanceB:
+    Type: 'AWS::EC2::Instance'
+    Properties:
+      InstanceType: 't2.micro'
+      SubnetId: !Ref SubnetAPrivateDevelopment
+      ImageId: !Ref AMI # Specify the appropriate AMI ID
+      KeyName: !Ref keypair 
+      Tags:
+        - Key: Name
+          Value: !Sub "${Namespace}-EC2 Development"
+        - Key: Lab
+          Value: !Sub "${Namespace}-EC2Dev"
+      SecurityGroupIds: 
+        - !Ref SecGroupDevelopment
+
+  SubnetBPrivateDevelopment:
+    Type: 'AWS::EC2::Subnet'
+    Properties:
+      VpcId: !Ref VPCDevelopment
+#      AvailabilityZone: !Ref RegionAZ1Name
+      AvailabilityZone: 
+        Fn::Select: 
+          - 1
+          - Fn::GetAZs: ""
+      CidrBlock: !Ref SubnetBPrivateDevelopmentCIDR
+      Tags:
+        - Key: Name
+          Value: !Sub "${Namespace}-SubnetBDev"
+
+  SubnetAPrivateTest:
+    Type: 'AWS::EC2::Subnet'
+    Properties:
+      VpcId: !Ref VPCTest
+#      AvailabilityZone: !Ref RegionAZ1Name
+      AvailabilityZone: 
+        Fn::Select: 
+          - 0
+          - Fn::GetAZs: ""
+      CidrBlock: !Ref SubnetAPrivateTestCIDR
+      Tags:
+        - Key: Name
+          Value: !Sub "${Namespace}-SubnetATest"
+
+  SubnetBPrivateTest:
+    Type: 'AWS::EC2::Subnet'
+    Properties:
+      VpcId: !Ref VPCTest
+#      AvailabilityZone: !Ref RegionAZ1Name
+      AvailabilityZone:
+        Fn::Select:
+          - 1
+          - Fn::GetAZs: ""
+      CidrBlock: !Ref SubnetBPrivateTestCIDR
+      Tags:
+        - Key: Name
+          Value: !Sub "${Namespace}-SubnetBTest"
+
+  EC2InstanceA:
+    Type: 'AWS::EC2::Instance'
+    Properties:
+      InstanceType: 't2.micro'
+      SubnetId: !Ref SubnetAPrivateProduction
+      ImageId: !Ref AMI # Specify the appropriate AMI ID
+      KeyName: !Ref keypair
+      Tags:
+        - Key: Name
+          Value: !Sub "${Namespace}-EC2 Production"
+        - Key: Lab
+          Value: !Sub "${Namespace}-InstanceProd"
+      SecurityGroupIds: 
+        - !Ref SecGroupProduction
+
+
+  EC2InstanceC:
+    Type: 'AWS::EC2::Instance'
+    Properties:
+      InstanceType: 't2.micro'
+      SubnetId: !Ref SubnetAPrivateTest
+      ImageId: !Ref AMI # Specify the appropriate AMI ID
+      KeyName: !Ref keypair 
+      Tags:
+        - Key: Name
+          Value: !Sub "${Namespace}-EC2 Test"
+        - Key: Lab
+          Value: !Sub "${Namespace}-EC2Test"
+      SecurityGroupIds: 
+        - !Ref SecGroupTest
+
+  IAMRoleA:
+    Type: "AWS::IAM::Role"
+    Properties:
+      Path: "/"
+      RoleName: "NCCoE-Restore-Role"
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: "Allow"
+            Principal:
+              Service: "backup.amazonaws.com"
+              #Add new Account number below
+              AWS: !Sub "arn:aws:iam::${AccountNumber}:root"
+            Action: "sts:AssumeRole"
+      MaxSessionDuration: 3600
+      ManagedPolicyArns:
+        - "arn:aws:iam::aws:policy/service-role/AWSBackupServiceRolePolicyForRestores"
+      Description: "Allows AWS backup to restore Instances"
+      
+  IAMRoleB:
+    Type: "AWS::IAM::Role"
+    Properties:
+      Path: "/"
+      RoleName: "Nccoe-CreateTag"
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: "Allow"
+            Principal:
+              "AWS": "arn:aws:iam::807002571816:root"
+            Action: "sts:AssumeRole"
+      MaxSessionDuration: 3600
+      ManagedPolicyArns:
+        - "arn:aws:iam::aws:policy/ReadOnlyAccess"
+      Description: "Allows Lambda functions to call AWS services on your behalf"
+      
+  IAMRoleC:
+    Type: "AWS::IAM::Role"
+    Properties:
+      Path: "/"
+      RoleName: "NCCoE-Backup-Role"
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: "Allow"
+            Principal:
+              Service: "ec2.amazonaws.com"
+            Action: "sts:AssumeRole"
+      MaxSessionDuration: 3600
+      ManagedPolicyArns:
+        - "arn:aws:iam::aws:policy/service-role/AWSBackupServiceRolePolicyForRestores"
+        - "arn:aws:iam::aws:policy/service-role/AWSBackupServiceRolePolicyForBackup"
+      Description: "Allows Backup and Restore"
+      
+  IAMRoleD:
+    Type: "AWS::IAM::Role"
+    Properties:
+      Path: "/"
+      RoleName: "AWSBackupDefaultServiceRole"
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: "Allow"
+            Principal:
+              Service: "backup.amazonaws.com"
+            Action: "sts:AssumeRole"
+      MaxSessionDuration: 3600
+      ManagedPolicyArns:
+        - "arn:aws:iam::aws:policy/service-role/AWSBackupServiceRolePolicyForRestores"
+        - "arn:aws:iam::aws:policy/service-role/AWSBackupServiceRolePolicyForBackup"
+      Description: "Allows Backup and Restore for AWS Organizations Backup"
+  
+  IAMRoleE:
+    Type: "AWS::IAM::Role"
+    Properties:
+      Path: "/"
+      RoleName: "NCCoE-OnDemandBackup-Role"
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: "Allow"
+            Principal:
+              Service: "backup.amazonaws.com"
+              AWS: !Sub "arn:aws:iam::${AccountNumber}:root"
+            Action: "sts:AssumeRole"
+      MaxSessionDuration: 3600
+      ManagedPolicyArns:
+        - "arn:aws:iam::aws:policy/service-role/AWSBackupServiceRolePolicyForBackup"
+      Description: "Allows AWS Backup to backup Instances"
+
+  IAMRoleF:
+    Type: "AWS::IAM::Role"
+    Properties:
+      Path: "/"
+      RoleName: "Axonius"
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: "Allow"
+            "Principal":
+                "AWS": "arn:aws:iam::643460077866:root"
+            "Action": "sts:AssumeRole"
+            "Condition": {}
+      MaxSessionDuration: 3600
+      Description: "Allows NIST to scan Environment"
+      
+  NccoeCreateTagsPolicy:
+    Type: "AWS::IAM::Policy"
+    Properties:
+      PolicyName: "Nccoe-CreateTags"
+      PolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Sid: "VisualEditor0"
+            Effect: "Allow"
+            Action: 
+              - "ec2:CreateTags"
+            Resource: "*"
+      Roles:
+        - Ref: "IAMRoleB"
+        
+  # New: adding vpc block public access
+  VPCBlockPublicAccessOption:
+    Type: AWS::EC2::VPCBlockPublicAccessOptions
+    Properties:
+      InternetGatewayBlockMode: "block-bidirectional"
+
+  EBSBlockPublicAccess:
+    Type: "AWS::EC2::SnapshotBlockPublicAccess"
+    Properties:
+      State: "block-all-sharing"
+
+  Axonius:
+    Type: "AWS::IAM::Policy"
+    Properties:
+      PolicyName: "Axonius"
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: "VisualEditor0"
+            Effect: "Allow"
+            Action:
+              - "acm:DescribeCertificate"
+              - "acm:ListCertificates"
+              - "autoscaling:DescribeAutoScalingGroups"
+              - "autoscaling:DescribePolicies"
+              - "autoscaling:DescribeAutoScalingInstances"
+              - "apigateway:GET"
+              - "appstream:DescribeFleets"
+              - "appstream:DescribeStacks"
+              - "appstream:DescribeUserStackAssociations"
+              - "appstream:DescribeUsers"
+              - "appstream:ListAssociatedFleets"
+              - "backup:ListBackupPlans"
+              - "backup:ListBackupVaults"
+              - "cloudfront:GetDistribution"
+              - "cloudfront:ListDistributions"
+              - "dynamodb:DescribeGlobalTable"
+              - "dynamodb:DescribeGlobalTableSettings"
+              - "dynamodb:DescribeTable"
+              - "dynamodb:ListGlobalTables"
+              - "dynamodb:ListTables"
+              - "ec2:DescribeAddresses"
+              - "ec2:DescribeFlowLogs"
+              - "ec2:DescribeImages"
+              - "ec2:DescribeInstances"
+              - "ec2:DescribeInternetGateways"
+              - "ec2:DescribeNatGateways"
+              - "ec2:DescribeRouteTables"
+              - "ec2:DescribeSecurityGroups"
+              - "ec2:DescribeSnapshotAttribute"
+              - "ec2:DescribeSnapshots"
+              - "ec2:DescribeSubnets"
+              - "ec2:DescribeTags"
+              - "ec2:DescribeVolumes"
+              - "ec2:DescribeVpcPeeringConnections"
+              - "ec2:DescribeVpcs"
+              - "ecr-public:DescribeImages"
+              - "ecr-public:DescribeRegistries"
+              - "ecr-public:DescribeRepositories"
+              - "ecr:DescribeImages"
+              - "ecr:DescribeRegistry"
+              - "ecr:DescribeRepositories"
+              - "ecs:DescribeClusters"
+              - "ecs:DescribeContainerInstances"
+              - "ecs:DescribeServices"
+              - "ecs:DescribeTasks"
+              - "ecs:ListClusters"
+              - "ecs:ListContainerInstances"
+              - "ecs:ListServices"
+              - "ecs:ListTagsForResource"
+              - "ecs:ListTasks"
+              - "eks:DescribeCluster"
+              - "eks:ListClusters"
+              - "elasticloadbalancing:DescribeListeners"
+              - "elasticloadbalancing:DescribeLoadBalancerPolicies"
+              - "elasticloadbalancing:DescribeLoadBalancers"
+              - "elasticloadbalancing:DescribeSSLPolicies"
+              - "elasticloadbalancing:DescribeTargetGroups"
+              - "elasticloadbalancing:DescribeTargetHealth"
+              - "es:DescribeElasticsearchDomain"
+              - "es:ListDomainNames"
+              - "fsx:DescribeFileSystems"
+              - "guardduty:GetDetector"
+              - "guardduty:GetFilter"
+              - "guardduty:GetFindings"
+              - "guardduty:GetMembers"
+              - "guardduty:ListDetectors"
+              - "guardduty:ListFilters"
+              - "guardduty:ListFindings"
+              - "guardduty:ListMembers"
+              - "iam:GenerateCredentialReport"
+              - "iam:GenerateServiceLastAccessedDetails"
+              - "iam:GetAccessKeyLastUsed"
+              - "iam:GetAccountPasswordPolicy"
+              - "iam:GetAccountSummary"
+              - "iam:GetCredentialReport"
+              - "iam:GetLoginProfile"
+              - "iam:GetPolicy"
+              - "iam:GetPolicyVersion"
+              - "iam:GetRole"
+              - "iam:GetRolePolicy"
+              - "iam:GetServiceLastAccessedDetails"
+              - "iam:GetUser"
+              - "iam:GetUserPolicy"
+              - "iam:ListAccessKeys"
+              - "iam:ListAccountAliases"
+              - "iam:ListAttachedGroupPolicies"
+              - "iam:ListAttachedRolePolicies"
+              - "iam:ListAttachedUserPolicies"
+              - "iam:ListEntitiesForPolicy"
+              - "iam:ListGroups"
+              - "iam:ListGroupsForUser"
+              - "iam:ListInstanceProfilesForRole"
+              - "iam:ListMFADevices"
+              - "iam:ListPolicies"
+              - "iam:ListRolePolicies"
+              - "iam:ListRoles"
+              - "iam:ListUserPolicies"
+              - "iam:ListUserTags"
+              - "iam:ListUsers"
+              - "iam:ListVirtualMFADevices"
+              - "inspector2:ListFindings"
+              - "inspector2:ListMembers"
+              - "inspector:DescribeFindings"
+              - "inspector:ListFindings"
+              - "lambda:GetFunctionUrlConfig"
+              - "lambda:GetPolicy"
+              - "lambda:ListFunctions"
+              - "lambda:ListTags"
+              - "macie2:GetFindings"
+              - "macie2:ListFindings"
+              - "macie2:ListMembers"
+              - "organizations:DescribeAccount"
+              - "organizations:DescribeEffectivePolicy"
+              - "organizations:DescribeOrganization"
+              - "organizations:DescribePolicy"
+              - "organizations:ListAccounts"
+              - "organizations:ListPoliciesForTarget"
+              - "organizations:ListTagsForResource"
+              - "rds:DescribeDBClusters"
+              - "rds:DescribeDBInstances"
+              - "rds:DescribeOptionGroups"
+              - "route53:ListHostedZones"
+              - "route53:ListResourceRecordSets"
+              - "s3:GetAccountPublicAccessBlock"
+              - "s3:GetBucketAcl"
+              - "s3:GetBucketLocation"
+              - "s3:GetBucketLogging"
+              - "s3:GetBucketPolicy"
+              - "s3:GetBucketPolicyStatus"
+              - "s3:GetBucketPublicAccessBlock"
+              - "s3:GetBucketTagging"
+              - "s3:GetEncryptionConfiguration"
+              - "s3:ListAllMyBuckets"
+              - "s3:ListBucket"
+              - "secretsmanager:GetResourcePolicy"
+              - "secretsmanager:ListSecrets"
+              - "securityhub:DescribeHub"
+              - "securityhub:GetFindings"
+              - "securityhub:ListMembers"
+              - "securityhub:ListTagsForResource"
+              - "sns:ListSubscriptionsByTopic"
+              - "ssm:DescribeAvailablePatches"
+              - "ssm:DescribeInstanceInformation"
+              - "ssm:DescribeInstancePatches"
+              - "ssm:DescribePatchGroups"
+              - "ssm:GetInventorySchema"
+              - "ssm:ListInventoryEntries"
+              - "ssm:ListResourceComplianceSummaries"
+              - "ssm:ListTagsForResource"
+              - "waf-regional:GetWebACL"
+              - "waf-regional:GetWebACLForResource"
+              - "waf-regional:ListWebACLs"
+              - "waf:GetWebACL"
+              - "waf:ListWebACLs"
+              - "wafv2:GetWebACL"
+              - "wafv2:GetWebACLForResource"
+              - "wafv2:ListWebACLs"
+              - "workspaces:DescribeTags"
+              - "workspaces:DescribeWorkspaceDirectories"
+              - "workspaces:DescribeWorkspaces"
+              - "workspaces:DescribeWorkspacesConnectionStatus"
+            Resource: "*"
+      Roles:
+        - Ref: "IAMRoleF"
+
+
+Outputs:
+
+  VPCProduction:
+    Description: The VPC ID of VPCProduction
+    Value: !Ref VPCProduction
+
+  VPCDevelopment:
+    Description: The VPC ID of VPC Dev
+    Value: !Ref VPCDevelopment
+
+  VPCTest:
+    Description: The VPC ID of VPC Test
+    Value: !Ref VPCTest    
+
+  SubnetAPrivateProduction:
+    Description: The VPC ID of SubnetAPrivateProduction
+    Value: !Ref SubnetAPrivateProduction
+
+  SubnetBPrivateProduction:
+    Description: The VPC ID of SubnetBPrivateProduction
+    Value: !Ref SubnetBPrivateProduction
+
+  SubnetAPrivateDevelopment:
+    Description: The VPC ID of SubnetAPrivateDevelopment
+    Value: !Ref SubnetAPrivateDevelopment
+
+  SubnetBPrivateDevelopment:
+    Description: The VPC ID of SubnetBPrivateDevelopment
+    Value: !Ref SubnetBPrivateDevelopment
+
+  SubnetAPrivateTest:
+    Description: The Subnet ID of SubnetAPrivateTest
+    Value: !Ref SubnetAPrivateTest
+
+  SubnetBPrivateTest:
+    Description: The Subnet ID of SubnetBPrivateTest
+    Value: !Ref SubnetBPrivateTest
+
+  SecGroupLambda:
+    Description: The Lambda Security group details
+    Value: !Ref SecGroupLambda

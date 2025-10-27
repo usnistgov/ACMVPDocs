@@ -1,0 +1,270 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": [
+                "rds:*",
+                "logs:*",
+                "cloudtrail:*",
+                "backup:*",
+                "sqs:*",
+                "iam:PassRole",
+                "iam:GetAccountSummary",
+                "iam:ListAccessKeys",
+                "iam:ListMFADevices",
+                "iam:ListGroups",
+                "iam:ListUsers",
+                "iam:ListPolicies",
+                "iam:ListRolePolicies",
+                "iam:ListAttachedRolePolicies",
+                "iam:GetPolicyVersion",
+                "iam:Getrole",
+                "iam:GetRolePolicy",
+                "batch:*",
+                "organizations:DescribeOrganization",
+                "config:*",
+                "cur:*",
+                "storagegateway:*",
+                "sns:*",
+                "elasticfilesystem:*",
+                "fsx:*",
+                "iam:ListRoles",
+                "cloudformation:*",
+                "elasticloadbalancing:*",
+                "budgets:*",
+                "autoscaling-plans:*",
+                "compute-optimizer:*",
+                "elasticbeanstalk:*",
+                "glacier:*",
+                "cloudwatch:*",
+                "workspaces:*",
+                "ecs:*",
+                "aws-portal:*",
+                "lambda:*",
+                "ecr:*",
+                "iam:DeleteServiceLinkedRole",
+                "elasticmapreduce:*",
+                "eks:*",
+                "ce:*",
+                "autoscaling:*",
+                "acm:*",
+                "secretsmanager:*",
+                "s3:PutAnalyticsConfiguration",
+                "s3:PutAccessPointConfigurationForObjectLambda",
+                "s3:Get*",
+                "s3:PutStorageLensConfiguration",
+                "s3:DeleteAccessPoint",
+                "s3:List*",
+                "s3:DeleteAccessPointForObjectLambda",
+                "s3:ReplicateObject",
+                "s3:DeleteBucketWebsite",
+                "s3:PutLifecycleConfiguration",
+                "s3:PutBucketAcl",
+                "s3:DeleteObject",
+                "s3:Describe*",
+                "s3:PutReplicationConfiguration",
+                "s3:PutObjectLegalHold",
+                "s3:PutObject",
+                "s3:PutBucketNotification",
+                "s3:*Tag*",
+                "s3:PutBucketLogging",
+                "s3:PutObjectVersionAcl",
+                "s3:PutBucketObjectLockConfiguration",
+                "s3:PutAccelerateConfiguration",
+                "s3:DeleteObjectVersion",
+                "s3:RestoreObject",
+                "s3:PutEncryptionConfiguration",
+                "s3:AbortMultipartUpload",
+                "s3:UpdateJobPriority",
+                "s3:DeleteBucket",
+                "s3:PutBucketVersioning",
+                "s3:PutObjectAcl",
+                "s3:PutIntelligentTieringConfiguration",
+                "s3:PutMetricsConfiguration",
+                "s3:PutBucketOwnershipControls",
+                "s3:DeleteMultiRegionAccessPoint",
+                "s3:UpdateJobStatus",
+                "s3:BypassGovernanceRetention",
+                "s3:PutInventoryConfiguration",
+                "s3:ObjectOwnerOverrideToBucketOwner",
+                "s3:DeleteStorageLensConfiguration",
+                "s3:PutBucketWebsite",
+                "s3:PutBucketRequestPayment",
+                "s3:PutObjectRetention",
+                "s3:ReplicateDelete",
+                "backup-storage:*",
+                "health:*",
+                "application-autoscaling:*",
+                "appmesh:*",
+                "appstream:*",
+                "appsync:*",
+                "connect:*",
+                "iotanalytics:*",
+                "kafka:*",
+                "kinesisanalytics:*",
+                "kinesisvideo:*",
+                "managedblockchain:*",
+                "mediastore:*",
+                "qldb:*",
+                "quicksight:*",
+                "resource-groups:*",
+                "robomaker:*",
+                "sagemaker:*",
+                "signer:*",
+                "textract:*",
+                "transcribe:*",
+                "ec2:*",
+                "ec2:CreateVpcEndpoint",
+                "ec2:CreateVpcEndpointServiceConfiguration",
+                "ec2:DeleteVpcEndpointServiceConfigurations",
+                "ec2:DescribeVpcEndpointServiceConfigurations",
+                "ec2:ModifyVpcEndpointServicePermissions",
+                "translate:*"
+            ],
+            "Resource": "*",
+            "Effect": "Allow",
+            "Sid": "VisualEditor0"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "account:ListRegions",
+            "Resource": "*",
+            "Condition": {
+                "StringEquals": {
+                    "aws:RequestedRegion": "us-east-1"
+                }
+            }
+        },
+        {
+            "Action": [
+                "ec2:Delete*route*",
+                "ec2:Delete*vpn*",
+                "ec2:Modify*vpn*",
+                "ec2:Disassociate*vpc*",
+                "ec2:Disassociate*route*",
+                "ec2:Disassociate*Gateway*",
+                "ec2:Associate*vpn*",
+                "ec2:Disable*Gateway*",
+                "ec2:Create*vpn*",
+                "ec2:Create*route*",
+                "ec2:Delete*Gateway*",
+                "ec2:Enable*vpc*",
+                "ec2:Create*Gateway*",
+                "ec2:ModifyVpc*",
+                "ec2:Associate*Gateway*",
+                "ec2:Disassociate*vpn*",
+                "ec2:Delete*vpc*",
+                "ec2:CreateTransitGatewayConnect",
+                "ec2:DescribeTransitGatewayConnects",
+                "ec2:CreateTransitGatewayConnectPeer",
+                "ec2:DeleteTransitGatewayConnectPeer",
+                "ec2:CreateTransitGatewayVpcAttachment",
+                "ec2:DeleteTransitGatewayVpcAttachment",
+                "ec2:CreateTransitGatewayMulticastDomain",
+                "ec2:AssociateTransitGatewayMulticastDomain",
+                "ec2:DisassociateTransitGatewayMulticastDomain",
+                "ec2:DescribeTransitGatewayMulticastDomains",
+                "ec2:CreateTransitGatewayPeeringAttachment",
+                "ec2:CreateTransitGatewayRouteTable",
+                "ec2:AssociateTransitGatewayRouteTable",
+                "ec2:DisassociateTransitGatewayRouteTable",
+                "ec2:DescribeTransitGatewayRouteTables",
+                "ec2:CreateTransitGatewayPolicyTable",
+                "ec2:DeleteTransitGatewayPolicyTable",
+                "ec2:AssociateTransitGatewayPolicyTable",
+                "ec2:DisassociateTransitGatewayPolicyTable",
+                "ec2:DescribeTransitGatewayPolicyTables"
+            ],
+            "Resource": "*",
+            "Effect": "Deny",
+            "Sid": "VisualEditor1"
+        },
+        {
+            "Action": [
+                "ec2:DeleteTags"
+            ],
+            "Resource": [
+                "arn:aws:ec2:*:*:internet-gateway/*",
+                "arn:aws:ec2:*:*:client-vpn-endpoint/*",
+                "arn:aws:ec2:*:*:route-table/*",
+                "arn:aws:ec2:*:*:vpc/*",
+                "arn:aws:ec2:*:*:network-acl/*",
+                "arn:aws:ec2:*:*:transit-gateway-route-table/*",
+                "arn:aws:ec2:*:*:vpc-peering-connection/*",
+                "arn:aws:ec2:*:*:transit-gateway-multicast-domain/*",
+                "arn:aws:ec2:*:*:vpn-gateway/*",
+                "arn:aws:ec2:*:*:vpn-connection/*",
+                "arn:aws:ec2:*:*:transit-gateway-attachment/*",
+                "arn:aws:ec2:*:*:egress-only-internet-gateway/*",
+                "arn:aws:ec2:*:*:natgateway/*",
+                "arn:aws:ec2:*:*:transit-gateway-connect-peer/*",
+                "arn:aws:ec2:*:*:transit-gateway/*",
+                "arn:aws:ec2:*:*:customer-gateway/*"
+            ],
+            "Effect": "Deny",
+            "Sid": "VisualEditor2"
+        },
+        {
+            "Action": [
+                "ssmmessages:CreateControlChannel",
+                "ssmmessages:CreateDataChannel",
+                "ssmmessages:OpenControlChannel",
+                "ssmmessages:OpenDataChannel"
+            ],
+            "Effect": "Allow",
+            "Resource": "*",
+            "Sid": "ECSFargateAllowExecuteCommand"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetBucketLocation",
+                "s3:ListBucket",
+                "s3:GetObject",
+                "s3:PutObject",
+                "s3:DeleteObject"
+            ],
+            "Resource": [
+                "arn:aws:s3:::cmvp-load-balancer-logs",
+                "arn:aws:s3:::cmvp-load-balancer-logs/*"
+            ],
+            "Sid": "AllowTestCmvpS3Actions"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "apigateway:POST",
+                "apigateway:GET",
+                "apigateway:PATCH",
+                "apigateway:DELETE"
+            ],
+            "Resource": [
+                "arn:aws:apigateway:us-east-1::/vpclinks",
+                "arn:aws:apigateway:us-east-1::/vpclinks/*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": "ec2:ModifyVpcEndpointServicePermissions",
+            "Resource": "arn:aws:ec2:us-east-1:576123348125:vpc-endpoint-service/*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "elasticloadbalancing:DescribeLoadBalancers"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "iam:GetRolePolicy",
+            "Resource": "*",
+            "Condition": {
+                "StringEquals": {
+                    "aws:PrincipalArn": "arn:aws:sts::576123348125:assumed-role/AWSReservedSSO_L0127_Staff_e09d078d0c98e880/kvitale@mitre.org"
+                }
+            },
+            "Sid": "AllowUserGetRolePolicy"
+        }
+    ]
+}

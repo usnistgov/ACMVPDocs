@@ -1,0 +1,126 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "cloudwatch:DescribeAlarms",
+                "cloudwatch:GetMetricStatistics"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "VisualEditor1",
+            "Effect": "Allow",
+            "Action": [
+                "ec2:Describe*",
+                "ec2:GetConsole*",
+                "ec2:CreateTags",
+                "ec2:TerminateInstances",
+                "ec2:AssociateIamInstanceProfile",
+                "ec2:StopInstances",
+                "ec2:Allocate*",
+                "ec2:AssignPrivateIpAddresses*",
+                "ec2:Associate*",
+                "ec2:AttachNetworkInterface",
+                "ec2:Bundle*",
+                "ec2:Cancel*",
+                "ec2:Copy*",
+                "ec2:CreateDhcpOptions",
+                "ec2:CreateFlowLogs",
+                "ec2:CreateImage",
+                "ec2:CreateInstanceExportTask",
+                "ec2:CreateKeyPair",
+                "ec2:CreateLaunchTemplate",
+                "ec2:CreateLaunchTemplateVersion",
+                "ec2:CreateNetworkInterface",
+                "ec2:CreatePlacementGroup",
+                "ec2:CreateReservedInstancesListing",
+                "ec2:CreateRoute",
+                "ec2:CreateRouteTable",
+                "ec2:CreateSecurityGroup",
+                "ec2:CreateSnapshot",
+                "ec2:CreateSubnet",
+                "ec2:CreateVolume",
+                "ec2:DeleteLaunchTemplate",
+                "ec2:DeleteLaunchTemplateVersions",
+                "ec2:DeleteNetworkInterface",
+                "ec2:DeletePlacementGroup",
+                "ec2:DeleteSnapshot",
+                "ec2:DeregisterImage",
+                "ec2:DetachNetworkInterface",
+                "ec2:DisassociateRouteTable",
+                "ec2:EnableVolumeIO",
+                "ec2:GetConsoleOutput",
+                "ec2:GetLaunchTemplateData",
+                "ec2:GetPasswordData",
+                "ec2:Import*",
+                "ec2:Modify*",
+                "ec2:MonitorInstances",
+                "ec2:MoveAddressToVpc",
+                "ec2:RegisterImage",
+                "ec2:Release*",
+                "ec2:Replace*",
+                "ec2:ReportInstanceStatus",
+                "ec2:Request*",
+                "ec2:Reset*",
+                "ec2:RestoreAddressToClassic",
+                "ec2:RunScheduledInstances",
+                "ec2:UnassignPrivateIpAddresses",
+                "ec2:UnmonitorInstances",
+                "ec2:UpdateSecurityGroupRuleDescriptionsEgress",
+                "ec2:UpdateSecurityGroupRuleDescriptionsIngress",
+                "elasticloadbalancing:*"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "VisualEditor2",
+            "Effect": "Allow",
+            "Action": "ec2:RunInstances",
+            "Resource": [
+                "arn:aws:ec2:us-east-1:576123348125:key-pair/*",
+                "arn:aws:ec2:us-east-1:576123348125:security-group/*",
+                "arn:aws:ec2:us-east-1:576123348125:subnet/*",
+                "arn:aws:ec2:us-east-1:576123348125:network-interface/*",
+                "arn:aws:ec2:us-east-1:576123348125:volume/*",
+                "arn:aws:ec2:us-east-1:576123348125:instance/*"
+            ]
+        },
+        {
+            "Sid": "VisualEditor3",
+            "Effect": "Allow",
+            "Action": "ec2:RunInstances",
+            "Resource": "*",
+            "Condition": {
+                "StringEquals": {
+                    "ec2:ImageID": [
+                        "ami-05b10e08d247fb927",
+                        "ami-04b4f1a9cf54c11d0",
+                        "ami-07fa5275316057f54",
+                        "ami-001adaa5c3ee02e10",
+                        "ami-0893df1bd754c3189"
+                    ]
+                }
+            }
+        },
+        {
+            "Sid": "VisualEditor4",
+            "Effect": "Allow",
+            "Action": "ec2:RunInstances",
+            "Resource": "*",
+            "Condition": {
+                "StringEquals": {
+                    "ec2:Owner": "812042602356"
+                }
+            }
+        },
+        {
+            "Sid": "VisualEditor5",
+            "Effect": "Allow",
+            "Action": "iam:ListInstanceProfiles",
+            "Resource": "*"
+        }
+    ]
+}

@@ -1,0 +1,22 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Deny",
+      "Action": [
+        "s3:PutBucketPublicAccessBlock",
+        "s3:PutBucketAcl",
+        "s3:PutObjectAcl",
+        "s3:PutAccountPublicAccessBlock"
+      ],
+      "Resource": "arn:aws:s3:::*"
+    },
+    {
+      "Effect": "Deny",
+      "Action": [
+        "s3:PutBucketAcl"
+      ],
+      "Resource": "arn:aws:s3:::*/*"
+    }
+  ]
+}

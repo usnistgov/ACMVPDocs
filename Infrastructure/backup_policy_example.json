@@ -1,0 +1,60 @@
+{
+  "plans": {
+    "Backup-Plan": {
+      "regions": {
+        "@@assign": [
+          "us-east-1"
+        ]
+      },
+      "rules": {
+        "DailyBackup": {
+          "schedule_expression": {
+            "@@assign": "cron(0 5 ? * * *)"
+          },
+          "start_backup_window_minutes": {
+            "@@assign": "180"
+          },
+          "complete_backup_window_minutes": {
+            "@@assign": "300"
+          },
+          "lifecycle": {
+            "move_to_cold_storage_after_days": {
+              "@@assign": "7"
+            },
+            "delete_after_days": {
+              "@@assign": "98"
+            }
+          },
+          "target_backup_vault_name": {
+            "@@assign": "Default"
+          }
+        }
+      },
+      "selections": {
+        "tags": {
+          "EC2-Assignment": {
+            "iam_role_arn": {
+              "@@assign": "arn:aws:iam::$account:role/AWSBackupDefaultServiceRole"
+            },
+            "tag_key": {
+              "@@assign": "Backup"
+            },
+            "tag_value": {
+              "@@assign": [
+                "Yes",
+                "yes"
+              ]
+            }
+          }
+        }
+      },
+      "advanced_backup_settings": {
+        "ec2": {
+          "windows_vss": {
+            "@@assign": "enabled"
+          }
+        }
+      }
+    }
+  }
+}

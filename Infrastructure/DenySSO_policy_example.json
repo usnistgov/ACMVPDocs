@@ -1,0 +1,26 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "DenyCreateIAMIdentityCenter",
+      "Effect": "Deny",
+      "Action": [
+        "organizations:CreateAccount",
+        "sso:CreateInstance"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "StringEquals": {
+          "aws:PrincipalOrgID": [
+            "o-xxxxxxxx"
+          ]
+        },
+        "StringNotEquals": {
+          "aws:PrincipalAccount": [
+            "xxxxxxxxxxxx"
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,128 @@
+{
+  "tags": {
+    "Name": {
+      "tag_key": {
+        "@@assign": "Name"
+      },
+      "enforced_for": {
+        "@@assign": [
+          "ec2:image",
+          "ec2:instance",
+          "ec2:route-table",
+          "ec2:security-group",
+          "ec2:snapshot",
+          "ec2:subnet",
+          "ec2:vpc",
+          "kms:*",
+          "lambda:*",
+          "secretsmanager:*"
+        ]
+      }
+    },
+    "Lab": {
+      "tag_key": {
+        "@@assign": "Lab"
+      },
+      "enforced_for": {
+        "@@assign": [
+          "ec2:image",
+          "ec2:instance",
+          "ec2:route-table",
+          "ec2:security-group",
+          "ec2:subnet",
+          "ec2:vpc",
+          "kms:*",
+          "lambda:*",
+          "secretsmanager:*"
+        ]
+      }
+    },
+    "Environment": {
+      "tag_key": {
+        "@@assign": "Environment"
+      },
+      "tag_value": {
+        "@@assign": [
+          "Test",
+          "Development",
+          "Production"
+        ]
+      },
+      "enforced_for": {
+        "@@assign": [
+          "ec2:image",
+          "ec2:instance",
+          "ec2:route-table",
+          "ec2:security-group",
+          "ec2:snapshot",
+          "ec2:subnet",
+          "ec2:vpc",
+          "kms:*",
+          "lambda:*",
+          "secretsmanager:*"
+        ]
+      }
+    },
+    "Creator": {
+      "tag_key": {
+        "@@assign": "Creator"
+      },
+      "enforced_for": {
+        "@@assign": [
+          "ec2:image",
+          "ec2:instance",
+          "ec2:route-table",
+          "ec2:security-group",
+          "ec2:snapshot",
+          "ec2:subnet",
+          "ec2:vpc",
+          "kms:*",
+          "lambda:*",
+          "secretsmanager:*"
+        ]
+      }
+    },
+    "LabEmail": {
+      "tag_key": {
+        "@@assign": "LabEmail"
+      },
+      "enforced_for": {
+        "@@assign": [
+          "ec2:image",
+          "ec2:instance",
+          "ec2:route-table",
+          "ec2:security-group",
+          "ec2:snapshot",
+          "ec2:subnet",
+          "ec2:vpc",
+          "kms:*",
+          "lambda:*",
+          "secretsmanager:*"
+        ]
+      }
+    },
+    "Backup": {
+      "tag_key": {
+        "@@assign": "Backup"
+      },
+      "enforced_for": {
+        "@@assign": [
+          "ec2:image",
+          "ec2:instance",
+          "ec2:route-table",
+          "ec2:security-group",
+          "ec2:snapshot",
+          "ec2:subnet",
+          "ec2:vpc",
+          "kms:*",
+          "lambda:*",
+          "secretsmanager:*"
+        ]
+      }
+    }
+  }
+}
+
+
+CloudShell
+Feedback
