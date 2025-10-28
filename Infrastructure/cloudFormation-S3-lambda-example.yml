@@ -1,0 +1,174 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: >
+  CloudFormation template to deploy a Lambda function and an EventBridge rule
+  for managing S3 bucket settings, including versioning and lifecycle policies.
+
+Resources:
+  # IAM Policy for Lambda Function
+  NccoeLambdaS3BucketCreatePolicy:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: NccoeLambdaS3BucketCreatePolicy
+      PolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Action:
+              - s3:GetBucketPolicy
+              - s3:PutBucketPolicy
+              - s3:GetBucketLifecycleConfiguration
+              - s3:PutBucketLifecycleConfiguration
+              - s3:GetBucketTagging
+              - s3:PutBucketTagging
+              - s3:PutBucketVersioning
+              - s3:GetLifecycleConfiguration
+              - s3:PutBucketLifecycle
+              - s3:GetBucketLifeCycle
+              - s3:ListAllMyBuckets
+              - s3:PutLifecycleConfiguration
+              - s3:PutBucketPolicy
+              - s3:ListBucket
+            Resource: "arn:aws:s3:::*"
+          - Effect: Allow
+            Action:
+              - logs:CreateLogGroup
+              - logs:CreateLogStream
+              - logs:PutLogEvents
+            Resource: "arn:aws:logs:*:*:*"
+
+  # IAM Role for Lambda
+  LambdaExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: sts:AssumeRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole
+        - !Ref NccoeLambdaS3BucketCreatePolicy
+
+  # Lambda Function
+  S3ManagementLambdaFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: ManageNewS3BucketCreationSettings
+      Runtime: python3.12
+      Handler: index.lambda_handler
+      Role: !GetAtt LambdaExecutionRole.Arn
+      Code:
+        ZipFile: |
+          import json
+          import boto3
+          from botocore.exceptions import ClientError
+
+          s3 = boto3.client('s3')
+
+          def add_name_tag_to_bucket(bucket_name, s3):
+              try:
+                  print(f"Processing bucket: {bucket_name}")
+                  try:
+                      response = s3.get_bucket_tagging(Bucket=bucket_name)
+                      existing_tags = response.get('TagSet', [])
+                  except ClientError as e:
+                      if e.response['Error']['Code'] == 'NoSuchTagSet':
+                          existing_tags = []
+                      else:
+                          return
+                  name_tag_exists = any(tag['Key'] == 'Name' for tag in existing_tags)
+                  if not name_tag_exists:
+                      existing_tags.append({'Key': 'Name', 'Value': bucket_name})
+                      s3.put_bucket_tagging(Bucket=bucket_name, Tagging={'TagSet': existing_tags})
+              except Exception as e:
+                  print(f"Unexpected error while processing {bucket_name}: {str(e)}")
+
+          def lambda_handler(event, context):
+              bucket_name = event['detail']['requestParameters']['bucketName']
+              try:
+                  s3.put_bucket_versioning(Bucket=bucket_name, VersioningConfiguration={'Status': 'Enabled'})
+              except Exception as e:
+                  raise e
+              try:
+                  existing_policy = s3.get_bucket_policy(Bucket=bucket_name)
+                  policy = json.loads(existing_policy['Policy'])
+              except s3.exceptions.from_code('NoSuchBucketPolicy'):
+                  policy = {"Version": "2012-10-17", "Statement": []}
+              ssl_statement = {
+                  "Sid": "DenyNonSSLRequests",
+                  "Effect": "Deny",
+                  "Principal": "*",
+                  "Action": "s3:*",
+                  "Resource": [
+                      f"arn:aws:s3:::{bucket_name}",
+                      f"arn:aws:s3:::{bucket_name}/*"
+                  ],
+                  "Condition": {"Bool": {"aws:SecureTransport": "false"}}
+              }
+              statement_exists = any(stmt.get('Sid') == "DenyNonSSLRequests" for stmt in policy['Statement'])
+              if not statement_exists:
+                  policy['Statement'].append(ssl_statement)
+              try:
+                  s3.put_bucket_policy(Bucket=bucket_name, Policy=json.dumps(policy))
+              except Exception as e:
+                  raise e
+              try:
+                  response = s3.get_bucket_lifecycle_configuration(Bucket=bucket_name)
+                  lifecycle_exists = True
+              except ClientError as e:
+                  if e.response['Error']['Code'] == 'NoSuchLifecycleConfiguration':
+                      lifecycle_exists = False
+                  else:
+                      raise e
+              if not lifecycle_exists:
+                  lifecycle_policy = {
+                      'Rules': [
+                          {
+                              'ID': 'Delete after 365 days',
+                              'Filter': {'Prefix': ''},
+                              'Status': 'Enabled',
+                              'Expiration': {'Days': 365}
+                          }
+                      ]
+                  }
+                  try:
+                      s3.put_bucket_lifecycle_configuration(
+                          Bucket=bucket_name, LifecycleConfiguration=lifecycle_policy)
+                  except Exception as e:
+                      raise e
+              add_name_tag_to_bucket(bucket_name, s3)
+              return {'statusCode': 200, 'body': json.dumps('Success')}
+
+  # EventBridge Rule
+  EventBridgeRule:
+    Type: AWS::Events::Rule
+    Properties:
+      Name: ManageNewS3BucketCreationSettingsRule
+      EventPattern:
+        source:
+          - aws.s3
+        detail-type:
+          - AWS API Call via CloudTrail
+        detail:
+          eventSource:
+            - s3.amazonaws.com
+          eventName:
+            - CreateBucket
+          awsRegion:
+            - us-east-1
+      State: ENABLED
+      EventBusName: default
+      Targets:
+        - Id: LambdaTarget
+          Arn: !GetAtt S3ManagementLambdaFunction.Arn
+
+  # Lambda Permission for EventBridge
+  LambdaPermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      FunctionName: !GetAtt S3ManagementLambdaFunction.Arn
+      Action: lambda:InvokeFunction
+      Principal: events.amazonaws.com
+      SourceArn: !GetAtt EventBridgeRule.Arn
