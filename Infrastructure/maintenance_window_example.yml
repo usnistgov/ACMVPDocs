@@ -1,0 +1,43 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: >
+  CloudFormation template for SSM Maintenance Window to execute an automation document with the required configuration.
+
+Parameters:
+  AccountId:
+    Type: String
+    Description: The AWS Account ID to use in the ARN references.
+    AllowedPattern: "^[0-9]{12}$"
+    ConstraintDescription: Must be a valid 12-digit AWS account number.
+
+  Region:
+    Type: String
+    Description: The AWS Region to use in the ARN references.
+    Default: us-east-1
+
+Resources:
+  # Create the SSM Maintenance Window
+  MaintenanceWindow:
+    Type: AWS::SSM::MaintenanceWindow
+    Properties:
+      AllowUnassociatedTargets: true
+      Cutoff: 1
+      Duration: 2
+      Name: MyMaintenanceWindow
+      # Weekdays at 07:55 America/New_York
+      Schedule: "cron(55 7 ? * 2-6 *)"
+      ScheduleTimezone: "America/New_York"
+
+  # Task for the Maintenance Window to execute an SSM Automation document
+  MaintenanceWindowTask:
+    Type: AWS::SSM::MaintenanceWindowTask
+    Properties:
+      WindowId: !Ref MaintenanceWindow
+      TaskArn: !Sub "arn:aws:ssm:${Region}:${AccountId}:document/NCCoeEC2SecurityGroupRemediationDocument"
+      ServiceRoleArn: !Sub "arn:aws:iam::${AccountId}:role/NCCoE-SG-MWServiceRole"
+      TaskType: AUTOMATION
+      Priority: 1
+
+Outputs:
+  MaintenanceWindowId:
+    Description: The ID of the created Maintenance Window.
+    Value: !Ref MaintenanceWindow

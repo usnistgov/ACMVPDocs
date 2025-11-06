@@ -1,0 +1,297 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Notify via email when AWS accounts are created, removed, suspended, or have new SSO assignments in the organization.
+
+Parameters:
+  NotificationEmail:
+    Type: String
+    Description: Primary email address to receive account notifications
+
+  SecondNotificationEmail:
+    Type: String
+    Description: Secondary email address to also receive account notifications
+
+  ThirdNotificationEmail:
+    Type: String
+    Description: Third email address to receive account notifications
+
+  FourthNotificationEmail:
+    Type: String
+    Description: Fourth email address to receive account notifications
+
+Resources:
+
+  AccountNotificationTopic:
+    Type: AWS::SNS::Topic
+    Properties:
+      DisplayName: Account Notifications Topic
+      KmsMasterKeyId: <insert_key_ARN>
+
+  AccountNotificationSubscription:
+    Type: AWS::SNS::Subscription
+    Properties:
+      Protocol: email
+      Endpoint: !Ref NotificationEmail
+      TopicArn: !Ref AccountNotificationTopic
+
+  SecondAccountNotificationSubscription:
+    Type: AWS::SNS::Subscription
+    Properties:
+      Protocol: email
+      Endpoint: !Ref SecondNotificationEmail
+      TopicArn: !Ref AccountNotificationTopic
+
+  ThirdAccountNotificationSubscription:
+    Type: AWS::SNS::Subscription
+    Properties:
+      Protocol: email
+      Endpoint: !Ref ThirdNotificationEmail
+      TopicArn: !Ref AccountNotificationTopic
+
+  FourthAccountNotificationSubscription:
+    Type: AWS::SNS::Subscription
+    Properties:
+      Protocol: email
+      Endpoint: !Ref FourthNotificationEmail
+      TopicArn: !Ref AccountNotificationTopic
+
+  AccountNotifyLambdaRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: LambdaSNSPublishPolicy
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action:
+                  - sns:Publish
+                Resource: !Ref AccountNotificationTopic
+              - Effect: Allow
+                Action:
+                  - logs:CreateLogGroup
+                  - logs:CreateLogStream
+                  - logs:PutLogEvents
+                Resource: "*"
+              - Effect: Allow
+                Action:
+                  - organizations:DescribeAccount
+                  - organizations:ListAccounts
+                Resource: "*"
+              - Effect: Allow
+                Action:
+                  - kms:GenerateDataKey
+                  - kms:Decrypt
+                Resource: <insert_ARN>
+
+  AccountNotifyLambda:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: AccountNotifyFunction
+      Handler: index.lambda_handler
+      Role: !GetAtt AccountNotifyLambdaRole.Arn
+      Runtime: python3.12
+      Timeout: 10
+      Environment:
+        Variables:
+          TOPIC_ARN: !Ref AccountNotificationTopic
+      Code:
+        ZipFile: |
+          import boto3
+          import json
+          import os
+          from datetime import datetime
+
+          orgs = boto3.client('organizations')
+          sns = boto3.client('sns')
+          topic_arn = os.environ['TOPIC_ARN']
+
+          def lambda_handler(event, context):
+              print("Received event:", json.dumps(event, indent=2))
+
+              source = event.get('source')
+              event_name = event.get('detail', {}).get('eventName')
+
+              if source == 'controltower.amazonaws.com' and event_name == 'CreateManagedAccount':
+                  account_id = event['detail']['serviceEventDetails']['createManagedAccountStatus']['account']['accountId']
+                  account_name = event['detail']['serviceEventDetails']['createManagedAccountStatus']['account']['accountName']
+                  message = (
+                      f"A new AWS account was CREATED:\n"
+                      f"Account ID: {account_id}\n"
+                      f"Account Name: {account_name}\n"
+                      f"Created at: {datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S UTC')}"
+                  )
+                  sns.publish(
+                      TopicArn=topic_arn,
+                      Subject="AWS Account CREATED",
+                      Message=message
+                  )
+
+              elif source == 'aws.organizations' and event_name == 'RemoveAccountFromOrganization':
+                  account_id = event['detail'].get('requestParameters', {}).get('accountId', 'Unknown')
+                  message = (
+                      f"An AWS account was REMOVED from the organization:\n"
+                      f"Account ID: {account_id}\n"
+                      f"Time: {datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S UTC')}"
+                  )
+                  sns.publish(
+                      TopicArn=topic_arn,
+                      Subject="AWS Account REMOVED",
+                      Message=message
+                  )
+
+              elif source == 'aws.sso' and event_name == 'CreateAccountAssignment':
+                  rp = event['detail'].get('requestParameters', {})
+                  principal_id = rp.get('principalId', 'Unknown')
+                  principal_type = rp.get('principalType', 'Unknown')
+                  account_id = rp.get('targetId', 'Unknown')
+                  permission_set_arn = rp.get('permissionSetArn', 'Unknown')
+                  response = orgs.describe_account(AccountId=account_id)
+                  account_name = response['Account']['Name']
+
+                  message = (
+                      f"A new AWS NCCoE Member Account Was Created:\n"
+                      f"Account ID: {account_id}\n"
+                      f"Account Name: {account_name}\n"
+                      f"Principal ID: {principal_id} ({principal_type})\n"
+                      f"Permission Set ARN: {permission_set_arn}\n"
+                      f"Time: {datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S UTC')}"
+                  )
+
+                  sns.publish(
+                      TopicArn=topic_arn,
+                      Subject="A new AWS NCCoE Member Account Was Created",
+                      Message=message
+                  )
+
+              else:
+                  response = orgs.list_accounts()
+                  suspended_accounts = [acct for acct in response['Accounts'] if acct['Status'].upper() == 'SUSPENDED']
+
+                  if not suspended_accounts:
+                      print("No suspended (closed) accounts found.")
+                      return
+
+                  for acct in suspended_accounts:
+                      account_id = acct['Id']
+                      account_name = acct['Name']
+                      closed_time = acct.get('JoinedTimestamp', 'Unknown')
+                      message = (
+                          f"A member AWS account has been SUSPENDED. AWS typically removes suspended accounts 90 days after suspension:\n"
+                          f"Account ID: {account_id}\n"
+                          f"Account Name: {account_name}\n"
+                          f"Status: {acct['Status']}\n"
+                          f"Originally joined: {closed_time}\n"
+                          f"Checked on: {datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S UTC')}"
+                      )
+
+                      print(f"Notifying about Suspended account: {account_id}")
+                      sns.publish(
+                          TopicArn=topic_arn,
+                          Subject="AWS Account SUSPENDED",
+                          Message=message
+                      )
+
+  AccountCreatedEventRule:
+    Type: AWS::Events::Rule
+    Properties:
+      Name: ControlTowerAccountCreatedRule
+      EventPattern:
+        source:
+          - controltower.amazonaws.com
+        detail-type:
+          - "AWS Service Event via CloudTrail"
+        detail:
+          eventName:
+            - CreateManagedAccount
+      State: ENABLED
+      Targets:
+        - Arn: !GetAtt AccountNotifyLambda.Arn
+          Id: AccountCreatedLambdaTarget
+
+  AccountRemovedEventRule:
+    Type: AWS::Events::Rule
+    Properties:
+      Name: AccountRemovedRule
+      EventPattern:
+        source:
+          - aws.organizations
+        detail-type:
+          - "AWS API Call via CloudTrail"
+        detail:
+          eventName:
+            - RemoveAccountFromOrganization
+      State: ENABLED
+      Targets:
+        - Arn: !GetAtt AccountNotifyLambda.Arn
+          Id: AccountRemovedLambdaTarget
+
+  AccountAssignmentCreatedEventRule:
+    Type: AWS::Events::Rule
+    Properties:
+      Name: AccountAssignmentCreatedRule
+      EventPattern:
+        source:
+          - aws.sso
+        detail-type:
+          - "AWS API Call via CloudTrail"
+        detail:
+          eventName:
+            - CreateAccountAssignment
+      State: ENABLED
+      Targets:
+        - Arn: !GetAtt AccountNotifyLambda.Arn
+          Id: AccountAssignmentCreatedLambdaTarget
+
+  SuspendedAccountsScheduleRule:
+    Type: AWS::Events::Rule
+    Properties:
+      Name: SuspendedAccountsCheck
+      ScheduleExpression: rate(30 days)
+      State: ENABLED
+      Targets:
+        - Arn: !GetAtt AccountNotifyLambda.Arn
+          Id: SuspendedAccountsTarget
+
+  LambdaInvokePermissionCreate:
+    Type: AWS::Lambda::Permission
+    Properties:
+      Action: lambda:InvokeFunction
+      FunctionName: !Ref AccountNotifyLambda
+      Principal: events.amazonaws.com
+      SourceArn: !GetAtt AccountCreatedEventRule.Arn
+
+  LambdaInvokePermissionRemove:
+    Type: AWS::Lambda::Permission
+    Properties:
+      Action: lambda:InvokeFunction
+      FunctionName: !Ref AccountNotifyLambda
+      Principal: events.amazonaws.com
+      SourceArn: !GetAtt AccountRemovedEventRule.Arn
+
+  LambdaInvokePermissionAssignment:
+    Type: AWS::Lambda::Permission
+    Properties:
+      Action: lambda:InvokeFunction
+      FunctionName: !Ref AccountNotifyLambda
+      Principal: events.amazonaws.com
+      SourceArn: !GetAtt AccountAssignmentCreatedEventRule.Arn
+
+  LambdaInvokePermissionSuspended:
+    Type: AWS::Lambda::Permission
+    Properties:
+      Action: lambda:InvokeFunction
+      FunctionName: !Ref AccountNotifyLambda
+      Principal: events.amazonaws.com
+      SourceArn: !GetAtt SuspendedAccountsScheduleRule.Arn
+
+Outputs:
+  SNSTopicArn:
+    Description: SNS topic for account notifications
+    Value: !Ref AccountNotificationTopic

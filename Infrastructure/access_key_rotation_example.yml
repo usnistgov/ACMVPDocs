@@ -1,0 +1,193 @@
+Parameters:
+  Email1:
+    Type: String
+    Description: First email to subscribe to the SNS topic
+  Email2:
+    Type: String
+    Description: Second email to subscribe to the SNS topic
+
+Resources:
+
+  AccessKeyRotationTopic:
+    Type: AWS::SNS::Topic
+    Properties:
+      TopicName: AxoniusKeyRotation
+
+  AccessKeyRotationSubscription1:
+    Type: AWS::SNS::Subscription
+    Properties:
+      Protocol: email
+      Endpoint: !Ref Email1
+      TopicArn: !Ref AccessKeyRotationTopic
+
+  AccessKeyRotationSubscription2:
+    Type: AWS::SNS::Subscription
+    Properties:
+      Protocol: email
+      Endpoint: !Ref Email2
+      TopicArn: !Ref AccessKeyRotationTopic
+
+  RotateAccessKeyRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: AxoniusKeyRotation
+      AssumeRolePolicyDocument: 
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: RotateAccessKeyPolicy
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action:
+                  - iam:ListAccessKeys
+                  - iam:DeleteAccessKey
+                  - iam:CreateAccessKey
+                  - iam:UpdateAccessKey
+                  - secretsmanager:CreateSecret
+                  - secretsmanager:PutSecretValue
+                  - secretsmanager:UpdateSecret
+                  - secretsmanager:GetSecretValue
+                  - secretsmanager:DescribeSecret
+                  - sns:Publish
+                  - logs:CreateLogGroup
+                  - logs:CreateLogStream
+                  - logs:PutLogEvents
+                Resource: "*"
+
+  RotateAccessKeyLambda:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: RotateAccessKeyLambda
+      Role: !GetAtt RotateAccessKeyRole.Arn
+      Runtime: python3.12
+      Timeout: 300
+      Handler: index.lambda_handler
+      Code:
+        ZipFile: |
+          import boto3
+          import datetime
+          import json
+          import os
+
+          def lambda_handler(event, context):
+              iam = boto3.client('iam')
+              secretsmanager = boto3.client('secretsmanager')
+              sns = boto3.client('sns')
+
+              target_user = "SecurityReview"
+              overlap_days = 7
+              rotation_days = 90
+
+              secret_name = f"{target_user}-access-key"
+              sns_topic_arn = os.environ['SNS_TOPIC_ARN']
+              sns_warning_topic_arn = os.environ.get('SNS_WARNING_TOPIC_ARN')
+
+              try:
+                  keys = iam.list_access_keys(UserName=target_user)['AccessKeyMetadata']
+              except iam.exceptions.NoSuchEntityException:
+                  return {"message": f"User {target_user} does not exist."}
+
+              now = datetime.datetime.now(datetime.timezone.utc)
+              active_keys = [k for k in keys if k['Status'] == 'Active']
+              all_keys = sorted(keys, key=lambda k: k['CreateDate'])
+
+              response_data = {}
+
+              if len(active_keys) == 2:
+                  older_key = sorted(active_keys, key=lambda k: k['CreateDate'])[0]
+                  age_days = (now - older_key['CreateDate']).days
+
+                  if age_days >= rotation_days + overlap_days:
+                      iam.update_access_key(UserName=target_user, AccessKeyId=older_key['AccessKeyId'], Status='Inactive')
+                      iam.delete_access_key(UserName=target_user, AccessKeyId=older_key['AccessKeyId'])
+                      print(f"Deactivated and deleted old key {older_key['AccessKeyId']}")
+                      send_sns(sns, sns_topic_arn, "Old Access Key Deleted", f"Old access key {older_key['AccessKeyId']} was deactivated and deleted.")
+                  else:
+                      print(f"Overlap in progress. Old key {older_key['AccessKeyId']} is {age_days} days old.")
+
+              elif len(active_keys) == 1:
+                  active_key = active_keys[0]
+                  age_days = (now - active_key['CreateDate']).days
+                  response_data[active_key['AccessKeyId']] = {
+                      'active': True,
+                      'age_days': age_days,
+                      'last_rotated': active_key['CreateDate'].isoformat()
+                  }
+
+                  if age_days >= rotation_days:
+                      new_key = iam.create_access_key(UserName=target_user)['AccessKey']
+                      print(f"Created new key {new_key['AccessKeyId']}")
+
+                      secret_value = {
+                          'AccessKeyId': new_key['AccessKeyId'],
+                          'SecretAccessKey': new_key['SecretAccessKey']
+                      }
+
+                      try:
+                          secretsmanager.put_secret_value(
+                              SecretId=secret_name,
+                              SecretString=json.dumps(secret_value)
+                          )
+                          print("Updated existing secret in Secrets Manager")
+                      except secretsmanager.exceptions.ResourceNotFoundException:
+                          secretsmanager.create_secret(
+                              Name=secret_name,
+                              SecretString=json.dumps(secret_value)
+                          )
+                          print("Created new secret in Secrets Manager")
+
+                      send_sns(sns, sns_topic_arn, "Access Key Rotated",
+                               f"A new access key was created for IAM user {target_user} and stored in Secrets Manager as {secret_name}.")
+
+                  elif rotation_days - age_days <= 5 and sns_warning_topic_arn:
+                      warning_message = (
+                          f"Access key {active_key['AccessKeyId']} for user {target_user} is {age_days} days old. "
+                          f"Key will rotate in {rotation_days - age_days} days."
+                      )
+                      print("Sending warning:", warning_message)
+                      send_sns(sns, sns_warning_topic_arn, f"Upcoming Rotation for {target_user}", warning_message)
+
+              else:
+                  print("Unexpected key state. Check access keys manually.")
+                  for key in all_keys:
+                      print(f"Key {key['AccessKeyId']} - Status: {key['Status']} - Created: {key['CreateDate']}")
+
+              return {
+                  "message": f"Key status for {target_user} checked.",
+                  "details": response_data
+              }
+
+          def send_sns(sns_client, topic_arn, subject, message):
+              sns_client.publish(
+                  TopicArn=topic_arn,
+                  Subject=subject,
+                  Message=message
+              )
+
+      Environment:
+        Variables:
+          SNS_TOPIC_ARN: !Ref AccessKeyRotationTopic
+
+  RotateAccessKeyScheduleRule:
+    Type: AWS::Events::Rule
+    Properties:
+      Name: RotateAccessKeyScheduleRule
+      ScheduleExpression: rate(7 days)
+      State: ENABLED
+      Targets:
+        - Arn: !GetAtt RotateAccessKeyLambda.Arn
+          Id: RotateAccessKeyLambdaTarget
+
+  PermissionForEventsToInvokeLambda:
+    Type: AWS::Lambda::Permission
+    Properties:
+      FunctionName: !Ref RotateAccessKeyLambda
+      Action: 'lambda:InvokeFunction'
+      Principal: 'events.amazonaws.com'
+      SourceArn: !GetAtt RotateAccessKeyScheduleRule.Arn

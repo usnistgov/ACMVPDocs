@@ -1,0 +1,255 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: >
+  CloudFormation template to create an SSM Automation Document and 
+  an IAM Role for EC2 Security Group remediation.
+  - Inline policies moved to managed policies and attached to the role.
+  - Trust policy updated to prevent confused-deputy attacks.
+  - Adds MW policy to allow StartAutomationExecution + PassRole for the Maintenance Window.
+
+Parameters:
+  AccountNumber:
+    Type: String
+    Description: AWS Account Number to be used in the IAM Role's ARN.
+    AllowedPattern: "^[0-9]{12}$"
+    ConstraintDescription: Must be a valid 12-digit AWS account number.
+
+Resources:
+  # -----------------------------
+  # SSM Automation Document (UNCHANGED)
+  # -----------------------------
+  NCCoeEC2SecurityGroupRemediationDocument:
+    Type: AWS::SSM::Document
+    Properties:
+      DocumentType: Automation
+      DocumentFormat: YAML
+      Name: NCCoeEC2SecurityGroupRemediationDocument
+      Content:
+        schemaVersion: '0.3'
+        description: >
+          This Automation runbook identifies and remediates EC2 security groups
+          with wide-open rules (0.0.0.0/0).
+        assumeRole: !Sub "arn:aws:iam::${AccountNumber}:role/NCCoE-SG-RemoveandReplaceQuadZero"
+        mainSteps:
+          - name: LogRemediationStart
+            action: aws:executeAwsApi
+            nextStep: DescribeSecurityGroups
+            isEnd: false
+            inputs:
+              Service: ssm
+              Api: PutParameter
+              Name: /AutoRemediation/RemediationStarted
+              Type: String
+              Overwrite: true
+              Value: '{{automation:EXECUTION_ID}}'
+
+          - name: DescribeSecurityGroups
+            action: aws:executeAwsApi
+            nextStep: RemoveOpenInboundRules
+            isEnd: false
+            inputs:
+              Service: ec2
+              Api: DescribeSecurityGroups
+            outputs:
+              - Name: SecurityGroups
+                Selector: $
+                Type: StringMap
+
+          - name: RemoveOpenInboundRules
+            action: aws:executeScript
+            nextStep: OutputResults
+            isEnd: false
+            inputs:
+              Runtime: python3.11
+              Handler: modify_open_rules
+              Script: |
+                import boto3
+                import json
+
+                BAD_CIDR_PREFIXES = {
+                    '0.0.0.0/': '10.0.0.0/8'
+                }
+
+                def modify_some_rules(ec2, sg):
+                    group_id = sg['GroupId']
+                    sg_filter = [{'Name': 'group-id', 'Values': [group_id]}]
+                    sg_rules = ec2.describe_security_group_rules(Filters=sg_filter)['SecurityGroupRules']
+                    print(f"SG {group_id} contains {len(sg_rules)} rules ...")
+
+                    new_rules = []
+
+                    for rule in sg_rules:
+                        if rule['IsEgress'] or 'CidrIpv4' not in rule:
+                            continue
+
+                        descr = f"ALTER: {rule.get('Description', 'Quad 0 CIDR not allowed')}"
+                        for k, v in BAD_CIDR_PREFIXES.items():
+                            if rule['CidrIpv4'].startswith(k):
+                                new_rules.append({
+                                    'SecurityGroupRuleId': rule['SecurityGroupRuleId'],
+                                    'SecurityGroupRule': {
+                                        'IpProtocol': rule['IpProtocol'],
+                                        'FromPort': rule['FromPort'],
+                                        'ToPort': rule['ToPort'],
+                                        'CidrIpv4': v,
+                                        'Description': descr
+                                    }
+                                })
+
+                    if new_rules:
+                        try:
+                            print(f"Updating security group: {group_id}")
+                            ec2.modify_security_group_rules(GroupId=group_id, SecurityGroupRules=new_rules)
+                            print(f"Updated security group: {group_id}")
+                            return True
+                        except Exception as e:
+                            print(f"Error updating {group_id}: {str(e)}")
+
+                    return False
+
+                def modify_open_rules(events, context):
+                    remediated_groups = []
+                    security_groups = events['SecurityGroups']
+                    ec2 = boto3.client('ec2')
+
+                    for group in security_groups['SecurityGroups']:
+                        if modify_some_rules(ec2, group):
+                            remediated_groups.append(group['GroupId'])
+
+                    return {'RemediatedGroups': f"SG(s): {','.join(remediated_groups)}"}
+              InputPayload:
+                SecurityGroups: '{{DescribeSecurityGroups.SecurityGroups}}'
+            outputs:
+              - Name: RemediatedGroups
+                Selector: $.Payload.RemediatedGroups
+                Type: String
+
+          - name: OutputResults
+            action: aws:executeAwsApi
+            isEnd: true
+            inputs:
+              Service: ssm
+              Api: PutParameter
+              Name: /AutoRemediation/RemovedOpenInboundRules
+              Type: String
+              Overwrite: true
+              Value: '{{RemoveOpenInboundRules.RemediatedGroups}}'
+
+  # --------------------------------------------
+  # Managed Policy: SG describes + mutation + SSM/logs (from original inline)
+  # --------------------------------------------
+  NccoeSecureSGRulesPolicy:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: Nccoe-SecureSGRules
+      PolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Action:
+              - ec2:DescribeSecurityGroups
+              - ec2:DescribeSecurityGroupRules
+              - ec2:ModifySecurityGroupRules
+              - ssm:PutParameter
+              - ssm:DescribeAutomationExecutions
+            Resource: "*"
+          - Effect: Allow
+            Action:
+              - logs:CreateLogGroup
+              - logs:CreateLogStream
+              - logs:PutLogEvents
+            Resource: "*"
+
+  # Minimal SSM reads so SSM accepts the MW service role (no wildcards on mutate here)
+  NccoeMWServiceSupportPolicy:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: Nccoe-MW-SSMReadOnly
+      PolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Sid: ReadAutomationState
+            Effect: Allow
+            Action:
+              - ssm:GetAutomationExecution
+              - ssm:DescribeAutomationExecutions
+              - ssm:GetDocument
+              - ssm:DescribeDocument
+              - ssm:ListDocuments
+              - ssm:ListDocumentVersions
+            Resource: "*"
+
+  # Managed Policy: MW can start this doc + pass this role
+  NccoeMWStartAndPassPolicy:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: Nccoe-MW-StartAndPass
+      PolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Sid: StartOnlyThisAutomation
+            Effect: Allow
+            Action: ssm:StartAutomationExecution
+            Resource: !Sub arn:aws:ssm:${AWS::Region}:${AccountNumber}:automation-definition/NCCoeEC2SecurityGroupRemediationDocument:*
+          - Sid: PassOnlyThisExecutionRole
+            Effect: Allow
+            Action: iam:PassRole
+            Resource: !Sub arn:aws:iam::${AccountNumber}:role/NCCoE-SG-RemoveandReplaceQuadZero
+            Condition:
+              StringEquals:
+                iam:PassedToService: ssm.amazonaws.com
+
+  # Dedicated Maintenance Window service role (assumed by SSM for MW runs)
+  NccoeMWServiceRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: NCCoE-SG-MWServiceRole
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Sid: AllowSSMAssumeForMW
+            Effect: Allow
+            Principal:
+              Service: ssm.amazonaws.com
+            Action: sts:AssumeRole
+            Condition:
+              StringEquals:
+                aws:SourceAccount: !Ref AccountNumber
+              ArnLike:
+                aws:SourceArn: !Sub arn:aws:ssm:${AWS::Region}:${AccountNumber}:maintenancewindow/*
+      ManagedPolicyArns:
+        - !Ref NccoeMWStartAndPassPolicy     # StartAutomationExecution + PassRole
+        - !Ref NccoeMWServiceSupportPolicy   # Minimal SSM reads
+
+  # IAM Role used by the SSM Automation (execution role only)
+  SSMAutomationRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: NCCoE-SG-RemoveandReplaceQuadZero
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Sid: AllowSSMAssumeForAutomationOnly
+            Effect: Allow
+            Principal:
+              Service: ssm.amazonaws.com
+            Action: sts:AssumeRole
+            Condition:
+              StringEquals:
+                aws:SourceAccount: !Ref AccountNumber
+              ArnLike:
+                aws:SourceArn: !Sub arn:aws:ssm:${AWS::Region}:${AccountNumber}:automation-execution/*
+      ManagedPolicyArns:
+        - !Ref NccoeSecureSGRulesPolicy
+
+Outputs:
+  SSMDocumentName:
+    Description: Name of the created SSM Automation Document.
+    Value: !Ref NCCoeEC2SecurityGroupRemediationDocument
+
+  IAMRoleName:
+    Description: Name of the created IAM Role.
+    Value: !Ref SSMAutomationRole
+
+  MWServiceRoleArn:
+    Description: ARN of the Maintenance Window service role (use in Deploy Second.yml)
+    Value: !GetAtt NccoeMWServiceRole.Arn
