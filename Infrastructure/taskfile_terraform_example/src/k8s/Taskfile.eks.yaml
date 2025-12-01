@@ -1,0 +1,11 @@
+version: 3
+
+vars:
+  PROJECT_KEY: '{{.CLUSTER_NAME}} | default ("acmvp-eks-dev")'
+  ENVIRONMENT: '{{.ENVIRONMENT | default ("local")}}'
+
+tasks:
+  update:
+    desc: Update kubeconfig to point to CLUSTER_NAME
+    cmds:
+      - cmd: aws eks update-kubeconfig --name {{.NAMESPACE}}

@@ -1,0 +1,33 @@
+version: 3
+
+tasks:
+  apply:
+    desc: Runs terraform apply
+    cmds:
+      - cmd: terraform apply
+
+  fmt:
+    desc: Formats and validates Terraform source code
+    cmds:
+      - cmd: terraform fmt -recursive
+      - cmd: terraform validate
+
+  init:
+    desc: Initializes terraform lockfile and S3 state
+    cmds:
+      - cmd: terraform init
+
+  init-configure:
+    desc: Initializes terraform and reconfigure existing state
+    cmds:
+      - cmd: terraform init -reconfigure
+
+  plan:
+    desc: Runs terraform plan
+    cmds:
+      - cmd: terraform plan
+
+  destroy:
+    desc: Runs terraform destroy
+    cmds:
+      - cmd: terraform destroy

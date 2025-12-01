@@ -1,0 +1,41 @@
+version: 3
+
+vars:
+  ENVIRONMENT: '{{.ENVIRONMENT | default ("local")}}'
+  NAMESPACE: '{{.NAMESPACE | default ("acmvp-local")}}'
+  CLUSTER_NAME: '{{.CLUSTER_NAME | default ("rancher-desktop")}}'
+
+tasks:
+  create_namespace:
+    desc: Creates the environment NAMESPACE
+    cmds:
+      - cmd: |
+          kubectl create namespace {{.NAMESPACE}} \
+            --dry-run=client -o yaml | kubectl apply -f -
+
+  delete_namespace:
+    desc: Deletes the environment NAMESPACE
+    cmds:
+      - cmd: kubectl delete namespace {{.NAMESPACE}}
+
+  apply:
+    desc: Deploys the application into NAMESPACE
+    cmds:
+      - cmd: |
+          kubectl apply -f src/k8s/{{lower .ENVIRONMENT}}.yaml \
+            --dry-run=client -o yaml | kubectl apply -f -
+
+  get_namespace:
+    desc: Lists namespaces
+    cmds:
+      - cmd: kubectl get namespace -A
+
+  get_pods:
+    desc: Lists pods in NAMESPACE environment
+    cmds:
+      - cmd: kubectl get pods -n {{.NAMESPACE}}
+
+  get_services:
+    desc: List services in NAMESPACE environment
+    cmds:
+      - cmd: kubectl get svc -n {{.NAMESPACE}}

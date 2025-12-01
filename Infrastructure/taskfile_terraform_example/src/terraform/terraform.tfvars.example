@@ -1,0 +1,187 @@
+# AWS Configuration
+aws_region  = "<aws:region>"
+environment = "<Environment Name>"
+lab_name    = "<Lab Name>"
+project_key = <insert unique name here>
+
+### Phase 1 Architecture ###
+#
+# CodeBuild (Docker) Projects and EKS cluster (node groups, etc.)
+
+# cmvp_codebuild_docker list can support more than one CodeBuild project
+# (i.e. "<CodeBuild Action 1>", "<CodeBuild Action 2>", etc.)
+# 
+# This example includes three project/actions for each Docker image used by
+# deployed versions of the application. This includes:
+# 1. webpublic (i.e., server/WebPublic)
+# 2. mqp (i.e., server/MessageQueueProcessor)
+# 3. nginx (this service is unique to the microservice implementation)
+#
+# Provide the following details for each CodeBuild project:
+# 1. iam_role_arn: IAM role that will perform automated CodeBuild tasks
+# 2. IMAGE_NAME: The name of the Docker image
+# 3. ECR_URL: The URL for an existing ECR repository
+# 4. DOCKERFILE: The path to the Dockerfile for the specific image
+cmvp_codebuild_docker = [
+  {
+    key            = "webpublic"
+    buildspec_path = "buildspecs/ecr-push/buildspec.yml"
+    iam_role_arn   = "arn:aws:iam::<aws:account:id>:role/<codebuild_iam_role_name>
+    environment_variables = {
+      "IMAGE_NAME"      = "<ecr_image_name>",
+      "ECR_URL"         = "<aws:account:id>.dkr.ecr.<aws:account:region>.amazonaws.com/<ecr_image_name>",
+      "DOCKERFILE_PATH" = "src/docker/Dockerfile.WebPublic"
+    }
+  },
+  {
+    key            = "mqp"
+    buildspec_path = "buildspecs/ecr-push/buildspec.yml"
+    iam_role_arn   = "arn:aws:iam::<aws:account:id>:role/<codebuild_iam_role_name>
+    environment_variables = {
+      "IMAGE_NAME"      = "<ecr_image_name>",
+      "ECR_URL"         = "<aws:account:id>.dkr.ecr.<aws:account:region>.amazonaws.com/<ecr_image_name>",
+      "DOCKERFILE_PATH" = "src/docker/Dockerfile.MessageQueueProcessor"
+
+    }
+  },
+  {
+    key            = "nginx"
+    buildspec_path = "buildspecs/ecr-push/buildspec.yml"
+    iam_role_arn   = "arn:aws:iam::<aws:account:id>:role/<codebuild_iam_role_name>
+    environment_variables = {
+      "IMAGE_NAME"      = "<ecr_image_name>",
+      "ECR_URL"         = "<aws:account:id>.dkr.ecr.<aws:account:region>.amazonaws.com/<ecr_image_name>",
+      "DOCKERFILE_PATH" = "src/docker/Dockerfile.Nginx"
+
+    }
+  }
+]
+
+# cmvp_eks list can support more than one cluster
+# (i.e. "<branch-name>", "test", "prod")
+#
+# Include existing IAM roles for the following functions:
+# 1. cluster_iam_role_arn: contains necessary permissions to run cluster
+# 2. node_iam_role_arn: EC2 instance profile used by cluster nodes
+# 3. codebuild_role_arn: IAM role that will perform automated deploy to EKS
+#
+# Add existing VPC details:
+# 1. vpc_id: VPC ID for existing private VPC
+# 2. vpc_endpoint_sg: Security group that permits EKS to access VPC 
+#    service endpoints
+# 3. alb_service_sg: Security group that permits ALB to access EKS services
+#    and vice versa
+# 4. eks_remote_access_sg: Security group permits administrator access to
+#    EC2 instances (cluster nodes)
+# 5. subnet_ids: Private VPC subnets (2 subnets required)
+#
+# Add existing NLB and Target Group details:
+# 1. target_group_arn: Existing target group ARN attached to NLB
+# cmvp_eks list can support more than one cluster
+# (i.e. "<branch-name>", "test", "prod")
+cmvp_eks = [
+  {
+    key               = "prod"
+    auto_mode         = false
+    private_access    = true
+    enable_default_ng = true
+
+    cluster_iam_role_arn = "arn:aws:iam::<aws:account:id>:role/<cluster_iam_role_name>"
+    node_iam_role_arn    = "arn:aws:iam::<aws:account:id>:role/<AWS_generated_service_role>"
+    codebuild_role_arn   = "arn:aws:iam::<aws:account:id>:role/<codebuild_iam_role_name>"
+
+    vpc_id               = "<vpc_id>"
+    vpc_endpoint_sg      = "<vpc_endpoint_security_group_id>"
+    alb_service_sg       = "<management_security_group_id>"
+    eks_remote_access_sg = "<management_security_group_id>"
+    subnet_ids = [
+      "<subnet_id_num_1>",
+      "<subnet_id_num_2>"
+    ]
+
+    target_group_arn  = "arn:aws:elasticloadbalancing:<aws:account:region>:<aws:account:id>:targetgroup/<target_group_name>/<target_group_id>"
+    target_group_port = <kubernetes_service_port>
+
+    # For Phase 2
+    # The node_group_instance_list that's generated as part of Phase 1
+    # deployment. It will be provided as terraform output. 
+    node_group_instance_list = []
+  }
+]
+
+### Phase 2 Architecture ###
+#
+# CodeBuild (Deployment) Projects and CodePipeline Archiect
+
+# cmvp_codebuild_deploy list can support more than one CodeBuild project
+# (i.e. "<CodeBuild Action 1>", "<CodeBuild Action 2>", etc.)
+#
+# Provide the following details for each CodeBuild project:
+# 1. iam_role_arn: IAM role that will perform automated CodeBuild tasks
+# 2. IMAGE_NAME: The name of the Docker image
+# 3. ECR_URL: The URL for an existing ECR repository
+# 4. DOCKERFILE: The path to the Dockerfile for the specific image
+#
+# Provide a list of security group IDs:
+# 1. The first ID should be the security group ID that's permitted to
+#    access the cluster (aka management security group)
+# 2. The second ID is the cluster_security_group_id that's generated
+#    during Phase 1 deployment. It will be provided as terraform output.
+#
+# Add existing VPC details:
+# 1. vpc_id: VPC ID for existing private VPC
+# 2. subnet_ids: Private VPC subnets (2 subnets required)
+cmvp_codebuild_deploy = [
+  {
+    key            = "k8s"
+    buildspec_path = "buildspecs/eks-deploy/buildspec.yml"
+    iam_role_arn   = "arn:aws:iam::<aws:account:id>:role/<codebuild_iam_role_name>"
+    environment_variables = {
+      "CLUSTER_NAME" = "acmvp-eks-prod",
+      "ENVIRONMENT"  = "prod",
+      "NAMESPACE"    = "acmvp-prod"
+    }
+    vpc_config = {
+      security_group_ids = [
+        "<management_security_group_id>",
+        "<cluster_security_group_id>" # Replace with cluster_security_group_id
+      ]
+
+      vpc_id = "<vpc_id>"
+      subnet_ids = [
+        "<subnet_id_num_1>",
+        "<subnet_id_num_2>"
+      ]
+    }
+  }
+]
+
+# cmvp_codepipeline can support more than one CodePipeline
+# (i.e. "<branch_name>", "test", "prod")
+#
+# Provide the following details for each CodePipeline:
+# 1. iam_role_arn:
+# 2. codestar_connection_arn:
+# 3. branch_name
+# 4. repository_name
+#
+# build_actions and deploy_actions provide a mechanism to select one or more
+# CodeBuild actions that you can attach to your CodePipeline
+cmvp_codepipeline = [
+  {
+    key                     = "prod"
+    pipeline_name           = "prod-pipeline"
+    iam_role_arn            = "arn:aws:iam::<aws:account:id>:role/<AWS_generated_service_role>"
+    codestar_connection_arn = "arn:aws:codeconnections:<aws:account:region>:<aws:account:id>:connection/<code_connection_id>"
+    branch_name             = "<target_pipeline_scm_branch>"
+    repository_name         = "<target_pipeline_scm_repository>"
+    build_actions = [
+      "acmvp-codebuild-webpublic-prod",
+      "acmvp-codebuild-nginx-prod",
+      "acmvp-codebuild-mqp-prod"
+    ]
+    deploy_actions = [
+      "acmvp-codebuild-k8s-prod"
+    ]
+  }
+]

@@ -1,0 +1,127 @@
+version: '3'
+
+includes:
+  docker:
+    taskfile: src/docker/Taskfile.docker.yaml
+  eks:
+    taskfile: src/k8s/Taskfile.eks.yaml
+  k8s:
+    taskfile: src/k8s/Taskfile.k8s.yaml
+  terraform:
+    dir: src/terraform
+    taskfile: src/terraform/Taskfile.terraform.yaml
+
+tasks:
+  apply:
+    desc: Runs terraform apply
+    cmds:
+      - task: terraform:fmt
+      - task: terraform:apply
+    summary: |
+      This task performs the following actions:
+      1. Terraform code will be linted and validated
+      2. Terraform code will be deployed to AWS
+
+      Note: Check src/terraform/terraform.tfvars.example for configuration
+      settings for deploying Terraform resources.
+
+  build:
+    desc: Builds Docker images
+    cmds:
+      - task: docker:build_all
+    summary: |
+      This task performs the following actions:
+      1. Builds the WebPublic Docker image
+      2. Builds the Message Queue Processor Docker image
+      3. Builds the Nginx Docker image
+
+  clean:
+    desc: Cleans the environment out entirely (including Docker images)
+    cmds:
+      - task: k8s:delete_namespace
+      - task: docker:clean_all
+    summary: |
+      This task performs the following actions:
+      1. Deletes the Kubernetes namespace
+      2. Cleans all labelled Docker images
+
+      Note: Use the NAMESPACE variable to point to the appropriate Kubernetes
+      environment (i.e. `export NAMESPACE=local` == "acmvp-local")
+
+  create:
+    desc: Creates the environment
+    cmds:
+      - task: docker:build_all
+      - task: k8s:create_namespace
+      - task: k8s:apply
+    summary: |
+      This task performs the following actions:
+      1. Builds all Docker images (see: `task build`)
+      2. Creates the Kubernetes namespace
+      3. Applies the Kubernetes configuration to a specific namespace
+
+      Note: Use the NAMESPACE variable to point to the appropriate Kubernetes
+      environment (i.e. `export NAMESPACE=local` == "acmvp-local")
+
+  deploy:
+    desc: Deploys the webpublic application
+    cmds:
+      - task: k8s:create_namespace
+      - task: k8s:apply
+    summary: |
+      This task performs the following actions:
+      1. Creates the Kubernetes namespace
+      3. Applies the Kubernetes configuration to a specific namespace
+
+      Note: Use the NAMESPACE variable to point to the appropriate Kubernetes
+      environment (i.e. `export NAMESPACE=local` == "acmvp-local")    
+
+  destroy:
+    desc: Runs terraform destroy
+    cmds:
+      - task: terraform:destroy
+    summary: |
+      This task performs the following actions:
+      1. Terraform resources will be deleted from AWS
+
+      Note: Check src/terraform/terraform.tfvars.example for configuration
+      settings for managing Terraform resources.
+
+  init:
+    desc: Runs terraform Initialize
+    cmds:
+      - task: terraform:init
+    summary: |
+      This task performs the following actions:
+      1. Initializes Terraform resources (i.e. lockfiles, S3 backend state)
+
+      Note: Check src/terraform/terraform.tfvars.example for configuration
+      settings for managing Terraform resources.
+
+  list:
+    desc: List all application configuration details
+    cmds:
+      - task: k8s:get_namespace
+      - task: k8s:get_pods
+      - task: k8s:get_services
+    summary: |
+      This task performs the following actions:
+      1. Describes the current Kubernetes namespace
+      2. Describes the current running state (useful for finding errors)
+      3. Describes the current state of launched services
+
+      Note: Use the NAMESPACE variable to point to the appropriate Kubernetes
+      environment (i.e. `export NAMESPACE=local` == "acmvp-local")
+
+  plan:
+    desc: Runs terraform plan
+    cmds:
+      - task: terraform:fmt
+      - task: terraform:plan
+    summary: |
+      This task performs the following actions:
+      1. Terraform code will be linted and validated
+      2. Terraform code will compare with current state of AWS
+
+      Note: Check src/terraform/terraform.tfvars.example for configuration
+      settings for managing Terraform resources.
