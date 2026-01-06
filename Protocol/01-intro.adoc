@@ -1,7 +1,0 @@
-
-[#intro]
-== Introduction
-
-The Automated Module Validation Protocol (AMVP) defines a mechanism to submit registration, test evidence and validation requests for a software, firmware and hardware crypto modules. It works in conjunction with ACVTS and ESVTS to improve the speed of validations at a rate which meets typical industry development cycles; providing the ability to deploy validated crypto with CVE fixes much faster than previous methods.
-
-The AMVP specification describes how the protocol is structured with respect to the client-server model, messaging, optional features, and flows. It defines how the registrar and evidence submission client communicates with an AMVP server; including module capabilities, session management, authentication, vector processing and more. AMVP leverages many of the message flows originally defined for ACVP and incorporates them into a module-specific concept and adds new flows for module test evidence submission and validation requests.
