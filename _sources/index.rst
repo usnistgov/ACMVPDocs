@@ -146,3 +146,4 @@ All comments are subject to release under the Freedom of Information Act (FOIA).
    references.rst
    appendix-a.rst
    te/tables/tetables.rst
+   appendix-e/index.rst

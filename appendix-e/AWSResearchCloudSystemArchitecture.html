@@ -1,0 +1,747 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>AWS Research Cloud System Architecture &#8212; Automated Cryptographic Module Validation Project  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/content.css?v=59cd0ab0" />
+    <link rel="stylesheet" type="text/css" href="../_static/tables.css?v=1ae3e97c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'appendix-e/AWSResearchCloudSystemArchitecture';</script>
+    <script src="../_static/jquery.visible.js?v=5b129ffc"></script>
+    <script src="../_static/jquery.leaveNotice-nist.js?v=21f5b3a4"></script>
+    <script src="../_static/applyLeaveNotice.js?v=bfeda27a"></script>
+    <script src="../_static/smoothNavScroll.js?v=2ce98a12"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Identity and Access Management" href="IdentityandAccessManagement.html" />
+    <link rel="prev" title="AWS Account Organization" href="AWSAccountOrganization.html" />
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+
+    <link rel="stylesheet" href="https://pages.nist.gov/nist-header-footer/css/nist-combined.css">
+    <link rel="stylesheet" type="text/css" href="https://pages.nist.gov/leaveNotice/css/jquery.leaveNotice.css" />
+    <script src="https://pages.nist.gov/nist-header-footer/js/nist-header-footer.js" type="text/javascript" defer="defer"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RJSMY46M5C"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RJSMY46M5C');
+    </script>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Automated Cryptographic Module Validation Project  documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Automation of the NIST Cryptographic Module Validation Program
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../te/index.html">Test Evidence Workstream</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../protocol/index.html">Protocol Workstream</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../protocol/technicalDetails.html">Protocol Workstream Technical Details</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../protocol/securityConsiderations.html">Security Considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../protocol/login.html">Login</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../protocol/versioning.html">Versioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../protocol/messaging.html">Messaging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../protocol/errorResponses.html">Error Responses</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../infrastructure/index.html">Research Infrastructure Workstream</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conclusion.html">Conclusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix-a.html">Appendix A. List of Symbols, Abbreviations, and Acronyms</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../te/tables/tetables.html">Appendix B: TE Tables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../te/tables/area2.html">Area 2 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../te/tables/area3.html">Area 3 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../te/tables/area4.html">Area 4 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../te/tables/area5.html">Area 5 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../te/tables/area6.html">Area 6 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../te/tables/area7.html">Area 7 Tables</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../te/tables/area8.html">Area 8 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../te/tables/area9.html">Area 9 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../te/tables/area10.html">Area 10 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../te/tables/area11.html">Area 11 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../te/tables/area12.html">Area 12 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../te/tables/annex.html">Annex Tables</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">NCCoE AWS Research Cloud Architecture and Operation</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="AWSAccountOrganization.html">AWS Account Organization</a></li>
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">AWS Research Cloud System Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="IdentityandAccessManagement.html">Identity and Access Management</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="AWSResearchCloudSecurity.html">AWS Research Cloud Security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AWSResearchCloudOperations.html">AWS Research Cloud Operations</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="MappingtoNIST800Series.html">Mapping to NIST 800 Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AutomationTemplates.html">Automation Templates</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/appendix-e/AWSResearchCloudSystemArchitecture.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>AWS Research Cloud System Architecture</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#on-premises-to-cloud-network-connectivity">On-premises to Cloud Network Connectivity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-security">Network Security</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aws-direct-connect">AWS Direct Connect</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inspection-vpc-with-aws-network-firewall">Inspection VPC with AWS Network Firewall</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ip-management">IP Management</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ip-addressing">IP Addressing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#amazon-route-53">Amazon Route 53</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ipam">IPAM</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#resource-access-management">Resource Access Management</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ipv6">IPV6</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-routing">Network Routing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#internal-private-ip-traffic-routing">Internal Private IP Traffic Routing</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dedicated-private-ip-routing-vlan">Dedicated Private IP Routing VLAN</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#s3-gateway-and-interface-endpoints">S3 Gateway and Interface Endpoints</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transit-gateway">Transit Gateway</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#aws-resource-access-management">AWS Resource Access Management</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#route-tables">Route Tables</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#external-traffic-routing">External Traffic Routing</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-firewall">Network Firewall</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="aws-research-cloud-system-architecture">
+<h1>AWS Research Cloud System Architecture<a class="headerlink" href="#aws-research-cloud-system-architecture" title="Link to this heading">#</a></h1>
+<p>The following diagram illustrates the AWS research cloud architecture, including network connectivity to the on-premises NCCoE campus.</p>
+<figure class="align-default" id="id1">
+<img alt="Figure 2 depicts the NCCoE AWS research cloud architecture diagram" src="../_images/Figure2.png" />
+<figcaption>
+<p><span class="caption-text">Figure 2: AWS research cloud architecture diagram</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="on-premises-to-cloud-network-connectivity">
+<h2>On-premises to Cloud Network Connectivity<a class="headerlink" href="#on-premises-to-cloud-network-connectivity" title="Link to this heading">#</a></h2>
+<p>The NCCoE AWS research cloud environment is connected to the on-premises private cloud via an AWS Direct Connect through NOAA/NWAVE. This provides the NCCoE with a dedicated private link between both environments.</p>
+<figure class="align-default" id="id2">
+<img alt="Figure 3 depicts the NCCoE AWS research cloud AWS Direct Connect diagram" src="../_images/Figure3.png" />
+<figcaption>
+<p><span class="caption-text">Figure 3: AWS Direct Connect diagram</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="network-security">
+<h2>Network Security<a class="headerlink" href="#network-security" title="Link to this heading">#</a></h2>
+<section id="aws-direct-connect">
+<h3>AWS Direct Connect<a class="headerlink" href="#aws-direct-connect" title="Link to this heading">#</a></h3>
+<p>The AWS Direct Connect is terminated in a management/infrastructure account with an AWS Transit Gateway. A Transit Gateway Attachment (TGA) is deployed in each Virtual Private Cloud (VPC), routing traffic to/from the Transit Gateway.</p>
+<figure class="align-default" id="id3">
+<a class="reference internal image-reference" href="../_images/Figure4.png"><img alt="Figure 4 depicts the NCCoE AWS research cloud landing zone" src="../_images/Figure4.png" style="width: 2.66667in; height: 5in;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Figure 4: AWS research cloud landing zone</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="inspection-vpc-with-aws-network-firewall">
+<h3>Inspection VPC with AWS Network Firewall<a class="headerlink" href="#inspection-vpc-with-aws-network-firewall" title="Link to this heading">#</a></h3>
+<p>An inspection VPC with AWS network firewall is set up in the same account to inspect and route all traffic in and out (North/South) of the AWS research cloud, as well as inter-VPC traffic (East/West). A dedicated route is created per VPC. For more information on various deployment models and reference architectures, please visit the <a class="reference external" href="https://aws.amazon.com/blogs/networking-and-content-delivery/deployment-models-for-aws-network-firewall/#:~:text=The%20following%20models%20are%20most%20common%3A%201%20Distributed,inspection%20VPC%20throughout%20this%20blog%20post.%20More%20items">AWS website.</a></p>
+<figure class="align-default" id="id4">
+<a class="reference internal image-reference" href="../_images/Figure5.png"><img alt="Figure 5 depicts the NCCoE AWS research cloud Inspection VPC and AWS network firewall" src="../_images/Figure5.png" style="width: 6.22159in; height: 3.02006in;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Figure 5: Inspection VPC with AWS network firewall</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="ip-management">
+<h2>IP Management<a class="headerlink" href="#ip-management" title="Link to this heading">#</a></h2>
+<section id="ip-addressing">
+<h3>IP Addressing<a class="headerlink" href="#ip-addressing" title="Link to this heading">#</a></h3>
+<p>A class /16 network block was allocated to the AWS research cloud environment. Each member account is allocated one or more /22 network blocks. Each VPC is allocated a /24, and each subnet is allocated between a /26 and a /28, depending on its purpose and requirements.</p>
+</section>
+<section id="amazon-route-53">
+<h3>Amazon Route 53<a class="headerlink" href="#amazon-route-53" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://aws.amazon.com/route53/">Amazon Route 53</a> is Amazon’s Domain Name System (DNS) service, which provides three primary functions: domain registration, DNS routing, and health checking.</p>
+<p>The NCCoE uses Route 53 primarily for our Managed AD synchronization with the on-premises AD. To establish a trust between the two domains, an outbound endpoint resolver with a forwarding rule to the on-premises domain needs to be configured.</p>
+<p>Instructions for establishing this trust, configuring the endpoint resolver, and setting up the forwarding rules can be found in the AWS documentation for <a class="reference external" href="https://docs.aws.amazon.com/directoryservice/latest/admin-guide/ms_ad_setup_trust.html">Creating a trust relationship between your AWS Managed Microsoft AD and self-managed AD</a>.</p>
+</section>
+<section id="ipam">
+<h3>IPAM<a class="headerlink" href="#ipam" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://docs.aws.amazon.com/vpc/latest/ipam/what-it-is-ipam.html">Amazon’s VPC IP Address Manager (IPAM)</a> is a VPC feature that enables planning, tracking, and monitoring of IP address assignment and allocation across the AWS environment.</p>
+<p>The NCCoE deploys, as standard, three VPCs (Dev, Test, and Prod) per member account with a /24 per VPC. A fourth /24 is reserved for future growth. Given the above, the NCCoE does not currently use IPAM to automatically assign IP addresses, ensuring consistency with the NCCoE allocation standard.</p>
+<section id="resource-access-management">
+<h4>Resource Access Management<a class="headerlink" href="#resource-access-management" title="Link to this heading">#</a></h4>
+<p><a class="reference external" href="https://docs.aws.amazon.com/ram/latest/userguide/what-is.html">AWS Resource Access Manager (RAM)</a> is a service that enables you to share AWS resources easily and securely within an AWS organization. The NCCoE is utilizing RAM to share and manage the allocated /16 network block, as well as the Transit Gateway, with other member accounts.</p>
+</section>
+</section>
+<section id="ipv6">
+<h3>IPV6<a class="headerlink" href="#ipv6" title="Link to this heading">#</a></h3>
+<p>The NCCoE has a reserved IPV6 /48 network block that will be used in its AWS research cloud environment. IPV6 is not currently in use and will be integrated in the near future.</p>
+</section>
+</section>
+<section id="network-routing">
+<h2>Network Routing<a class="headerlink" href="#network-routing" title="Link to this heading">#</a></h2>
+<section id="internal-private-ip-traffic-routing">
+<h3>Internal Private IP Traffic Routing<a class="headerlink" href="#internal-private-ip-traffic-routing" title="Link to this heading">#</a></h3>
+<p>The NCCoE AWS research cloud is deployed on a /16 private IP space. Careful consideration was given to the allocation of private IP blocks to ensure no overlaps existed between the on-premises VMware private cloud, the AWS research cloud, and other commercial cloud environments within the NIST network.</p>
+<section id="dedicated-private-ip-routing-vlan">
+<h4>Dedicated Private IP Routing VLAN<a class="headerlink" href="#dedicated-private-ip-routing-vlan" title="Link to this heading">#</a></h4>
+<p>In addition to avoiding overlapping private IP ranges, changes to traffic routing were necessary between the on-premises VMware cloud and the AWS research cloud. Specifically, all traffic leaving the on-premises VMware cloud goes through a Network Address Translation (NAT) via an edge firewall. While this is common practice, it presented some challenges when attempting to establish a forest trust to facilitate synchronization between the on-premises authoritative identity source (AD) and the AWS-managed AD in the research cloud.</p>
+<p>A new VLAN was created exclusively to route private IP network traffic between the on-premises VMware cloud and the AWS research cloud without the need for Network Address Translation (NAT). This simplified routing between both cloud environments while enabling internet-bound traffic to continue routing through a NAT.</p>
+</section>
+<section id="s3-gateway-and-interface-endpoints">
+<h4>S3 Gateway and Interface Endpoints<a class="headerlink" href="#s3-gateway-and-interface-endpoints" title="Link to this heading">#</a></h4>
+<p><a class="reference external" href="https://docs.aws.amazon.com/vpc/latest/privatelink/vpc-endpoints-s3.html">S3 gateway endpoints</a> and interface endpoints enable access to Amazon services from within a private VPC, removing the need for an internet gateway (IG) or NAT, further restricting data to an AWS network and enhancing security. The NCCoE has deployed S3 gateways to access S3 buckets and interface endpoints, enabling the application of lifecycle and security policies through AWS Lambda functions. With the S3 Gateway and Interface endpoints, the communication from the AWS Lambda functions can securely interact with Amazon S3 without being exposed to the public internet.</p>
+</section>
+</section>
+<section id="transit-gateway">
+<h3>Transit Gateway<a class="headerlink" href="#transit-gateway" title="Link to this heading">#</a></h3>
+<p>The NCCoE AWS research cloud consists of a single transit gateway (see Figure 4 above). Transit Gateway Attachments (TGA) are created in each VPC to enable network routing. All traffic (North/South and East/West) flows through the single transit gateway.</p>
+<section id="aws-resource-access-management">
+<h4>AWS Resource Access Management<a class="headerlink" href="#aws-resource-access-management" title="Link to this heading">#</a></h4>
+<p>AWS Resource Access Manager (RAM) is a service that enables easy and secure sharing of AWS resources within an AWS organization. The NCCoE is using RAM to share the transit gateway and the /16 network allocation with other member accounts.</p>
+</section>
+<section id="route-tables">
+<h4>Route Tables<a class="headerlink" href="#route-tables" title="Link to this heading">#</a></h4>
+<p>Several route tables were created to force all traffic (East/West &amp; North/South) to go through an inspection VPC and Network firewall (more details in <a class="reference internal" href="#network-firewall"><span class="std std-ref">Network Firewall</span></a> below).</p>
+<div class="line-block">
+<div class="line">North/South routing: All incoming traffic to the AWS cloud is routed per the flow below:</div>
+<div class="line">Transit Gateway -&gt; Inspection VPC TGA -&gt; inspection VPC Firewall -&gt; Inspection VPC TGA -&gt; Destination VPC TGA.</div>
+</div>
+<p>All outgoing traffic from the AWS cloud is routed per the flow below:</p>
+<p>Member VPC TGA -&gt; Inspection VPC TGA -&gt; Inspection VPC Firewall -&gt; Inspection VPC TGA -&gt; Transit Gateway.</p>
+<p>East/West routing: All inter-VPC traffic follows the route below:</p>
+<p>Member VPC 1 TGA -&gt; Inspection VPC TGA -&gt; Inspection VPC Firewall -&gt; Inspection VPC TGA -&gt; Member VPC 2 TGA.</p>
+</section>
+</section>
+<section id="external-traffic-routing">
+<h3>External Traffic Routing<a class="headerlink" href="#external-traffic-routing" title="Link to this heading">#</a></h3>
+<p>The NCCoE AWS cloud utilizes Service Control Policies (SCP) and Identity and Access Management (IAM) policies to prevent the creation of Internet or egress gateways, ensuring that all traffic flows through predefined routes. All external/public traffic is currently routed through the direct connect and on-premises firewalls.</p>
+</section>
+</section>
+<section id="network-firewall">
+<h2>Network Firewall<a class="headerlink" href="#network-firewall" title="Link to this heading">#</a></h2>
+<p>A network firewall is attached to the Inspection VPC following the <a class="reference external" href="https://d1.awsstatic.com/architecture-diagrams/ArchitectureDiagrams/inspection-deployment-models-with-AWS-network-firewall-ra.pdf">Inspection Deployment Models with AWS Network Firewall</a> blueprint. Two subnets were deployed in the inspection VPC, one per availability zone. A Firewall endpoint is in each of the subnets and monitors incoming and outgoing traffic.</p>
+<p>The firewall inspects all North/South and East/West traffic as prescribed in the route table above in <a class="reference internal" href="#route-tables"><span class="std std-ref">Route Tables</span></a>.</p>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="AWSAccountOrganization.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">AWS Account Organization</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="IdentityandAccessManagement.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Identity and Access Management</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#on-premises-to-cloud-network-connectivity">On-premises to Cloud Network Connectivity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-security">Network Security</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aws-direct-connect">AWS Direct Connect</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inspection-vpc-with-aws-network-firewall">Inspection VPC with AWS Network Firewall</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ip-management">IP Management</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ip-addressing">IP Addressing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#amazon-route-53">Amazon Route 53</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ipam">IPAM</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#resource-access-management">Resource Access Management</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ipv6">IPV6</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-routing">Network Routing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#internal-private-ip-traffic-routing">Internal Private IP Traffic Routing</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dedicated-private-ip-routing-vlan">Dedicated Private IP Routing VLAN</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#s3-gateway-and-interface-endpoints">S3 Gateway and Interface Endpoints</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transit-gateway">Transit Gateway</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#aws-resource-access-management">AWS Resource Access Management</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#route-tables">Route Tables</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#external-traffic-routing">External Traffic Routing</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-firewall">Network Firewall</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<p>
+  
+    By NIST<br/>
+  
+</p>
+
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+<footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        <div class="disclaimer">
+          <strong>Disclaimer:</strong> Certain commercial equipment, instruments, or
+          materials are identified in this documentation to foster understanding. Such
+          identification does not imply recommendation or endorsement by the National
+          Institute of Standards and Technology, nor does it imply that the materials
+          or equipment identified are necessarily the best available for the purpose.
+        </div>
+      </p>
+    </div>
+</footer>
+  </body>
+</html>

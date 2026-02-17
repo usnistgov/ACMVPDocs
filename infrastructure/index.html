@@ -308,6 +308,20 @@
 
 </ul>
 </details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../appendix-e/index.html">NCCoE AWS Research Cloud Architecture and Operation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../appendix-e/AWSAccountOrganization.html">AWS Account Organization</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../appendix-e/AWSResearchCloudSystemArchitecture.html">AWS Research Cloud System Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix-e/IdentityandAccessManagement.html">Identity and Access Management</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../appendix-e/AWSResearchCloudSecurity.html">AWS Research Cloud Security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix-e/AWSResearchCloudOperations.html">AWS Research Cloud Operations</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../appendix-e/MappingtoNIST800Series.html">Mapping to NIST 800 Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix-e/AutomationTemplates.html">Automation Templates</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -508,13 +522,13 @@ document.write(`
 <h3>Replication of the Legacy Production CMVP Environment<a class="headerlink" href="#replication-of-the-legacy-production-cmvp-environment" title="Link to this heading">#</a></h3>
 <p>This section gives historical context to the ACMVP application. The production CMVP AWS environment was replicated to the current ACMVP research environment, which set a baseline from which modernization opportunities were identified.</p>
 <p>Figure 1 represents the baseline architecture present in the research environment before modernization efforts.</p>
-<p><img alt="This Figure represents the baseline architecture present in the research environment before modernization efforts." src="../_images/Figure1.png" /></p>
+<p><img alt="This Figure represents the baseline architecture present in the research environment before modernization efforts." src="../_images/Figure11.png" /></p>
 <p><em>Figure 1. Legacy System Architecture Diagram</em></p>
 <p>The External Amazon Virtual Private Cloud (VPC) handles any public-facing applications and utilities, including the WebPublic application (sitting underneath Microsoft IIS) and the public database. These services are split into two separate Amazon EC2 instances.</p>
 <p>The Internal Amazon VPC hosts private applications and utilities, including the MessageQueueProcessor (MQP) application and the internal database. These services are split into two separate Amazon EC2 instances.</p>
 <p>The Shared Amazon VPC hosts shared applications and utilities, including JetBrains TeamCity for CI/CD, the Certificate Authority (CA) server, the file share service for backups and logs, and the Microsoft Active Directory service. This is all hosted on one Amazon EC2 instance in the research environment for the sake of simplicity.</p>
 <p>Figure 2 details the steps in the workflow that occur when the user submits a request, which are listed in this document to describe the necessary tools and their use cases in the critical workflow.</p>
-<p><img alt="This Figure details the steps in the workflow that occur when the user submits a request." src="../_images/Figure2.png" /></p>
+<p><img alt="This Figure details the steps in the workflow that occur when the user submits a request." src="../_images/Figure21.png" /></p>
 <p><em>Figure 2. Legacy System End User Workflow</em></p>
 <p>WebPublic is publicly available for registered NVLAP users to submit their requests. This includes authentication requests, which are partially handled by Microsoft IIS for Windows Server through mutual TLS (mTLS). Microsoft IIS receives its server-hosting certificate through the CA Server. The application stores and retrieves data from the Public DB as needed by the requests it receives. Any stored data is replicated to the Internal DB through the encrypted message queue (MQ). The MQP processes the request and stores necessary changes to the Internal DB, which is replicated to the Public DB for user retrieval. Logging occurs throughout the process, tracking the request and where in the WebPublic or MQP application the processing is at. These logs are stored to a file share for access by a system administrator, along with database backups.</p>
 </section>
@@ -586,11 +600,11 @@ document.write(`
 <h3>Key Modernization Components<a class="headerlink" href="#key-modernization-components" title="Link to this heading">#</a></h3>
 <p>This section describes the specific modernization research items completed or planned in the scope of the ACMVP application. As the application is a REST API with a backend database and MQP, similarly structured applications can utilize this research in making informed decisions to update, improve, or otherwise modernize their infrastructure.</p>
 <p>Figures 3, 4, and 5 depict a timeline of the key modernization components that have been implemented before ICMC ‘25 and are planned to be implemented following ICMC ‘25. A flag in dark blue represents a timeline event, green represents a Windows OS container development, cyan represents a general modernization development, and orange represents a Linux OS container development. Note that AWS CodePipeline CI/CD is in orange, as it only applies to Linux OS containers, as explained within the Application Deployment Modernization section.</p>
-<p><img alt="Windows Container OS Modernization Progression" src="../_images/Figure3.png" /></p>
+<p><img alt="Windows Container OS Modernization Progression" src="../_images/Figure31.png" /></p>
 <p><em>Figure 3. Windows Container OS Modernization Progression</em></p>
-<p><img alt="Linux Container OS Modernization Progression" src="../_images/Figure4.png" /></p>
+<p><img alt="Linux Container OS Modernization Progression" src="../_images/Figure41.png" /></p>
 <p><em>Figure 4. Linux Container OS Modernization Progression</em></p>
-<p><img alt="Future Research Progression" src="../_images/Figure5.png" /></p>
+<p><img alt="Future Research Progression" src="../_images/Figure51.png" /></p>
 <p><em>Figure 5. Future Research Progression</em></p>
 <p>Figure 6 shows the services and tools used in the modernized system architecture.</p>
 <p><img alt="This Figure shows the services and tools used in the modernized system architecture." src="../_images/Figure6.png" /></p>

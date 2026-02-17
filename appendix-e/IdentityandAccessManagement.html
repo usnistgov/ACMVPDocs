@@ -1,0 +1,756 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Identity and Access Management &#8212; Automated Cryptographic Module Validation Project  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/content.css?v=59cd0ab0" />
+    <link rel="stylesheet" type="text/css" href="../_static/tables.css?v=1ae3e97c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'appendix-e/IdentityandAccessManagement';</script>
+    <script src="../_static/jquery.visible.js?v=5b129ffc"></script>
+    <script src="../_static/jquery.leaveNotice-nist.js?v=21f5b3a4"></script>
+    <script src="../_static/applyLeaveNotice.js?v=bfeda27a"></script>
+    <script src="../_static/smoothNavScroll.js?v=2ce98a12"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="AWS Research Cloud Security" href="AWSResearchCloudSecurity.html" />
+    <link rel="prev" title="AWS Research Cloud System Architecture" href="AWSResearchCloudSystemArchitecture.html" />
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+
+    <link rel="stylesheet" href="https://pages.nist.gov/nist-header-footer/css/nist-combined.css">
+    <link rel="stylesheet" type="text/css" href="https://pages.nist.gov/leaveNotice/css/jquery.leaveNotice.css" />
+    <script src="https://pages.nist.gov/nist-header-footer/js/nist-header-footer.js" type="text/javascript" defer="defer"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RJSMY46M5C"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RJSMY46M5C');
+    </script>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Automated Cryptographic Module Validation Project  documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Automation of the NIST Cryptographic Module Validation Program
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../te/index.html">Test Evidence Workstream</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../protocol/index.html">Protocol Workstream</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../protocol/technicalDetails.html">Protocol Workstream Technical Details</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../protocol/securityConsiderations.html">Security Considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../protocol/login.html">Login</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../protocol/versioning.html">Versioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../protocol/messaging.html">Messaging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../protocol/errorResponses.html">Error Responses</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../infrastructure/index.html">Research Infrastructure Workstream</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conclusion.html">Conclusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix-a.html">Appendix A. List of Symbols, Abbreviations, and Acronyms</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../te/tables/tetables.html">Appendix B: TE Tables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../te/tables/area2.html">Area 2 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../te/tables/area3.html">Area 3 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../te/tables/area4.html">Area 4 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../te/tables/area5.html">Area 5 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../te/tables/area6.html">Area 6 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../te/tables/area7.html">Area 7 Tables</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../te/tables/area8.html">Area 8 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../te/tables/area9.html">Area 9 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../te/tables/area10.html">Area 10 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../te/tables/area11.html">Area 11 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../te/tables/area12.html">Area 12 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../te/tables/annex.html">Annex Tables</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">NCCoE AWS Research Cloud Architecture and Operation</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="AWSAccountOrganization.html">AWS Account Organization</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="AWSResearchCloudSystemArchitecture.html">AWS Research Cloud System Architecture</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Identity and Access Management</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="AWSResearchCloudSecurity.html">AWS Research Cloud Security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AWSResearchCloudOperations.html">AWS Research Cloud Operations</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="MappingtoNIST800Series.html">Mapping to NIST 800 Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AutomationTemplates.html">Automation Templates</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/appendix-e/IdentityandAccessManagement.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Identity and Access Management</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Identity and Access Management</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#active-directory-integration">Active Directory Integration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aws-managed-ad">AWS-managed AD</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#network-traffic-firewall">Network Traffic/Firewall</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#delegation">Delegation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#single-sign-on-iam-identity-center">Single Sign-On (IAM Identity Center)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#permission-sets-based-on-roles">Permission Sets Based on Roles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aws-iam-accounts">AWS IAM Accounts</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multifactor-authentication">Multifactor Authentication</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#service-control-policies">Service Control Policies</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#organization">Organization</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tagging">Tagging</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#access">Access</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#marketplace-restrictions">Marketplace Restrictions</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#backup-ec2-rds-lambda-function">Backup (EC2, RDS, Lambda Function)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mfa">MFA</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#s3-bucket">S3 Bucket</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#security-groups">Security Groups</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deny-s3-public-access">Deny S3 Public Access</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deny-ec2-and-vpc-creation-without-tags">Deny EC2 and VPC Creation Without Tags</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deny-instances-larger-than-expected-size">Deny Instances Larger than “Expected Size”</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deny-sso-identity-center">Deny SSO-Identity Center</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deny-internet-gateway-igw-egress">Deny Internet Gateway (IGW) Egress</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deny-quad-zeros-aws-system-manager-documents">Deny Quad Zeros (AWS System Manager Documents)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deny-non-secure-config-amis">Deny Non-secure Config AMIs</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="identity-and-access-management">
+<h1>Identity and Access Management<a class="headerlink" href="#identity-and-access-management" title="Link to this heading">#</a></h1>
+<p>The NCCoE leverages the on-premises Active Directory service as the authoritative identity source to authenticate and access the AWS research cloud environment.</p>
+<section id="active-directory-integration">
+<h2>Active Directory Integration<a class="headerlink" href="#active-directory-integration" title="Link to this heading">#</a></h2>
+<section id="aws-managed-ad">
+<h3>AWS-managed AD<a class="headerlink" href="#aws-managed-ad" title="Link to this heading">#</a></h3>
+<p>The NCCoE deployed an <a class="reference external" href="https://docs.aws.amazon.com/directoryservice/latest/admin-guide/directory_microsoft_ad.html">AWS-managed AD</a> instance in the root account to facilitate integration with the on-premises Active Directory, enabling the on-premises AD to serve as the authoritative Identity source.</p>
+<p>This ensures that all existing governance, policies, and processes for user onboarding at the center are applied to the cloud. Leveraging AWS Single Sign-On (SSO), on-premises identities are used to access accounts and services in AWS, thereby minimizing the need for IAM accounts.</p>
+</section>
+<section id="network-traffic-firewall">
+<h3>Network Traffic/Firewall<a class="headerlink" href="#network-traffic-firewall" title="Link to this heading">#</a></h3>
+<p>A requirement for the AD integration is a two-way trust between the AWS-managed AD and the on-premises Active Directory. This requires several Windows ports to be open between both environments, including ephemeral ports. This proved to be a challenge as many layers of firewalls exist between the environments, as well as the use of NAT. As discussed in <a class="reference internal" href="AWSResearchCloudSystemArchitecture.html#dedicated-private-ip-routing-vlan"><span class="std std-ref">Dedicated Private IP Routing VLAN</span></a>, a workaround was to create a separate VLAN for private IP routing without NAT, which enabled the desired two-way trust.</p>
+</section>
+<section id="delegation">
+<h3>Delegation<a class="headerlink" href="#delegation" title="Link to this heading">#</a></h3>
+<p>To minimize the use of the root account, member accounts have been granted appropriate access to various services, including Security Hub, IAM Identity Center, Trusted Advisor, and Guard Duty. For more details, please refer to the <a class="reference external" href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_delegate_policies.html">Delegated administrator for AWS Organizations.</a></p>
+</section>
+</section>
+<section id="single-sign-on-iam-identity-center">
+<h2>Single Sign-On (IAM Identity Center)<a class="headerlink" href="#single-sign-on-iam-identity-center" title="Link to this heading">#</a></h2>
+<p>The NCCoE enabled Single Sign On to manage user access to AWS accounts and applications from a single location. For more information on Single Sign-On, please refer to the <a class="reference external" href="https://aws.amazon.com/iam/identity-center/">IAM Identity Center</a>.</p>
+</section>
+<section id="permission-sets-based-on-roles">
+<h2>Permission Sets Based on Roles<a class="headerlink" href="#permission-sets-based-on-roles" title="Link to this heading">#</a></h2>
+<p>AWS Permission Sets are templates that define a collection of one or more IAM policies. These sets simplify the assignment of AWS account access for users and groups within an organization. The NCCoE follows the principle of least privilege in assigning permission sets. Specific policies are created to grant access as well as deny access. For more information on AWS permission sets, please refer to the <a class="reference external" href="https://docs.aws.amazon.com/singlesignon/latest/userguide/permissionsetsconcept.html">Manage AWS accounts with permission sets</a>.</p>
+</section>
+<section id="aws-iam-accounts">
+<h2>AWS IAM Accounts<a class="headerlink" href="#aws-iam-accounts" title="Link to this heading">#</a></h2>
+<p>While the on-premises Active Directory is the authoritative identity source, a few IAM accounts remain in the research cloud environment primarily as break-glass/emergency use only. IAM accounts require multifactor authentication (MFA), which is enforced via policy.</p>
+<section id="multifactor-authentication">
+<h3>Multifactor Authentication<a class="headerlink" href="#multifactor-authentication" title="Link to this heading">#</a></h3>
+<p>MFA is enforced in both the IAM Identity Center and in IAM. For more information on the IAM Identity Center, please see <a class="reference external" href="https://aws.amazon.com/iam/identity-center/">AWS IAM Identity Center</a>.</p>
+</section>
+</section>
+</section>
+<section id="service-control-policies">
+<h1>Service Control Policies<a class="headerlink" href="#service-control-policies" title="Link to this heading">#</a></h1>
+<p>Service Control Policies (SCPs) are policies used to manage permissions within an organization. The NCCoE leverages SCPs to ensure governance, security, and structure. For more information on SCPs, please see <a class="reference external" href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html">Service Control Policies (SCPs)</a>.</p>
+<section id="organization">
+<h2>Organization<a class="headerlink" href="#organization" title="Link to this heading">#</a></h2>
+<section id="tagging">
+<h3>Tagging<a class="headerlink" href="#tagging" title="Link to this heading">#</a></h3>
+<p>The NCCoE enforces tagging policies on several services, including VPCs, Elastic Compute Cloud (EC2), Security Groups, buckets, route tables… to ensure structure and facilitate the management/reporting of services in all accounts. For example, a select group of tags is required to create an EC2 instance, including the project name and environment (Test/Dev/Prod).</p>
+<p>An <a class="reference external" href="https://github.com/usnistgov/ACMVPDocs/blob/main/Infrastructure/tagging_policy_example.json">example tagging policy</a> can be found in the ACMVP Documentation repository.</p>
+</section>
+<section id="access">
+<h3>Access<a class="headerlink" href="#access" title="Link to this heading">#</a></h3>
+<p>The NCCoE restricts the AWS research environment to a specific region to ensure proximity to our user base, lower costs, improved monitoring, and simpler management.</p>
+<p>An <a class="reference external" href="https://github.com/usnistgov/ACMVPDocs/blob/main/Infrastructure/allow_policy_example.json">example access policy</a> can be found in the ACMVP Documentation repository.</p>
+<section id="marketplace-restrictions">
+<h4>Marketplace Restrictions<a class="headerlink" href="#marketplace-restrictions" title="Link to this heading">#</a></h4>
+<p>The NCCoE restricts access to third-party Marketplace services for specific accounts for cost control, standardization, security, and compliance policies. For example, the NCCoE leverages secure config Amazon Machine Images (AMI) that NIST generates and updates regularly. To ensure the secure config AMIs are the default choice, a secure config policy is implemented, removing third-party AMIs.</p>
+<p>An <a class="reference external" href="https://github.com/usnistgov/ACMVPDocs/blob/main/Infrastructure/ec2%2Bawsmarketplace_policy_example.json">example marketplace policy</a> can be found in the ACMVP Documentation repository.</p>
+</section>
+</section>
+<section id="backup-ec2-rds-lambda-function">
+<h3>Backup (EC2, RDS, Lambda Function)<a class="headerlink" href="#backup-ec2-rds-lambda-function" title="Link to this heading">#</a></h3>
+<p>The NCCoE enforces a backup policy for EC2 instances and AWS Relational Database Services (RDS.) Lambda functions are leveraged to ensure a “backup=yes” tag exists on all EC2 and RDS instances. The backup policy ensures all EC2 and RDS instances with the “backup=yes” tag are backed up.</p>
+<p>An <a class="reference external" href="https://github.com/usnistgov/ACMVPDocs/blob/main/Infrastructure/cloudFormation-S3-lambda-example.yml">example Lambda function</a> and <a class="reference external" href="https://github.com/usnistgov/ACMVPDocs/blob/main/Infrastructure/backup_policy_example.json">example backup policy</a> can be found in the ACMVP Documentation repository.</p>
+</section>
+</section>
+<section id="mfa">
+<h2>MFA<a class="headerlink" href="#mfa" title="Link to this heading">#</a></h2>
+<p>The NCCoE enforces MFA to access its AWS research cloud environment. Please refer to <a class="reference internal" href="#multifactor-authentication"><span class="std std-ref">Multifactor Authentication</span></a> for IAM Identity Center. For IAM, a policy was created to enforce MFA.</p>
+<p>An <a class="reference external" href="https://github.com/usnistgov/ACMVPDocs/blob/main/Infrastructure/iam_policy_example.json">example IAM policy to enforce MFA</a> can be found in the ACMVP Documentation repository.</p>
+</section>
+<section id="s3-bucket">
+<h2>S3 Bucket<a class="headerlink" href="#s3-bucket" title="Link to this heading">#</a></h2>
+<p>The NCCoE enforces several bucket policies for security and compliance requirements, including enforcing SSO, Tagging, Lifecycle, and restricting public access. The NCCoE leverages AWS lambda functions to detect bucket creations and automatically apply the required policies.</p>
+<p>A sample <a class="reference external" href="https://github.com/usnistgov/ACMVPDocs/blob/main/Infrastructure/cloudFormation-S3-lambda-example.yml">CloudFormation template</a> that creates a Lambda function that applies required policies (including lifecycle policies) can be found in the ACMVP Documentation repository. This repository also includes an example <a class="reference external" href="https://github.com/usnistgov/ACMVPDocs/blob/main/Infrastructure/S3_policy_example.json">public access restriction policy for S3 buckets</a>.</p>
+</section>
+<section id="security-groups">
+<h2>Security Groups<a class="headerlink" href="#security-groups" title="Link to this heading">#</a></h2>
+<p>The NCCoE discourages the creation of open security groups that allow any source to any destination (Quad Zeros). An AWS lambda function has been created to detect and modify such security groups, restricting the source traffic to the NCCoE network only.</p>
+</section>
+<section id="deny-s3-public-access">
+<h2>Deny S3 Public Access<a class="headerlink" href="#deny-s3-public-access" title="Link to this heading">#</a></h2>
+<p>The NCCoE prevents the configuration of a publicly accessible S3 bucket.</p>
+<p>An example <a class="reference external" href="https://github.com/usnistgov/ACMVPDocs/blob/main/Infrastructure/S3_policy_example.json">public access restriction policy for S3 buckets</a> can be found on the ACMVP Documentation repository.</p>
+</section>
+<section id="deny-ec2-and-vpc-creation-without-tags">
+<h2>Deny EC2 and VPC Creation Without Tags<a class="headerlink" href="#deny-ec2-and-vpc-creation-without-tags" title="Link to this heading">#</a></h2>
+<p>The NCCoE enforces the application of requested tags when creating new VPCs and EC2s, as mentioned in <a class="reference internal" href="#tagging"><span class="std std-ref">Tagging</span></a>.</p>
+</section>
+<section id="deny-instances-larger-than-expected-size">
+<h2>Deny Instances Larger than “Expected Size”<a class="headerlink" href="#deny-instances-larger-than-expected-size" title="Link to this heading">#</a></h2>
+<p>The NCCoE prevents the creation of instances larger than “standard” size in its labs to avoid excessive resource allocation and for budget control.</p>
+<p>An <a class="reference external" href="https://github.com/usnistgov/ACMVPDocs/blob/main/Infrastructure/ec2%2BIWGEgress_policy_example.json">example policy</a> for denying the creation of EC2 instances larger than the policy limit can be found in the ACMVP Documentation repository.</p>
+</section>
+<section id="deny-sso-identity-center">
+<h2>Deny SSO-Identity Center<a class="headerlink" href="#deny-sso-identity-center" title="Link to this heading">#</a></h2>
+<p>The NCCoE prevents member accounts from launching Identity Center to ensure compliance with our security and governance processes.</p>
+<p>An <a class="reference external" href="https://github.com/usnistgov/ACMVPDocs/blob/main/Infrastructure/iam_policy_example.json">example policy</a> for denying member accounts access to Identity Center can be found in the ACMVP Documentation repository.</p>
+</section>
+<section id="deny-internet-gateway-igw-egress">
+<h2>Deny Internet Gateway (IGW) Egress<a class="headerlink" href="#deny-internet-gateway-igw-egress" title="Link to this heading">#</a></h2>
+<p>All traffic in the NCCoE Research Cloud is hair-pinned back to NIST, forcing traffic to flow through specific route tables and firewalls. This ensures all traffic coming in and going out of the research cloud is fully monitored. A policy has been deployed to prevent member accounts from changing the approved route for all traffic by denying the creation of IGWs and VPC peering connections or the change of existing VPN endpoints and TGAs (Routing through the transit gateway/DirectConnect/Specific Firewalls).</p>
+<p>An <a class="reference external" href="https://github.com/usnistgov/ACMVPDocs/blob/main/Infrastructure/ec2%2BIWGEgress_policy_example.json">example policy</a> for denying the creation IGWs can be found in the ACMVP Documentation repository.</p>
+</section>
+<section id="deny-quad-zeros-aws-system-manager-documents">
+<h2>Deny Quad Zeros (AWS System Manager Documents)<a class="headerlink" href="#deny-quad-zeros-aws-system-manager-documents" title="Link to this heading">#</a></h2>
+<p>The NCCoE utilizes <a class="reference external" href="https://docs.aws.amazon.com/systems-manager/latest/userguide/what-is-systems-manager.html">AWS Systems Manager Documents</a> to restrict the use of quad zeros (0.0.0.0) in security groups, ensuring adherence to security best practices. All security groups are audited for quad zeros on an established frequency. If any are identified, the quad zeros are replaced with a local network.</p>
+<p>Additional details on the implementation can be found in <a class="reference internal" href="AutomationTemplates.html#deny-quad-zeros"><span class="std std-ref">Deny Quad Zeros</span></a>.</p>
+</section>
+<section id="deny-non-secure-config-amis">
+<h2>Deny Non-secure Config AMIs<a class="headerlink" href="#deny-non-secure-config-amis" title="Link to this heading">#</a></h2>
+<p>The NCCoE enforces a policy that only allows the selection of secure config Amazon Machine Images (AMI) available via a trust relationship established with the NIST organization. This enables the NCCoE to leverage secure config AMIs developed and maintained by NIST.</p>
+<p>An <a class="reference external" href="https://github.com/usnistgov/ACMVPDocs/blob/main/Infrastructure/ec2_deny_policy_example.json">example policy</a> for denying the usage of unapproved AMIs can be found in the ACMVP Documentation repository.</p>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="AWSResearchCloudSystemArchitecture.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">AWS Research Cloud System Architecture</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="AWSResearchCloudSecurity.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">AWS Research Cloud Security</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Identity and Access Management</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#active-directory-integration">Active Directory Integration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aws-managed-ad">AWS-managed AD</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#network-traffic-firewall">Network Traffic/Firewall</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#delegation">Delegation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#single-sign-on-iam-identity-center">Single Sign-On (IAM Identity Center)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#permission-sets-based-on-roles">Permission Sets Based on Roles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aws-iam-accounts">AWS IAM Accounts</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multifactor-authentication">Multifactor Authentication</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#service-control-policies">Service Control Policies</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#organization">Organization</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tagging">Tagging</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#access">Access</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#marketplace-restrictions">Marketplace Restrictions</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#backup-ec2-rds-lambda-function">Backup (EC2, RDS, Lambda Function)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mfa">MFA</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#s3-bucket">S3 Bucket</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#security-groups">Security Groups</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deny-s3-public-access">Deny S3 Public Access</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deny-ec2-and-vpc-creation-without-tags">Deny EC2 and VPC Creation Without Tags</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deny-instances-larger-than-expected-size">Deny Instances Larger than “Expected Size”</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deny-sso-identity-center">Deny SSO-Identity Center</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deny-internet-gateway-igw-egress">Deny Internet Gateway (IGW) Egress</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deny-quad-zeros-aws-system-manager-documents">Deny Quad Zeros (AWS System Manager Documents)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deny-non-secure-config-amis">Deny Non-secure Config AMIs</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<p>
+  
+    By NIST<br/>
+  
+</p>
+
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+<footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        <div class="disclaimer">
+          <strong>Disclaimer:</strong> Certain commercial equipment, instruments, or
+          materials are identified in this documentation to foster understanding. Such
+          identification does not imply recommendation or endorsement by the National
+          Institute of Standards and Technology, nor does it imply that the materials
+          or equipment identified are necessarily the best available for the purpose.
+        </div>
+      </p>
+    </div>
+</footer>
+  </body>
+</html>

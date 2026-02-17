@@ -1,0 +1,985 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Mapping to NIST 800 Series &#8212; Automated Cryptographic Module Validation Project  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/content.css?v=59cd0ab0" />
+    <link rel="stylesheet" type="text/css" href="../_static/tables.css?v=1ae3e97c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'appendix-e/MappingtoNIST800Series';</script>
+    <script src="../_static/jquery.visible.js?v=5b129ffc"></script>
+    <script src="../_static/jquery.leaveNotice-nist.js?v=21f5b3a4"></script>
+    <script src="../_static/applyLeaveNotice.js?v=bfeda27a"></script>
+    <script src="../_static/smoothNavScroll.js?v=2ce98a12"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Automation Templates" href="AutomationTemplates.html" />
+    <link rel="prev" title="AWS Research Cloud Operations" href="AWSResearchCloudOperations.html" />
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+
+    <link rel="stylesheet" href="https://pages.nist.gov/nist-header-footer/css/nist-combined.css">
+    <link rel="stylesheet" type="text/css" href="https://pages.nist.gov/leaveNotice/css/jquery.leaveNotice.css" />
+    <script src="https://pages.nist.gov/nist-header-footer/js/nist-header-footer.js" type="text/javascript" defer="defer"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RJSMY46M5C"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RJSMY46M5C');
+    </script>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Automated Cryptographic Module Validation Project  documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Automation of the NIST Cryptographic Module Validation Program
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../te/index.html">Test Evidence Workstream</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../protocol/index.html">Protocol Workstream</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../protocol/technicalDetails.html">Protocol Workstream Technical Details</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../protocol/securityConsiderations.html">Security Considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../protocol/login.html">Login</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../protocol/versioning.html">Versioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../protocol/messaging.html">Messaging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../protocol/errorResponses.html">Error Responses</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../infrastructure/index.html">Research Infrastructure Workstream</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conclusion.html">Conclusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix-a.html">Appendix A. List of Symbols, Abbreviations, and Acronyms</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../te/tables/tetables.html">Appendix B: TE Tables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../te/tables/area2.html">Area 2 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../te/tables/area3.html">Area 3 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../te/tables/area4.html">Area 4 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../te/tables/area5.html">Area 5 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../te/tables/area6.html">Area 6 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../te/tables/area7.html">Area 7 Tables</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../te/tables/area8.html">Area 8 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../te/tables/area9.html">Area 9 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../te/tables/area10.html">Area 10 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../te/tables/area11.html">Area 11 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../te/tables/area12.html">Area 12 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../te/tables/annex.html">Annex Tables</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">NCCoE AWS Research Cloud Architecture and Operation</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="AWSAccountOrganization.html">AWS Account Organization</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="AWSResearchCloudSystemArchitecture.html">AWS Research Cloud System Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="IdentityandAccessManagement.html">Identity and Access Management</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="AWSResearchCloudSecurity.html">AWS Research Cloud Security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AWSResearchCloudOperations.html">AWS Research Cloud Operations</a></li>
+
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Mapping to NIST 800 Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AutomationTemplates.html">Automation Templates</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/appendix-e/MappingtoNIST800Series.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Mapping to NIST 800 Series</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mapping">800-92 Mapping</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">800-53 Mapping</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="mapping-to-nist-800-series">
+<h1>Mapping to NIST 800 Series<a class="headerlink" href="#mapping-to-nist-800-series" title="Link to this heading">#</a></h1>
+<section id="mapping">
+<h2>800-92 Mapping<a class="headerlink" href="#mapping" title="Link to this heading">#</a></h2>
+<p>Below is a mapping of the AWS tools and resources to the NIST Cybersecurity Log Management Planning Guide, <a class="reference external" href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-92r1.ipd.pdf">NIST.SP.800-92r1</a>.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>AWS Service</strong></p></th>
+<th class="head"><p><strong>Function and Capability</strong></p></th>
+<th class="head"><p><strong>SP 800-92r1.ipd Task ID</strong></p></th>
+<th class="head"><p><strong>SP 800-92r1.ipd Task Summary</strong></p></th>
+<th class="head"><p><strong>Relationship Explanation</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>AWS Organizations</p></td>
+<td><p>AWS Organizations is a service that enables centralized management and governance of AWS accounts within an organization. The NCCoE has used Organizations to create a central “security and logging” account under the root of the organization, which can be used to consolidate and analyze log data forwarded from multiple AWS accounts.</p></td>
+<td><p>INV-5.3</p></td>
+<td><p>Update which tasks are associated with each role.</p></td>
+<td><p>The NCCoE establishes Service Control Policies (SCP) to restrict AWS users and roles in member accounts to access only the services required for respective account functions. For example, logging accounts may be restricted to prevent deployment of databases or other application infrastructure.</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="4"><p>Amazon CloudWatch</p></td>
+<td rowspan="4"><p>Amazon CloudWatch can be used to ingest logs from various AWS resources and services, such as EC2 instances, into a centralized log repository in CloudWatch Logs. This log ingestion capability enables organizations to collect and analyze log data from multiple sources within their AWS environment for monitoring, troubleshooting, and security purposes. Logs are automatically collected into log streams and log groups. CloudWatch also compresses logs and supports log clearing and visualization capabilities. For application logs, the NCCoE has installed the CloudWatch Agent into EC2 instances to watch log directories and push them to CloudWatch.</p></td>
+<td><p>INV-1.2</p></td>
+<td><p>Update the inventory to reflect standard configurations for logging and which types of assets use each standard configuration.</p></td>
+<td><p>The logs that CloudWatch ingests from natively integrated services are already in a standardized format. CloudWatch also automatically detects certain fields that can then be queried, as detailed in the documentation: <a class="reference external" href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_AnalyzeLogData-discoverable-fields.html">https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_AnalyzeLogData-discoverable-fields.html</a></p></td>
+</tr>
+<tr class="row-even"><td><p>TS-2.1</p></td>
+<td><p>For each type of log source, determine whether it should be required, recommended, not recommended, or prohibited.</p></td>
+<td><p>The NCCoE has recommended that its application teams install the CloudWatch Agent so that logs can be centralized in CloudWatch. Some applications used for development or testing do not need to adhere to this recommendation.</p></td>
+</tr>
+<tr class="row-odd"><td><p>TS-2.10</p></td>
+<td><p>Determine how log generation should or must be protected.</p></td>
+<td><p>Logs transmitted to CloudWatch are automatically encrypted in transit and at rest. Logs are centralized in a log archive account, where they are not altered and are available for review/audit.</p></td>
+</tr>
+<tr class="row-even"><td><p>TS-3.1</p></td>
+<td><p>Determine how long each log event should or must be preserved at the log source.</p></td>
+<td><p>CloudWatch logs are by default retained indefinitely, but the NCCoE has modified log retention durations according to their unique compliance requirements.</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><p>Amazon CloudTrail</p></td>
+<td rowspan="3"><p>Amazon CloudTrail is an AWS service that provides a record of actions taken within an AWS account. It captures API calls and related events across various AWS services, allowing organizations to track and monitor account activity for security, compliance, and operational purposes. The NCCoE has also enabled CloudTrail data events for S3.</p></td>
+<td><p>TS-2.1</p></td>
+<td><p>For each type of log source, determine whether it should be required, recommended, not recommended, or prohibited.</p></td>
+<td><p>The NCCoE requires all member accounts in the Organization to enable CloudTrail and centralize logs into the main logging and security account.</p></td>
+</tr>
+<tr class="row-even"><td><p>TS-2.10</p></td>
+<td><p>Determine how log generation should or must be protected.</p></td>
+<td><p>CloudTrail Logs stored in S3 are encrypted using SSE-S3 by default.</p></td>
+</tr>
+<tr class="row-odd"><td><p>TS-4.2</p></td>
+<td><p>Determine how log preservation orders, such as a legal requirement to protect and prevent the alteration and destruction of particular log records, must be handled from a technical standpoint.</p></td>
+<td><p>CloudTrail log file integrity can be enabled to ensure log files have not been deleted or changed.</p></td>
+</tr>
+<tr class="row-even"><td><p>AWS IAM Identity Center</p></td>
+<td><p>AWS IAM Identity Center allows organizations to create and manage federated user identities, groups, and access policies in a centralized location, streamlining the process of granting and revoking access to AWS resources across multiple accounts. The NCCoE has integrated an on-premises Active Directory with IAM Identity Center.</p></td>
+<td><p>INV-5.2</p></td>
+<td><p>Identify any new roles and add them to the inventory.</p></td>
+<td><p>By adding new Users in the NCCoE’s Active Directory, IAM Identity Center synchronizes these users to also exist in AWS.</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="2"><p>AWS Identity and Access Management (IAM)</p></td>
+<td rowspan="2"><p>AWS Identity and Access Management (IAM) is a service that helps organizations securely control access to AWS resources by allowing them to create and manage AWS users and groups and use permissions to grant or deny their access to AWS service resources. The NCCoE has established unique IAM roles and policies according to the unique jobs requirements of its staff.</p></td>
+<td><p>INV-5.1</p></td>
+<td><p>Confirm that all roles already in the inventory are still applicable.</p></td>
+<td><p>The NCCoE uses IAM Access Analyzer to find stale Users and Roles that have not been accessed for an extended period of time. Refer to the documentation linked below:
+<a class="reference external" href="https://docs.aws.amazon.com/IAM/latest/UserGuide/what-is-access-analyzer.html#what-is-access-analyzer-unused-access-analysis">https://docs.aws.amazon.com/IAM/latest/UserGuide/what-is-access-analyzer.html#what-is-access-analyzer-unused-access-analysis</a></p></td>
+</tr>
+<tr class="row-even"><td><p>TS-4.1</p></td>
+<td><p>Identify the access-related policy requirements for log sources and transferred logs for each type of log event.</p></td>
+<td><p>IAM Users, Roles, and Policies can be used to establish fine-grained access control for logging access for AWS services. Each AWS service may have further abilities to configure fine grained access control.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Amazon GuardDuty</p></td>
+<td><p>Amazon GuardDuty is a threat detection service that continuously monitors for malicious activity and unauthorized behavior within AWS accounts, utilizing machine learning, anomaly detection, and integrated threat intelligence to identify potential threats. Under the hood, GuardDuty analyzes various data sources, such as AWS CloudTrail logs, VPC Flow Logs, and DNS logs, to detect suspicious patterns and activities that may indicate account compromise, data exfiltration, or other security threats. The NCCoE has enabled GuardDuty and set up alerting mechanisms to be notified upon critical findings.</p></td>
+<td><p>TS-2.1</p></td>
+<td><p>For each type of log source, determine whether it should be required, recommended, not recommended, or prohibited.</p></td>
+<td><p>The NCCoE requires all member accounts in the Organization to enable GuardDuty.</p></td>
+</tr>
+<tr class="row-even"><td><p>Amazon Detective</p></td>
+<td><p>Amazon Detective is a security service that automatically collects and analyzes data from various AWS sources, such as CloudTrail, VPC Flow Logs, and GuardDuty findings, to help organizations investigate potential security issues or suspicious activities within their AWS environment. The NCCoE has enabled Detective to troubleshoot any future bugs or incidents.</p></td>
+<td><p>TS-2.1</p></td>
+<td><p>For each type of log source, determine whether it should be required, recommended, not recommended, or prohibited.</p></td>
+<td><p>The NCCoE recommends Detective be enabled in accounts that may have production applications running.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Amazon Inspector</p></td>
+<td><p>Amazon Inspector is a vulnerability management service that automatically scans AWS resources for potential security vulnerabilities and deviations from best practices, generating detailed findings and recommendations to help organizations identify and remediate security risks within their AWS environment. The NCCoE uses Inspector to scan both Windows and Linux instances with the Inspector agent.</p></td>
+<td><p>TS-2.1</p></td>
+<td><p>For each type of log source, determine whether it should be required, recommended, not recommended, or prohibited.</p></td>
+<td><p>The NCCoE recommends Inspector be integrated into member AWS accounts that contain Inspector-supported resources.</p></td>
+</tr>
+<tr class="row-even"><td rowspan="4"><p>AWS Security Hub</p></td>
+<td rowspan="4"><p>AWS Security Hub is a cloud security posture management service that provides a comprehensive view of an organization’s security alerts and compliance status across multiple AWS accounts and services. To security posture against industry-recognized best practices and regulatory requirements, the NCCoE has deployed the AWS Foundational Security Best Practices, Center for Internet Security (CIS) AWS Foundations Benchmark v1.4.0, and NIST 800-53 Rev. 5 security standards. Security Hub is also used to centralize findings from Trusted Advisor, Config, GuardDuty, and Detective.</p></td>
+<td><p>INV-4.2</p></td>
+<td><p>Identify all new requirements applicable to existing log source types or logging use cases.</p></td>
+<td><p>The NCCoE uses the National Institute of Standards and Technology (NIST) SP 800-53 Rev. 5 security standard in Security Hub to ensure they’re meeting their organization’s unique governance requirements.</p></td>
+</tr>
+<tr class="row-odd"><td><p>INV-5.3</p></td>
+<td><p>Update which tasks are associated with each role.</p></td>
+<td><p>Security Hub findings can be investigated and assigned to other AWS users in the NCCoE environment. Security Hub is configured to notify assigned resolvers and a new finding is generated.
+See more here: <a class="reference external" href="https://docs.aws.amazon.com/securityhub/latest/userguide/findings-custom-action.html">https://docs.aws.amazon.com/securityhub/latest/userguide/findings-custom-action.html</a></p></td>
+</tr>
+<tr class="row-even"><td><p>TS-2.1</p></td>
+<td><p>For each type of log source, determine whether it should be required, recommended, not recommended, or prohibited.</p></td>
+<td><p>Security Hub allows some findings that Organizations deem unnecessary to be disabled.</p></td>
+</tr>
+<tr class="row-odd"><td><p>INV-4.1</p></td>
+<td><p>Confirm that all requirements already in the inventory are still applicable and remove outdated requirements.</p></td>
+<td><p>Security Hub standards can be removed from an AWS account so that outdated standards are no longer being tracked.</p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><p>Amazon Security Lake</p></td>
+<td rowspan="2"><p>Amazon Security Lake is a service that enables organizations to centrally collect, store, and analyze structured and unstructured security data from various sources. The NCCoE has ingests findings from CloudTrail, GuardDuty, VPC Flow Logs, and Security Hub into Security Lake.</p></td>
+<td><p>TS-2.10</p></td>
+<td><p>Determine how log generation should or must be protected.</p></td>
+<td><p>Security Lake encrypts all data in transit between AWS services. Security Lake also by default encrypts data at rest in an Amazon S3 bucket that Security Lake manages.</p></td>
+</tr>
+<tr class="row-odd"><td><p>TS-3.8</p></td>
+<td><p>Determine if and when each type of log event should or must be transferred from active storage to cold data storage for data retention purposes.</p></td>
+<td><p>Security Lake findings are by default retained according to the lifecycle settings of the underlying S3 bucket</p></td>
+</tr>
+<tr class="row-even"><td><p>Amazon VPC</p></td>
+<td><p>Amazon VPC is a core AWS service that allows organization to define and launch AWS resources in a logically isolated virtual network. The NCCoE has deployed Amazon EC2 instances in their VPCs and uses features such as VPC Flow Logs to log and detect anomalous network traffic.</p></td>
+<td><p>TS-2.1</p></td>
+<td><p>For each type of log source, determine whether it should be required, recommended, not recommended, or prohibited.</p></td>
+<td><p>The NCCoE requires VPC Flow Logging to be centralized from AWS accounts with production applications.</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="2"><p>AWS CloudFormation</p></td>
+<td rowspan="2"><p>AWS CloudFormation is an Infrastructure as Code service that allows organizations to declaratively model and deploy AWS services. The NCCoE uses CloudFormation templates to manage and deploy their logging infrastructure.</p></td>
+<td><p>INV-2.1</p></td>
+<td><p>For each type of log source, determine whether it should be required, recommended, not recommended, or prohibited.</p></td>
+<td><p>The NCCoE manages logging infrastructure using CloudFormation so that logging infrastructure can be deployed in a consistent manner and drift detection from the source template are automatically detected.</p></td>
+</tr>
+<tr class="row-even"><td><p>INV-1.2</p></td>
+<td><p>Update the inventory to reflect standard configurations for logging and which 321 types of assets use each standard configuration.</p></td>
+<td><p>The NCCoE uses CloudFormation to define standard configurations for not only logging infrastructure but also application infrastructure so that AWS administrators do not have to deploy services by clicking through the console, which can be slower and more error prone than using CloudFormation.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="id1">
+<h2>800-53 Mapping<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>Below is a mapping of the AWS tools and resources to the NIST Security and Privacy Controls for Information Systems and Organizations, <a class="reference external" href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r5.pdf">NIST.SP.800-53r5</a>.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>AWS Service</strong></p></th>
+<th class="head"><p><strong>Function and Capability</strong></p></th>
+<th class="head"><p><strong>SP 800-53r5 Control Family</strong></p></th>
+<th class="head"><p><strong>SP 800-53r5 Control Name</strong></p></th>
+<th class="head"><p><strong>Relationship Explanation</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>AWS Organizations</p></td>
+<td><p>AWS Organizations is a service that enables centralized management and governance of AWS accounts within an organization. The NCCoE has used Organizations to create a central “security and logging” account under the root of the organization, which can be used to consolidate and analyze log data forwarded from multiple AWS accounts.</p></td>
+<td><p>AC</p></td>
+<td><p>Access Control</p></td>
+<td><p>AWS Organizations supports the centralized creation and management of AWS accounts.
+AWS Organizations support service control policies (SCPs) which can be used to enforce access restrictions and control the actions that can be performed by accounts, users, and roles within an organization.
+AWS Organizations supports the creation of multiple organizational units (OUs), which can be used to logically group and manage accounts based on different criteria, such as business units, environments, or applications.
+AWS Organizations supports the use of tagging policies, which can be used to standardize tagging based on specific resource characteristics or metadata.</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><p>Amazon CloudWatch</p></td>
+<td rowspan="3"><p>Amazon CloudWatch can be used to ingest logs from various AWS resources and services, such as EC2 instances, into a centralized log repository in CloudWatch Logs. This log ingestion capability enables organizations to collect and analyze log data from multiple sources within their AWS environment for monitoring, troubleshooting, and security purposes. Logs are automatically collected into log streams and log groups. CloudWatch also compresses logs and supports log clearing and visualization capabilities. For application logs, the NCCoE has installed the CloudWatch Agent into EC2 instances to watch log directories and push them to CloudWatch.</p></td>
+<td><p>AC</p></td>
+<td><p>Access Control</p></td>
+<td><p>Amazon CloudWatch can collect and analyze logs from various AWS services.
+Amazon CloudWatch supports the creation of alarms to notify administrators upon reaching a threshold of a user-defined metric.</p></td>
+</tr>
+<tr class="row-even"><td><p>CA</p></td>
+<td><p>Security Assessment and Authorization</p></td>
+<td><p>Amazon CloudWatch supports ongoing metric and application log storage. Customers can report and analyze these logs in CloudWatch or export them as well.</p></td>
+</tr>
+<tr class="row-odd"><td><p>SC</p></td>
+<td><p>System and Communications Protection</p></td>
+<td><p>Amazon CloudWatch Logs are encrypted at rest and in transit.</p></td>
+</tr>
+<tr class="row-even"><td rowspan="4"><p>Amazon CloudTrail</p></td>
+<td rowspan="4"><p>Amazon CloudTrail is an AWS service that provides a record of actions taken within an AWS account. It captures API calls and related events across various AWS services, allowing organizations to track and monitor account activity for security, compliance, and operational purposes. The NCCoE has also enabled CloudTrail data events for S3.</p></td>
+<td><p>AC</p></td>
+<td><p>Access Control</p></td>
+<td><p>Amazon CloudTrail supports the logging of API calls made across most AWS services and features. These logs can be audited according to organizational requirements, such as failed login attempts and anomalous access.</p></td>
+</tr>
+<tr class="row-odd"><td><p>AU</p></td>
+<td><p>Audit and Accountability</p></td>
+<td><p>Amazon CloudTrail supports the logging of API calls made across most AWS services and features. These logs can be audited according to organizational requirements, such as failed login attempts and anomalous access.</p></td>
+</tr>
+<tr class="row-even"><td><p>CA</p></td>
+<td><p>Security Assessment and Authorization</p></td>
+<td><p>Amazon CloudTrail supports ongoing logging and monitoring of AWS account level API calls.</p></td>
+</tr>
+<tr class="row-odd"><td><p>SC</p></td>
+<td><p>System and Communications Protection</p></td>
+<td><p>Amazon CloudTrail log files delivered to an Amazon S3 bucket are automatically encrypted using server-side encryption.</p></td>
+</tr>
+<tr class="row-even"><td rowspan="3"><p>AWS IAM Identity Center</p></td>
+<td rowspan="3"><p>AWS IAM Identity Center allows organizations to create and manage federated user identities, groups, and access policies in a centralized location, streamlining the process of granting and revoking access to AWS resources across multiple accounts. The NCCoE has integrated an on-premises Active Directory with IAM Identity Center.</p></td>
+<td><p>AC</p></td>
+<td><p>Access Control</p></td>
+<td><p>AWS IAM Identity Center supports the creation and management of users from federated identities or users managed by Identity Center.
+AWS IAM Identity Center supports user access to applications and to AWS accounts.
+AWS IAM Identity Center supports least privilege access via features such as permission sets.</p></td>
+</tr>
+<tr class="row-odd"><td><p>IA</p></td>
+<td><p>Identification and Authentication</p></td>
+<td><p>AWS IAM Identity Center provides a centralized identity management solution for authenticating organizational users across multiple AWS accounts and cloud applications.
+AWS IAM Identity Center supports various authentication methods, such as username/password, multi-factor authentication (MFA), and integration with corporate identity providers (e.g., Active Directory, SAML).</p></td>
+</tr>
+<tr class="row-even"><td><p>PS</p></td>
+<td><p>Personnel Security</p></td>
+<td><p>AWS IAM Identity Center supports the deactivation of AWS accounts, for accounts managed by AWS and also automatically by federated identity providers</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><p>AWS Identity and Access Management (IAM)</p></td>
+<td rowspan="3"><p>AWS Identity and Access Management (IAM) is a service that helps organizations securely control access to AWS resources by allowing them to create and manage AWS users and groups and use permissions to grant or deny their access to AWS service resources. The NCCoE has established unique IAM roles and policies according to the unique jobs requirements of its staff.</p></td>
+<td><p>AC</p></td>
+<td><p>Access Control</p></td>
+<td><p>AWS IAM supports access control to AWS resources via federated identities, or users, roles, and policies defined within IAM.
+AWS IAM supports the identification of unused roles via IAM Access Analyzer.</p></td>
+</tr>
+<tr class="row-even"><td><p>IA</p></td>
+<td><p>Identification and Authentication</p></td>
+<td><p>AWS IAM supports access control to AWS resources via federated identities, or users, roles, and policies defined within IAM.
+AWS IAM also supports re-authentication and the management of temporary security credentials and session tokens.
+AWS IAM also supports the management and rotation of access keys and MFA devices.
+AWS IAM allows organizations can define and enforce password policies, including complexity requirements, expiration periods, and password reuse restrictions.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PS</p></td>
+<td><p>Personnel Security</p></td>
+<td><p>AWS IAM supports the deactivation of AWS accounts, for accounts managed by AWS and also automatically by federated identity providers</p></td>
+</tr>
+<tr class="row-even"><td rowspan="5"><p>Amazon GuardDuty</p></td>
+<td rowspan="5"><p>Amazon GuardDuty is a threat detection service that continuously monitors for malicious activity and unauthorized behavior within AWS accounts, utilizing machine learning, anomaly detection, and integrated threat intelligence to identify potential threats. Under the hood, GuardDuty analyzes various data sources, such as AWS CloudTrail logs, VPC Flow Logs, and DNS logs, to detect suspicious patterns and activities that may indicate account compromise, data exfiltration, or other security threats. The NCCoE has enabled GuardDuty and set up alerting mechanisms to be notified upon critical findings.</p></td>
+<td><p>AC</p></td>
+<td><p>Access Control</p></td>
+<td><p>Amazon GuardDuty monitors use of accounts for compromised and exfiltrated AWS credentials.</p></td>
+</tr>
+<tr class="row-odd"><td><p>CA</p></td>
+<td><p>Security Assessment and Authorization</p></td>
+<td><p>Amazon GuardDuty supports ongoing monitoring and threat protection of AWS accounts.
+Amazon GuardDuty supports monitoring of threats for workloads running in Amazon S3, Amazon EC2, Amazon EKS, and AWS Lambda.</p></td>
+</tr>
+<tr class="row-even"><td><p>RA</p></td>
+<td><p>Risk Assessment</p></td>
+<td><p>Amazon GuardDuty supports ongoing monitoring and threat protection of AWS accounts.
+Amazon GuardDuty supports monitoring of threats for workloads running in Amazon S3, Amazon EC2, Amazon EKS, and AWS Lambda.</p></td>
+</tr>
+<tr class="row-odd"><td><p>SC</p></td>
+<td><p>System and Communications Protection</p></td>
+<td><p>Amazon GuardDuty supports Runtime Monitoring for supported AWS compute services. This requires that a GuardDuty security agent be installed on instances.
+Amazon GuardDuty encrypts data at rest and in transit.</p></td>
+</tr>
+<tr class="row-even"><td><p>SI</p></td>
+<td><p>System and Information Integrity</p></td>
+<td><p>Amazon GuardDuty supports ongoing monitoring and threat protection of AWS accounts.
+Amazon GuardDuty supports monitoring of threats for workloads running in Amazon S3, Amazon EC2, Amazon EKS, and AWS Lambda.
+Amazon GuardDuty correlates data from a variety of sources, such as VPC flow logs, CloudTrail logs, and DNS logs to generate findings</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="2"><p>Amazon Detective</p></td>
+<td rowspan="2"><p>Amazon Detective is a security service that automatically collects and analyzes data from various AWS sources, such as CloudTrail, VPC Flow Logs, and GuardDuty findings, to help organizations investigate potential security issues or suspicious activities within their AWS environment. The NCCoE has enabled Detective to troubleshoot any future bugs or incidents.</p></td>
+<td><p>IR</p></td>
+<td><p>Incident Response</p></td>
+<td><p>Amazon Detective allows organizations to analyze, investigate, and quickly identify the root cause of security findings or suspicious activities.
+Amazon Detective prebuilt data aggregations, summaries, and context help customers quickly analyze and determine the nature and extent of possible incidents.</p></td>
+</tr>
+<tr class="row-even"><td><p>RA</p></td>
+<td><p>Risk Assessment</p></td>
+<td><p>Amazon Detective allows organizations to analyze, investigate, and quickly identify the root cause of security findings or suspicious activities.
+Amazon Detective prebuilt data aggregations, summaries, and context help customers quickly analyze and determine the nature and extent of possible incidents. These features support customers to respond to findings in accounts and applications.</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="4"><p>Amazon Inspector</p></td>
+<td rowspan="4"><p>Amazon Inspector is a vulnerability management service that automatically scans AWS resources for potential security vulnerabilities and deviations from best practices, generating detailed findings and recommendations to help organizations identify and remediate security risks within their AWS environment. The NCCoE uses Inspector to scan both Windows and Linux instances with the Inspector agent.</p></td>
+<td><p>CA</p></td>
+<td><p>Security Assessment and Authorization</p></td>
+<td><p>Amazon Inspector supports scanning of Amazon EC2 instances, container images in Amazon ECR, and Lambda functions.</p></td>
+</tr>
+<tr class="row-even"><td><p>RA</p></td>
+<td><p>Risk Assessment</p></td>
+<td><p>Amazon Inspector supports scanning of Amazon EC2 instances, container images in Amazon ECR, and Lambda functions.</p></td>
+</tr>
+<tr class="row-odd"><td><p>SC</p></td>
+<td><p>System and Communications Protection</p></td>
+<td><p>Amazon Inspector encrypts data at rest and in transit.</p></td>
+</tr>
+<tr class="row-even"><td><p>SI</p></td>
+<td><p>System and Information Integrity</p></td>
+<td><p>Amazon Inspector supports scanning of Amazon EC2 instances, container images in Amazon ECR, and Lambda functions.</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><p>AWS Security Hub</p></td>
+<td rowspan="3"><p>AWS Security Hub is a cloud security posture management service that provides a comprehensive view of an organization’s security alerts and compliance status across multiple AWS accounts and services. To security posture against industry-recognized best practices and regulatory requirements, the NCCoE has deployed the AWS Foundational Security Best Practices, Center for Internet Security (CIS) AWS Foundations Benchmark v1.4.0, and NIST 800-53 Rev. 5 security standards. Security Hub is also used to centralize findings from Trusted Advisor, Config, GuardDuty, and Detective.</p></td>
+<td><p>AU</p></td>
+<td><p>Audit and Accountability</p></td>
+<td><p>AWS Security Hub provides a comprehensive view of an organization’s security posture across multiple AWS accounts and services.</p></td>
+</tr>
+<tr class="row-even"><td><p>CM</p></td>
+<td><p>Configuration Management</p></td>
+<td><p>AWS Security Hub provides pre-built and customizable security standards, which define desired configuration settings and best practices for AWS resources.
+AWS Security Hub aggregates and correlates findings from various AWS services, including AWS Config, which monitors and records configuration changes to AWS resources.
+AWS Security Hub provides a centralized view of AWS resources and their configurations across multiple accounts and services.</p></td>
+</tr>
+<tr class="row-odd"><td><p>SC</p></td>
+<td><p>System and Communications Protection</p></td>
+<td><p>AWS Security Hub encrypts data at rest and data in transit between component services.</p></td>
+</tr>
+<tr class="row-even"><td rowspan="3"><p>Amazon Security Lake</p></td>
+<td rowspan="3"><p>Amazon Security Lake is a service that enables organizations to centrally collect, store, and analyze structured and unstructured security data from various sources. The NCCoE has ingests findings from CloudTrail, GuardDuty, VPC Flow Logs, and Security Hub into Security Lake.</p></td>
+<td><p>AU</p></td>
+<td><p>Audit and Accountability</p></td>
+<td><p>Amazon Security Lake supports automatic ingestion and centralization of security data from multiple sources, including AWS services like CloudTrail and GuardDuty, as well as third-party security solutions.</p></td>
+</tr>
+<tr class="row-odd"><td><p>CM</p></td>
+<td><p>Configuration Management</p></td>
+<td><p>Amazon Security Lake ingests and centralizes security data from various AWS services, including AWS Config, which captures and monitors baseline configurations for AWS resources. Security Lake data can serve as a point of centralizing security data across accounts and as a repository for further analysis of security events.</p></td>
+</tr>
+<tr class="row-even"><td><p>SC</p></td>
+<td><p>System and Communications Protection</p></td>
+<td><p>Amazon Security Lake encrypts data at rest and in transit.</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="2"><p>Amazon VPC</p></td>
+<td rowspan="2"><p>Amazon VPC is a core AWS service that allows organization to define and launch AWS resources in a logically isolated virtual network. The NCCoE has deployed Amazon EC2 instances in their VPCs and uses features such as VPC Flow Logs to log and detect anomalous network traffic.</p></td>
+<td><p>IR</p></td>
+<td><p>Incident Response</p></td>
+<td><p>Amazon VPC supports Traffic Mirroring, which allows customers to capture and inspect network traffic at scale. Customers can extract traffic of interest and gain operational insights to quickly respond to an incident.</p></td>
+</tr>
+<tr class="row-even"><td><p>SC</p></td>
+<td><p>System and Communications Protection</p></td>
+<td><p>Amazon VPC supports the logical separation of customer workloads in separate VPCs. VPCs also include route tables, which customers can use to determine where traffic is routed.
+VPCs can be associated with Security Groups, which controls the traffic that is allowed to reach and leave the resources of the VPC. Security groups are “deny by default”.
+VPC flow logs can also be stored and analyzed so that network traffic within the VPC is monitored.
+VPC also supports custom DHCP option sets that allow users to set customize VPCs with options such as custom DNS and NTP servers.
+Customers that use specific Nitro-enabled resources in a VPC can also offload encryption in transit to underlying Nitro System hardware.</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><p>AWS CloudFormation</p></td>
+<td rowspan="3"><p>AWS CloudFormation is an Infrastructure as Code service that allows organizations to declaratively model and deploy AWS services. The NCCoE uses CloudFormation templates to manage and deploy their logging infrastructure.</p></td>
+<td><p>CM</p></td>
+<td><p>Configuration Management</p></td>
+<td><p>AWS CloudFormation supports the declarative creation of AWS resources via Infrastructure as Code (IaC). Customers can use CloudFormation to define a repeatable, deployable inventory of AWS infrastructure.</p></td>
+</tr>
+<tr class="row-even"><td><p>CP</p></td>
+<td><p>Contingency Planning</p></td>
+<td><p>AWS CloudFormation templates can be used to provision and configure AWS resources in alternate sites or regions, reducing the time and effort required to restore systems and services.</p></td>
+</tr>
+<tr class="row-odd"><td><p>SC</p></td>
+<td><p>System and Communications Protection</p></td>
+<td><p>AWS CloudFormation encrypts data at rest and in transit.</p></td>
+</tr>
+<tr class="row-even"><td rowspan="5"><p>AWS Config</p></td>
+<td rowspan="5"><p>AWS Config is a service that enables organizations to assess, audit, and evaluate the configurations of your AWS resources for compliance with internal practices, industry standards, and regulations.</p></td>
+<td><p>AC</p></td>
+<td><p>Access Control</p></td>
+<td><p>Amazon Config monitors and records AWS resource configurations including those related to AWS IAM.</p></td>
+</tr>
+<tr class="row-odd"><td><p>AU</p></td>
+<td><p>Audit and Accountability</p></td>
+<td><p>AWS Config supports monitoring and recording of resource configurations, allowing organizations to assess their compliance with security best practices and internal policies.</p></td>
+</tr>
+<tr class="row-even"><td><p>CA</p></td>
+<td><p>Security Assessment and Authorization</p></td>
+<td><p>AWS Config supports evaluating AWS resources against rules in a proactive or detective manner</p></td>
+</tr>
+<tr class="row-odd"><td><p>CM</p></td>
+<td><p>Configuration Management</p></td>
+<td><p>WS Config provides pre-built and customizable AWS Config rules, which define desired configuration settings for AWS resources.
+AWS Config can be used to monitor and enforce configurations of supported AWS resources.</p></td>
+</tr>
+<tr class="row-even"><td><p>SC</p></td>
+<td><p>System and Communications Protection</p></td>
+<td><p>AWS Config encrypts data at rest and in transit.</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="2"><p>Amazon Simple Notification Service</p></td>
+<td rowspan="2"><p>Amazon Simple Notification Service (SNS) is a fully managed messaging service that enables organizations to decouple microservices, distributed systems, and serverless applications by sending push notifications to various endpoints such as AWS Lambda functions, HTTP/S webhooks, email, SMS, and mobile push notifications.</p></td>
+<td><p>SC</p></td>
+<td><p>System and Communications Protection</p></td>
+<td><p>Amazon SNS encrypts data at rest. Data sent to and from SNS can be encrypted in transit using TLS.</p></td>
+</tr>
+<tr class="row-even"><td><p>SI</p></td>
+<td><p>System and Information Integrity</p></td>
+<td><p>Amazon SNS integrates with many AWS services to send notifications/alerts based on thresholds.</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="2"><p>AWS Lambda</p></td>
+<td rowspan="2"><p>AWS Lambda is a serverless computing service that allows customers to run code without provisioning or managing servers, automatically scaling and charging only for the compute time consumed.</p></td>
+<td><p>AC</p></td>
+<td><p>Access Control</p></td>
+<td><p>AWS Lambda supports the ability to automatically detect and take action on stale accounts</p></td>
+</tr>
+<tr class="row-even"><td><p>SC</p></td>
+<td><p>System and Communications Protection</p></td>
+<td><p>AWS Lambda encrypts data at rest. Encryption in transit is a shared responsibility.</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><p>AWS Control Tower</p></td>
+<td rowspan="3"><p>AWS Control Tower offers a straightforward way to set up and govern an AWS multi-account environment, following prescriptive best practices.</p></td>
+<td><p>AC</p></td>
+<td><p>Access Control</p></td>
+<td><p>AWS Control tower supports the use of automated account created via the Account Factory feature.</p></td>
+</tr>
+<tr class="row-even"><td><p>CM</p></td>
+<td><p>Configuration Management</p></td>
+<td><p>AWS Control Tower supports the use of landing zones which are a multi-account environment based on security and compliance best practices.
+AWS Control Tower supports the use of controls or guardrails for high-level governance of AWS accounts.
+AWS Control tower supports the use of an Account Factory, which standardizes provisioning of AWS accounts.</p></td>
+</tr>
+<tr class="row-odd"><td><p>SC</p></td>
+<td><p>System and Communications Protection</p></td>
+<td><p>AWS Control Tower encrypts data at rest and in transit.</p></td>
+</tr>
+<tr class="row-even"><td><p>AWS Shield</p></td>
+<td><p>AWS Shield is a managed Distributed Denial of Service (DDoS) protection service that safeguards applications running on AWS against network and transport layer attacks.</p></td>
+<td><p>SC</p></td>
+<td><p>System and Communications Protection</p></td>
+<td><p>AWS Shield provides DDoS detection and mitigation benefits for all applications running on AWS. Shield Standard protects against network volumetric (layer 3) and protocol (layer 4) attacks.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="AWSResearchCloudOperations.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">AWS Research Cloud Operations</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="AutomationTemplates.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Automation Templates</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mapping">800-92 Mapping</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">800-53 Mapping</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<p>
+  
+    By NIST<br/>
+  
+</p>
+
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+<footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        <div class="disclaimer">
+          <strong>Disclaimer:</strong> Certain commercial equipment, instruments, or
+          materials are identified in this documentation to foster understanding. Such
+          identification does not imply recommendation or endorsement by the National
+          Institute of Standards and Technology, nor does it imply that the materials
+          or equipment identified are necessarily the best available for the purpose.
+        </div>
+      </p>
+    </div>
+</footer>
+  </body>
+</html>

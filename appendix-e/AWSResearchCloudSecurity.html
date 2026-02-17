@@ -1,0 +1,848 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>AWS Research Cloud Security &#8212; Automated Cryptographic Module Validation Project  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/content.css?v=59cd0ab0" />
+    <link rel="stylesheet" type="text/css" href="../_static/tables.css?v=1ae3e97c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'appendix-e/AWSResearchCloudSecurity';</script>
+    <script src="../_static/jquery.visible.js?v=5b129ffc"></script>
+    <script src="../_static/jquery.leaveNotice-nist.js?v=21f5b3a4"></script>
+    <script src="../_static/applyLeaveNotice.js?v=bfeda27a"></script>
+    <script src="../_static/smoothNavScroll.js?v=2ce98a12"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="AWS Research Cloud Operations" href="AWSResearchCloudOperations.html" />
+    <link rel="prev" title="Identity and Access Management" href="IdentityandAccessManagement.html" />
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+
+    <link rel="stylesheet" href="https://pages.nist.gov/nist-header-footer/css/nist-combined.css">
+    <link rel="stylesheet" type="text/css" href="https://pages.nist.gov/leaveNotice/css/jquery.leaveNotice.css" />
+    <script src="https://pages.nist.gov/nist-header-footer/js/nist-header-footer.js" type="text/javascript" defer="defer"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RJSMY46M5C"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RJSMY46M5C');
+    </script>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Automated Cryptographic Module Validation Project  documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Automation of the NIST Cryptographic Module Validation Program
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../te/index.html">Test Evidence Workstream</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../protocol/index.html">Protocol Workstream</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../protocol/technicalDetails.html">Protocol Workstream Technical Details</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../protocol/securityConsiderations.html">Security Considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../protocol/login.html">Login</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../protocol/versioning.html">Versioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../protocol/messaging.html">Messaging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../protocol/errorResponses.html">Error Responses</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../infrastructure/index.html">Research Infrastructure Workstream</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conclusion.html">Conclusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix-a.html">Appendix A. List of Symbols, Abbreviations, and Acronyms</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../te/tables/tetables.html">Appendix B: TE Tables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../te/tables/area2.html">Area 2 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../te/tables/area3.html">Area 3 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../te/tables/area4.html">Area 4 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../te/tables/area5.html">Area 5 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../te/tables/area6.html">Area 6 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../te/tables/area7.html">Area 7 Tables</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../te/tables/area8.html">Area 8 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../te/tables/area9.html">Area 9 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../te/tables/area10.html">Area 10 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../te/tables/area11.html">Area 11 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../te/tables/area12.html">Area 12 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../te/tables/annex.html">Annex Tables</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">NCCoE AWS Research Cloud Architecture and Operation</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="AWSAccountOrganization.html">AWS Account Organization</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="AWSResearchCloudSystemArchitecture.html">AWS Research Cloud System Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="IdentityandAccessManagement.html">Identity and Access Management</a></li>
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">AWS Research Cloud Security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AWSResearchCloudOperations.html">AWS Research Cloud Operations</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="MappingtoNIST800Series.html">Mapping to NIST 800 Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AutomationTemplates.html">Automation Templates</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/appendix-e/AWSResearchCloudSecurity.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>AWS Research Cloud Security</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aws-control-tower">AWS Control Tower</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preventative-controls">Preventative Controls</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#detective-controls">Detective Controls</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#landing-zone-settings-blocking-of-regions-enabling-aws-cloudtrail-and-iam-identity-center">Landing Zone Settings (Blocking of Regions, Enabling AWS CloudTrail and IAM Identity Center)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aws-config">AWS Config</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iam-identity-center">IAM Identity Center</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aws-cloudtrail">AWS CloudTrail</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aws-cloudwatch-used-in-conjunction-with-sns-topics">AWS CloudWatch (Used in Conjunction With SNS topics)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#monitoring-and-alerts-throughout-the-environment">Monitoring and Alerts Throughout the Environment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sns-topics">SNS Topics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#break-glass-accounts">Break Glass Accounts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#amazon-eventbridge">Amazon EventBridge</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#amazon-guardduty">Amazon GuardDuty</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aws-simple-systems-manager">AWS Simple Systems Manager</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aws-iam-policies">AWS IAM Policies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aws-key-management-service-kms">AWS Key Management Service (KMS)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aws-security-hub">AWS Security Hub</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aws-trusted-advisor-reports">AWS Trusted Advisor Reports</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aws-security-hub-compliance-analyzer-shca">AWS Security Hub Compliance Analyzer (SHCA)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prowler">Prowler</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#amazon-security-lake">Amazon Security Lake</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#security-compliance">Security Compliance</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="aws-research-cloud-security">
+<h1>AWS Research Cloud Security<a class="headerlink" href="#aws-research-cloud-security" title="Link to this heading">#</a></h1>
+<section id="aws-control-tower">
+<h2>AWS Control Tower<a class="headerlink" href="#aws-control-tower" title="Link to this heading">#</a></h2>
+<p>The AWS research environment was deployed leveraging AWS <a class="reference external" href="https://docs.aws.amazon.com/controltower/">Control Tower</a> for orchestration. The recommended AWS guardrails were selected during the deployment process.</p>
+</section>
+<section id="preventative-controls">
+<h2>Preventative Controls<a class="headerlink" href="#preventative-controls" title="Link to this heading">#</a></h2>
+<p>The table below lists enabled preventative controls:</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id1">
+<caption><span class="caption-text">Table 1: Preventative controls</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
+<tbody>
+<tr class="row-odd"><td><p>Amazon CloudWatch</p></td>
+<td><p>[AWS-GR_LOG_GROUP_POLICY] Disallow changes to Amazon CloudWatch Logs log groups set up by AWS Control Tower</p></td>
+</tr>
+<tr class="row-even"><td><p>Amazon EC2</p></td>
+<td><p>[AWS-GR_EC2_INSTANCE_NO_PUBLIC_IP] Detect whether any Amazon EC2 instance has an associated public IPv4 address</p></td>
+</tr>
+<tr class="row-odd"><td><p>Amazon EventBridge</p></td>
+<td><p>[AWS-GR_CLOUDWATCH_EVENTS_CHANGE_PROHIBITED] Disallow changes to Amazon CloudWatch set up by AWS Control Tower</p></td>
+</tr>
+<tr class="row-even"><td><p>Amazon S3</p></td>
+<td><p>[AWS-GR_S3_ACCOUNT_LEVEL_PUBLIC_ACCESS_BLOCKS_PERIODIC] Detect whether Amazon S3 settings to block public access are set as true for the account</p></td>
+</tr>
+<tr class="row-odd"><td><p>Amazon S3</p></td>
+<td><p>[SH.S3.1] S3 Block Public Access setting should be enabled</p></td>
+</tr>
+<tr class="row-even"><td><p>Amazon S3</p></td>
+<td><p>[AWS-GR_RESTRICT_S3_DELETE_WITHOUT_MFA] Disallow delete actions on S3 buckets without MFA</p></td>
+</tr>
+<tr class="row-odd"><td><p>Amazon SNS</p></td>
+<td><p>[AWS-GR_SNS_CHANGE_PROHIBITED] Disallow changes to Amazon SNS set up by AWS Control Tower</p></td>
+</tr>
+<tr class="row-even"><td><p>Amazon SNS</p></td>
+<td><p>[AWS-GR_SNS_SUBSCRIPTION_CHANGE_PROHIBITED] Disallow changes to Amazon SNS subscriptions set up by AWS Control Tower</p></td>
+</tr>
+<tr class="row-odd"><td><p>AWS CloudTrail</p></td>
+<td><p>[AWS-GR_CLOUDTRAIL_CHANGE_PROHIBITED] Disallow configuration changes to CloudTrail</p></td>
+</tr>
+<tr class="row-even"><td><p>AWS CloudTrail</p></td>
+<td><p>[AWS-GR_CLOUDTRAIL_CLOUDWATCH_LOGS_ENABLED] Integrate CloudTrail events with CloudWatch Logs</p></td>
+</tr>
+<tr class="row-odd"><td><p>AWS CloudTrail</p></td>
+<td><p>[AWS-GR_CLOUDTRAIL_ENABLED] Enable CloudTrail in all available regions</p></td>
+</tr>
+<tr class="row-even"><td><p>AWS CloudTrail</p></td>
+<td><p>[AWS-GR_CLOUDTRAIL_VALIDATION_ENABLED] Enable integrity validation for CloudTrail log file</p></td>
+</tr>
+<tr class="row-odd"><td><p>AWS Config</p></td>
+<td><p>[AWS-GR_CONFIG_AGGREGATION_AUTHORIZATION_POLICY] Disallow deletion of AWS Config Aggregation Authorizations created by AWS Control Tower</p></td>
+</tr>
+<tr class="row-even"><td><p>AWS Config</p></td>
+<td><p>[AWS-GR_CONFIG_AGGREGATION_CHANGE_PROHIBITED] Disallow changes to tags created by AWS Control Tower for AWS Config resources</p></td>
+</tr>
+<tr class="row-odd"><td><p>AWS Config</p></td>
+<td><p>[AWS-GR_CONFIG_CHANGE_PROHIBITED] Disallow configuration changes to AWS Config</p></td>
+</tr>
+<tr class="row-even"><td><p>AWS Config</p></td>
+<td><p>[AWS-GR_CONFIG_ENABLED] Enable AWS Config in all available regions</p></td>
+</tr>
+<tr class="row-odd"><td><p>AWS Config</p></td>
+<td><p>[AWS-GR_CONFIG_RULE_CHANGE_PROHIBITED] Disallow changes to AWS Config Rules set up by AWS Control Tower</p></td>
+</tr>
+<tr class="row-even"><td><p>AWS Identity and Access Management (IAM)</p></td>
+<td><p>[AWS-GR_IAM_ROLE_CHANGE_PROHIBITED] Disallow changes to AWS IAM roles set up by AWS Control Tower and AWS CloudFormation</p></td>
+</tr>
+<tr class="row-odd"><td><p>AWS Lambda</p></td>
+<td><p>[AWS-GR_LAMBDA_CHANGE_PROHIBITED] Disallow changes to AWS Lambda functions set up by AWS Control Tower</p></td>
+</tr>
+<tr class="row-even"><td><p>Multiple</p></td>
+<td><p>[AWS-GR_REGION_DENY] Deny access to AWS based on the requested AWS Region</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="detective-controls">
+<h2>Detective Controls<a class="headerlink" href="#detective-controls" title="Link to this heading">#</a></h2>
+<p>The table below lists enabled detective controls:</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id2">
+<caption><span class="caption-text">Table 3 Detective controls</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
+<tbody>
+<tr class="row-odd"><td><p>Amazon EC2</p></td>
+<td><p>[AWS-GR_EC2_INSTANCE_NO_PUBLIC_IP] Detect whether any Amazon EC2 instance has an associated public IPv4 address</p></td>
+</tr>
+<tr class="row-even"><td><p>Amazon S3</p></td>
+<td><p>[AWS-GR_S3_ACCOUNT_LEVEL_PUBLIC_ACCESS_BLOCKS_PERIODIC] Detect whether Amazon S3 settings to block public access are set as true for the account</p></td>
+</tr>
+<tr class="row-odd"><td><p>Amazon S3</p></td>
+<td><p>[SH.S3.1] S3 Block Public Access setting should be enabled</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="pst-scrollable-table-container"><table class="table" id="id3">
+<caption><span class="caption-text">Table 4 Additional Detective Controls For Security Audit and Logs:</span><a class="headerlink" href="#id3" title="Link to this table">#</a></caption>
+<tbody>
+<tr class="row-odd"><td><p>Amazon S3</p></td>
+<td><p>[AWS-GR_AUDIT_BUCKET_PUBLIC_READ_PROHIBITED] Detect public read access setting for log archive</p></td>
+</tr>
+<tr class="row-even"><td><p>Amazon S3</p></td>
+<td><p>[AWS-GR_AUDIT_BUCKET_PUBLIC_WRITE_PROHIBITED] Detect public write access setting for log archive</p></td>
+</tr>
+<tr class="row-odd"><td><p>AWS CloudTrail</p></td>
+<td><p>[AWS-GR_DETECT_CLOUDTRAIL_ENABLED_ON_SHARED_ACCOUNTS] Detect whether a shared account in the Security organizational unit has AWS CloudTrail or CloudTrail Lake enabled.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="landing-zone-settings-blocking-of-regions-enabling-aws-cloudtrail-and-iam-identity-center">
+<h2>Landing Zone Settings (Blocking of Regions, Enabling AWS CloudTrail and IAM Identity Center)<a class="headerlink" href="#landing-zone-settings-blocking-of-regions-enabling-aws-cloudtrail-and-iam-identity-center" title="Link to this heading">#</a></h2>
+<p>A <a class="reference external" href="https://docs.aws.amazon.com/prescriptive-guidance/latest/migration-aws-environment/understanding-landing-zones.html">landing zone</a> is a well-architected, multi-account AWS environment that is scalable and secure. The NCCoE’s landing zone was deployed using <a class="reference external" href="https://docs.aws.amazon.com/controltower/">AWS Control Tower</a>. The NCCoE has the following settings enabled in its landing zone:</p>
+<ul class="simple">
+<li><p>AWS CloudTrail</p></li>
+<li><p>AWS IAM Identity Center</p></li>
+<li><p>Region Deny control</p></li>
+<li><p>Landing zone regions</p></li>
+<li><p>Log Configuration</p></li>
+</ul>
+</section>
+<section id="aws-config">
+<h2>AWS Config<a class="headerlink" href="#aws-config" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html">AWS Config</a> provides a detailed view of the configuration of AWS resources in your AWS account. The NCCoE uses AWS Config to ensure compliance with our controls and policies. Used in conjunction with AWS Control Tower, AWS Config detects and can remediate configurations and changes in accordance with established policies. For example, when a new Member Account is deployed, AWS Config creates an S3 logging bucket for that member account. A remediation action ensures that any future buckets created within that member account are configured to send their logs to this logging bucket.</p>
+</section>
+<section id="iam-identity-center">
+<h2>IAM Identity Center<a class="headerlink" href="#iam-identity-center" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://aws.amazon.com/iam/identity-center/">AWS IAM Identity Center</a> is a service that helps centrally manage access to multiple AWS accounts and business applications using federated user identities. The NCCoE has federated with its on-premises authoritative Identity source, which is an instance of Microsoft Active Directory.</p>
+</section>
+<section id="aws-cloudtrail">
+<h2>AWS CloudTrail<a class="headerlink" href="#aws-cloudtrail" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html">AWS CloudTrail</a> is an AWS service that helps enable operational and risk auditing, governance, and compliance of AWS accounts. The NCCoE uses AWS CloudTrail primarily for monitoring, dashboard reporting, and alerting. The NCCoE has the following three CloudTrails:</p>
+<ul class="simple">
+<li><p>A CloudTrail connected with AWS Control Tower</p></li>
+<li><p>A CloudTrail for tracking management-related events</p></li>
+<li><p>A CloudTrail for tracking compliance, archived in the Log Archive Account through an AWS Security Lake</p></li>
+</ul>
+</section>
+<section id="aws-cloudwatch-used-in-conjunction-with-sns-topics">
+<h2>AWS CloudWatch (Used in Conjunction With SNS topics)<a class="headerlink" href="#aws-cloudwatch-used-in-conjunction-with-sns-topics" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html">Amazon CloudWatch</a> monitors Amazon Web Services (AWS) resources and the applications running on AWS in real-time, offering many tools for system-wide observability of application performance, operational health, and resource utilization. The NCCoE leverages information collected via CloudWatch to generate dashboards for a holistic view and insight into our cloud environment.</p>
+</section>
+<section id="monitoring-and-alerts-throughout-the-environment">
+<h2>Monitoring and Alerts Throughout the Environment<a class="headerlink" href="#monitoring-and-alerts-throughout-the-environment" title="Link to this heading">#</a></h2>
+<p>The NCCoE uses Amazon CloudWatch to monitor and create alarms on specific events throughout the environment. The NCCoE has created dashboards and alarms to help with reporting visualization and ensure operational excellence.</p>
+</section>
+<section id="sns-topics">
+<h2>SNS Topics<a class="headerlink" href="#sns-topics" title="Link to this heading">#</a></h2>
+<p>An Amazon <a class="reference external" href="https://docs.aws.amazon.com/sns/latest/dg/sns-create-topic.html">Simple Notification Service</a> topic serves as a logical access point, acting as a communication channel. The NCCoE has created many SNS topics for notification on various events. Below is a list of SNS topics in the NCCoE member accounts:</p>
+<ul class="simple">
+<li><p>Failed logins</p></li>
+<li><p>AWS config changes</p></li>
+<li><p>IAM VPC creation</p></li>
+<li><p>Root member account sign-ins</p></li>
+<li><p>KMS Key deletion</p></li>
+<li><p>S3 objects deletion</p></li>
+<li><p>Billing limit threshold</p></li>
+<li><p>Creation/Deletion of member account</p></li>
+<li><p>IAM Root console sign in</p></li>
+<li><p>Backup failures</p></li>
+<li><p>AWS administrator logins</p></li>
+<li><p>Direct Connect Link connectivity outage</p></li>
+<li><p>Restore of EC2 instance</p></li>
+</ul>
+</section>
+<section id="break-glass-accounts">
+<h2>Break Glass Accounts<a class="headerlink" href="#break-glass-accounts" title="Link to this heading">#</a></h2>
+<p>The NCCoE uses its on-premises Active Directory for authentication via SSO to its AWS research cloud. However, a handful of IAM accounts exist and are maintained for emergency (break glass) access.</p>
+</section>
+<section id="amazon-eventbridge">
+<h2>Amazon EventBridge<a class="headerlink" href="#amazon-eventbridge" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-what-is.html">Amazon EventBridge</a> is a serverless service that uses events to connect application components, making it easier to build scalable, event-driven applications. The NCCoE leverages Amazon EventBridge rules/schedules to monitor API activities and trigger an Amazon SNS topic or an AWS Lambda function. The SNS Topics listed in <a class="reference internal" href="#sns-topics"><span class="std std-ref">SNS Topics</span></a> above are rule examples triggered by AWS EventBridge.</p>
+</section>
+<section id="amazon-guardduty">
+<h2>Amazon GuardDuty<a class="headerlink" href="#amazon-guardduty" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html">Amazon GuardDuty</a> is a threat detection service that monitors, analyzes, and processes AWS data sources and logs. The NCCoE leverages central management of Amazon GuardDuty via delegation across all accounts in the environment. The NCCoE currently has eight GuardDuty protection plans enabled, including:</p>
+<ul class="simple">
+<li><p>S3 Protection</p></li>
+<li><p>EKS Protection</p></li>
+<li><p>Extended Threat Detection</p></li>
+<li><p>Runtime Monitoring</p></li>
+<li><p>Malware Protection for EC2</p></li>
+<li><p>Malware Protection for S3</p></li>
+<li><p>RDS Protection</p></li>
+<li><p>Lambda Protection</p></li>
+</ul>
+</section>
+<section id="aws-simple-systems-manager">
+<h2>AWS Simple Systems Manager<a class="headerlink" href="#aws-simple-systems-manager" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://docs.aws.amazon.com/systems-manager/latest/userguide/what-is-systems-manager.html">AWS Systems Manager</a> (SSM) enables a centralized view, operation, and management in AWS and multi-cloud environments. The NCCoE leverages AWS SSM in a few ways:</p>
+<ul class="simple">
+<li><p>Access to EC2 consoles without opening additional firewall ports</p></li>
+<li><p>Patching of EC2 instances</p></li>
+<li><p>Remediation of configuration drifts</p></li>
+<li><p>Systems inventory reports</p></li>
+</ul>
+</section>
+<section id="aws-iam-policies">
+<h2>AWS IAM Policies<a class="headerlink" href="#aws-iam-policies" title="Link to this heading">#</a></h2>
+<p>The NCCoE uses <a class="reference external" href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html">AWS IAM policies</a> to grant access to resources in accordance with security best practices.</p>
+</section>
+<section id="aws-key-management-service-kms">
+<h2>AWS Key Management Service (KMS)<a class="headerlink" href="#aws-key-management-service-kms" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://docs.aws.amazon.com/kms/latest/developerguide/overview.html">AWS KMS</a> simplifies the creation and management of encryption keys in the AWS environment. The NCCoE leverages AWS KMS throughout the environment, including the encryption of S3 buckets and SNS topics. This is accomplished through a specialized configuration within the AWS KMS service. Access keys for specific accounts are also rotated every 90 days via an AWS KMS integration with a custom AWS Lambda function. For an example of this rotation process, see <a class="reference internal" href="AutomationTemplates.html#automated-rotation-of-console-access-keys"><span class="std std-ref">Automated Rotation of Console Access Keys</span></a>.</p>
+</section>
+<section id="aws-security-hub">
+<h2>AWS Security Hub<a class="headerlink" href="#aws-security-hub" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html">AWS Security Hub</a> provides a comprehensive view of the AWS security state. NCCoE baselines its AWS environment against the following three security standards:</p>
+<ul class="simple">
+<li><p>CIS AWS Foundations Benchmark v3.0.0</p></li>
+<li><p>NIST Special Publication 800-53 Revision 5</p></li>
+<li><p>AWS Foundational Security Best Practices v1.0.0</p></li>
+</ul>
+</section>
+<section id="aws-trusted-advisor-reports">
+<h2>AWS Trusted Advisor Reports<a class="headerlink" href="#aws-trusted-advisor-reports" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://docs.aws.amazon.com/awssupport/latest/user/trusted-advisor.html">AWS Trusted Advisor</a> continuously inspects the environment and provides recommendations based on security best practices, cost-saving optimization, and performance improvements. NCCoE reviews AWS Trusted Advisor recommendations regularly to ensure operational excellence.</p>
+</section>
+<section id="aws-security-hub-compliance-analyzer-shca">
+<h2>AWS Security Hub Compliance Analyzer (SHCA)<a class="headerlink" href="#aws-security-hub-compliance-analyzer-shca" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://github.com/awslabs/security-hub-compliance-analyzer/blob/main/README.md">AWS Security Hub Compliance Analyzer</a> (SHCA) is an AWS lambda function available on <a class="reference external" href="https://github.com/awslabs/security-hub-compliance-analyzer">GitHub</a> that generates artifacts in support of the Department of Defense Risk Management Framework (RMF) Information System accreditation. This helps to assess how well the AWS environment aligns with security best practices, frameworks, or regulatory requirements. The NCCoE reviews SHCA reports regularly to ensure operational excellence.</p>
+</section>
+<section id="prowler">
+<h2>Prowler<a class="headerlink" href="#prowler" title="Link to this heading">#</a></h2>
+<p>Prowler (often referred to as AWS Prowler) is an open-source security tool available on <a class="reference external" href="https://github.com/prowler-cloud/prowler">GitHub</a> designed to perform security assessments, audit checks, and compliance evaluations of the AWS environment. The NCCoE reviews Prowler reports regularly to ensure operational excellence.</p>
+</section>
+<section id="amazon-security-lake">
+<h2>Amazon Security Lake<a class="headerlink" href="#amazon-security-lake" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://aws.amazon.com/security-lake/">Amazon Security Lake</a> centralizes all AWS logs (Security, CloudTrail, VPC flow, etc.) into an S3 bucket and supports multiple accounts and regions. Such logs can be queried as needed via AWS Athena. NCCoE has consolidated and centralized all AWS logs in an AWS Security Lake in the Log-Archives account. Security Engineers can query the logs for specific events as needed across the entire organization. This Security Lake has proved to be valuable for incident response and investigative purposes.</p>
+</section>
+<section id="security-compliance">
+<h2>Security Compliance<a class="headerlink" href="#security-compliance" title="Link to this heading">#</a></h2>
+<p>The NCCoE leverages numerous tools covered earlier in this section to monitor, detect, correct, report, and manage security compliance of the environment. The NCCoE also holds monthly Cloud Center of Excellence and bi-annual Governance Cloud environment reviews.</p>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="IdentityandAccessManagement.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Identity and Access Management</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="AWSResearchCloudOperations.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">AWS Research Cloud Operations</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aws-control-tower">AWS Control Tower</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preventative-controls">Preventative Controls</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#detective-controls">Detective Controls</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#landing-zone-settings-blocking-of-regions-enabling-aws-cloudtrail-and-iam-identity-center">Landing Zone Settings (Blocking of Regions, Enabling AWS CloudTrail and IAM Identity Center)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aws-config">AWS Config</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iam-identity-center">IAM Identity Center</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aws-cloudtrail">AWS CloudTrail</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aws-cloudwatch-used-in-conjunction-with-sns-topics">AWS CloudWatch (Used in Conjunction With SNS topics)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#monitoring-and-alerts-throughout-the-environment">Monitoring and Alerts Throughout the Environment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sns-topics">SNS Topics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#break-glass-accounts">Break Glass Accounts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#amazon-eventbridge">Amazon EventBridge</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#amazon-guardduty">Amazon GuardDuty</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aws-simple-systems-manager">AWS Simple Systems Manager</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aws-iam-policies">AWS IAM Policies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aws-key-management-service-kms">AWS Key Management Service (KMS)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aws-security-hub">AWS Security Hub</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aws-trusted-advisor-reports">AWS Trusted Advisor Reports</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aws-security-hub-compliance-analyzer-shca">AWS Security Hub Compliance Analyzer (SHCA)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prowler">Prowler</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#amazon-security-lake">Amazon Security Lake</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#security-compliance">Security Compliance</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<p>
+  
+    By NIST<br/>
+  
+</p>
+
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+<footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        <div class="disclaimer">
+          <strong>Disclaimer:</strong> Certain commercial equipment, instruments, or
+          materials are identified in this documentation to foster understanding. Such
+          identification does not imply recommendation or endorsement by the National
+          Institute of Standards and Technology, nor does it imply that the materials
+          or equipment identified are necessarily the best available for the purpose.
+        </div>
+      </p>
+    </div>
+</footer>
+  </body>
+</html>
