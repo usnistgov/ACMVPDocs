@@ -419,7 +419,6 @@ This endpoint allows a client to submit functional test evidence as requested by
             "description": "Verify that versioning info identifies distinct components.",
             "access": "physical",
             "technique": "debugger simulation emulation harness manual other",
-            "harnessId": "String - UUID for debugger",
             "setup": "reference into Catalog",
             "errorInduction": "description of",
             "results":
@@ -550,18 +549,18 @@ This endpoint allows a client to submit missing security policy information as r
       "cavpOeList": [
         {
           "name": "consectetur do cupidatat Ut",
-          "oeId": 17019000
+          "oeId": 3
         }
       ],
       "cavpOeAlgoList": [
         {
-          "validationOeAlgorithmId": 27841320,
+          "validationOeAlgorithmId": 1,
           "algoDisplayName": "exercitation ad",
-          "canonicalAlgorithmId": -55545690,
-          "validationId": -4957727,
+          "canonicalAlgorithmId": 1,
+          "validationId": 1,
           "certName": "anim fugiat nisi Lorem enim",
           "implName": "velit exercitation irure magna eu",
-          "oeId": -96771369,
+          "oeId": 8308,
           "selectedCapList": [
             {
               "capabilityId": 31642322,
@@ -576,7 +575,7 @@ This endpoint allows a client to submit missing security policy information as r
           "algoDisplayName": "AES-CBC",
           "canonicalAlgorithmId": 1,
           "implName": "in Lorem",
-          "validationId": 44589597,
+          "validationId": 7,
           "certName": "nisi ex sint",
           "category": "laboris velit"
         }
@@ -599,7 +598,8 @@ This endpoint allows a client to submit missing security policy information as r
       }
     ],
     "esvItarCertList": [
-      "pariatur"
+      "pariatur",
+      "Lorem"
     ],
     "testedHwList": [
       {
@@ -635,7 +635,11 @@ This endpoint allows a client to submit missing security policy information as r
         "paaPai": "esse",
         "hypervisorHostOs": "Excepteur ipsum labore elit",
         "swFwVersionList": [
-          "deserunt est consequat pariatur ex"
+          "deserunt est consequat pariatur ex",
+          "tempor dolor eiusmod",
+          "ipsum dolor",
+          "Ut cupidatat",
+          "et consequat"
         ]
       }
     ],
@@ -716,7 +720,7 @@ This endpoint allows a client to submit missing security policy information as r
             "algoDisplayName": "magna cupidatat laborum Ut in",
             "canonicalAlgorithmId": 47899832,
             "implName": "velit laborum sint id nostrud",
-            "validationId": -48452494,
+            "validationId": 5,
             "algoPropList": [],
             "certName": "et"
           }
@@ -737,7 +741,10 @@ This endpoint allows a client to submit missing security policy information as r
       {
         "physicalPort": "ullamco",
         "logicalInterfaceList": [
-          "ex qui velit eu"
+          "ex qui velit eu",
+          "est",
+          "Duis sit labore aute ex",
+          "laborum fugiat adipisicing"
         ],
         "dataPasses": "ullamco voluptate in ut veniam"
       }
@@ -757,7 +764,10 @@ This endpoint allows a client to submit missing security policy information as r
         "type": "sint ut dolore Duis veniam",
         "operatorType": "ea elit aliquip officia",
         "authMethodList": [
-          "adipisicing Ut in"
+          "adipisicing Ut in",
+          "velit cillum cupidatat consectetur",
+          "labore adipisicing",
+          "Ut"
         ]
       }
     ],
@@ -769,7 +779,9 @@ This endpoint allows a client to submit missing security policy information as r
         "inputs": "ea cupidatat ullamco pariatur irure",
         "outputs": "Ut aute",
         "secFunImplList": [
-          "in"
+          "in",
+          "minim sed",
+          "ad pariatur"
         ],
         "roleSspAccessList": [
           {
@@ -778,30 +790,59 @@ This endpoint allows a client to submit missing security policy information as r
               {
                 "sspName": "quis consequat tempor laboris reprehenderit",
                 "accessType": [
-                  "veniam laborum tempor"
+                  "veniam laborum tempor",
+                  "cupidatat aute",
+                  "ut esse sint Lorem",
+                  "culpa nulla",
+                  "sit consequat incididunt occaecat"
                 ]
               }
             ]
-          }
-        ]
-      },
-      {
-        "name": "non sunt",
-        "description": "ullamco dolore enim mollit",
-        "indicator": "non enim qui",
-        "inputs": "laboris sunt ea esse",
-        "outputs": "dolor",
-        "secFunImplList": [
-          "nostrud et reprehenderit Duis"
-        ],
-        "roleSspAccessList": [
+          },
           {
-            "roleName": "magna tempor non id",
+            "roleName": "incididunt id adipisicing et",
             "sspAccessList": [
               {
-                "sspName": "quis",
+                "sspName": "amet esse",
                 "accessType": [
-                  "esse"
+                  "sunt dolore mollit",
+                  "ipsum incididunt nisi in"
+                ]
+              }
+            ]
+          },
+          {
+            "roleName": "non Lorem est incididunt sit",
+            "sspAccessList": [
+              {
+                "sspName": "reprehenderit pariatur nisi sed",
+                "accessType": [
+                  "consequat",
+                  "amet"
+                ]
+              }
+            ]
+          },
+          {
+            "roleName": "non enim proident ex",
+            "sspAccessList": [
+              {
+                "sspName": "dolor voluptate",
+                "accessType": [
+                  "aliquip esse",
+                  "et laborum eiusmod veniam"
+                ]
+              }
+            ]
+          },
+          {
+            "roleName": "elit",
+            "sspAccessList": [
+              {
+                "sspName": "do sit dolor",
+                "accessType": [
+                  "veniam ad do",
+                  "irure"
                 ]
               }
             ]
@@ -814,7 +855,10 @@ This endpoint allows a client to submit missing security policy information as r
         "name": "anim quis elit",
         "description": "commodo et deserunt",
         "nonApprovedAlgoList": [
-          "nisi ea incididunt deserunt"
+          "nisi ea incididunt deserunt",
+          "Duis cillum",
+          "voluptate elit aute in",
+          "veniam"
         ],
         "role": "exercitation aliquip"
       }
@@ -874,16 +918,29 @@ This endpoint allows a client to submit missing security policy information as r
         "strength": "Lorem consequat sunt mollit",
         "type": "id",
         "generatedByList": [
-          "est"
+          "est",
+          "mollit in dolor eu Duis",
+          "irure exercitation est commodo",
+          "anim eu aliqua Excepteur",
+          "ullamco ad mollit"
         ],
         "establishedByList": [
-          "anim eiusmod"
+          "anim eiusmod",
+          "sed enim tempor",
+          "officia cillum ex nostrud",
+          "elit voluptate amet laborum labore",
+          "Duis amet culpa"
         ],
         "usedByList": [
-          "quis"
+          "quis",
+          "proident",
+          "adipisicing ea mollit",
+          "cupidatat nisi incididunt dolore",
+          "voluptate tempor"
         ],
         "inputOutputList": [
-          "aliqua ut nisi consequat"
+          "aliqua ut nisi consequat",
+          "nulla in cillum est"
         ],
         "storageItemList": [
           {
@@ -894,7 +951,9 @@ This endpoint allows a client to submit missing security policy information as r
         ],
         "storageDuration": "nostrud",
         "zeroizationList": [
-          "ad nostrud occaecat"
+          "ad nostrud occaecat",
+          "minim ad incididunt irure",
+          "aute eiusmod"
         ],
         "category": "elit do aliquip",
         "relatedSspList": [
@@ -937,14 +996,17 @@ This endpoint allows a client to submit missing security policy information as r
         "name": "velit in",
         "description": "ex",
         "conditions": [
-          "reprehenderit nostrud cillum anim labore"
+          "reprehenderit nostrud cillum anim labore",
+          "do dolor officia",
+          "adipisicing voluptate do tempor"
         ],
         "recoveryMethod": "aliquip",
         "indicator": "irure amet"
       }
     ],
     "referenceList": [
-      "do occaecat sunt"
+      "do occaecat sunt",
+      "irure velit"
     ]
   }
 }
@@ -972,7 +1034,7 @@ This endpoint allows a client to submit security policy templates. Data is submi
 
 This endpoint allows a client to generate security policy information in PDF format. Security Policy must be submitted before this action. No payload is needed to submit the PUT request.
 
-After PUT request, the following response will be provided. To view the PDF file generation status, use GET certRequests/{cerRequestId} as above. "securityPolicyStatus" will become "submitted" after PDF file is generated.
+After PUT request, the following response will be provided. To view the .docx file generation status, use GET certRequests/{cerRequestId} as above. "securityPolicyStatus" will become "submitted" after .docx file is generated.
 
 ===== Response
 
@@ -996,7 +1058,7 @@ After PUT request, the following response will be provided. To view the PDF file
 
 *GET /certRequests/{certRequestId}/securityPolicy*
 
-This endpoint allows a client to get security policy information as a pdf file. 
+This endpoint allows a client to get security policy information as a .docx file. 
 
 ===== Response
 
