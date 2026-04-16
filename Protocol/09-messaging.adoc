@@ -71,28 +71,29 @@ Create a new Certificate Request Session.
 
 ----
 
-    {
+{
     "amvVersion": "0.1",
     "vendorId": 1,
+    "moduleId": 1,
     "testers": [
-        "CVP-1-000000",
-        "CVP-2-000000"
+        "CVP-0-000001",
+        "CVP-0-000002"
     ],
-    "reviewers": [
-        "CVP-123456",
-        "CVP-789101"
-    ],
+            "algorithmCertificates":[
+            "A1"
+        ],
+        "entropyCertificates":[
+            "E1"
+        ],
     "module":
     {
         "schemaVersion": "initial",
+
         "moduleInfo": 
         {
-            "name": "NIST Test Module",
             "count": 1,
-            "description": "NIST Postman Test Module",
-            "embodiment": "Single Chip",
-            "type": "software",
-            "opEnvType": "Intel X86_64",
+            "embodiment": "singlechip",
+            "opEnvType": "modifiable",
             "submissionLevel": "Level 1",
             "itar": false,
             "overallSecurityLevel": 2
@@ -184,7 +185,18 @@ Create a new Certificate Request Session.
             {"name": "hasAdditionalMitigations", "included": false},
             {"name": "usesOtherCurve", "included": true},
             {"name": "supportsBypassCapability", "included": false},
-            {"name": "hasOTPMemory", "included": false}
+            {"name": "hasOTPMemory", "included": false},
+            {"name": "hasEFP", "included": false},
+            {"name": "hasEFT", "included": false},
+            {"name": "hasUserRole", "included": false},
+            {"name": "allowsSelfInitiatedCryptographicOutput", "included": false},
+            {"name": "usesAuthentication", "included": false},
+            {"name": "usesHashMacIntegrity", "included": false},
+            {"name": "usesDigitalSignatureIntegrity", "included": false},
+            {"name": "supportsSensitiveDataIO", "included": false},
+            {"name": "supportsCompleteImageReplacement", "included": false},
+            {"name": "hasControlOutput", "included": false},
+            {"name": "usesRoleBasedAuthentication", "included": false}
         ]
     }
 }
@@ -200,14 +212,10 @@ Optionally, references to ACV and ESV certificate IDs *MAY* be provided.
         "amvVersion": "0.1",
         "moduleId": 1,
         "vendorId": 1,
-        "testers": [
-	        "CVP-1-000000",
-	        "CVP-2-000000"
-	    ],
-	    "reviewers": [
-	        "CVP-123456",
-	        "CVP-789101"
-	    ],
+		"testers": [
+		        "CVP-0-000001",
+		        "CVP-0-000002"
+		    ],
         "algorithmCertificates":[
             "A1"
         ],
