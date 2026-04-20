@@ -57,7 +57,7 @@ A class /16 network block was allocated to the AWS research cloud environment. E
 Amazon Route 53
 ____________________
 
-`Amazon Route 53 <https://aws.amazon.com/route53/>`__ is Amazon’s Domain Name System (DNS) service, which provides three primary functions: domain registration, DNS routing, and health checking.
+`Amazon Route 53 <https://aws.amazon.com/route53/>`__ is Amazon's Domain Name System (DNS) service, which provides three primary functions: domain registration, DNS routing, and health checking.
 
 The NCCoE uses Route 53 primarily for our Managed AD synchronization with the on-premises AD. To establish a trust between the two domains, an outbound endpoint resolver with a forwarding rule to the on-premises domain needs to be configured.
 
@@ -66,7 +66,7 @@ Instructions for establishing this trust, configuring the endpoint resolver, and
 IPAM
 ____________________
 
-`Amazon’s VPC IP Address Manager (IPAM) <https://docs.aws.amazon.com/vpc/latest/ipam/what-it-is-ipam.html>`__ is a VPC feature that enables planning, tracking, and monitoring of IP address assignment and allocation across the AWS environment.
+`Amazon's VPC IP Address Manager (IPAM) <https://docs.aws.amazon.com/vpc/latest/ipam/what-it-is-ipam.html>`__ is a VPC feature that enables planning, tracking, and monitoring of IP address assignment and allocation across the AWS environment.
 
 The NCCoE deploys, as standard, three VPCs (Dev, Test, and Prod) per member account with a /24 per VPC. A fourth /24 is reserved for future growth. Given the above, the NCCoE does not currently use IPAM to automatically assign IP addresses, ensuring consistency with the NCCoE allocation standard.
 

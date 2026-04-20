@@ -59,7 +59,7 @@ The table below lists enabled preventative controls:
                                                                                                                                                                                                     
    +-----------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+     
    | Amazon S3 | [AWS-GR_AUDIT_BUCKET_PUBLIC_READ_PROHIBITED] Detect public read access setting for log archive                                                                                 |     
-   +------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+     
+   +------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+     
    | Amazon S3 | [AWS-GR_AUDIT_BUCKET_PUBLIC_WRITE_PROHIBITED] Detect public write access setting for log archive                                                                               |     
    +-----------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+     
    | Amazon S3 | [AWS-GR_AUDIT_BUCKET_DELETION_PROHIBITED] Disallow deletion of log archive                                                                                                     |     
@@ -102,7 +102,7 @@ The table below lists enabled detective controls:
 Landing Zone Settings (Blocking of Regions, Enabling AWS CloudTrail and IAM Identity Center)
 --------------------------------------------------------------------------------------------
 
-A `landing zone <https://docs.aws.amazon.com/prescriptive-guidance/latest/migration-aws-environment/understanding-landing-zones.html>`__ is a well-architected, multi-account AWS environment that is scalable and secure. The NCCoE’s landing zone was deployed using `AWS Control Tower <https://docs.aws.amazon.com/controltower/>`__. The NCCoE has the following settings enabled in its landing zone:
+A `landing zone <https://docs.aws.amazon.com/prescriptive-guidance/latest/migration-aws-environment/understanding-landing-zones.html>`__ is a well-architected, multi-account AWS environment that is scalable and secure. The NCCoE's landing zone was deployed using `AWS Control Tower <https://docs.aws.amazon.com/controltower/>`__. The NCCoE has the following settings enabled in its landing zone:
 
 - AWS CloudTrail
 

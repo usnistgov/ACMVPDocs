@@ -1,5 +1,5 @@
-NCCoE AWS Research Cloud Architecture and Operation
------------------------------------------------------
+Appendix E: Research Infrastructure
+-----------------------------------------------------------------
 
 .. toctree::
    :maxdepth: 3

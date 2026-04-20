@@ -23,7 +23,7 @@ Security - Log Archives Account
 
 The Log Archive account is a core supporting infrastructure account within the NCCoE Organization and was created through AWS Control Tower during the creation of the landing zone. The Log Archive account contains a central Amazon S3 bucket for storing a copy of the AWS CloudTrail trails and AWS Config recordings.
 
-Security – Log Audit Account
+Security - Log Audit Account
 ----------------------------
 
 The Log Audit account is a core supporting infrastructure account within the NCCoE Organization and was created through AWS Control Tower during the creation of the landing zone. The Log Audit account is intended for security and compliance teams to perform audits and security operations.

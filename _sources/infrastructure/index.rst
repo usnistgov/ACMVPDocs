@@ -1,5 +1,5 @@
-Research Infrastructure Workstream
-==================================
+2025 Status Update - Research Infrastructure Workstream
+=========================================================
 
 Introduction
 -------------
@@ -95,7 +95,7 @@ _________________________________
 
 This section describes the specific modernization research items completed or planned in the scope of the ACMVP application. As the application is a REST API with a backend database and MQP, similarly structured applications can utilize this research in making informed decisions to update, improve, or otherwise modernize their infrastructure. 
 
-Figures 3, 4, and 5 depict a timeline of the key modernization components that have been implemented before ICMC '25 and are planned to be implemented following ICMC '25. A flag in dark blue represents a timeline event, green represents a Windows OS container development, cyan represents a general modernization development, and orange represents a Linux OS container development. Note that AWS CodePipeline CI/CD is in orange, as it only applies to Linux OS containers, as explained within the Application Deployment Modernization section.
+Figures 3, 4, and 5 depict a timeline of the key modernization components that have been implemented before ICMC '25 and are planned to be implemented following ICMC '25. A flag in dark blue represents a timeline event, green represents a Windows OS container development, cyan represents a general modernization development, and orange represents a Linux OS container development. Note that AWS CodePipeline CI/CD is in orange, as it only applies to Linux OS containers, as explained within the :ref:`Application Deployment Modernization` section.
 
 |Figure3|
 
@@ -115,7 +115,7 @@ Figure 6 shows the services and tools used in the modernized system architecture
 
 *Figure 6. Modernized System Architecture*
 
-Figure 7 depicts the desired client workflow through the modernized resources. The client connects to an AWS NLB or ALB, whose destination is open to the public. The load balancer forwards the traffic to the WebPublic application, running through one of the launch types identified in the `Application Deployment Modernization <#application-deployment-modernization>`__ section. This application uses its connection to the Public Database to store the data passed through by the client. AWS DMS, lying in the Internal Amazon VPC, replicates that information to the Internal Database through the MessageQueue table. The MQP recognizes the new items in the queue and processes them, finishing its processing by storing updates back into the Internal Database. These updates are replicated back into the External Database through the AWS DMS instance. Once updates are populated into the External Database, clients can view those changes through their original connection workflow.
+Figure 7 depicts the desired client workflow through the modernized resources. The client connects to an AWS NLB or ALB, whose destination is open to the public. The load balancer forwards the traffic to the WebPublic application, running through one of the launch types identified in the :ref:`Application Deployment Modernization` section. This application uses its connection to the Public Database to store the data passed through by the client. AWS DMS, lying in the Internal Amazon VPC, replicates that information to the Internal Database through the MessageQueue table. The MQP recognizes the new items in the queue and processes them, finishing its processing by storing updates back into the Internal Database. These updates are replicated back into the External Database through the AWS DMS instance. Once updates are populated into the External Database, clients can view those changes through their original connection workflow.
 
 |Figure7|
 

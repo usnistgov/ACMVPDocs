@@ -12,6 +12,7 @@ Protocol Workstream Technical Details
    versioning.rst
    messaging.rst
    errorResponses.rst
+   appendix.rst
 
 Intro
 -------

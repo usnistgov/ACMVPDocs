@@ -1,16 +1,14 @@
+**NIST SPECIAL PUBLICATION 1800-40B**
+
 Automation of the NIST Cryptographic Module Validation Program
 ===============================================================
-
-**April 2025 Status Report**
-
-Initial Public Draft
 
 +----------------------------------------+------------------------------+
 | **Christopher Celi**                   | **Raoul Gabiam**             |
 |                                        |                              |
 | **Alex Calis**                         | *The MITRE Corporation*      |
 |                                        |                              |
-| **Murugiah Souppaya**                  |                              |
+| **Murugiah Souppaya***                 |                              |
 |                                        |                              |
 | *Computer Security Division*           | **Stephan Mueller**          |
 |                                        |                              |
@@ -20,13 +18,13 @@ Initial Public Draft
 |                                        |                              |
 | **William Barker**                     |                              |
 |                                        |                              |
-| *Strativia LLC*                        | **Barry Fussell**            |
+| *Domestic Guest Researcher*            | **Barry Fussell**            |
 |                                        |                              |
-|                                        | **Andrew Karcher**           |
+| *Information Technology Laboratory*    | **Andrew Karcher**           |
 |                                        |                              | 
-| **Karen Scarfone**                     | *Cisco*                      |
+| **Karen Kent**                         | *Cisco*                      |
 |                                        |                              |
-| *Scarfone Cybersecurity*               |                              |
+| *Trusted Cyber Annex*                  |                              |
 |                                        |                              |
 |                                        | **Douglas Boldt**            |
 |                                        |                              |
@@ -36,14 +34,63 @@ Initial Public Draft
 |                                        |                              |
 +----------------------------------------+------------------------------+
 
-September 10, 2025
+\*Former employee; all work for this publication was done while at that organization.
+
+April 2026
+
+INITIAL PUBLIC DRAFT
+
+Disclaimer
+-----------
+
+Certain commercial entities, equipment, products, or materials may be identified by name or company logo or other insignia in order to acknowledge their participation in this collaboration or to describe an experimental procedure or concept adequately. Such identification is not intended to imply special status or relationship with NIST or recommendation or endorsement by NIST or NCCoE; neither is it intended to imply that the entities, equipment, products, or materials are necessarily the best available for the purpose.
+
+While NIST and the NCCoE address goals of improving management of cybersecurity and privacy risk through outreach and application of standards and best practices, it is the stakeholder's responsibility to fully perform a risk assessment to include the current threat, vulnerabilities, likelihood of a compromise, and the impact should the threat be realized before adopting cybersecurity measures such as this recommendation.
+
+National Institute of Standards and Technology Special Publication 1800-40, Natl. Inst. Stand. Technol. Spec. Publ. 1800-40B, 89 pages, (April 2026), CODEN: NSPUE2
+
+Feedback
+-----------
+
+You can view or download the guide at the NCCoE Automation of the NIST Cryptographic Module Validation Program project page. 
+
+With this initial public draft of the final report, NIST NCCoE is now asking for feedback where clarifications might be beneficial. 
+
+Comments on this publication may be submitted to: applied-crypto-testing@nist.gov
+
+Public comment period: April 15, 2026 through June 1, 2026
+
+All comments are subject to release under the Freedom of Information Act.
+
+| National Cybersecurity Center of Excellence
+| National Institute of Standards and Technology
+| 100 Bureau Drive
+| Mailstop 2002
+| Gaithersburg, MD 20899
+| Email: nccoe@nist.gov
+
+NATIONAL CYBERSECURITY CENTER OF EXCELLENCE
+--------------------------------------------
+
+The National Cybersecurity Center of Excellence (NCCoE), a part of the National Institute of Standards and Technology (NIST), is a collaborative hub where industry organizations, government agencies, and academic institutions work together to address businesses' most pressing cybersecurity issues. This public-private partnership enables the creation of practical cybersecurity solutions for specific industries, as well as for broad, cross-sector technology challenges. Through consortia under Cooperative Research and Development Agreements (CRADAs), including technology partners—from Fortune 50 market leaders to smaller companies specializing in information technology security—the NCCoE applies standards and best practices to develop modular, adaptable example cybersecurity solutions using commercially available technology. The NCCoE documents these example solutions in the NIST Special Publication 1800 series, which maps capabilities to the NIST Cybersecurity Framework and details the steps needed for another entity to re-create the example solution. The NCCoE was established in 2012 by NIST in partnership with the State of Maryland and Montgomery County, Maryland.
+
+To learn more about the NCCoE, visit https://www.nccoe.nist.gov/. To learn more about NIST, visit https://www.nist.gov.
+
+
+NIST CYBERSECURITY PRACTICE GUIDES
+-----------------------------------
+
+NIST Cybersecurity Practice Guides (Special Publication 1800 series) target specific cybersecurity challenges in the public and private sectors. They are practical, user-friendly guides that facilitate the adoption of standards-based approaches to cybersecurity. They show members of the information security community how to implement example solutions that help them align with relevant standards and best practices, and provide users with the materials lists, configuration files, and other information they need to implement a similar approach.
+
+The documents in this series describe example implementations of cybersecurity practices that businesses and other organizations may voluntarily adopt. These documents do not describe regulations or mandatory practices, nor do they carry statutory authority.
+
 
 Abstract
 ---------
 
-The Cryptographic Module Validation Program (CMVP) validates third-party assertions that cryptographic module implementations satisfy the requirements of Federal Information Processing Standards (FIPS) Publication 140-3, Security Requirements for Cryptographic Modules. The current cryptographic module validation process is heavily manual, out of sync with the speed of technology industry development and deployment. Thus, the NIST National Cybersecurity Center of Excellence (NCCoE) has undertaken the Automated Cryptographic Module Validation Project (ACMVP) to support improvement in the efficiency and timeliness of CMVP operations and processes. The goal is to demonstrate a suite of automated tools that have the potential to make the FIPS 140-3 validation process more efficient and provide higher assurances that test findings reported for modules meet FIPS 140-3 requirements. 
+The Cryptographic Module Validation Program (CMVP) validates third-party assertions that cryptographic module implementations satisfy the requirements of Federal Information Processing Standards (FIPS) Publication 140-3, Security Requirements for Cryptographic Modules. Historically, the CMVP validation review process has struggled to keep pace with the volume of cryptographic modules and accelerated software release cycles, contributing to delays in validation timelines. The NIST National Cybersecurity Center of Excellence (NCCoE) has undertaken the Automated Cryptographic Module Validation Project (ACMVP) to explore how automation can improve the efficiency and timeliness of CMVP operations and processes. The project demonstrates how structured test evidence, standardized submission protocols, and supporting modernized computing infrastructure can streamline the submission and review of validation artifacts. 
 
-This report is the second status report for the project, which describes progress made between September 2024 and April 2025 and planned next steps. A prior update of work accomplished can be found in the `September 2024 status report <https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.37.ipd.pdf>`__. This document outlines progress across each of the three workstreams: the :ref:`Test Evidence (TE) Workstream <Test Evidence Workstream>`, the :ref:`Protocol Workstream <Protocol Workstream>`, and the :ref:`Research Infrastructure Workstream <Research Infrastructure Workstream>`, each a focused effort in its own right. The combined impact of these workstreams intends to result in improvements to the overall automation of the CMVP.
+This publication describes the approaches and tools demonstrated by the ACMVP team. The publication describes the results of an ACMVP Test Evidence (TE) Workstream and Protocol Workstream, as demonstrated in a laboratory environment developed by the project's Research Infrastructure Workstream. The combined impact of these workstreams is intended to provide automation improvements to improve submission quality and enable a more efficient CMVP review process. 
 
 Audience
 ----------
@@ -86,51 +133,35 @@ Certain commercial entities, equipment, products, or materials may be identified
 Acknowledgements
 -----------------
 
-Contributors to each workstream are listed in the corresponding sections below. Additionally, the following people and organizations contributed to the project outside of a workstream: Courtney Maatta, Rochelle Casey, Alicia Squires, Margaret Salter, Tim Ness, Damian Zell, Derrick Williams III, Jeff Wright, Mickey Iqbal, and David Browning of Amazon; Dave Hawes, Gavin O’Brien, Tim Hall, Matt Scholl, Cherilyn Pascoe, Jim St. Pierre, Kevin Stine, Ann Rickerds, Shawn Winhoven, Jeffrey J McIntyre, Anil Das, Edgar Garay, Jim Simmons, Robert Staples, Rob Densock, and Blair Heiserman of NIST; Jason Arnold of HII; Heather Flanagan of Spherical Cow Consulting.
+Contributors to each workstream are listed in the corresponding sections below. Additionally, the following people and organizations contributed to the project outside of a workstream: Courtney Maatta, Rochelle Casey, Alicia Squires, Margaret Salter, Tim Ness, Damian Zell, Derrick Williams III, Jeff Wright, Mickey Iqbal, and David Browning of Amazon; Dave Hawes, Gavin O'Brien, Tim Hall, Matt Scholl, Cherilyn Pascoe, Jim St. Pierre, Kevin Stine, Ann Rickerds, Shawn Winhoven, Jeffrey J McIntyre, Anil Das, Edgar Garay, Jim Simmons, Robert Staples, Rob Densock, and Blair Heiserman of NIST; Jason Arnold of HII; William Barker of Strativia LLC; Karen Scarfone of Scarfone Cybersecurity; and Heather Flanagan of Spherical Cow Consulting.
 
-The project team recognizes and appreciates Apostol Vassilev of NIST for leading the project at the inception and kicking off the project and formulating the three workstreams and associated activities.
+The project team recognizes and appreciates Apostol Vassilev of NIST for leading the project at the inception and formulating the three workstreams and associated activities.
 
-**NIST Technical Series Policies**
+DOCUMENT CONVENTIONS 
+----------------------
 
-`Copyright, Use, and Licensing Statements <https://doi.org/10.6028/NIST-TECHPUBS.CROSSMARK-POLICY>`__
+The terms “shall” and “shall not” indicate requirements to be followed strictly to conform to the publication and from which no deviation is permitted. The terms “should” and “should not” indicate that among several possibilities, one is recommended as particularly suitable without mentioning or excluding others, or that a certain course of action is preferred but not necessarily required, or that (in the negative form) a certain possibility or course of action is discouraged but not prohibited. The terms “may” and “may not” indicate a course of action permissible within the limits of the publication. The terms “can” and “cannot” indicate a possibility and capability, whether material, physical, or causal.
 
-`NIST Technical Series Publication Identifier Syntax <https://www.nist.gov/nist-research-library/nist-technical-series-publications-author-instructions#pubid>`__
+CALL FOR PATENT CLAIMS
+-----------------------
 
-**How to Cite this NIST Technical Series Publication:**
+This public review includes a call for information on essential patent claims (claims whose use would be required for compliance with the guidelines or requirements in this Information Technology Laboratory (ITL) draft publication). Such guidelines and/or requirements may be directly stated in this ITL Publication or by reference to another publication. This call also includes disclosure, where known, of the existence of pending U.S. or foreign patent applications relating to this ITL draft publication and of any relevant unexpired U.S. or foreign patents.
 
-Celi C, Souppaya M, Barker W, Scarfone K, Geddis S, Gabiam R, Mueller S, Mao Y, Fussell B, Karcher A, Boldt D (2025) Automation of the NIST Cryptographic Module Validation Program: April 2025 Status Report. (National Institute of Standards and Technology, Gaithersburg, MD), NIST Cybersecurity White Paper (CSWP) NIST CSWP 37B.ipd. https://doi.org/10.6028/NIST.CSWP.37b.ipd.
+ITL may require from the patent holder, or a party authorized to make assurances on its behalf, in written or electronic form, either:
 
-**Author ORCID iDs**
+a) assurance in the form of a general disclaimer to the effect that such party does not hold and does not currently intend to hold any essential patent claim(s); or
 
-Chris Celi: 0000-0001-9979-6819
+b) assurance that a license to such essential patent claim(s) will be made available to applicants desiring to utilize the license for the purpose of complying with the guidelines or requirements in this ITL draft publication, either:
 
-Alex Calis: 0000-0003-1937-8129
+under reasonable terms and conditions that are demonstrably free of any unfair discrimination; or 
 
-Murugiah Souppaya: 0000-0002-8055-8527
+without compensation and under reasonable terms and conditions that are demonstrably free of any unfair discrimination. 
 
-William Barker: 0000-0002-4113-8861
+Such assurance shall indicate that the patent holder (or third party authorized to make assurances on its behalf) will include in any documents transferring ownership of patents subject to the assurance, provisions sufficient to ensure that the commitments in the assurance are binding on the transferee, and that the transferee will similarly include appropriate provisions in the event of future transfers with the goal of binding each successor-in-interest. 
 
-Karen Scarfone: 0000-0001-6334-9486
+The assurance shall also indicate that it is intended to be binding on successors-in-interest regardless of whether such provisions are included in the relevant transfer documents. 
+Such statements should be addressed to: applied-crypto-testing@nist.gov 
 
-Raoul Gabiam: 0009-0000-7458-8028
-
-**Public Comment Period**
-
-September 10, 2025 - October 10, 2025
-
-**Submit Comments**
-
-applied-crypto-testing@nist.gov 
-
-National Institute of Standards and Technology
-Attn: Applied Cybersecurity Division, Information Technology Laboratory
-100 Bureau Drive (Mail Stop 2000) Gaithersburg, MD 20899-2000
-
-**Additional Information**
-
-Additional information about this publication is available at https://csrc.nist.gov/publications/cswp, including related content, potential updates, and document history.
-
-All comments are subject to release under the Freedom of Information Act (FOIA).
 
 .. toctree::
    :maxdepth: 3
@@ -138,12 +169,18 @@ All comments are subject to release under the Freedom of Information Act (FOIA).
    :glob:
    :hidden:
 
+   executive-summary.rst
    overview.rst
-   te/index.rst
-   protocol/index.rst
-   infrastructure/index.rst
-   conclusion.rst
+   approach.rst
+   te-workstream.rst
+   protocol-workstream.rst
+   re-workstream.rst
+   findings.rst
    references.rst
    appendix-a.rst
    te/tables/tetables.rst
+   protocol/index.rst
+   appendix-d.rst
    appendix-e/index.rst
+   te/index.rst
+   infrastructure/index.rst

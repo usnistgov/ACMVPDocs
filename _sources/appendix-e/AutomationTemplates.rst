@@ -20,7 +20,7 @@ Notification of Member Account Changes
 
 The NCCoE notifies security personnel of all member account changes automatically to ensure awareness.
 
-An `example CloudFormation template <https://github.com/usnistgov/ACMVPDocs/blob/main/Infrastructure/account_event_notification_example.yml>`__ for sending email notifications to security personnel for each account creation, removal, suspension, or assignment event can be found in the ACMVP Documentation repository. Because this approach uses AWS’s Simple Notification Service (SNS), this template can be modified to send notifications to other destinations, depending on the use case.
+An `example CloudFormation template <https://github.com/usnistgov/ACMVPDocs/blob/main/Infrastructure/account_event_notification_example.yml>`__ for sending email notifications to security personnel for each account creation, removal, suspension, or assignment event can be found in the ACMVP Documentation repository. Because this approach uses AWS's Simple Notification Service (SNS), this template can be modified to send notifications to other destinations, depending on the use case.
 
 Deny Quad Zeros
 ---------------

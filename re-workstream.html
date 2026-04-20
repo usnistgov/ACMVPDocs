@@ -1,0 +1,832 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Research Infrastructure &#8212; Automated Cryptographic Module Validation Project  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/content.css?v=59cd0ab0" />
+    <link rel="stylesheet" type="text/css" href="_static/tables.css?v=1ae3e97c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/jquery.js?v=5d32c60e"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 're-workstream';</script>
+    <script src="_static/jquery.visible.js?v=5b129ffc"></script>
+    <script src="_static/jquery.leaveNotice-nist.js?v=21f5b3a4"></script>
+    <script src="_static/applyLeaveNotice.js?v=bfeda27a"></script>
+    <script src="_static/smoothNavScroll.js?v=2ce98a12"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Findings and Recommendations for Future Work" href="findings.html" />
+    <link rel="prev" title="Protocol Workstream" href="protocol-workstream.html" />
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+
+    <link rel="stylesheet" href="https://pages.nist.gov/nist-header-footer/css/nist-combined.css">
+    <link rel="stylesheet" type="text/css" href="https://pages.nist.gov/leaveNotice/css/jquery.leaveNotice.css" />
+    <script src="https://pages.nist.gov/nist-header-footer/js/nist-header-footer.js" type="text/javascript" defer="defer"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RJSMY46M5C"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RJSMY46M5C');
+    </script>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Automated Cryptographic Module Validation Project  documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="index.html">
+                    Automation of the NIST Cryptographic Module Validation Program
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="executive-summary.html">Executive Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="approach.html">Approach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="te-workstream.html">Test Evidence Workstream</a></li>
+<li class="toctree-l1"><a class="reference internal" href="protocol-workstream.html">Protocol Workstream</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Research Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="findings.html">Findings and Recommendations for Future Work</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix-a.html">Appendix A: List of Symbols, Abbreviations, and Acronyms</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="te/tables/tetables.html">Appendix B: TE Tables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="te/tables/area2.html">Area 2 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="te/tables/area3.html">Area 3 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="te/tables/area4.html">Area 4 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="te/tables/area5.html">Area 5 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="te/tables/area6.html">Area 6 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="te/tables/area7.html">Area 7 Tables</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="te/tables/area8.html">Area 8 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="te/tables/area9.html">Area 9 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="te/tables/area10.html">Area 10 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="te/tables/area11.html">Area 11 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="te/tables/area12.html">Area 12 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="te/tables/annex.html">Annex Tables</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="protocol/index.html">Appendix C: Protocol Workstream</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="protocol/technicalDetails.html">Protocol Workstream Technical Details</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="protocol/securityConsiderations.html">Security Considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="protocol/login.html">Login</a></li>
+<li class="toctree-l3"><a class="reference internal" href="protocol/versioning.html">Versioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="protocol/messaging.html">Messaging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="protocol/errorResponses.html">Error Responses</a></li>
+<li class="toctree-l3"><a class="reference internal" href="protocol/appendix.html">Appendix</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix-d.html">Appendix D: Application Modernization</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="appendix-e/index.html">Appendix E: Research Infrastructure</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendix-e/AWSAccountOrganization.html">AWS Account Organization</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="appendix-e/AWSResearchCloudSystemArchitecture.html">AWS Research Cloud System Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-e/IdentityandAccessManagement.html">Identity and Access Management</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="appendix-e/AWSResearchCloudSecurity.html">AWS Research Cloud Security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-e/AWSResearchCloudOperations.html">AWS Research Cloud Operations</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="appendix-e/MappingtoNIST800Series.html">Mapping to NIST 800 Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-e/AutomationTemplates.html">Automation Templates</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="te/index.html">2025 Status Update - Test Evidence Workstream</a></li>
+<li class="toctree-l1"><a class="reference internal" href="infrastructure/index.html">2025 Status Update - Research Infrastructure Workstream</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/re-workstream.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Research Infrastructure</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#research-infrastructure-workstream-collaborators">Research Infrastructure Workstream Collaborators</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modernization-approach">Modernization Approach</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#replication-of-the-legacy-production-cmvp-environment">Replication of the Legacy Production CMVP Environment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aws-target-architecture-by-service">AWS Target Architecture by Service</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-modernization-components">Key Modernization Components</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ci-cd-pipeline-modernization">CI/CD Pipeline Modernization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#database-modernization">Database Modernization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-deployment-modernization">Application Deployment Modernization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#microservice-architecture">Microservice Architecture</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#infrastructure-as-code-iac">Infrastructure as Code (IaC)</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="research-infrastructure">
+<h1>Research Infrastructure<a class="headerlink" href="#research-infrastructure" title="Link to this heading">#</a></h1>
+<p>The infrastructure workstream team adopted an iterative approach to modernize the CMVP supporting infrastructure. Each iteration introduced progressively advanced architectures, leveraging cloud-native services to improve scalability, portability, deployment speed, and security, all while ensuring cost efficiency. The modernization efforts have resulted in a containerized application that has been successfully deployed on the Amazon Elastic Container Service (ECS) and Amazon Elastic Kubernetes Service (EKS) platforms. The final iteration features Amazon EKS leveraging Bottlerocket Amazon Machine Images (AMIs) with FIPS 140-3 compliance enabled.</p>
+<p>Furthermore, the modernized architecture integrates a managed database service to enhance operational efficiency and features a fully automated CI/CD pipeline to simplify and streamline server deployments on a Linux platform. Authentication mechanisms have been modernized to incorporate cloud-native solutions, including the AWS Network Load Balancer (NLB).</p>
+<section id="research-infrastructure-workstream-collaborators">
+<h2>Research Infrastructure Workstream Collaborators<a class="headerlink" href="#research-infrastructure-workstream-collaborators" title="Link to this heading">#</a></h2>
+<p>The Research Infrastructure Workstream is led by Raoul Gabiam of The MITRE Corporation and Douglas Boldt of Amazon, with contributions from Courtney Maatta, Annie Cimack, Diana Brooks, Charlotte Fondren, Zhuo-Wei Lee, Keonna Parrish, Abhishek Isireddy, Abi Adenuga, Bradley Wyman, Brittany Robinson, Gina McFarland, Damian Zell, Cavan Slaughter, Rayette Toles-Abdullah, Keith Hodo, John Dwyer, Ahmed Virani, Daftari Mrunal, Kasireddi Srikar Reddy, Srujana Alajangi, and Natti Swaminathan of Amazon; Robert Staples and Murugiah Souppaya of NIST; Jason Arnold of HII; Michael Dimond, Kyle Vitale, Phillip Millwee, and Josh Klosterman of the MITRE Corporation; and John Booton, Aaron Cook, and Jeffrey LaClair of ITC Federal.</p>
+</section>
+<section id="modernization-approach">
+<h2>Modernization Approach<a class="headerlink" href="#modernization-approach" title="Link to this heading">#</a></h2>
+<p>The existing CMVP production environment was initially deployed in a data center internal to NIST. A subset of the environment that was providing services to the test labs was virtualized and migrated to AWS GovCloud to take advantage of the high availability and resiliency offered by cloud infrastructure. The CMVP system administrators have maintained the AWS infrastructure for several years.</p>
+<p>The modernization journey started with a complete inventory and understanding of the existing production environment in AWS, including all the virtualized assets, the network, data flows, functionalities, and dependencies. Once the existing architecture was fully documented, it was replicated in a research environment managed by the NCCoE team to establish an initial baseline that could be analyzed, and opportunities were identified to incrementally modernize the application and supporting infrastructure throughout the lifecycle of this project. The NCCoE research is performed in AWS to ensure the findings can be easily replicated in the production environment. The objective is to deliver the new capabilities required at the application level to support the Protocol Workstream while maintaining some compatibility with the existing production environment.</p>
+</section>
+<section id="replication-of-the-legacy-production-cmvp-environment">
+<h2>Replication of the Legacy Production CMVP Environment<a class="headerlink" href="#replication-of-the-legacy-production-cmvp-environment" title="Link to this heading">#</a></h2>
+<p>This section gives historical context to the ACMVP application. The production CMVP AWS environment was replicated to the current ACMVP research environment, which set a baseline from which modernization opportunities were identified.</p>
+<p>Figure 2 represents the baseline architecture present in the research environment before modernization efforts.</p>
+<figure class="align-default" id="id1">
+<img alt="Figure 2 depicts the Legacy System Architecture Diagram" src="_images/RE-Workstream-Figure2.png" />
+<figcaption>
+<p><span class="caption-text"><strong>Figure 2 Legacy System Architecture Diagram</strong></span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The External Amazon Virtual Private Cloud (VPC) handles any public-facing applications and utilities, including the WebPublic application (sitting underneath Microsoft IIS) and the public database. These services are split into two separate Amazon EC2 instances.</p>
+<p>The Internal Amazon VPC hosts private applications and utilities, including the MessageQueueProcessor (MQP) application and the internal database. These services are split into two separate Amazon EC2 instances.</p>
+<p>The Shared Amazon VPC hosts shared applications and utilities, including JetBrains TeamCity for CI/CD, the Certificate Authority (CA) server, the file share service for backups and logs, and the Microsoft Active Directory service, which is hosted on one Amazon EC2 instance in the research environment for the sake of simplicity.</p>
+<p>Figure 3 details the steps in the workflow that occur when the user submits a request, which are listed in this document to describe the necessary tools and
+their use cases in the critical workflow.</p>
+<figure class="align-default" id="id2">
+<img alt="Figure 3 depicts the Legacy System End User Workflow" src="_images/RE-Workstream-Figure3.png" />
+<figcaption>
+<p><span class="caption-text"><strong>Figure 3 Legacy System End User Workflow</strong></span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>WebPublic is publicly available for registered NVLAP users to submit their requests, which will include authentication requests that are partially handled by Microsoft IIS for Windows Server through mutual TLS (mTLS). Microsoft IIS receives its server-hosting certificate through the CA Server. The application stores and retrieves data from the Public DB as needed by the requests it receives. Any stored data is replicated to the Internal DB through the encrypted message queue (MQ). The MQP processes the request and stores necessary changes to the Internal DB, which is replicated to the Public DB for user retrieval. Logging occurs throughout the process, tracking the request and where the processing is in the WebPublic or MQP application. These logs are stored on a file share for access by a system administrator, along with database backups.</p>
+</section>
+<section id="aws-target-architecture-by-service">
+<h2>AWS Target Architecture by Service<a class="headerlink" href="#aws-target-architecture-by-service" title="Link to this heading">#</a></h2>
+<p>This section maps services in the baseline legacy infrastructure to equivalent services provided by AWS. Due to the CMVP system administrators’ familiarity with hosting environments in AWS, the research was focused on AWS-based solutions. While this document only addresses AWS services, equivalent services could be found in other cloud providers.</p>
+<p>Table 11 provides the mapping between services used in the legacy ACMVP research environment and equivalent services offered by AWS. A more detailed explanation of the mappings can be found below. Explanations are provided for selected mapped services. Services in bold were modernized to equivalent versions, and services in italics were not selected for modernization.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id3">
+<caption><span class="caption-text">Table 11 Modernized Service Mapping</span><a class="headerlink" href="#id3" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Required Functionality</p></th>
+<th class="head"><p>Service In Legacy ACMVP</p></th>
+<th class="head"><p>AWS Equivalent Service(s) Considered</p></th>
+<th class="head"><p>AWS Selected Service(s)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Database Service</strong></p></td>
+<td><p><strong>Microsoft SQL Server Database</strong></p></td>
+<td><p><strong>Amazon Relational Database Service (RDS) for SQL Server, Amazon Aurora, PostgreSQL</strong></p></td>
+<td><p><strong>Amazon RDS for SQL Server</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Database replication</strong></p></td>
+<td><p><strong>Microsoft SQL Server Replication</strong></p></td>
+<td><p><strong>AWS Database Migration Service (DMS)</strong></p></td>
+<td><p><strong>AWS DMS</strong></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Code build/deployment</strong></p></td>
+<td><p><strong>JetBrains TeamCity</strong></p></td>
+<td><p><strong>AWS CodePipeline, AWS CodeBuild</strong></p></td>
+<td><p><strong>AWS CodePipeline and AWS CodeBuild</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Public Facing application</strong></p></td>
+<td><p><strong>WebPublic API server</strong></p></td>
+<td><p><strong>Containerized Application, Amazon Elastic Container Service (ECS), Amazon Elastic Kubernetes Service (EKS), Amazon Lambda</strong></p></td>
+<td><p><strong>Amazon ECS and Amazon EKS</strong></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Internal application</strong></p></td>
+<td><p><strong>MessageQueueProcessor Internal server</strong></p></td>
+<td><p><strong>Containerized Application, Amazon ECS, Amazon EKS, Amazon Lambda, Amazon SQS, Amazon MQ</strong></p></td>
+<td><p><strong>Amazon ECS</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Web proxy/ authentication</strong></p></td>
+<td><p><strong>Microsoft IIS</strong></p></td>
+<td><p><strong>AWS Application Load Balancer (ALB), AWS Network Load Balancer (NLB), Amazon API Gateway, nginx Reverse Proxy</strong></p></td>
+<td><p><strong>AWS NLB</strong></p></td>
+</tr>
+<tr class="row-even"><td><p><em>Identity Management</em></p></td>
+<td><p><em>Microsoft Active Directory</em></p></td>
+<td><p><em>AWS Managed Microsoft AD</em></p></td>
+<td><p><em>Out of Scope</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><em>Domain Name Services</em></p></td>
+<td><p><em>Microsoft Windows AD DS</em></p></td>
+<td><p><em>AWS Route 53 with AWS Managed Microsoft AD</em></p></td>
+<td><p><em>Out of Scope.</em></p></td>
+</tr>
+<tr class="row-even"><td><p><em>File Sharing Services</em></p></td>
+<td><p><em>Windows File Share</em></p></td>
+<td><p><em>Amazon FXs for Windows, Amazon S3, AWS Storage Gateway</em></p></td>
+<td><p><em>Out of Scope.</em></p>
+<p><em>Note: S3 in use with other AWS services (RDS, Code Pipeline) but not specifically as an alternative to file shares</em></p>
+</td>
+</tr>
+<tr class="row-odd"><td><p><em>Code Repository</em></p></td>
+<td><p><em>Git Repository</em></p></td>
+<td><p><em>AWS Code Commit (deprecated), AWS Code Connections</em></p></td>
+<td><p><em>Out of Scope.</em></p>
+<p><em>Note: AWS Code Connections is being used in conjunction with the existing Git Repository and is not replacing it.</em></p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Equivalent AWS services for the Microsoft SQL Server Database are Amazon RDS for SQL Server, Amazon Aurora, and PostgreSQL. Amazon Aurora only supports MySQL and PostgreSQL, requiring a change from the ACMVP’s use of Microsoft SQL Server. Amazon RDS supports a managed version of Microsoft SQL Server. Amazon RDS was selected as the modernization approach due to the existing CMVP code that relies on Microsoft SQL Server.</p>
+<p>AWS DMS was selected following the decision to use Amazon RDS to meet the need for data replication. Data replication in Amazon RDS requires AWS DMS, as the instances hosting the databases are managed by AWS and may change IP addresses over time. AWS manages this by providing DNS names to resolve the IP addresses for the databases.</p>
+<p>JetBrains TeamCity’s equivalent service is mapped to AWS CodeBuild, which was used to provide insight to the CMVP on alternative technologies.</p>
+<p>WebPublic had the potential to be containerized or moved to an Amazon Lambda function. The containerized option was selected as it enables local testing, integrates with GitHub, and allows for portability of the codebase. Note that streamlining the deployment process and improving code portability were desired outcomes of the production CMVP infrastructure support team. WebPublic was deployed via a Docker daemon on a NIST Secure Amazon EC2 instance to meet security requirements for a demo server, but Amazon ECS and Amazon EKS were examined as modernization approaches in the research environment. Amazon EKS was selected as the containerization platform offering increased portability and deployment ease.</p>
+<p>The MQP was mapped to other MQ services. However, the developed MQP performs functions unique to the ACMVP application, resulting in a decision to containerize the application. AWS Fargate was selected as a technology to convert MQP capabilities to a standalone, containerized service and provide consolidated connection and deployment management.</p>
+<p>Microsoft IIS was mapped to AWS NLB, AWS ALB, Amazon API Gateway, and nginx Reverse Proxy. The AWS NLB handles layer-3-requested routing to the application, requiring Microsoft IIS or nginx to process mTLS authentication, or Amazon API Gateway to process API keys as an alternative mode of authentication. The AWS ALB was examined as a way to handle both mTLS authentication and the routing to the containerized WebPublic application. The AWS ALB and other tools may still meet the requirements, but were not explored further.</p>
+<p>While equivalent services were identified for GitHub, Microsoft Active Directory, Microsoft Windows AD DS, and File Share, these services were determined out of scope as they were already well established within the environment.</p>
+</section>
+<section id="key-modernization-components">
+<h2>Key Modernization Components<a class="headerlink" href="#key-modernization-components" title="Link to this heading">#</a></h2>
+<p>This section describes the modernization research journey of the ACMVP application, which is presented in three progressive iterations. As the application is a REST API with a backend database and MQP, similarly structured applications can utilize this research in making informed decisions to update, improve, or otherwise modernize their infrastructure.</p>
+<p>In the first iteration, the application was containerized on Amazon ECS in a Windows container as a proof of concept. In the second iteration, the application was further decoupled and containerized as a Linux application on Amazon ECS to enable a CI/CD integration, which required Docker in Docker (the practice of running a Docker engine inside a Docker container) and is only supported on Linux. In the third and final iteration, the containerized Linux application was deployed on Amazon EKS, tailored for NIST production. Furthermore, the supporting infrastructure and application deployment were bundled as Infrastructure as Code (IaC) to streamline and automate deployment. Lastly, the final iteration features Amazon EKS with Bottlerocket Amazon Machine Images (AMIs), ensuring a FIPS 140-3 compliant environment.</p>
+<p>Figures 4, 5, and 6 depict the three progressive modernization iterations. A pentagon flag in dark blue represents a timeline event, a green rectangle represents a Windows OS container development, a cyan hexagon represents a general modernization development, and an orange ellipse represents a Linux OS container development. Note that AWS CodeBuild and AWS CodePipeline CI/CD are in orange, as they only apply to Linux OS containers, as explained within the <a class="reference internal" href="#application-deployment-modernization"><span class="std std-ref">Application Deployment Modernization</span></a> section. Purple ovals describe resources deployed by Terraform and IaC automation. Orange parallelograms represent deployments through AWS-managed services.</p>
+<figure class="align-default" id="id4">
+<img alt="Figure 4 depicts the Windows Container OS Modernization Progression" src="_images/RE-Workstream-Figure4.png" />
+<figcaption>
+<p><span class="caption-text"><strong>Figure 4 First iteration: Windows Container OS Modernization Progression on ECS</strong></span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id5">
+<img alt="Figure 5 depicts the Linux Container OS Modernization Progression" src="_images/RE-Workstream-Figure5.png" />
+<figcaption>
+<p><span class="caption-text"><strong>Figure 5 Second iteration: Linux Container OS Modernization Progression on ECS</strong></span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id6">
+<img alt="Figure 6 depicts the third and final iteration." src="_images/RE-Workstream-Figure6.png" />
+<figcaption>
+<p><span class="caption-text"><strong>Figure 6 Third and final iteration: Deployment on EKS Auto Mode with FIPS 140-3 compliance enabled Progression of Experiments</strong></span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Figure 7 depicts the AWS services and tools used in the modernized system architecture. The CMVP services are appropriately divided into separate Amazon VPCs. The External Amazon VPC provides the outward-facing service layer (i.e., WebPublic and nginx), which is hosted on AWS EKS. External connectivity is enabled by an Amazon Elastic Load Balancer (ELB) instance. Additional infrastructure services consist of CI/CD automation provided by AWS CodeBuild, a single EC2 instance for management functions, and an external instance of Amazon RDS.</p>
+<p>The Internal VPC provides RDS replication via AWS Database Migration Services (DMS) and the internally-hosted Amazon RDS instance. An EC2 instance provides infrastructure management for internal resources. Finally, the CMVP MQP service is hosted on Amazon ECS.</p>
+<p>Figure 7 also depicts the AWS cloud-managed services that CMVP relies on for deployment and management of internal and external resources. Database backups, CI/CD artifacts, and data are hosted in Amazon S3. AWS CodePipeline and CodeBuild provide the CI/CD automation for internal and external resources. AWS Elastic Container Registry provides scalable, fault-tolerant storage for container images that provide WebPublic, MQP, and nginx functionality to the project.</p>
+<figure class="align-default" id="id7">
+<img alt="Figure 7 depicts the Modernized System Architecture Workflow" src="_images/RE-Workstream-Figure7.png" />
+<figcaption>
+<p><span class="caption-text"><strong>Figure 7 Modernized System Architecture</strong></span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Figure 8 depicts the desired client workflow through the modernized resources. The client connects to an AWS Elastic Load Balancer (ELB), whose destination is open to the public. AWS ELBs refer to both ALBs and NLBs, depending on the use case. The load balancer forwards the traffic to the WebPublic application, running through one of the launch types identified in the <a class="reference internal" href="#application-deployment-modernization"><span class="std std-ref">Application Deployment Modernization</span></a> section. This application uses its connection to the Public Database to store the data passed through by the client. AWS DMS, residing in the Internal Amazon VPC, replicates that information to the Internal Database through the MessageQueue table. The MQP recognizes the new items in the queue and processes them, finishing its processing by storing updates back into the Internal Database. These updates are replicated back into the External Database through the AWS DMS instance. Once updates are populated into the External Database, clients can view those changes through their original connection workflow.</p>
+<figure class="align-default" id="id8">
+<img alt="Figure 8 depicts the modernized client workflow." src="_images/RE-Workstream-Figure8.png" />
+<figcaption>
+<p><span class="caption-text"><strong>Figure 8 Modernized Client Workflow</strong></span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Figures 9 and 10 depict the different workflows the system administrator and the developer take to implement updates to the application code or database.</p>
+<figure class="align-default" id="id9">
+<img alt="Figure 9 depicts the Modernized Database Administrator Workflow" src="_images/RE-Workstream-Figure9.png" />
+<figcaption>
+<p><span class="caption-text"><strong>Figure 9 Modernized Database Administrator Workflow</strong></span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>To make database changes, a developer would generate a backup of the database they would like to deploy in the modernized environment. This backup would be given to the system administrator, who would place the backup into a private Amazon S3 bucket. The system administrator can then connect to a database connector, where the backup can be retrieved from Amazon S3 and deployed into the Amazon RDS instance. This process requires AWS DMS replication to be reinitiated for the new set of desired tables.</p>
+<figure class="align-default" id="id10">
+<img alt="Figure 10 depicts the Modernized Developer Workflow." src="_images/RE-Workstream-Figure10.png" />
+<figcaption>
+<p><span class="caption-text"><strong>Figure 10 Modernized Developer Workflow</strong></span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>To make code changes, a developer would push their changes to a code repository, like GitHub. From there, a container build is completed either locally by a system administrator or through the AWS CodeBuild/CodePipeline, where a container image is created and stored in the Amazon Elastic Container Registry (ECR). Once those changes are pushed, new tasks can be started (manually or automatically) with the updated application code.</p>
+<figure class="align-default" id="id11">
+<img alt="Figure 11 depicts the Modernized Project Maintainer Workflow" src="_images/RE-Workstream-Figure11.png" />
+<figcaption>
+<p><span class="caption-text"><strong>Figure 11 Modernized Project Maintainer Workflow</strong></span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Figure 12 below summarizes the modernized workflows in a swim lane diagram.</p>
+<figure class="align-default" id="id12">
+<img alt="Figure 12 depicts the Modernized Workflows in a Swim Lane Diagram" src="_images/RE-Workstream-Figure12.png" />
+<figcaption>
+<p><span class="caption-text"><strong>Figure 12 Modernized Architecture Swim Lane Diagram</strong></span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="ci-cd-pipeline-modernization">
+<h2>CI/CD Pipeline Modernization<a class="headerlink" href="#ci-cd-pipeline-modernization" title="Link to this heading">#</a></h2>
+<p>AWS CodeBuild and AWS CodePipeline are used to automate the continuous integration and deployment (CI/CD) process. The AWS CodePipeline creates a workflow that’s structured into multiple stages and ensures code tracking, containerized builds, artifact storage, and automated deployment of CMVP services.</p>
+<p><strong>Source Control &amp; Change Detection</strong> – GitHub + AWS CodePipeline: AWS CodePipeline is integrated with GitHub, allowing it to automatically detect new code changes in the repository. When a developer pushes new code, AWS CodePipeline triggers the pipeline execution, automated build actions via AWS CodeBuild, automated deploy actions to Amazon EKS, or automated deploy actions to AWS CodeDeploy.</p>
+<p><strong>Build &amp; Containerization – AWS CodeBuild + Amazon ECR</strong>: AWS CodeBuild is used to build Docker containers based on the latest code changes. The build process includes compiling, testing, and packaging the application into containerized images. These images are then tagged and stored securely in Amazon ECR for deployment.</p>
+<p><strong>AWS ECS Deployment &amp; Orchestration – AWS CodeDeploy + Amazon ECS</strong>: AWS CodeDeploy handles the deployment of containerized applications into Amazon ECS. Amazon ECS ensures that the latest container versions are automatically deployed and scaled across available compute resources.</p>
+<p><strong>AWS EKS Deployment &amp; Orchestration – AWS CodeBuild + Amazon EKS</strong>: AWS CodeBuild handles the automated deployment of Kubernetes services to AWS EKS. As with the Amazon ECS example, AWS EKS ensures that the latest container versions are automatically deployed to available compute resources.</p>
+</section>
+<section id="database-modernization">
+<h2>Database Modernization<a class="headerlink" href="#database-modernization" title="Link to this heading">#</a></h2>
+<p>Database modernization focuses on modernizing the hosting environment for the database service. The application requires an internal and external database with replication of data between the two to communicate updated information.</p>
+<p><strong>Amazon Relational Database Service (Amazon RDS)</strong>: The Microsoft SQL Server 2019 edition in the ACMVP demo environment has been replaced with Amazon RDS for SQL Server 2022, with a standard license.</p>
+<p><strong>AWS Database Migration Service (AWS DMS)</strong>: Microsoft SQL Server allows for native data replication in the legacy ACMVP research environment. However, the migration to Amazon RDS necessitates a new data replication service because the underlying resource hosting the database is not owned by the customer, but by AWS. AWS DMS maintains replication between the Amazon RDS databases.</p>
+</section>
+<section id="application-deployment-modernization">
+<h2>Application Deployment Modernization<a class="headerlink" href="#application-deployment-modernization" title="Link to this heading">#</a></h2>
+<p>The application deployment modernization focuses on containerizing the WebPublic and MQP applications. Utilizing containers provides benefits and options such as blue/green deployments, vulnerability scanning the images in a registry in advance of deployments, and shorter exposure times from routine deployments.</p>
+<p>Figure 13 demonstrates the progression of the approaches taken to modernize the application into a container. The markers on the top represent the Microsoft Windows Container, while the markers on the bottom represent the Linux Container.</p>
+<figure class="align-default" id="id13">
+<img alt="Figure 13 depicts the application modernization progression" src="_images/RE-Workstream-Figure13.png" />
+<figcaption>
+<p><span class="caption-text"><strong>Figure 13 Application Modernization Progression</strong></span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id14">
+<img alt="Figure 14 depicts the Progression of Containerization Builds" src="_images/RE-Workstream-Figure14.png" />
+<figcaption>
+<p><span class="caption-text"><strong>Figure 14 Progression of Containerization Builds</strong></span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The first iteration is the closest to the original ACMVP environment. It is a Microsoft Windows container on Amazon ECS that encapsulates both the application and the Microsoft IIS proxy to authenticate and route traffic. This solution containerizes the precise environment that exists in the WebPublic Amazon EC2 instance.</p>
+<p>The AWS ALB lifts the proxy services into the cloud while performing the mTLS handshake. Client certificate details are passed at the application layer as headers to the application, which are then used for performing authentication for the application.</p>
+<p>The second iteration is a Linux container on Amazon ECS with an nginx sidecar container. It advances the environment by offering a smaller container image size and proxy being utilized, and allows for the container or nginx to be modified without causing the other to be taken offline, decoupling the application.</p>
+<p>The AWS NLB lifts the proxy services into cloud services. This approach allows AWS NLB to pass TLS traffic through to the containerized nginx/WebPublic to handle the mTLS handshake.</p>
+<p>The third and final iteration applies the progress made in the first two to a NIST production-ready architecture. Kubernetes being the preferred containerization platform at NIST for production systems, the containerized CMVP application is deployed on Amazon Elastic Kubernetes Service (Amazon EKS). Furthermore, Amazon EKS is used with Bottlerocket AMIs to ensure a FIPS 140-3 compliant environment.</p>
+<p>Details regarding the services explored can be found in <a class="reference internal" href="appendix-d.html#appendix-d-application-modernization"><span class="std std-ref">Appendix D: Application Modernization</span></a>.</p>
+</section>
+<section id="microservice-architecture">
+<h2>Microservice Architecture<a class="headerlink" href="#microservice-architecture" title="Link to this heading">#</a></h2>
+<p>The architecture’s final iteration marked a transition to the broad use of containers and microservice architecture solutions. Both software development and infrastructure management can account for the use of similar containerized services running lightweight versions of WebPublic, MQP, and nginx applications.</p>
+<p>The software development support for this architecture can leverage locally hosted Kubernetes installations (i.e., Docker Desktop or Rancher Desktop). Both Docker Desktop and Rancher Desktop are commercial and open-source alternatives used for the development of containerized applications and microservices. Both solutions provide a localized Kubernetes cluster, APIs, compute, and storage resources. These solutions provide the software developers with similar provisioning and deployment patterns as well as APIs that provide an identical management plane when compared to production instances of the application.</p>
+<p>Amazon EKS provides the cloud-hosted microservice architecture used in the final iteration of CMVP infrastructure modernization. Amazon EKS runs Kubernetes under the hood. The access patterns and APIs all behave in a similar fashion to other Kubernetes implementations, such as Docker Desktop or Rancher Desktop. Amazon EKS also provides access and configuration controls that can be managed through the Amazon Console or with Infrastructure as Code (IaC).</p>
+</section>
+<section id="infrastructure-as-code-iac">
+<h2>Infrastructure as Code (IaC)<a class="headerlink" href="#infrastructure-as-code-iac" title="Link to this heading">#</a></h2>
+<p>Automation and management of AWS resources, services, and infrastructure was a focus of the components referenced throughout the <a class="reference internal" href="#research-infrastructure"><span class="std std-ref">Research Infrastructure</span></a> section. Infrastructure as Code (IaC) was selected to handle the standardization and automatic configuration of both AWS and CMVP components. Terraform was chosen as the IaC declarative configuration language (DCL) to represent these resources and components.</p>
+<p>Terraform modules were used to decompose the CMVP application into groups of common resources. At the foundation, there is a first (e.g., root) module that dictates what groups of Terraform modules and top-level resources will represent a single deployment of the project’s infrastructure. Each module, when called, will deploy and configure resources that are tightly associated with one another. The following list describes the components that are called by the root module:</p>
+<p><strong>EKS Module</strong>: This consists of Amazon EKS cluster services and dependencies. This module also deploys Amazon EKS Node Groups, which serve as compute (i.e., Amazon EC2) instances that support applications deployed to an EKS cluster. Dependencies include security group and AWS ELB target group attachments that connect the EKS cluster to networks and load balancer capabilities.</p>
+<p><strong>CodeBuild Docker Module</strong>: This is the IaC that’s shared with the CodeBuild Deploy Module that is referenced later in this section. This module configures AWS CodeBuild services and dependencies. This includes attachments to existing AWS Identity and Access Management (IAM) roles that provide permissions to AWS CodeBuild and other AWS services and resources. This module also includes the build specification (i.e., buildspec) that scripts the actions that AWS CodeBuild performs as part of the Continuous Integration/Continuous Delivery (CI/CD) process.</p>
+<p><strong>CodeBuild Deploy Module</strong>: As previously stated, this module’s code is shared with the CodeBuild Docker Module. This module configures AWS CodeBuild projects and dependencies. Similar to CodeBuild Docker, this includes configuration of permissions via IAM role attachments as well as CI/CD build specifications. This CodeBuild module is configured to attach to the existing Amazon VPC where the Amazon EKS cluster and dependencies are deployed. This enables network access to Amazon VPC resources to support containerized deployments.</p>
+<p><strong>CodePipeline Module</strong>: This module handles the CI/CD orchestration of the AWS CodeBuild projects previously mentioned. AWS IAM roles are assigned to a single pipeline to permit access to the AWS services and resources that are required for CI/CD automation. CodePipeline is also configured to access specific source code branches of specific instances of the application (i.e., dev, test, or production) or isolated deployments used for testing purposes.</p>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="protocol-workstream.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Protocol Workstream</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="findings.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Findings and Recommendations for Future Work</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#research-infrastructure-workstream-collaborators">Research Infrastructure Workstream Collaborators</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modernization-approach">Modernization Approach</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#replication-of-the-legacy-production-cmvp-environment">Replication of the Legacy Production CMVP Environment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aws-target-architecture-by-service">AWS Target Architecture by Service</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-modernization-components">Key Modernization Components</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ci-cd-pipeline-modernization">CI/CD Pipeline Modernization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#database-modernization">Database Modernization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-deployment-modernization">Application Deployment Modernization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#microservice-architecture">Microservice Architecture</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#infrastructure-as-code-iac">Infrastructure as Code (IaC)</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<p>
+  
+    By NIST<br/>
+  
+</p>
+
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+<footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        <div class="disclaimer">
+          <strong>Disclaimer:</strong> Certain commercial equipment, instruments, or
+          materials are identified in this documentation to foster understanding. Such
+          identification does not imply recommendation or endorsement by the National
+          Institute of Standards and Technology, nor does it imply that the materials
+          or equipment identified are necessarily the best available for the purpose.
+        </div>
+      </p>
+    </div>
+</footer>
+  </body>
+</html>

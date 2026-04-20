@@ -1,0 +1,2082 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Appendix &#8212; Automated Cryptographic Module Validation Project  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/content.css?v=59cd0ab0" />
+    <link rel="stylesheet" type="text/css" href="../_static/tables.css?v=1ae3e97c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'protocol/appendix';</script>
+    <script src="../_static/jquery.visible.js?v=5b129ffc"></script>
+    <script src="../_static/jquery.leaveNotice-nist.js?v=21f5b3a4"></script>
+    <script src="../_static/applyLeaveNotice.js?v=bfeda27a"></script>
+    <script src="../_static/smoothNavScroll.js?v=2ce98a12"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Appendix D: Application Modernization" href="../appendix-d.html" />
+    <link rel="prev" title="Error Responses" href="errorResponses.html" />
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+
+    <link rel="stylesheet" href="https://pages.nist.gov/nist-header-footer/css/nist-combined.css">
+    <link rel="stylesheet" type="text/css" href="https://pages.nist.gov/leaveNotice/css/jquery.leaveNotice.css" />
+    <script src="https://pages.nist.gov/nist-header-footer/js/nist-header-footer.js" type="text/javascript" defer="defer"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RJSMY46M5C"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RJSMY46M5C');
+    </script>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Automated Cryptographic Module Validation Project  documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Automation of the NIST Cryptographic Module Validation Program
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../executive-summary.html">Executive Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../approach.html">Approach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../te-workstream.html">Test Evidence Workstream</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../protocol-workstream.html">Protocol Workstream</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../re-workstream.html">Research Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../findings.html">Findings and Recommendations for Future Work</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix-a.html">Appendix A: List of Symbols, Abbreviations, and Acronyms</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../te/tables/tetables.html">Appendix B: TE Tables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../te/tables/area2.html">Area 2 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../te/tables/area3.html">Area 3 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../te/tables/area4.html">Area 4 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../te/tables/area5.html">Area 5 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../te/tables/area6.html">Area 6 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../te/tables/area7.html">Area 7 Tables</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../te/tables/area8.html">Area 8 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../te/tables/area9.html">Area 9 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../te/tables/area10.html">Area 10 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../te/tables/area11.html">Area 11 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../te/tables/area12.html">Area 12 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../te/tables/annex.html">Annex Tables</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Appendix C: Protocol Workstream</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="technicalDetails.html">Protocol Workstream Technical Details</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="securityConsiderations.html">Security Considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="login.html">Login</a></li>
+<li class="toctree-l3"><a class="reference internal" href="versioning.html">Versioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="messaging.html">Messaging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="errorResponses.html">Error Responses</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Appendix</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix-d.html">Appendix D: Application Modernization</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../appendix-e/index.html">Appendix E: Research Infrastructure</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../appendix-e/AWSAccountOrganization.html">AWS Account Organization</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../appendix-e/AWSResearchCloudSystemArchitecture.html">AWS Research Cloud System Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix-e/IdentityandAccessManagement.html">Identity and Access Management</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../appendix-e/AWSResearchCloudSecurity.html">AWS Research Cloud Security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix-e/AWSResearchCloudOperations.html">AWS Research Cloud Operations</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../appendix-e/MappingtoNIST800Series.html">Mapping to NIST 800 Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix-e/AutomationTemplates.html">Automation Templates</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../te/index.html">2025 Status Update - Test Evidence Workstream</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../infrastructure/index.html">2025 Status Update - Research Infrastructure Workstream</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/protocol/appendix.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Appendix</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="appendix">
+<h1>Appendix<a class="headerlink" href="#appendix" title="Link to this heading">#</a></h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.20">
+<title>Appendix A</title>
+<style>
+table, th, td {
+border: 1px solid;
+}
+</style>
+</head>
+<body class="article">
+<div id="header">
+</div>
+<div id="content">
+<div class="sect1">
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_flow_based_on_te_summary">Flow based on TE Summary</h3>
+<div class="sect3">
+<h4 id="_login_to_obtain_accesstoken">Login to obtain accessToken</h4>
+<div class="literalblock">
+<div class="content">
+<pre>         +--------+--------------------------------------+------+------------+
+         | Client |                                      |Server|    Notes   |
+         +--------+--------------------------------------+------+------------+
+         |        |POST to /login or similar with        |      |            |
+         |        |appropriate credentials               |      |            |
+         |        |--------------------------------&gt;     |      |            |
+         |        |                                      |      |            |
+         |        |200  OK receive the access token      |      |            |
+         |        |&lt;-  -  -  -  -  -  -  -  -  -  -      |      |            |
+         |        |                                      |      |            |
+
+POST: {"amvVersion": "0.1", "passcode":"21887897"}
+
+200 OK: {"accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9....}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>POST certRequests - request a module validation certificate</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>         +--------+-----------------------------------+------+------------+
+         | Client |                                   |Server|  Notes     |
+         +--------+-----------------------------------+------+------------+
+         |        |POST certRequests                  |      |   Submit   |
+         |        |----------------------------------&gt;|      |Module Cert |
+         |        | w/URIs to bind modules, vendors,  |      |   Request  |
+         |        | and contacts                      |      |            |
+         |        |                                   |      |            |
+         |        |200 OK                             |      | Returns    |
+         |        |&lt;-  -  -  -  -  -  -  -  -  -  -  -|      | CR ID      |
+         |        | "url": "/amvp/v1/certRequests/550"|      |            |
+         |        | "vendorId": 137,                  |      |            |
+         |        | "status": "initial",              |      |            |
+         |        | "accessToken": ""                 |      |            |
+         |        |                                   |      |            |
+
+         |        |                                   |      |            |
+         |        |GET                                |      |            |
+         |        |/certRequests/1                    |      |  Retrieve  |
+         |        |----------------------------------&gt;|      |   CR ID    |
+         |        |                                   |      |   TE List  |
+         |        |200 OK with List of TEs, moduleId  |      |            |
+         |        |&lt;-  -  -  -  -  -  -  -  -  -  -  -|      |            |
+         |        |                                   |      |            |
+         |        |POST Test Evidence                 |      |            |
+         |        |/certRequests/1/evidence           |      |   Submit   |
+         |        |----------------------------------&gt;|      |  Response  |
+         |        |                                   |      |            |
+         |        |200 OK                             |      |            |
+         |        |&lt;-  -  -  -  -  -  -  -  -  -  -  -|      |            |
+         |        | vendorId : 1                      |      |            |
+         |        | status: processing                |      |            |
+
+         |        |GET                                |      |            |
+         |        |/certRequests/1                    |      |  GET       |
+         |        |----------------------------------&gt;|      | Results    |
+         |        |                                   |      |            |
+         |        |&lt;----------------------------------|      |            |
+         |        | 200 OK    "status": "submitted"   |      |            |
+         |        | "Url":                            |      |            |
+         |        |     "/amvp/v1/certRequests/41763" |      |            |
+
+The binding will look something like this:
+
+         [{  "moduleId" : 121,   &lt;-- a single module
+             "vendorId" : 12345,   &lt;-- vendor ID from resource submission not shown above
+             "contacts" : ["CVP-012345", "CVP-67890"]  &lt;-- CVP numbers represent people that have lab accredidation
+          }]
+
+
+The Functional Test TE list sent from server to client will look like this
+{
+    "amvVersion": "0.1",
+
+    "functionalTest":
+    {
+      "document":
+      {
+        "base-catalogVersion": "3.0",
+        "base-lastUpdated": "October-16-2023",
+        "functionalTesting-EC": "0.6",
+        "functionalTesting-lastUpdated": "October-29-2024"
+      },
+      "testEvidence":
+      [
+        {
+            "teList":
+            [
+                "TE02.12.01","TE02.10.01"
+            ],
+            "description": "Verify that versioning info identifies distinct components.",
+            "access": "physical",
+            "technique": "debugger simulation emulation harness manual other",
+            "setup": "reference into Catalog",
+            "errorInduction": "description of",
+            "results":
+            {
+                "summary": "sample summary",
+                "digest": "000000",
+                "fileLocation": "location of test evidence",
+                "integrityMechanism": "SHA2-512"
+            }
+        }
+      ]
+    }
+}
+
+
+The Souce Code evidence sent from server to client will look like this
+
+{
+    "amvVersion": "0.1",
+    "sourceCode": {
+        "document": {
+            "base-catalogVersion": "3.0",
+            "base-lastUpdated": "October-16-2023",
+            "sourceCode-EC": "0.6",
+            "sourceCode-lastUpdated": "October-29-2024"
+        },
+        "testEvidence": [
+            {
+                "teList": [
+                    "TE02.10.01",
+                    "TE02.07.01",
+                    "TE02.07.02"
+                ],
+                "file": [
+                    "full path to file"
+                ],
+                "function": "Source code method/function(s)",
+                "lines": "Source code line numbers",
+                "description": "Summarize how the source code review aspect of the TE was accomplished.",
+                "input": "may not always be applicable",
+                "output": "may not always be applicable",
+                "status": "",
+                "results":
+                {
+                    "summary": "sample summary",
+                    "digest": "000000",
+                    "fileLocation": "location of test evidence",
+                    "integrityMechanism": "SHA2-512"
+                }
+            }
+        ]
+    }
+}
+
+The Other Documentation evidence sent from server to client will look like this
+
+{
+    "amvVersion": "0.1",
+    "otherDocumentation": {
+        "document": {
+            "base-catalogVersion": "3.0",
+            "base-lastUpdated": "October-16-2023",
+            "otherDocumentation-EC": "0.6",
+            "otherDocumentation-lastUpdated": "October-29-2024"
+        },
+        "testEvidence": [
+            {
+                "teList": [
+                    "TE02.03.02"
+                ],
+                "documents":
+                [
+                  {
+                    "sectionName": "sample",
+                    "documentName": "sampleDocument"
+                  }
+                ],
+                "results":
+                {
+                    "summary": "sample summary",
+                    "digest": "000000",
+                    "fileLocation": "location of test evidence",
+                    "integrityMechanism": "SHA2-512"
+                }
+            }
+        ]
+    }
+}
+
+The Security Policy sent from server to client will look like this
+
+{
+  "amvVersion": "0.1",
+  "securityPolicy": {
+    "schemaVersion": "2.8.4",
+    "cavpCertSet": {
+      "cavpCertList": [
+        {
+          "vendorName": "Duis ea",
+          "certName": "in sed nulla do dolor",
+          "validationId": 11023992,
+          "implName": "exercitation tempor ad",
+          "implVersion": "ut sed cillum",
+          "implType": "esse est ea quis cillum",
+          "implOrganization": "magna ipsum aliqua proident sit"
+        }
+      ],
+      "cavpOeList": [
+        {
+          "name": "consectetur do cupidatat Ut",
+          "oeId": 3
+        }
+      ],
+      "cavpOeAlgoList": [
+        {
+          "validationOeAlgorithmId": 1,
+          "algoDisplayName": "exercitation ad",
+          "canonicalAlgorithmId": 1,
+          "validationId": 1,
+          "certName": "anim fugiat nisi Lorem enim",
+          "implName": "velit exercitation irure magna eu",
+          "oeId": 8308,
+          "selectedCapList": [
+            {
+              "capabilityId": 31642322,
+              "displayText": "esse",
+              "childCapabilities": []
+            }
+          ]
+        }
+      ],
+      "cavpImplAlgoList": [
+        {
+          "algoDisplayName": "AES-CBC",
+          "canonicalAlgorithmId": 1,
+          "implName": "in Lorem",
+          "validationId": 7,
+          "certName": "nisi ex sint",
+          "category": "laboris velit"
+        }
+      ],
+      "cavpItarAlgoList": [
+        {
+          "certName": "elit esse est",
+          "algoDisplayName": "AES-CBC-CS3",
+          "canonicalAlgorithmId": 4,
+          "capabilities": "deserunt est sed ad eiusmod",
+          "category": "Duis mollit magna"
+        }
+      ]
+    },
+    "esvCertList": [
+      {
+        "esvCertName": "laboris veniam sunt dolore reprehenderit",
+        "certId": 33293608,
+        "vendorName": "cupidatat sit amet sunt"
+      }
+    ],
+    "esvItarCertList": [
+      "pariatur",
+      "Lorem"
+    ],
+    "testedHwList": [
+      {
+        "modelPartNum": "sint aute cillum quis",
+        "hwVersion": "et cupidatat",
+        "fwVersion": "consequat",
+        "processors": "consequat",
+        "features": "laborum id exercitation laboris veniam"
+      }
+    ],
+    "testedSwFwHyList": [
+      {
+        "packageFileName": "laborum commodo consectetur nulla",
+        "swFwVersion": "magna",
+        "features": "anim Ut dolor occaecat in",
+        "integrityTest": "consequat ipsum dolor elit"
+      }
+    ],
+    "testedHyHwList": [
+      {
+        "modelPartNum": "quis ullamco",
+        "hwVersion": "nisi laboris",
+        "fwVersion": "aliquip Lorem est in tempor",
+        "processors": "mollit sunt",
+        "features": "cupidatat"
+      }
+    ],
+    "opEnvSwFwHyTestedList": [
+      {
+        "operatingSystem": "nostrud aliquip proident",
+        "hardwarePlatform": "in ut enim quis irure",
+        "processors": "nulla cupidatat",
+        "paaPai": "esse",
+        "hypervisorHostOs": "Excepteur ipsum labore elit",
+        "swFwVersionList": [
+          "deserunt est consequat pariatur ex",
+          "tempor dolor eiusmod",
+          "ipsum dolor",
+          "Ut cupidatat",
+          "et consequat"
+        ]
+      }
+    ],
+    "opEnvSwFwHyVAList": [
+      {
+        "operatingSystem": "reprehenderit culpa ut",
+        "hardwarePlatform": "pariatur esse in consectetur"
+      }
+    ],
+    "modeOfOpList": [
+      {
+        "name": "officia commodo",
+        "description": "in ipsum",
+        "type": "aliquip",
+        "statusIndicator": "laborum"
+      }
+    ],
+    "vendorAffirmedAlgoList": [
+      {
+        "name": "in ad in",
+        "algoPropList": [
+          {
+            "name": "id velit anim Ut veniam",
+            "value": "enim voluptate",
+            "propertyId": 11387443
+          }
+        ],
+        "implName": "sed Excepteur",
+        "reference": "ullamco culpa"
+      }
+    ],
+    "nonApprovedAllowedAlgoList": [
+      {
+        "name": "deserunt laboris non",
+        "algoPropList": [
+          {
+            "name": "ea aute consectetur Duis",
+            "value": "in ut",
+            "propertyId": -57056207
+          }
+        ],
+        "implName": "incididunt enim anim",
+        "reference": "consectetur"
+      }
+    ],
+    "nonApprovedAllowedAlgoNSCList": [
+      {
+        "name": "quis in",
+        "caveat": "ut adipisicing",
+        "useFunction": "non eu"
+      }
+    ],
+    "nonApprovedNotAllowedAlgoList": [
+      {
+        "name": "in Ut incididunt",
+        "useFunction": "irure"
+      }
+    ],
+    "secFunImplList": [
+      {
+        "name": "nostrud ex",
+        "sfTypeList": [
+          {
+            "sfAbbrev": "ad Excepteur sed id",
+            "sfId": 53184293
+          }
+        ],
+        "description": "ad quis irure nisi",
+        "sfPropList": [
+          {
+            "name": "non veniam sint tempor occaecat",
+            "value": "et",
+            "propertyId": -30179093
+          }
+        ],
+        "algorithmList": [
+          {
+            "algoDisplayName": "magna cupidatat laborum Ut in",
+            "canonicalAlgorithmId": 47899832,
+            "implName": "velit laborum sint id nostrud",
+            "validationId": 5,
+            "algoPropList": [],
+            "certName": "et"
+          }
+        ]
+      }
+    ],
+    "entropySourceList": [
+      {
+        "name": "labore ex",
+        "type": "reprehenderit",
+        "opEnv": "eu est",
+        "sampleSize": "exercitation",
+        "entropyPerSample": "cillum laborum",
+        "conditioningComp": "fugiat"
+      }
+    ],
+    "portInterfaceList": [
+      {
+        "physicalPort": "ullamco",
+        "logicalInterfaceList": [
+          "ex qui velit eu",
+          "est",
+          "Duis sit labore aute ex",
+          "laborum fugiat adipisicing"
+        ],
+        "dataPasses": "ullamco voluptate in ut veniam"
+      }
+    ],
+    "authMethodList": [
+      {
+        "name": "labore exercitation dolore do dolore",
+        "description": "deserunt non ut",
+        "mechanism": "nostrud culpa",
+        "strengthEachAttempt": "exercitation reprehenderit dolor sed cillum",
+        "strengthPerMin": "deserunt"
+      }
+    ],
+    "roleList": [
+      {
+        "name": "aliquip fugiat",
+        "type": "sint ut dolore Duis veniam",
+        "operatorType": "ea elit aliquip officia",
+        "authMethodList": [
+          "adipisicing Ut in",
+          "velit cillum cupidatat consectetur",
+          "labore adipisicing",
+          "Ut"
+        ]
+      }
+    ],
+    "approvedServiceList": [
+      {
+        "name": "ut",
+        "description": "labore eu irure",
+        "indicator": "qui",
+        "inputs": "ea cupidatat ullamco pariatur irure",
+        "outputs": "Ut aute",
+        "secFunImplList": [
+          "in",
+          "minim sed",
+          "ad pariatur"
+        ],
+        "roleSspAccessList": [
+          {
+            "roleName": "aute esse do laborum",
+            "sspAccessList": [
+              {
+                "sspName": "quis consequat tempor laboris reprehenderit",
+                "accessType": [
+                  "veniam laborum tempor",
+                  "cupidatat aute",
+                  "ut esse sint Lorem",
+                  "culpa nulla",
+                  "sit consequat incididunt occaecat"
+                ]
+              }
+            ]
+          },
+          {
+            "roleName": "incididunt id adipisicing et",
+            "sspAccessList": [
+              {
+                "sspName": "amet esse",
+                "accessType": [
+                  "sunt dolore mollit",
+                  "ipsum incididunt nisi in"
+                ]
+              }
+            ]
+          },
+          {
+            "roleName": "non Lorem est incididunt sit",
+            "sspAccessList": [
+              {
+                "sspName": "reprehenderit pariatur nisi sed",
+                "accessType": [
+                  "consequat",
+                  "amet"
+                ]
+              }
+            ]
+          },
+          {
+            "roleName": "non enim proident ex",
+            "sspAccessList": [
+              {
+                "sspName": "dolor voluptate",
+                "accessType": [
+                  "aliquip esse",
+                  "et laborum eiusmod veniam"
+                ]
+              }
+            ]
+          },
+          {
+            "roleName": "elit",
+            "sspAccessList": [
+              {
+                "sspName": "do sit dolor",
+                "accessType": [
+                  "veniam ad do",
+                  "irure"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "nonApprovedServiceList": [
+      {
+        "name": "anim quis elit",
+        "description": "commodo et deserunt",
+        "nonApprovedAlgoList": [
+          "nisi ea incididunt deserunt",
+          "Duis cillum",
+          "voluptate elit aute in",
+          "veniam"
+        ],
+        "role": "exercitation aliquip"
+      }
+    ],
+    "phSecMechanismList": [
+      {
+        "mechanism": "sunt",
+        "inspectFreq": "quis cupidatat in",
+        "inspectGuidance": "ullamco nulla in commodo sit"
+      }
+    ],
+    "efpEftInfoList": [
+      {
+        "tempVoltType": "ullamco non",
+        "tempVolt": "non irure consectetur mollit",
+        "efpOrEft": "consectetur",
+        "result": "ad"
+      }
+    ],
+    "hardnessTestTempList": [
+      {
+        "tempType": "aute veniam",
+        "temp": "culpa in"
+      }
+    ],
+    "storageAreaList": [
+      {
+        "name": "sit exercitation nostrud veniam",
+        "description": "aliquip amet dolor deserunt Lorem",
+        "persistenceType": "sit consectetur ad ipsum irure"
+      }
+    ],
+    "sspInputOutputList": [
+      {
+        "name": "aliquip do",
+        "from": "eu sint amet Duis Excepteur",
+        "to": "Excepteur commodo",
+        "formatType": "magna",
+        "distributionType": "dolor ea nostrud laboris ut",
+        "entryType": "officia voluptate ipsum adipisicing",
+        "relatedSFI": "non irure"
+      }
+    ],
+    "sspZeroizationList": [
+      {
+        "method": "sint in",
+        "description": "veniam",
+        "rationale": "nostrud",
+        "operatorInitiation": "culpa cillum proident"
+      }
+    ],
+    "sspList": [
+      {
+        "name": "nulla",
+        "description": "in non minim",
+        "size": "id",
+        "strength": "Lorem consequat sunt mollit",
+        "type": "id",
+        "generatedByList": [
+          "est",
+          "mollit in dolor eu Duis",
+          "irure exercitation est commodo",
+          "anim eu aliqua Excepteur",
+          "ullamco ad mollit"
+        ],
+        "establishedByList": [
+          "anim eiusmod",
+          "sed enim tempor",
+          "officia cillum ex nostrud",
+          "elit voluptate amet laborum labore",
+          "Duis amet culpa"
+        ],
+        "usedByList": [
+          "quis",
+          "proident",
+          "adipisicing ea mollit",
+          "cupidatat nisi incididunt dolore",
+          "voluptate tempor"
+        ],
+        "inputOutputList": [
+          "aliqua ut nisi consequat",
+          "nulla in cillum est"
+        ],
+        "storageItemList": [
+          {
+            "areaName": "est consequat dolore",
+            "format": "in",
+            "algorithmName": "ad"
+          }
+        ],
+        "storageDuration": "nostrud",
+        "zeroizationList": [
+          "ad nostrud occaecat",
+          "minim ad incididunt irure",
+          "aute eiusmod"
+        ],
+        "category": "elit do aliquip",
+        "relatedSspList": [
+          {
+            "sspName": "quis laborum qui",
+            "relationship": "mollit laborum nostrud in ut"
+          }
+        ]
+      }
+    ],
+    "preOpSelfTestList": [
+      {
+        "algorithmOrTest": "reprehenderit exercitation commodo velit",
+        "testProps": "ullamco nostrud",
+        "testMethod": "amet sit minim",
+        "type": "veniam",
+        "indicator": "ut irure pariatur adipisicing",
+        "details": "labore voluptate nisi",
+        "period": "in eu ex",
+        "periodicMethod": "in eu officia minim"
+      }
+    ],
+    "condSelfTestList": [
+      {
+        "algorithmOrTest": "sed laboris Ut",
+        "testProps": "culpa",
+        "testMethod": "ea",
+        "type": "laborum dolore tempor nisi",
+        "indicator": "sit sed cillum qui",
+        "details": "enim adipisicing eu cupidatat amet",
+        "conditions": "amet laboris",
+        "coverage": [],
+        "coverageNotes": "velit culpa officia",
+        "period": "sit",
+        "periodicMethod": "dolor reprehenderit Duis"
+      }
+    ],
+    "errorStateList": [
+      {
+        "name": "velit in",
+        "description": "ex",
+        "conditions": [
+          "reprehenderit nostrud cillum anim labore",
+          "do dolor officia",
+          "adipisicing voluptate do tempor"
+        ],
+        "recoveryMethod": "aliquip",
+        "indicator": "irure amet"
+      }
+    ],
+    "referenceList": [
+      "do occaecat sunt",
+      "irure velit"
+    ]
+  }
+}
+
+
+[AMVP]: POST Response Submission...
+
+{
+    "url": "/amvp/v1/certRequests/8",
+    "moduleId": 2,
+    "vendorId": 1,
+    "status": "ready",
+    "securityPolicyStatus": "acceptingSubmissions",
+    "evidenceStatus": "acceptingSubmissions"
+    "entropyCertificates": [],
+    "algorithmCertificates": [],
+    "missingSPTemplate": true,
+    "missingSecurityPolicySubmission": true,
+    "evidenceList": [
+        {
+            "te": "TE02.10.01",
+            "required": [],
+            "oneOf": [
+                {
+                    "types": [
+                        "SC-TE",
+                        "FT-TE"
+                    ],
+                    "submitted": []
+                }
+            ],
+            "complete": false
+        },
+        {
+            "te": "TE02.12.01",
+            "required": [
+                {
+                    "types": [
+                        "FT-TE"
+                    ],
+                    "submitted": []
+                }
+            ],
+            "oneOf": [],
+            "complete": false
+        },
+        {
+            "te": "TE02.19.02",
+            "required": [
+                {
+                    "types": [
+                        "FT-TE"
+                    ],
+                    "submitted": []
+                }
+            ],
+            "oneOf": [],
+            "complete": false
+        },
+        {
+            "te": "TE02.22.02",
+            "required": [
+                {
+                    "types": [
+                        "FT-TE"
+                    ],
+                    "submitted": []
+                }
+            ],
+            "oneOf": [],
+            "complete": false
+        },
+	],
+    "amvVersion": "0.1"
+}
+
+
+Once the validation is approved the functionalTest evidence, source code evidence, and security policy, draft certificate can be requested.
+
+         |        |GET                                |      |            |
+         |        |/certRequests/1/securityPolicy     |      |  Retrieve  |
+         |        |----------------------------------&gt;|      |Sec Policy  |
+         |        |                                   |      |  ID = 1    |
+         |        |&lt;--------------------------------- |      | Retry as   |
+         |        |                                   |      | needed     |
+         |        |                                   |      |            |
+         |        |GET                                |      |            |
+         |        |/certRequests/1/securityPolicy     |      |  Retrieve  |
+         |        |----------------------------------&gt;|      |Sec Policy  |
+         |        |                                   |      |            |
+         |        |                                   |      |            |
+         |        |200 OK                             |      |            |
+         |        |&lt;-  -  -  -  -  -  -  -  -  -  -  -|      |            |
+         |        |   Security Policy                 |      |            |
+
+Module certificate is fully approved.
+
+         |        |POST                               |      |            |
+         |        |/certRequests/1/certify            |      |  Request   |
+         |        |----------------------------------&gt;|      |            |
+         |        |                                   |      |  ID = 1    |
+         |        |&lt;--------------------------------- |      | Retry as   |
+         |        |                                   |      | needed     |
+         |        |                                   |      |            |
+         |        |GET                                |      |            |
+         |        |/certRequests/1                    |      |  Retrieve  |
+         |        |----------------------------------&gt;|      | cert status|
+         |        |                                   |      |            |
+         |        |                                   |      |            |
+         |        |200 OK                             |      |            |
+         |        |&lt;-  -  -  -  -  -  -  -  -  -  -  -|      |            |
+         |        |   Certificate request status      |      |            |
+
+[AMVP]: GET Response
+{
+    "certRequestId": 549,
+    "moduleId": 190,
+    "status": "approved",
+    "validationCertificate": "AMV-10",
+    "amvVersion": "0.1"
+}</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_appendix_b">Appendix B</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_proof_of_concept_flowsoutdated_remaining_here_for_reference">Proof of Concept Flows(outdated, remaining here for reference)</h3>
+<div class="paragraph">
+<p>The initial Proof of Concept(PoC) developed will be limited to communication flows that are needed to demo the protocol. Separate auotmated and non-automated evidence will not be included in the PoC. These flows can also be used to define the exact testing that will be required for the various server and client milestones. Some milestones are server centric thus testing is limited here since minimal external communication flows are exercised. Error codes and retries will be tested when possible in all test flows.</p>
+</div>
+<div class="sect3">
+<h4 id="_v0_1_test_flows">V0.1 Test Flows</h4>
+<div class="paragraph">
+<p>Prerequiste for V0.1 testing is VPN between client and server, TOTP and client certificate.</p>
+</div>
+<div id="xml_Flows01" class="paragraph">
+<p>Workflow authorization flows.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>         +--------+--------------------------------------+------+------------+
+         | Client |                                      |Server|    Notes   |
+         +--------+--------------------------------------+------+------------+
+         |        |POST to /login or similar with        |      |            |
+         |        |appropriate credentials               |      |            |
+         |        |--------------------------------&gt;     |      |            |
+         |        |                                      |      |            |
+         |        |200  OK receive the access token      |      |            |
+         |        |&lt;-  -  -  -  -  -  -  -  -  -  -      |      |            |
+         |        |                                      |      |            |
+         |        |POST /amvp/v1/vendors                 |      |   POST     |
+         |        |----------------------------------&gt;   |      |  vendor    |  *** vendor resource as an example
+         |        |                                      |      | resource   |  *** flow is to show login sequence
+         |        |                                      |      |            |
+         |        |                                      |      |            |
+         |        |200 OK vendors URI                    |      |            |
+
+
+POST: [{"passcode":"21887897"}]
+
+200 OK: [{"accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9....}]
+
+
+
+Vendor POST prior to login(should fail) and after login(should be accepted). Server shall respond to valid vendor POST with 200 OK.
+
+
+Expected Client Log(failing case)
+
+[AMVP]: POST...
+	Status: 404
+	Url: https://localhost:8085/amvp/v1/vendors
+	Resp: The path specified is not recognized.
+
+
+[AMVP][ERROR]: 404 error received from server. Message:
+[AMVP][ERROR]: The path specified is not recognized.
+
+
+
+Expected Client Log(successful case)
+
+[AMVP]: Logging in...
+[AMVP]:     Login info: [{"passcode":"21887897"}]
+[AMVP]: POST Login...
+	Status: 200
+	Url: https://localhost:8085/amvp/v1/login
+	Resp: [{ "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...."}]
+
+[AMVP]: Login successful
+[AMVP]: POST...
+	Status: 200
+	Url: https://localhost:8085/amvp/v1/vendors</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_jwt_expirationrenewal">JWT Expiration/Renewal</h4>
+<div id="xml_figureRenewalFlows" class="paragraph">
+<p>The JWT access tokens received from either the /login server endpoint <strong>SHALL</strong> be set to expire after a
+pre-defined period. The specific length of the expiration period is out of scope for this specification.
+However, the expiration period length impacts both the security and protocol overhead. Longer expiration
+periods reduce the overhead but increase the window for attacks. Attempting to access a service with an
+expired JWT <strong>SHALL</strong> result in a "401 Unauthorized" HTTP status code.</p>
+</div>
+<div class="paragraph">
+<p>A client may renew an expired JWT access token using the mechanism shown in <a href="#xml_figureRenewalFlows">[xml_figureRenewalFlows]</a>below.</p>
+</div>
+<div class="paragraph">
+<p>JWT access token renewal flows. All exchanges shown are over HTTP.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>         +--------+---------------------------------+------+--------+
+         | Client |                                 |Server|  Notes |
+         +--------+---------------------------------+------+--------+
+         |        |POST to /login or similar with   |      |        |
+         |        |appropriate credentials          |      |        |
+         |        |and expired JWT access token     |      |        |
+         |        |--------------------------------&gt;|      |session |
+         |        |                                 |      |or      |
+         |        |                                 |      |login   |
+         |        |                                 |      |JWT     |
+         |        |receive the renewed access token |      |        |
+         |        |&lt;-  -  -  -  -  -  -  -  -  -  - |      |        |
+         |        |                                 |      |        |
+
+
+
+JWT authorization has timed out, curl rc=401
+
+POST: [{"passcode":"47682787","accessToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9....}]
+
+200 OK: [{"accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.....}]
+
+Log
+
+[AMVP]: Logging in...
+[AMVP]:     Login info: [{"passcode":"63127656"}]
+[AMVP]: POST Login...
+	Status: 200
+	Url: https://localhost:8085/amvp/v1/login
+	Resp: [{ "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...."}]
+
+[AMVP]: Login successful
+[AMVP]: POST Data: /amvp/v1/vendors
+
+[AMVP][WARNING]: JWT authorization has timed out, curl rc=401. Refreshing session...
+[AMVP]: Logging in...
+[AMVP]:     Login info: [{"passcode":"12345678","accessToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...."}]
+[AMVP]: POST Login...
+	Status: 200
+	Url: https://localhost:8085/amvp/v1/login
+	Resp: [{ "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...."}]
+
+[AMVP]: Login successful
+[AMVP]: Refresh successful, attempting to continue...
+[AMVP]: POST...
+	Status: 200
+	Url: https://localhost:8085/amvp/v1/vendors</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_v0_2_test_flows">V0.2 Test Flows</h4>
+<div id="xml_Flows02" class="paragraph">
+<p>Metadata creation and update example. The list of available reseource metadata endpoints can be found in <a href="#xml_uriResources">[xml_uriResources]</a>.
+An example minimum message flow between client and server after receiving the JWT is seen in the figure below.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Test vendors, modules and evidence catalog.
+
+
+   +--------+-----------------------------------+------+------------+
+   | Client |                                   |Server|  Notes     |
+   +--------+-----------------------------------+------+------------+
+   |        |POST /amvp/v1/modules              |      | Create     |
+   |        |----------------------------------&gt;|      | Metadata   |
+   |        |                                   |      |            |
+   |        |receive request identifier         |      |            |
+   |        |&lt;-  -  -  -  -  -  -  -  -  -  -  -|      |            |
+   |        |                                   |      |            |
+
+   |        |PUT /modules                       |      | Update     |
+   |        |----------------------------------&gt;|      | Metadata   |
+   |        |                                   |      |            |
+   |        |receive request identifier         |      |            |
+   |        |&lt;-  -  -  -  -  -  -  -  -  -  -  -|      |            |
+   |        |                                   |      |            |
+
+
+
+Log
+
+[AMVP]: Logging in...
+[AMVP]:     Login info: [{"passcode":"37362840"}]
+[AMVP]: POST Login...
+	Status: 200
+	Url: https://localhost:8085/amvp/v1/login
+	Resp: [{ "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."}]
+
+[AMVP]: Login successful
+[AMVP]: POST...
+	Status: 200
+	Url: https://localhost:8085/amvp/v1/modules
+	Resp: [{  "url": "/amvp/v1/requests/28665",    "status": "approved",    "approvedUrl": "/amvp/v1/modules/13780" }] ** Immediate approval or just 200 OK ?</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_v0_3_test_flows">V0.3 Test Flows</h4>
+<div id="xml_Flows03" class="paragraph">
+<p>Re-test V0.1 and V0.2 verify server creates objects.  Use GET for resource objects and evidence.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>After re-running V0.2 perform GET on objects following POST.
+
+
+   |        |GET                                |      |            |
+   |        |/requests/1                        |      | Retrieve   |
+   |        |----------------------------------&gt;|      | Request    |
+   |        |                                   |      |            |
+   |        |receive module URL                 |      |            |
+   |        |&lt;-  -  -  -  -  -  -  -  -  -  -  -|      |            |
+   |        |  /amvp/v1/modules/11208           |      |            |
+   |        |                                   |      |            |
+
+
+After re-running V0.2 perform GET on objects following PUT.
+
+   |        |GET                                |      |            |
+   |        |/requests/2                        |      |  Retrieve  |
+   |        |----------------------------------&gt;|      |  Request   |
+   |        |                                   |      |            |
+   |        |module URL:                        |      |  updated   |
+   |        |&lt;-  -  -  -  -  -  -  -  -  -  -  -|      |  or new    |
+   |        |  /amvp/v1/modules/11208           |      |            |
+   |        |                                   |      |            |
+
+GET after POST or PUT log
+
+[AMVP]: Logging in...
+[AMVP]:     Login info: [{"passcode":"25008415"}]
+[AMVP]: POST Login...
+	Status: 200
+	Url: https://localhost:8085/amvp/v1/login
+	Resp: [{ "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...."}]
+
+[AMVP]: Login successful
+[AMVP]: GET...
+	Status: 200
+	Url: https://localhost:8085/amvp/v1/modules/13780
+	Resp: [{
+   {
+    "schemaVersion": "initial",
+    "moduleInfo": {
+      "name": "OpenSSL FIPS Provider",
+      "count": 1,
+      "description": "FIPS Provider V3.0.0",
+      "embodiment": "Single Chip",
+      "type": "software",
+      "opEnvType": "Intel X86_64",
+      "submissionLevel": "Level 1",
+      "itar": false,
+      "overallSecurityLevel": 1
+    },
+      "secLevels": [
+        {
+          "section": 1,
+          "level": 1
+        },
+        {
+          "section": 2,
+          "level": 1
+        },
+        {
+          "section": 3,
+          "level": 1
+        },
+        {
+          "section": 4,
+          "level": 1
+        },
+        {
+          "section": 5,
+          "level": 1
+        },
+        {
+          "section": 6,
+          "level": 1
+        },
+        {
+          "section": 7,
+          "level": 1
+        },
+        {
+          "section": 8,
+          "level": 1
+        },
+        {
+          "section": 9,
+          "level": 1
+        },
+        {
+          "section": 10,
+          "level": 1
+        },
+        {
+          "section": 11,
+          "level": 1
+        },
+        {
+          "section": 12,
+          "level": 1
+        }
+      ],
+    "implementsOtar": true,
+    "hasNonApprovedMode": true,
+    "requiresInitialization": true,
+    "hasExcludedComponents": true,
+    "hasDegradedMode": false,
+    "hasPPAorPAI": false,
+    "hasEmbeddedOrBoundModule": false,
+    "hasCriticalFunctions": false,
+    "hasNonApprovedAlgorithmsInApprovedMode": false,
+    "hasExternalInputDevice": false,
+    "hasExternalOutputDevice": false,
+    "usesTrustedChannel": true,
+    "supportsConcurrentOperators": true,
+    "usesIdentityBasedAuthentication": true,
+    "hasMaintenanceRole": true,
+    "allowsOperatorToChangeRoles": false,
+    "hasDefaultAuthenticationData": true,
+    "usesEDC": true,
+    "allowsExternalLoadingOfSoftwareOrFirmware": false,
+    "containsNonReconfigurableMemory": true,
+    "usesOpenSource": false,
+    "providesMaintenanceAccessInterface": false,
+    "hasVentilationOrSlits": false,
+    "hasRemovableCover": false,
+    "hasTamperSeals": false,
+    "hasOperatorAppliedTamperSeals": false,
+    "hasEFPorEFT": false,
+    "outputsSensitiveDataAsPlaintext": false,
+    "supportsManualSSPEntry": true,
+    "usesSplitKnowledge": true,
+    "hasCVE": true,
+    "hasAdditionalMitigations": false,
+    "usesOtherCurve": true,
+    "supportsBypassCapability": false,
+    "hasOTPMemory": false
+    }</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_v0_4_test_flows">V0.4 Test Flows</h4>
+<div id="xml_Flows04" class="paragraph">
+<p>Submit evidence to server and return results.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>   +--------+-----------------------------------+------+------------+
+   | Client |                                   |Server|  Notes     |
+   +--------+-----------------------------------+------+------------+
+   |        |POST certRequests                  |      |   Submit   |
+   |        |----------------------------------&gt;|      |Module Cert |
+   |        | w/URIs to bind modules, vendors,  |      |   Request  |
+   |        | and contacts                      |      |            |
+   |        |                                   |      |            |
+   |        |200 OK certRequests URLs           |      |            |
+   |        |&lt;-  -  -  -  -  -  -  -  -  -  -  -|      |            |
+   |        |    certRequests/1/evidence        |      |            |
+   |        |                                   |      |            |
+   |        |GET  (automatable evidence)        |      |            |
+   |        |/certRequests/1/evidence           |      |  Retrieve  | ** GET supported in V0.5 ?
+   |        |----------------------------------&gt;|      |Cert Request|
+   |        |                                   |      | assertions |
+   |        |200 OK assertions for evidence 1   |      |            |
+   |        |&lt;-  -  -  -  -  -  -  -  -  -  -  -|      |            |
+   |        |                                   |      |            |
+   |        |POST Test Evidence for assertions  |      |            |
+   |        |for automatable evidence           |      |   Submit   |
+   |        |----------------------------------&gt;|      |  Response  |
+   |        |                                   |      |            |
+   |        |200 OK                             |      |            |
+   |        |&lt;-  -  -  -  -  -  -  -  -  -  -  -|      |            |
+   |        |   state: autoInReview             |      |            |
+   |        |                                   |      |            |
+
+Log
+
+[AMVP]: Logging in...
+[AMVP]:     Login info: [{"passcode":"33222621"}]
+[AMVP]: POST Login...
+	Status: 200
+	Url: https://localhost:8085/amvp/v1/login
+	Resp: [{ "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...."}]
+
+[AMVP]: Login successful
+[AMVP]: Reading module cert request file...
+[AMVP]: Sending module cert request...
+[AMVP]: POST...
+	Status: 200
+	Url: https://localhost:8085/amvp/v1/certRequests
+
+        {
+            "moduleId" : 121,
+            "vendorId" : 12345,
+            "contacts" : ["CVP-012345", "CVP-67890"]
+        }
+
+	Resp: [{ "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9....",
+                 "url": "/amvp/v1/certRequests/287357", "crUrls": [ "/amvp/v1/certRequests/287357/evidence/1146094" ]}]
+
+[AMVP]: Successfully sent mod cert req and received list of TE URLs
+[AMVP]: GET /amvp/v1/certRequests/287357/evidence/1146094
+[AMVP]: GET Vector Set...
+	Status: 200
+	Url: https://localhost:8085/amvp/v1/certRequests/287357/evidence/1146094
+	Resp:
+[{ "evidenceId": 1146094, "revision": "1.0",  "teGroups": [ { "teId": 1, "autoTE": ["TE02.20.01", "TE02.20.02", "TE11.16.01","TE04.11.01", "TE04.11.02"]}]}]
+
+[AMVP]: Processing ie set: 1146094
+[AMVP]: Successfully processed vector set
+[AMVP]: Posting ie set responses for vsId 1146094 to URL: /amvp/v1/certRequests/287357/evidence/1146094...
+[AMVP]: POST Response Submission...
+	Status: 200
+	Url: https://localhost:8085/amvp/v1/certRequests/287357/evidence/1146094/results</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_v0_5_test_flows">V0.5 Test Flows</h4>
+<div id="xml_Flows05" class="paragraph">
+<p>Server will complete processing of evidence and return status.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>   +--------+-----------------------------------+------+------------+
+   | Client |                                   |Server|  Notes     |
+   +--------+-----------------------------------+------+------------+
+   |        |POST certRequests                  |      |   Submit   |
+   |        |----------------------------------&gt;|      |Module Cert |
+   |        | w/URIs to bind modules, vendors,  |      |   Request  |
+   |        | and contacts                      |      |            |
+   |        |                                   |      |            |
+   |        |200 OK certRequests URLs           |      |            |
+   |        |&lt;-  -  -  -  -  -  -  -  -  -  -  -|      |            |
+   |        |   state: IUT                      |      |            |
+   |        |    certRequests/1/evidence/1      |      |            |
+   |        |                                   |      |            |
+   |        |GET                                |      |            |
+   |        |/certRequests/1/evidence/1         |      |  Retrieve  |
+   |        |----------------------------------&gt;|      |Cert Request|
+   |        |                                   |      | assertions |
+   |        |200 OK assertions for evidence 1   |      |            |
+   |        |&lt;-  -  -  -  -  -  -  -  -  -  -  -|      |            |
+   |        |                                   |      |            |
+   |        |POST Test Evidence for assertions  |      |   Submit   |
+   |        |----------------------------------&gt;|      |  Response  |
+   |        |                                   |      |            |
+   |        |200 OK                             |      |            |
+   |        |&lt;-  -  -  -  -  -  -  -  -  -  -  -|      |            |
+   |        |   state: autoInReview             |      |            |
+   |        |                                   |      |            |
+   |        |GET                                |      |            |
+   |        |certRequests/1/results             |      |  Retrieve  |
+   |        |----------------------------------&gt;|      |Disposition |
+   |        |                                   |      |            |
+   |        |200 OK receive results             |      |            |
+   |        |&lt;-  -  -  -  -  -  -  -  -  -  -  -|      |            |
+   |        |   state: autoInReview             |      |            |
+
+--- Poll periodically ---
+
+   |        |GET                                |      |            |
+   |        |certRequests/1/results             |      |  Retrieve  |
+   |        |----------------------------------&gt;|      |Disposition |
+   |        |                                   |      |            |
+   |        |200 OK receive results             |      |            |
+   |        |&lt;-  -  -  -  -  -  -  -  -  -  -  -|      |            |
+   |        |   state: autoCoordination         |      |            |
+   |        | "passed": true                    |      |            |
+   |        |                                   |      |            |
+
+
+   |        | PUT                               |      |            |
+   |        | certRequests/1/evidence/1         |      |            |
+   |        |----------------------------------&gt;|      |            |
+   |        |                                   |      |            |
+   |        |200 OK receive results             |      |            |
+   |        |&lt;-  -  -  -  -  -  -  -  -  -  -  -|      |            |
+   |        |   state: autoCoordination         |      |            |
+   |        | "url": "/amvp/v1/requests/1",     |      |            |
+   |        | "status": "initial"}              |      |            |
+   |        |                                   |      |            |
+   |        |GET                                |      |            |
+   |        |certRequests/1/results             |      |  Retrieve  |
+   |        |----------------------------------&gt;|      |Disposition |
+   |        |                                   |      |            |
+   |        |200 OK receive results             |      |            |
+   |        |&lt;-  -  -  -  -  -  -  -  -  -  -  -|      |            |
+   |        |   state: pendingAudit             |      |            |
+   |        |  "url" : "/amvp/v1/requests/1"    |      |            |
+   |        |                                   |      |            |
+
+   |        |GET                                |      |            |
+   |        |/requests/1                        |      |            |
+   |        |----------------------------------&gt;|      |  Retrieve  |
+   |        |                                   |      |  Request   |
+   |        |200 OK receive cert                |      |            |
+   |        |&lt;-  -  -  -  -  -  -  -  -  -  -  -|      |            |
+   |        |   state: finalization             |      | Complete   |
+   |        | "approvedUrl" : "/amvp/v1/validations/1",
+   |        |                 “modValidationId": "M1"
+
+
+Optional Flow:
+Independently GET docs as needed
+
+
+   |        |GET                                |      |            |
+   |        |certRequests/1/docs                |      |  Retrieve  |
+   |        |----------------------------------&gt;|      |  Docs      |
+   |        |                                   |      |            |
+
+--- Poll periodically ---
+
+   |        |200 OK receive results             |      |            |
+   |        |&lt;-  -  -  -  -  -  -  -  -  -  -  -|      | Doc URLs   |
+   |        |"secPolicy" : "/amvp/v1/sp0001"    |      |            |
+   |        |"draftCert" : "/amvp/v1/dc0001"    |      |            |
+   |        |                                   |      |            |
+
+
+
+
+[AMVP]: Logging in...
+[AMVP]:     Login info: [{"passcode":"03363978"}]
+[AMVP]: POST Login...
+	Status: 200
+	Url: https://localhost:8085/amvp/v1/login
+	Resp: [{ "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...."}]
+
+[AMVP]: Login successful
+[AMVP]: Reading module cert request file...
+[AMVP]: Sending module cert request...
+
+[AMVP]: POST...
+	Status: 200
+	Url: https://localhost:8085/amvp/v1/certRequest
+
+        POST /amvp/v1/certRequests/1
+         [{"moduleId" :  [{"/amvp/v1/modules/0918273546"}]
+            },{ "vendorId" : {"/amvp/v1/vendors/12345"}
+            }, { "contacts" : [{"John Smith", {"CVP" : "012345"}}, {"Jane Smith", {"CVP" : "67890"}}]
+            }]
+	Resp: [{ "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...."},
+                 "url": "/amvp/v1/certRequests/287357", "crUrls": [ "/amvp/v1/certRequests/287357/evidence/1146094" ]}]
+
+[AMVP]: Successfully sent mod cert req and received list of TE URLs
+[AMVP]: GET /amvp/v1/certRequests/287357/evidence/1146094
+[AMVP]: GET Vector Set...
+	Status: 200
+	Url: https://localhost:8085/amvp/v1/certRequests/287357/evidence/1146094
+	Resp:
+[{ "evidenceId": 1146094, "revision": "1.0",  "teGroups": [ { "teId": 1, "autoTE": ["TE02.20.01", "TE02.20.02", "TE11.16.01","TE04.11.01", "TE04.11.02"]}]}]
+[AMVP]: Processing ie set: 1146094
+[AMVP]: Successfully processed vector set
+[AMVP]: Posting ie set responses for vsId 1146094 to URL: /amvp/v1/certRequests/287357/evidence/1146094...
+[AMVP]: POST Response Submission...
+
+    {
+        "evidenceSet": [
+            {
+                "testRequirement": "TE02.20.01",
+                "evidence": "\/acvp\/v1\/validations\/99999",
+                "note": "this is a fake endpoint"
+            },
+            {
+                "testRequirement": "TE02.20.02",
+                "evidence": "none"
+            },
+            {
+                "testRequirement": "TE11.16.01",
+                "evidence": "Version X.Y.Z of the module meets the assertion"
+            },
+            {
+                "testRequirement": "TE04.11.01",
+                "evidence": "&lt;BASE64(table of services.pdf) compliant with SP800-140Br&gt;"
+            },
+            {
+                "testRequirement": "TE04.11.02",
+                "evidence": "\/www.cisco.com\/amvpevidence\/log_te041102.txt",
+                "note": "this is a fake endpoint"
+            },
+            {
+                "testRequirement": "TE10.10.01",
+                "evidence": "Degraded mode not supported, no algorithms can be used...goes directly into SP."
+            },
+            {
+                "testRequirement": "TE10.10.02",
+                "evidence": "\/www.cisco.com\/amvpevidence\/log_te041102.txt",
+                "note": "this is a fake endpoint"
+            },
+            {
+                "testRequirement": "TE11.08.01",
+                "evidence": "\/www.cisco.com\/amvpevidence\/FSM.pdf",
+                "note": "this is a fake endpoint"
+            },
+            {
+                "testRequirement": "TE11.08.02",
+                "evidence": "See TE11.08.01"
+            }
+        ]
+    }
+
+        Status: 200
+	Url: https://localhost:8085/amvp/v1/certRequests/287357/evidence/1146094/results
+[AMVP]: GET Vector Set Result...
+	Status: 200
+	Url: https://localhost:8085/amvp/v1/certRequests/287357/results
+	Resp:
+[ { "passed": true, "results": [ { "evSetUrl": "/amvp/v1/certRequests/287357/evidence/1146094", "status": "passed" }]} ]
+
+[AMVP]: Passed all evidence in test session!
+
+--optional--
+
+[AMVP]: Tests complete, request SP and DC...
+[AMVP]: GET SP and DC...
+	Status: 200
+	Url: https://localhost:8085/amvp/v1/certRequests/287357/docs
+	Resp:
+[ {"secPolicyUrl" :  "/amvp/v1/requests/287355", "draftCertUrl" : "/amvp/v1/requests/287356"}]
+
+[AMVP]: Security Policy url: /amvp/v1/requests/287355
+[AMVP]: Draft Certificate url: /amvp/v1/requests/287356
+
+[AMVP]: PUT testSession Validation...
+	Status: 200
+	Url: https://localhost:8085/amvp/v1/certRequests/287357
+        {"moduleUrl": "/amvp/v1/modules/11630}
+
+	Resp: [ {  "url": "/amvp/v1/requests/27358",  "status": "initial"}]
+
+[AMVP]: Validation requested -- status initial -- url: /amvp/v1/requests/27358
+
+Once audit completed, GET request approval.
+
+[AMVP]: Logging in...
+[AMVP]:     Login info: [{"passcode":"85380204"}]
+[AMVP]: POST Login...
+	Status: 200
+	Url: https://localhost:8085/amvp/v1/login
+	Resp: [{ "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...."}]
+
+[AMVP]: Login successful
+[AMVP]: GET Response:
+
+[ {  "url": "/amvp/v1/requests/27358",  "status": "approved",  "approvedUrl": "/amvp/v1/validations/41763"}]</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_v1_0_test_flows">V1.0 Test Flows</h4>
+<div id="xml_Flows10" class="paragraph">
+<p>Full flow support through validation completion.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_json_for_ut">JSON for UT</h4>
+<div class="sect4">
+<h5 id="json_Flows1">Lab</h5>
+
+</div>
+<div class="sect4">
+<h5 id="_vendor">Vendor</h5>
+<div id="json_Flows1" class="paragraph">
+<p>POSTed to /amvp/v1/vendors</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>{
+  "vendor": {
+    "name": "Cisco Systems, Inc.",
+    "addresses": [
+      {
+        "street": "170 West Tasman Dr.",
+        "locality": "San Jose",
+        "region": "CA",
+        "country": "USA",
+        "postalCode": "95134"
+      }
+    ],
+    "website": "www.cisco.com",
+    "productLink": "www.cisco.com/product/cr9000",
+    "contacts": [
+      {
+        "name": "Tom Smith",
+        "phoneNumbers": [
+          "123-456-7890"
+        ],
+        "emails": [
+          "certteam@cisco.com"
+        ]
+      }
+    ]
+  }
+}</pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_modulespec">ModuleSpec</h5>
+<div id="json_Flows1" class="paragraph">
+<p>POSTed to /amvp/v1/modules</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2026-04-17 14:48:20 -0400
+</div>
+</div>
+</body>
+</html></section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="errorResponses.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Error Responses</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../appendix-d.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Appendix D: Application Modernization</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<p>
+  
+    By NIST<br/>
+  
+</p>
+
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+<footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        <div class="disclaimer">
+          <strong>Disclaimer:</strong> Certain commercial equipment, instruments, or
+          materials are identified in this documentation to foster understanding. Such
+          identification does not imply recommendation or endorsement by the National
+          Institute of Standards and Technology, nor does it imply that the materials
+          or equipment identified are necessarily the best available for the purpose.
+        </div>
+      </p>
+    </div>
+</footer>
+  </body>
+</html>

@@ -1,5 +1,5 @@
-Test Evidence Workstream
-=========================
+2025 Status Update - Test Evidence Workstream
+==============================================
 
 Introduction
 -------------
@@ -553,7 +553,7 @@ We recognize that software implementations only support levels 1 and 2. However:
 
 - The Area 7 TEs include requirements from security level 1 through level 4, which are listed in Table 5. The Physical Security requirements in Area 7 are incremental for cryptographic modules from a low security level to a higher level. The numbers of TEs highlighted in green on Table 3 illustrate this trend.
 
-Table 4 and Table 5 in :ref:`TEs Impacted by Basic TE Filters` serve as examples of how the basic TE Filters work by listing all applicable TEs and non-applicable TEs for a given type of module at any possible security level. A complete set of TE tables elaborating on Table 3 is provided in the Appendix of this status report.
+Table 4 and Table 5 in :ref:`TEs Impacted by Basic TE Filters` serve as examples of how the basic TE Filters work by listing all applicable TEs and non-applicable TEs for a given type of module at any possible security level. A complete set of TE tables elaborating on Table 3 is provided in the Appendix.
 
 TE Filtering Criteria
 __________________________

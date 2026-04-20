@@ -1,5 +1,5 @@
-Protocol Workstream
-=========================
+Appendix C: Protocol Workstream
+================================
 
 .. toctree::
    :maxdepth: 2
@@ -57,6 +57,8 @@ The ACVP Proxy has many options, allows a flexible deployment, and is extendable
 
 Accessing the ACMVP Demo Server
 --------------------------------
+
+A CSR is not be needed to access the ACMVP Demo server if a user already has an ACVTS Demo or ESVTS Demo server certificate. Said user will only need to send an email to amvp-demo@nist.gov to request access to the ACMVP Demo server.
 
 Here are the instructions and steps to request access to the upcoming demo environment:
 

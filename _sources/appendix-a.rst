@@ -1,15 +1,15 @@
-Appendix A. List of Symbols, Abbreviations, and Acronyms
+Appendix A: List of Symbols, Abbreviations, and Acronyms
 ============================================================
 
 **140A-TE1** - Vendor-documentation-dependent Test Evidence
 
-**ACMVP/ACVP** - Automated Cryptographic Module Validation Project
+**ACMVP/AMVP** - Automated Cryptographic Module Validation Project
+
+**ACVP** - Automated Cryptographic Validation Protocol
 
 **AD DS** - Active Directory Domain Services
 
 **ALB** - Application Load Balancer
-
-**AMVP** - Automated Module Validation Program
 
 **API** - Applications Programming Interface
 
@@ -25,7 +25,7 @@ Appendix A. List of Symbols, Abbreviations, and Acronyms
 
 **CRADA** - Cooperative Research and Development Agreement
 
-**CSTL1029** - Cryptographic and Security Testing Laboratory
+**CSTL** - Cryptographic and Security Testing Laboratory
 
 **CVE** - Common Vulnerabilities and Exposures
 
@@ -33,17 +33,17 @@ Appendix A. List of Symbols, Abbreviations, and Acronyms
 
 **ECR** - Elastic Container Registry
 
-**ECS1037** - Elastic Container Service
+**ECS** - Elastic Container Service
 
 **EDC** - Error Detection Code
 
-**EFT** - Electrical Fast Transients
+**EFP** - Environmental Failure Protection
+
+**EFT** - Environmental Failure Testing
 
 **EKS** - Elastic Kubernetes Service
 
 **ESV** - Entropy Source Validation
-
-**ESVP** - Entropy Source Validation Program
 
 **FIPS** - Federal Information Processing Standards
 
@@ -63,7 +63,7 @@ Appendix A. List of Symbols, Abbreviations, and Acronyms
 
 **ISO** - International Organization for Standardization
 
-**IUT1067** - Implementation Under Test
+**IUT** - Implementation Under Test
 
 **MAC** - Message Authentication Code
 
@@ -82,6 +82,10 @@ Appendix A. List of Symbols, Abbreviations, and Acronyms
 **OTAR** - Over the Air Rekeying
 
 **OTP** - One-time Programmable
+
+**PAA** - Processor Augmented Algorithm
+
+**PAI** - Processor Algorithm Implementation
 
 **RDS** - Relational Database Service
 
