@@ -300,7 +300,7 @@
 
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="protocol/index.html">Appendix C: Protocol Workstream</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="protocol/index.html">Appendix C: CMVP Demo Server</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2 has-children"><a class="reference internal" href="protocol/technicalDetails.html">Protocol Workstream Technical Details</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="protocol/securityConsiderations.html">Security Considerations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="protocol/login.html">Login</a></li>
@@ -327,8 +327,6 @@
 <li class="toctree-l2"><a class="reference internal" href="appendix-e/AutomationTemplates.html">Automation Templates</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="te/index.html">2025 Status Update - Test Evidence Workstream</a></li>
-<li class="toctree-l1"><a class="reference internal" href="infrastructure/index.html">2025 Status Update - Research Infrastructure Workstream</a></li>
 </ul>
 
     </div>
@@ -482,17 +480,32 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tes-requiring-vendor-documentation">TEs Requiring Vendor Documentation</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tes-depending-on-security-policy">TEs depending on Security Policy</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tes-requiring-source-code-inspection">TEs requiring source code inspection</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tes-depending-on-other-documents">TEs depending on other documents</a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#tes-requiring-module-functional-test">TEs Requiring Module Functional Test</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#a-complete-list-of-te-classification">A Complete list of TE Classification</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tes-depending-on-other-documents">TEs depending on other documents</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tes-requiring-module-functional-test">TEs Requiring Module Functional Test</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-complete-list-of-te-classification">A Complete list of TE Classification</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-methods-for-functional-testing-tes">Test Methods for Functional Testing TEs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-access">Testing Access</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-criteria">Selection Criteria</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#debugger">Debugger</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-and-or-emulation">Simulation and/or Emulation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#harness">Harness</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#manual">Manual</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#other">Other</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-methods-for-functional-testing-tes">Test Methods for Functional Testing TEs</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#improvement-of-te-filtering-coverage">Improvement of TE Filtering Coverage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-methods-allowed">Test Methods Allowed</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#improvement-of-te-filtering-coverage">Improvement of TE Filtering Coverage</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#te-filtering-criteria">TE Filtering Criteria</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tes-impacted-by-basic-te-filters">TEs Impacted by Basic TE Filters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#te-impacted-by-supplemental-te-filters">TE Impacted by Supplemental TE Filters</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-ases-not-separately-tested">Removing ASes not separately tested</a></li>
 </ul>
             </nav>
@@ -676,9 +689,11 @@ document.write(`
 </section>
 <section id="tes-depending-on-other-documents">
 <h4>TEs depending on other documents<a class="headerlink" href="#tes-depending-on-other-documents" title="Link to this heading">#</a></h4>
-<p>TEs requiring other documents are tagged as OD-TE in section 3.2.3.</p>
+<p>TEs requiring other documents are tagged as OD-TE in <a class="reference internal" href="#a-complete-list-of-te-classification"><span class="std std-ref">A Complete list of TE Classification</span></a>.</p>
+</section>
+</section>
 <section id="tes-requiring-module-functional-test">
-<h5>TEs Requiring Module Functional Test<a class="headerlink" href="#tes-requiring-module-functional-test" title="Link to this heading">#</a></h5>
+<h3>TEs Requiring Module Functional Test<a class="headerlink" href="#tes-requiring-module-functional-test" title="Link to this heading">#</a></h3>
 <p>TEs in this category require the tester to exercise and manipulate the module to test its functionality. To do this, testers rely on various pieces of evidence that include logfile names, screenshots, or remote testing/video observation. In essence, the tester must directly see and interact with the module to ensure that it functions in the way specified by the vendor.</p>
 <p><strong>TE09.03.02</strong> is an example of this category. It states: “For each [Sensitive Security Parameter (SSP)] that can be entered, the tester shall first enter the SSP while assuming the correct entity. The tester shall then verify that entry is not possible when assuming an incorrect entity” <a class="reference internal" href="references.html#ref-3"><span class="std std-ref">[3]</span></a>. To fulfill this TE, the tester must assume specific entities and use the module as those assumed roles, testing that the module correctly identifies roles and grants only the appropriate SSP entry service to each entity.</p>
 <p>This category of TEs is the hardest to automate; however, we may address the work surrounding functional testing. Automation opportunities may be found in how the lab collects and prepares the test evidence (e.g., log files) from functional testing.</p>
@@ -778,7 +793,7 @@ TE06.09.02, TE06.09.03, TE06.10.01, TE06.10.02, TE06.10.03, TE06.11.01, TE06.11.
 </div>
 </section>
 <section id="a-complete-list-of-te-classification">
-<h5>A Complete list of TE Classification<a class="headerlink" href="#a-complete-list-of-te-classification" title="Link to this heading">#</a></h5>
+<h3>A Complete list of TE Classification<a class="headerlink" href="#a-complete-list-of-te-classification" title="Link to this heading">#</a></h3>
 <p>All TEs are classified into four categories (i.e., SP-TE, OD-TE, SC-TC, FT-TE) and their potential combination.</p>
 <p>The complete set of the TE classification tags is listed below:</p>
 <ul class="simple">
@@ -2553,16 +2568,19 @@ TE06.09.02, TE06.09.03, TE06.10.01, TE06.10.02, TE06.10.03, TE06.11.01, TE06.11.
 </div>
 </section>
 </section>
-</section>
-</section>
 <section id="test-methods-for-functional-testing-tes">
 <h2>Test Methods for Functional Testing TEs<a class="headerlink" href="#test-methods-for-functional-testing-tes" title="Link to this heading">#</a></h2>
 <p>The diverse set of cryptographic modules and their varying restrictive operating environments can create challenges in choosing the right approach and selecting an appropriate toolset to capture the evaluation TE. The CMVP provides some limited guidance, but it is necessary to identify which test methods are relevant to the granularity of individual TEs.</p>
+<section id="testing-access">
+<h3>Testing Access<a class="headerlink" href="#testing-access" title="Link to this heading">#</a></h3>
 <p>There is frequently a challenge in accessing the operational environment for effective testing of a cryptographic module. There are allowances for various methodologies to follow for accommodating these challenges. For any given evaluation, it is assumed by default that the Testing Access used for all TEs is the same; however, any given TE might in fact require an alternate allowed Testing Access method to be used.</p>
 <p>The Testing Access methods are as follows:</p>
 <p><strong>Physical:</strong> Testing a module directly by lab personnel within a controlled lab environment.</p>
 <p><strong>Remote:</strong> Testing a module remotely while obtaining the equivalent assurance as if the test were performed at the vendor’s facility.</p>
 <p><strong>Observed:</strong> Testing a module by vendor personnel within a controlled lab environment while lab personnel observe the triggering and responses of the module.</p>
+</section>
+<section id="selection-criteria">
+<h3>Selection Criteria<a class="headerlink" href="#selection-criteria" title="Link to this heading">#</a></h3>
 <p>The challenge is to assign only the appropriate test methods to each of the identified TEs. Drawing from CMVP, lab, and original vendor expertise, the criteria can be used to refine the test methods to be used for each TE.</p>
 <p>Test methods are the defined techniques that can be utilized while ensuring confidence in capturing actual module operation under real-world conditions and enabling an efficient evidence-gathering workflow. Only a limited set of test method categories exists for the team to focus on in their pursuit, which can best be described as:</p>
 <ul class="simple">
@@ -2573,7 +2591,12 @@ TE06.09.02, TE06.09.03, TE06.10.01, TE06.10.02, TE06.10.03, TE06.11.01, TE06.11.
 <li><p><strong>Manual:</strong> Action(s) by a user to perform a set of designated steps for the purpose of triggering events and capturing the corresponding responses or results.</p></li>
 <li><p><strong>Other:</strong> Due to the diversity and complexity of operating environments, the toolset needed to perform the gathering of relevant TE may not fit precisely within the above five test methods. This warrants the need for a catch-all method that enables the tester to comprehensively describe the methodology used to capture the TE.</p></li>
 </ul>
+<section id="debugger">
+<h4>Debugger<a class="headerlink" href="#debugger" title="Link to this heading">#</a></h4>
 <p>No clearly articulated interpretation of when and how a debugger can and should be used is available, as much of what is known comes from lab empirical evidence.</p>
+</section>
+<section id="simulation-and-or-emulation">
+<h4>Simulation and/or Emulation<a class="headerlink" href="#simulation-and-or-emulation" title="Link to this heading">#</a></h4>
 <p>Drawing from guidance currently provided by CMVP in the <a class="reference external" href="https://csrc.nist.gov/csrc/media/Projects/cryptographic-module-validation-program/documents/fips%20140-3/FIPS-140-3-CMVP%20Management%20Manual.pdf">Management Manual, dated 10/16/2025, Version 2.5</a>, labs may apply emulators or simulators, depending on the type of testing results to be achieved. The three broad areas of focus during the testing of a cryptographic module are operational testing of the module at the module’s defined boundary, operational fault induction testing, and algorithm testing.</p>
 <ol class="arabic simple">
 <li><p><strong>Operational Testing</strong> - Emulation or simulation is prohibited for the operational testing of a cryptographic module. Actual testing of the cryptographic module must be performed utilizing the defined ports, interfaces, and services that a module provides. A test harness or a modified version to induce an error may be utilized; however, no changes to code or circuitry responsible for the tested response may be made.</p></li>
@@ -2585,13 +2608,22 @@ TE06.09.02, TE06.09.03, TE06.10.01, TE06.10.02, TE06.10.03, TE06.11.01, TE06.11.
 </ol>
 </li>
 </ol>
-<blockquote>
-<div><p>Harness</p>
-</div></blockquote>
-<hr class="docutils" />
+</section>
+<section id="harness">
+<h4>Harness<a class="headerlink" href="#harness" title="Link to this heading">#</a></h4>
 <p>No clearly articulated interpretation of when and how a test harness can and should be used is available, as much of what is known comes from experienced vendors who developed specialized test harnesses around their respective modules and within the restricted operating environments.</p>
+</section>
+<section id="manual">
+<h4>Manual<a class="headerlink" href="#manual" title="Link to this heading">#</a></h4>
 <p>No clearly articulated interpretation of when and how a manual process can and should be used is available, as much of what is known comes from the need for human interaction to trigger events or an inability to trigger the steps in an automated approach.</p>
+</section>
+<section id="other">
+<h4>Other<a class="headerlink" href="#other" title="Link to this heading">#</a></h4>
 <p>As noted earlier, due to the diversity and complexity of operating environments, the toolset needed to perform the gathering of relevant TE may not fit precisely within the above five test methods. Therefore, there is a need for a catch-all method that enables the tester to comprehensively describe the methodology used to capture the TE. The testing techniques can evolve over time and emergent testing techniques can be added to this list.</p>
+</section>
+</section>
+<section id="test-methods-allowed">
+<h3>Test Methods Allowed<a class="headerlink" href="#test-methods-allowed" title="Link to this heading">#</a></h3>
 <p>Table 4 maps the allowed test methods to the grouping of associated TEs for the purpose of condensing the resulting table.</p>
 <div class="pst-scrollable-table-container"><table class="table" id="id4">
 <caption><span class="caption-text">Table 4 Allowed Test Methods</span><a class="headerlink" href="#id4" title="Link to this table">#</a></caption>
@@ -3234,6 +3266,7 @@ TE06.09.02, TE06.09.03, TE06.10.01, TE06.10.02, TE06.10.03, TE06.11.01, TE06.11.
 </table>
 </div>
 </section>
+</section>
 <section id="improvement-of-te-filtering-coverage">
 <h2>Improvement of TE Filtering Coverage<a class="headerlink" href="#improvement-of-te-filtering-coverage" title="Link to this heading">#</a></h2>
 <p>TE filters serve as a pivotal mechanism to streamline the classification and evaluation of TE, ensuring that only relevant and applicable tests are conducted based on specific module characteristics. A proper set of applicable TEs tailored by a given module specification refines the required assessments and optimizes the validation process.</p>
@@ -3360,63 +3393,82 @@ TE06.09.02, TE06.09.03, TE06.10.01, TE06.10.02, TE06.10.03, TE06.11.01, TE06.11.
 </div>
 <p>Building on the summary of FIPS 140-3 security requirements in Table 5, Table 6 provides a more granular analysis of the number of security requirements per ISO/IEC 24759:2014(2015), which is a companion document to ISO/IEC 19790 specifying the derived test requirements, across different implementation areas. This table categorizes security requirements based on the module’s type being Software (SW), Firmware (FW), Hardware (HW), SW-HW hybrid (SW-H), or FW-HW hybrid (FW-H), and further differentiates them by security levels. The breakdown facilitates a clearer understanding of the distribution of TE requirements, highlighting how various module implementations align with compliance expectations at each level.</p>
 <p>The number of total TEs and the percentage of applicable TEs will indicate how many TEs are not applicable. By filtering out these non-applicable TEs with public consensus, the CSTL can more directly perform the required testing.</p>
-<div class="pst-scrollable-table-container"><table class="table" id="id6">
+<style> .red { background-color: red; color: white; } </style>
+<style> .g { background-color: green; color: white; } </style><div class="pst-scrollable-table-container"><table class="table" id="id6">
 <caption><span class="caption-text">Table 6 An overview of the number of Security Requirements</span><a class="headerlink" href="#id6" title="Link to this table">#</a></caption>
 <thead>
-<tr class="row-odd"><th class="head" rowspan="2"><p>Area</p></th>
-<th class="head" rowspan="2"><p>Total TEs</p></th>
-<th class="head" colspan="5"><p>Security Level 1</p></th>
-<th class="head" colspan="5"><p>Security Level 2</p></th>
-<th class="head" colspan="5"><p>Security Level 3</p></th>
-<th class="head" colspan="5"><p>Security Level 4</p></th>
-</tr>
-<tr class="row-even"><th class="head"><p>SW</p></th>
-<th class="head"><p>FW</p></th>
-<th class="head"><p>HW</p></th>
-<th class="head"><p>SW-H</p></th>
-<th class="head"><p>FW-H</p></th>
-<th class="head"><p>SW</p></th>
-<th class="head"><p>FW</p></th>
-<th class="head"><p>HW</p></th>
-<th class="head"><p>SW-H</p></th>
-<th class="head"><p>FW-H</p></th>
-<th class="head"><p>SW</p></th>
-<th class="head"><p>FW</p></th>
-<th class="head"><p>HW</p></th>
-<th class="head"><p>SW-H</p></th>
-<th class="head"><p>FW-H</p></th>
-<th class="head"><p>SW</p></th>
-<th class="head"><p>FW</p></th>
-<th class="head"><p>HW</p></th>
-<th class="head"><p>SW-H</p></th>
-<th class="head"><p>FW-H</p></th>
+<tr class="row-odd"><th class="head"><p><strong>Area</strong></p></th>
+<th class="head"><p><strong>Total TEs</strong></p></th>
+<th class="head"><p><strong>Security Level 1</strong></p></th>
+<th class="head"></th>
+<th class="head"></th>
+<th class="head"></th>
+<th class="head"></th>
+<th class="head"><p><strong>Security Level 2</strong></p></th>
+<th class="head"></th>
+<th class="head"></th>
+<th class="head"></th>
+<th class="head"></th>
+<th class="head"><p><strong>Security Level 3</strong></p></th>
+<th class="head"></th>
+<th class="head"></th>
+<th class="head"></th>
+<th class="head"></th>
+<th class="head"><p><strong>Security Level 4</strong></p></th>
+<th class="head"></th>
+<th class="head"></th>
+<th class="head"></th>
+<th class="head"></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-odd"><td><p>2</p></td>
+<tr class="row-even"><td></td>
+<td></td>
+<td><p>SW</p></td>
+<td><p>FW</p></td>
+<td><p>HW</p></td>
+<td><p>SW-H</p></td>
+<td><p>FW-H</p></td>
+<td><p>SW</p></td>
+<td><p>FW</p></td>
+<td><p>HW</p></td>
+<td><p>SW-H</p></td>
+<td><p>FW-H</p></td>
+<td><p>SW</p></td>
+<td><p>FW</p></td>
+<td><p>HW</p></td>
+<td><p>SW-H</p></td>
+<td><p>FW-H</p></td>
+<td><p>SW</p></td>
+<td><p>FW</p></td>
+<td><p>HW</p></td>
+<td><p>SW-H</p></td>
+<td><p>FW-H</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>2</strong></p></td>
 <td><p>65</p></td>
-<td><p>40</p></td>
+<td><p><span class="red">40</span></p></td>
 <td><p>45</p></td>
 <td><p>49</p></td>
 <td><p>55</p></td>
 <td><p>60</p></td>
-<td><p>40</p></td>
+<td><p><span class="red">40</span></p></td>
 <td><p>45</p></td>
 <td><p>49</p></td>
 <td><p>55</p></td>
 <td><p>60</p></td>
-<td><p>40</p></td>
+<td><p><span class="red">40</span></p></td>
 <td><p>45</p></td>
 <td><p>49</p></td>
 <td><p>55</p></td>
 <td><p>60</p></td>
-<td><p>40</p></td>
+<td><p><span class="red">40</span></p></td>
 <td><p>45</p></td>
 <td><p>49</p></td>
 <td><p>55</p></td>
 <td><p>60</p></td>
 </tr>
-<tr class="row-even"><td><p>3</p></td>
+<tr class="row-even"><td><p><strong>3</strong></p></td>
 <td><p>53</p></td>
 <td><p>41</p></td>
 <td><p>43</p></td>
@@ -3439,7 +3491,7 @@ TE06.09.02, TE06.09.03, TE06.10.01, TE06.10.02, TE06.10.03, TE06.11.01, TE06.11.
 <td><p>53</p></td>
 <td><p>53</p></td>
 </tr>
-<tr class="row-odd"><td><p>4</p></td>
+<tr class="row-odd"><td><p><strong>4</strong></p></td>
 <td><p>74</p></td>
 <td><p>45</p></td>
 <td><p>45</p></td>
@@ -3462,7 +3514,7 @@ TE06.09.02, TE06.09.03, TE06.10.01, TE06.10.02, TE06.10.03, TE06.11.01, TE06.11.
 <td><p>71</p></td>
 <td><p>71</p></td>
 </tr>
-<tr class="row-even"><td><p>5</p></td>
+<tr class="row-even"><td><p><strong>5</strong></p></td>
 <td><p>39</p></td>
 <td><p>23</p></td>
 <td><p>23</p></td>
@@ -3485,7 +3537,7 @@ TE06.09.02, TE06.09.03, TE06.10.01, TE06.10.02, TE06.10.03, TE06.11.01, TE06.11.
 <td><p>39</p></td>
 <td><p>39</p></td>
 </tr>
-<tr class="row-odd"><td><p>6</p></td>
+<tr class="row-odd"><td><p><strong>6</strong></p></td>
 <td><p>50</p></td>
 <td><p>10</p></td>
 <td><p>10</p></td>
@@ -3508,30 +3560,30 @@ TE06.09.02, TE06.09.03, TE06.10.01, TE06.10.02, TE06.10.03, TE06.11.01, TE06.11.
 <td><p>0</p></td>
 <td><p>0</p></td>
 </tr>
-<tr class="row-even"><td><p>7</p></td>
+<tr class="row-even"><td><p><strong>7</strong></p></td>
 <td><p>82</p></td>
 <td><p>0</p></td>
 <td><p>14</p></td>
-<td><p>14</p></td>
+<td><p><span class="g">14</span></p></td>
 <td><p>14</p></td>
 <td><p>14</p></td>
 <td><p>0</p></td>
 <td><p>27</p></td>
-<td><p>27</p></td>
+<td><p><span class="g">27</span></p></td>
 <td><p>27</p></td>
 <td><p>27</p></td>
 <td><p>0</p></td>
 <td><p>69</p></td>
-<td><p>69</p></td>
+<td><p><span class="g">69</span></p></td>
 <td><p>69</p></td>
 <td><p>69</p></td>
 <td><p>0</p></td>
 <td><p>78</p></td>
-<td><p>78</p></td>
+<td><p><span class="g">78</span></p></td>
 <td><p>78</p></td>
 <td><p>78</p></td>
 </tr>
-<tr class="row-odd"><td><p>8</p></td>
+<tr class="row-odd"><td><p><strong>8</strong></p></td>
 <td><p>5</p></td>
 <td><p>3</p></td>
 <td><p>3</p></td>
@@ -3554,7 +3606,7 @@ TE06.09.02, TE06.09.03, TE06.10.01, TE06.10.02, TE06.10.03, TE06.11.01, TE06.11.
 <td><p>4</p></td>
 <td><p>4</p></td>
 </tr>
-<tr class="row-even"><td><p>9</p></td>
+<tr class="row-even"><td><p><strong>9</strong></p></td>
 <td><p>63</p></td>
 <td><p>44</p></td>
 <td><p>43</p></td>
@@ -3577,7 +3629,7 @@ TE06.09.02, TE06.09.03, TE06.10.01, TE06.10.02, TE06.10.03, TE06.11.01, TE06.11.
 <td><p>57</p></td>
 <td><p>57</p></td>
 </tr>
-<tr class="row-odd"><td><p>10</p></td>
+<tr class="row-odd"><td><p><strong>10</strong></p></td>
 <td><p>74</p></td>
 <td><p>68</p></td>
 <td><p>68</p></td>
@@ -3600,7 +3652,7 @@ TE06.09.02, TE06.09.03, TE06.10.01, TE06.10.02, TE06.10.03, TE06.11.01, TE06.11.
 <td><p>74</p></td>
 <td><p>74</p></td>
 </tr>
-<tr class="row-even"><td><p>11</p></td>
+<tr class="row-even"><td><p><strong>11</strong></p></td>
 <td><p>52</p></td>
 <td><p>36</p></td>
 <td><p>36</p></td>
@@ -3623,7 +3675,7 @@ TE06.09.02, TE06.09.03, TE06.10.01, TE06.10.02, TE06.10.03, TE06.11.01, TE06.11.
 <td><p>52</p></td>
 <td><p>52</p></td>
 </tr>
-<tr class="row-odd"><td><p>12</p></td>
+<tr class="row-odd"><td><p><strong>12</strong></p></td>
 <td><p>5</p></td>
 <td><p>2</p></td>
 <td><p>2</p></td>
@@ -3646,7 +3698,7 @@ TE06.09.02, TE06.09.03, TE06.10.01, TE06.10.02, TE06.10.03, TE06.11.01, TE06.11.
 <td><p>5</p></td>
 <td><p>5</p></td>
 </tr>
-<tr class="row-even"><td><p>A</p></td>
+<tr class="row-even"><td><p><strong>A</strong></p></td>
 <td><p>1</p></td>
 <td><p>1</p></td>
 <td><p>1</p></td>
@@ -3669,7 +3721,7 @@ TE06.09.02, TE06.09.03, TE06.10.01, TE06.10.02, TE06.10.03, TE06.11.01, TE06.11.
 <td><p>1</p></td>
 <td><p>1</p></td>
 </tr>
-<tr class="row-odd"><td><p>B</p></td>
+<tr class="row-odd"><td><p><strong>B</strong></p></td>
 <td><p>4</p></td>
 <td><p>4</p></td>
 <td><p>4</p></td>
@@ -3692,51 +3744,51 @@ TE06.09.02, TE06.09.03, TE06.10.01, TE06.10.02, TE06.10.03, TE06.11.01, TE06.11.
 <td><p>4</p></td>
 <td><p>4</p></td>
 </tr>
-<tr class="row-even"><td><p>Total TEs</p></td>
-<td><p>567</p></td>
-<td><p>317</p></td>
-<td><p>337</p></td>
-<td><p>340</p></td>
-<td><p>357</p></td>
-<td><p>361</p></td>
-<td><p>391</p></td>
-<td><p>424</p></td>
-<td><p>427</p></td>
-<td><p>445</p></td>
-<td><p>449</p></td>
-<td><p>373</p></td>
-<td><p>449</p></td>
-<td><p>455</p></td>
-<td><p>473</p></td>
-<td><p>478</p></td>
-<td><p>384</p></td>
-<td><p>469</p></td>
-<td><p>475</p></td>
-<td><p>493</p></td>
-<td><p>498</p></td>
+<tr class="row-even"><td><p><strong>Total TEs</strong></p></td>
+<td><p><strong>567</strong></p></td>
+<td><p><strong>317</strong></p></td>
+<td><p><strong>337</strong></p></td>
+<td><p><strong>340</strong></p></td>
+<td><p><strong>357</strong></p></td>
+<td><p><strong>361</strong></p></td>
+<td><p><strong>391</strong></p></td>
+<td><p><strong>424</strong></p></td>
+<td><p><strong>427</strong></p></td>
+<td><p><strong>445</strong></p></td>
+<td><p><strong>449</strong></p></td>
+<td><p><strong>373</strong></p></td>
+<td><p><strong>449</strong></p></td>
+<td><p><strong>455</strong></p></td>
+<td><p><strong>473</strong></p></td>
+<td><p><strong>478</strong></p></td>
+<td><p><strong>384</strong></p></td>
+<td><p><strong>469</strong></p></td>
+<td><p><strong>475</strong></p></td>
+<td><p><strong>493</strong></p></td>
+<td><p><strong>498</strong></p></td>
 </tr>
-<tr class="row-odd"><td><p>% Appli-cable</p></td>
-<td><p>100</p></td>
-<td><p>56</p></td>
-<td><p>59</p></td>
-<td><p>60</p></td>
-<td><p>63</p></td>
-<td><p>64</p></td>
-<td><p>69</p></td>
-<td><p>75</p></td>
-<td><p>75</p></td>
-<td><p>78</p></td>
-<td><p>79</p></td>
-<td><p>66</p></td>
-<td><p>79</p></td>
-<td><p>80</p></td>
-<td><p>83</p></td>
-<td><p>84</p></td>
-<td><p>68</p></td>
-<td><p>83</p></td>
-<td><p>84</p></td>
-<td><p>87</p></td>
-<td><p>88</p></td>
+<tr class="row-odd"><td><p><strong>% Applicable</strong></p></td>
+<td><p><strong>100</strong></p></td>
+<td><p><strong>56</strong></p></td>
+<td><p><strong>59</strong></p></td>
+<td><p><strong>60</strong></p></td>
+<td><p><strong>63</strong></p></td>
+<td><p><strong>64</strong></p></td>
+<td><p><strong>69</strong></p></td>
+<td><p><strong>75</strong></p></td>
+<td><p><strong>75</strong></p></td>
+<td><p><strong>78</strong></p></td>
+<td><p><strong>79</strong></p></td>
+<td><p><strong>66</strong></p></td>
+<td><p><strong>79</strong></p></td>
+<td><p><strong>80</strong></p></td>
+<td><p><strong>83</strong></p></td>
+<td><p><strong>84</strong></p></td>
+<td><p><strong>68</strong></p></td>
+<td><p><strong>83</strong></p></td>
+<td><p><strong>84</strong></p></td>
+<td><p><strong>87</strong></p></td>
+<td><p><strong>88</strong></p></td>
 </tr>
 </tbody>
 </table>
@@ -3747,6 +3799,8 @@ TE06.09.02, TE06.09.03, TE06.10.01, TE06.10.02, TE06.10.03, TE06.11.01, TE06.11.
 <li><p>The Area 7 TEs include requirements from security level 1 through level 4, which are listed in Table 6. The Physical Security requirements in Area 7 are incremental for cryptographic modules from a low security level to a higher level. The numbers of TEs in the green rectangle boxes on Table 6 illustrate this trend.</p></li>
 </ul>
 <p>Table 6 and Table 7 in <a class="reference internal" href="te/index.html#tes-impacted-by-basic-te-filters"><span class="std std-ref">TEs Impacted by Basic TE Filters</span></a> serve as examples of how the basic TE filters work by listing all applicable TEs and non-applicable TEs for a given type of module at any possible security level. A complete set of TE tables elaborating on Table 6 is provided in Appendix B of this document.</p>
+<section id="te-filtering-criteria">
+<h3>TE Filtering Criteria<a class="headerlink" href="#te-filtering-criteria" title="Link to this heading">#</a></h3>
 <p>The TE Filtering criteria consists of the Module Information and Supplemental Information from the WebCryptik as the base. The CMVP provided <a class="reference external" href="https://csrc.nist.gov/csrc/media/Projects/cryptographic-module-validation-program/documents/fips%20140-3/Module%20Processes/SupplementalItems-2025-06-25.pdf">Module Supplemental Information</a> (dated 2025-06-25), but this is not currently used to tailor the set of TEs to fit the module under test.</p>
 <p>In the CMVP’s Module Supplemental Information (MSI) document, most Supplemental Information questions map to the security assertions (AS), test requirements (TE), implementation guidance (IG), and security policies (SP), but a few questions are not mapped to any of these and are left blank. The list below reflects the CMVP’s current MSI document. The TE Workstream provides a complete mapping of MSI questions to relevant TEs in Table 8.</p>
 <p>By reviewing all TEs contained in the WebCryptik Br1 v1.0.6, the TE Workstream completed the list of criteria, including the basic filters and supplemental filters, as follows:</p>
@@ -3865,6 +3919,9 @@ TE06.09.02, TE06.09.03, TE06.10.01, TE06.10.02, TE06.10.03, TE06.11.01, TE06.11.
 </ul>
 </li>
 </ul>
+</section>
+<section id="tes-impacted-by-basic-te-filters">
+<h3>TEs Impacted by Basic TE Filters<a class="headerlink" href="#tes-impacted-by-basic-te-filters" title="Link to this heading">#</a></h3>
 <p>To ensure a structured approach to TE filtering, it is necessary to categorize TEs based on the security level and module type. Table 6 presents a detailed breakdown of the TEs applicable to different security levels for software modules, illustrating how filtering criteria refine the validation scope. By segmenting TEs according to security requirements, this table helps streamline the testing process, ensuring that only the relevant test evidence is considered for a given module configuration. This targeted approach enhances efficiency while maintaining rigorous security standards.</p>
 <p>We recognize that software implementations only support levels 1 and 2. However, Table 7 lists the Area 2 Cryptographic Module Specification TEs required from security level 1 through level 4, and Table 8 lists the Area 7 Physical Security TEs for all four security levels.</p>
 <div class="pst-scrollable-table-container"><table class="table" id="id7">
@@ -3934,6 +3991,9 @@ TE06.09.02, TE06.09.03, TE06.10.01, TE06.10.02, TE06.10.03, TE06.11.01, TE06.11.
 </tbody>
 </table>
 </div>
+</section>
+<section id="te-impacted-by-supplemental-te-filters">
+<h3>TE Impacted by Supplemental TE Filters<a class="headerlink" href="#te-impacted-by-supplemental-te-filters" title="Link to this heading">#</a></h3>
 <p>In addition to the basic TE filtering criteria, supplemental filters further refine the selection of applicable test evidence based on specific module properties and security features. Table 9 highlights the TEs affected by these supplemental filtering properties, which include factors such as authentication mechanisms, cryptographic output capabilities, tamper response measures, and other specialized security attributes. By applying these filters, the validation process can be optimized to focus on the most relevant security assurances while reducing redundant or inapplicable tests. This targeted approach enhances the efficiency and accuracy of the TE selection process.</p>
 <div class="pst-scrollable-table-container"><table class="table" id="id9">
 <caption><span class="caption-text">Table 9 TEs Affected by the Supplemental Filtering Properties</span><a class="headerlink" href="#id9" title="Link to this table">#</a></caption>
@@ -4133,6 +4193,7 @@ TE06.09.02, TE06.09.03, TE06.10.01, TE06.10.02, TE06.10.03, TE06.11.01, TE06.11.
 </div>
 <p>Note: The total number of the TEs affected by the supplemental filter properties is not the sum of the numbers in the column of “Number of Affected TEs” (i.e., 218) because some TEs are affected by multiple filter properties and so appear multiple times in <strong>Table 9</strong>.</p>
 </section>
+</section>
 <section id="removing-ases-not-separately-tested">
 <h2>Removing ASes not separately tested<a class="headerlink" href="#removing-ases-not-separately-tested" title="Link to this heading">#</a></h2>
 <p>Some assertions (ASes) are “not separately tested”, as indicated in ISO/IEC 24759 <a class="reference internal" href="references.html#ref-3"><span class="std std-ref">[3]</span></a> and they do not have associated TEs.</p>
@@ -4238,17 +4299,32 @@ TE06.09.02, TE06.09.03, TE06.10.01, TE06.10.02, TE06.10.03, TE06.11.01, TE06.11.
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tes-requiring-vendor-documentation">TEs Requiring Vendor Documentation</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tes-depending-on-security-policy">TEs depending on Security Policy</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tes-requiring-source-code-inspection">TEs requiring source code inspection</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tes-depending-on-other-documents">TEs depending on other documents</a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#tes-requiring-module-functional-test">TEs Requiring Module Functional Test</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#a-complete-list-of-te-classification">A Complete list of TE Classification</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tes-depending-on-other-documents">TEs depending on other documents</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tes-requiring-module-functional-test">TEs Requiring Module Functional Test</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-complete-list-of-te-classification">A Complete list of TE Classification</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-methods-for-functional-testing-tes">Test Methods for Functional Testing TEs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-access">Testing Access</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-criteria">Selection Criteria</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#debugger">Debugger</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-and-or-emulation">Simulation and/or Emulation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#harness">Harness</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#manual">Manual</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#other">Other</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-methods-for-functional-testing-tes">Test Methods for Functional Testing TEs</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#improvement-of-te-filtering-coverage">Improvement of TE Filtering Coverage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-methods-allowed">Test Methods Allowed</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#improvement-of-te-filtering-coverage">Improvement of TE Filtering Coverage</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#te-filtering-criteria">TE Filtering Criteria</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tes-impacted-by-basic-te-filters">TEs Impacted by Basic TE Filters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#te-impacted-by-supplemental-te-filters">TE Impacted by Supplemental TE Filters</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-ases-not-separately-tested">Removing ASes not separately tested</a></li>
 </ul>
   </nav></div>

@@ -1,7 +1,7 @@
 Protocol Workstream 
 =====================
 
-The Protocol Workstream defines the interactions between the automated CMVP server and the ACMVP clients supporting a proof-of-concept of automation capabilities. The CMVP hosts a demonstration server for interoperability and testing purposes through NIST. This is referred to as the ACMVP Demo Server covered in section 4.5. 
+The Protocol Workstream defines the interactions between the automated CMVP server and the ACMVP clients supporting a proof-of-concept of automation capabilities. The CMVP hosts a demonstration server for interoperability and testing purposes through NIST. This is referred to as the ACMVP Demo Server covered in :ref:`Accessing the ACMVP Demo Server`. 
 
 Protocol Workstream Collaborators
 ------------------------------------

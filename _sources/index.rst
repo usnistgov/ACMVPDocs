@@ -112,7 +112,7 @@ Collaborators participating in this project submitted their capabilities in resp
 
 -  Apple
 
--  atsec
+-  atsec information security
 
 -  AWS
 
@@ -182,5 +182,3 @@ Such statements should be addressed to: applied-crypto-testing@nist.gov
    protocol/index.rst
    appendix-d.rst
    appendix-e/index.rst
-   te/index.rst
-   infrastructure/index.rst

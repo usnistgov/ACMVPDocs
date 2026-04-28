@@ -1,5 +1,5 @@
-Appendix C: Protocol Workstream
-================================
+Appendix C: CMVP Demo Server
+=============================================
 
 .. toctree::
    :maxdepth: 2
@@ -8,52 +8,6 @@ Appendix C: Protocol Workstream
    :hidden:
 
    technicalDetails.rst
-
-
-Introduction
--------------
-
-The Protocol Workstream defines the interactions between automated CMVP server assets and the NCCoE ACMVP clients supporting a proof-of-concept of automation capabilities. This section captures the progress made since the last report in September 2024.
-
-The ACMVP Protocol Workstream is led by Barry Fussell and Andrew Karcher of Cisco and Chris Celi of NIST with contributions from Panos Kampanakis of Amazon, Michael McCarl and Deborah Harrington of AEGISOLVE, Alex Thurston of Lightship, Stephan Mueller and Walker Riley of atsec, Mike Grimm of Microsoft, Robert Staples of NIST, and Raoul Gabiam, Michael Dimond, Kyle Vitale, Doris Rui, and Matthew Fortes of the MITRE Corporation.
-
-Proof-of-Concept Server Features
-----------------------------------
-
-The proof-of-concept server currently implements the following features:
-- Two-factor authentication using TOTP and mTLS, which improves the TOTP from ACVP by allowing a user to maintain multiple seeds for simultaneous connections
-- Module registration that defines the security levels, embodiment, and other properties of the cryptographic module and automatically determines which TEs are applicable to the cryptographic module
-- Module evidence submission that prompts a client to provide evidence addressing TEs that are applicable to the cryptographic module and will show which TEs have not yet been addressed by the submission to ensure completeness
-- Module security policy submission defined entirely in JSON, which will generate the security policy automatically, allowing the client to retrieve the completed PDF, and ensures that all sections are present and completed.
-- The awarding of a validation certificate once all evidence and security policy information are completed
-- Automatic processing of functional test evidence (FE-TEs) based on the test type selected by the lab
-- Acceptance of source code test evidence based on the test procedure selected by the lab
-
-Server Implementation
-----------------------
-
-The server uses much of the same infrastructure as ACVP and ESV, which is intended to keep the same team available to maintain the systems once they are integrated by the CMVP. The system is comprised of C# and Python applications along with SQL Server databases.
-
-The server development team is also using this opportunity to re-evaluate the required security assurances within NIST to see if any improvements can be implemented into the rest of the CMVP applications, which includes the requirement for Two-Factor authentication, separation between internal and external systems, International Traffic and Arms Restrictions (ITAR), and other elements of the ACVP and ESV systems.
-
-Client Implementations
--------------------------
-
-This section describes the two open source clients, Libamvp and ACVP Proxy, that provide foundational code for developers to build upon when interfacing with the server.
-
-Libamvp - Cisco
-________________
-
-Libamvp is an example client for the AMVP protocol developed by Cisco engineers. It is C based and interacts with the server by parsing user-generated JSON and is intended to be a simple tool to showcase the protocol and assist developers as they create workflows for the generation and submission of AMVP data. Libamvp can create modules and certification requests, submit all required evidence and security policy information, retrieve security policy PDFs, check for the status of a certification request, and other actions, as development continues.
-
-Libamvp can be found here: https://github.com/cisco/libamvp.
-
-ACVP Proxy - atsec
-___________________
-
-The client is called the ACVP Proxy and is supported by atsec information security corp. It provides the interface to access the NIST ACVP, ESVP, and AMVP services using an open sourced code that is available at the public repository: https://github.com/smuellerDD/acvpproxy.
-
-The ACVP Proxy has many options, allows a flexible deployment, and is extendable to cover an arbitrary number of IUT definitions. The AVP Proxy implements the entire interaction with the NIST servers to obtain the data from the server and upload all required data to the server.
 
 Accessing the ACMVP Demo Server
 --------------------------------
@@ -102,12 +56,3 @@ Note that per policy, SFC accounts and attachments are only valid for two calend
 Note that external SFC accounts will go dormant after two weeks by NIST policy, which is normal behavior. After the certificate is exchanged, there is no further need for SFC.
 
 Additionally, the account can be reinstated at any point in time by going through the same process.
-
-Planned Work
---------------
-
-The work is still in progress. Here are some features that will be addressed by Fall 2025:
-
-- Continue developing automated checklist rules to ensure submissions are as correct as possible before entering the hands of a reviewer 
-- Add reviewer comment rounds to the protocol and implementations rather than handle them out of band over encrypted email
-- Begin integrating ACMVP research products into the production CMVP workflows

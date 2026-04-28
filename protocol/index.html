@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Appendix C: Protocol Workstream &#8212; Automated Cryptographic Module Validation Project  documentation</title>
+    <title>Appendix C: CMVP Demo Server &#8212; Automated Cryptographic Module Validation Project  documentation</title>
   
   
   
@@ -300,7 +300,7 @@
 
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Appendix C: Protocol Workstream</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Appendix C: CMVP Demo Server</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2 has-children"><a class="reference internal" href="technicalDetails.html">Protocol Workstream Technical Details</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="securityConsiderations.html">Security Considerations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="login.html">Login</a></li>
@@ -327,8 +327,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../appendix-e/AutomationTemplates.html">Automation Templates</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../te/index.html">2025 Status Update - Test Evidence Workstream</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../infrastructure/index.html">2025 Status Update - Research Infrastructure Workstream</a></li>
 </ul>
 
     </div>
@@ -467,7 +465,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Appendix C: Protocol Workstream</h1>
+    <h1>Appendix C: CMVP Demo Server</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -477,16 +475,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proof-of-concept-server-features">Proof-of-Concept Server Features</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#server-implementation">Server Implementation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#client-implementations">Client Implementations</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#libamvp-cisco">Libamvp - Cisco</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#acvp-proxy-atsec">ACVP Proxy - atsec</a></li>
-</ul>
-</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-the-acmvp-demo-server">Accessing the ACMVP Demo Server</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#planned-work">Planned Work</a></li>
 </ul>
             </nav>
         </div>
@@ -498,45 +487,10 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="appendix-c-protocol-workstream">
-<h1>Appendix C: Protocol Workstream<a class="headerlink" href="#appendix-c-protocol-workstream" title="Link to this heading">#</a></h1>
+  <section id="appendix-c-cmvp-demo-server">
+<h1>Appendix C: CMVP Demo Server<a class="headerlink" href="#appendix-c-cmvp-demo-server" title="Link to this heading">#</a></h1>
 <div class="toctree-wrapper compound">
 </div>
-<section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
-<p>The Protocol Workstream defines the interactions between automated CMVP server assets and the NCCoE ACMVP clients supporting a proof-of-concept of automation capabilities. This section captures the progress made since the last report in September 2024.</p>
-<p>The ACMVP Protocol Workstream is led by Barry Fussell and Andrew Karcher of Cisco and Chris Celi of NIST with contributions from Panos Kampanakis of Amazon, Michael McCarl and Deborah Harrington of AEGISOLVE, Alex Thurston of Lightship, Stephan Mueller and Walker Riley of atsec, Mike Grimm of Microsoft, Robert Staples of NIST, and Raoul Gabiam, Michael Dimond, Kyle Vitale, Doris Rui, and Matthew Fortes of the MITRE Corporation.</p>
-</section>
-<section id="proof-of-concept-server-features">
-<h2>Proof-of-Concept Server Features<a class="headerlink" href="#proof-of-concept-server-features" title="Link to this heading">#</a></h2>
-<p>The proof-of-concept server currently implements the following features:
-- Two-factor authentication using TOTP and mTLS, which improves the TOTP from ACVP by allowing a user to maintain multiple seeds for simultaneous connections
-- Module registration that defines the security levels, embodiment, and other properties of the cryptographic module and automatically determines which TEs are applicable to the cryptographic module
-- Module evidence submission that prompts a client to provide evidence addressing TEs that are applicable to the cryptographic module and will show which TEs have not yet been addressed by the submission to ensure completeness
-- Module security policy submission defined entirely in JSON, which will generate the security policy automatically, allowing the client to retrieve the completed PDF, and ensures that all sections are present and completed.
-- The awarding of a validation certificate once all evidence and security policy information are completed
-- Automatic processing of functional test evidence (FE-TEs) based on the test type selected by the lab
-- Acceptance of source code test evidence based on the test procedure selected by the lab</p>
-</section>
-<section id="server-implementation">
-<h2>Server Implementation<a class="headerlink" href="#server-implementation" title="Link to this heading">#</a></h2>
-<p>The server uses much of the same infrastructure as ACVP and ESV, which is intended to keep the same team available to maintain the systems once they are integrated by the CMVP. The system is comprised of C# and Python applications along with SQL Server databases.</p>
-<p>The server development team is also using this opportunity to re-evaluate the required security assurances within NIST to see if any improvements can be implemented into the rest of the CMVP applications, which includes the requirement for Two-Factor authentication, separation between internal and external systems, International Traffic and Arms Restrictions (ITAR), and other elements of the ACVP and ESV systems.</p>
-</section>
-<section id="client-implementations">
-<h2>Client Implementations<a class="headerlink" href="#client-implementations" title="Link to this heading">#</a></h2>
-<p>This section describes the two open source clients, Libamvp and ACVP Proxy, that provide foundational code for developers to build upon when interfacing with the server.</p>
-<section id="libamvp-cisco">
-<h3>Libamvp - Cisco<a class="headerlink" href="#libamvp-cisco" title="Link to this heading">#</a></h3>
-<p>Libamvp is an example client for the AMVP protocol developed by Cisco engineers. It is C based and interacts with the server by parsing user-generated JSON and is intended to be a simple tool to showcase the protocol and assist developers as they create workflows for the generation and submission of AMVP data. Libamvp can create modules and certification requests, submit all required evidence and security policy information, retrieve security policy PDFs, check for the status of a certification request, and other actions, as development continues.</p>
-<p>Libamvp can be found here: <a class="github reference external" href="https://github.com/cisco/libamvp">cisco/libamvp</a>.</p>
-</section>
-<section id="acvp-proxy-atsec">
-<h3>ACVP Proxy - atsec<a class="headerlink" href="#acvp-proxy-atsec" title="Link to this heading">#</a></h3>
-<p>The client is called the ACVP Proxy and is supported by atsec information security corp. It provides the interface to access the NIST ACVP, ESVP, and AMVP services using an open sourced code that is available at the public repository: <a class="github reference external" href="https://github.com/smuellerDD/acvpproxy">smuellerDD/acvpproxy</a>.</p>
-<p>The ACVP Proxy has many options, allows a flexible deployment, and is extendable to cover an arbitrary number of IUT definitions. The AVP Proxy implements the entire interaction with the NIST servers to obtain the data from the server and upload all required data to the server.</p>
-</section>
-</section>
 <section id="accessing-the-acmvp-demo-server">
 <h2>Accessing the ACMVP Demo Server<a class="headerlink" href="#accessing-the-acmvp-demo-server" title="Link to this heading">#</a></h2>
 <p>A CSR is not be needed to access the ACMVP Demo server if a user already has an ACVTS Demo or ESVTS Demo server certificate. Said user will only need to send an email to <a class="reference external" href="mailto:amvp-demo&#37;&#52;&#48;nist&#46;gov">amvp-demo<span>&#64;</span>nist<span>&#46;</span>gov</a> to request access to the ACMVP Demo server.</p>
@@ -583,15 +537,6 @@ openssl<span class="w"> </span>req<span class="w"> </span>-new<span class="w"> <
 <p>Note that per policy, SFC accounts and attachments are only valid for two calendar weeks from when the invitation email is sent. Existing SFC accounts may be used to send the CSR file but it is advised to begin the process by sending the initial request to <a class="reference external" href="mailto:amvp-demo&#37;&#52;&#48;nist&#46;gov">amvp-demo<span>&#64;</span>nist<span>&#46;</span>gov</a>.</p>
 <p>Note that external SFC accounts will go dormant after two weeks by NIST policy, which is normal behavior. After the certificate is exchanged, there is no further need for SFC.</p>
 <p>Additionally, the account can be reinstated at any point in time by going through the same process.</p>
-</section>
-<section id="planned-work">
-<h2>Planned Work<a class="headerlink" href="#planned-work" title="Link to this heading">#</a></h2>
-<p>The work is still in progress. Here are some features that will be addressed by Fall 2025:</p>
-<ul class="simple">
-<li><p>Continue developing automated checklist rules to ensure submissions are as correct as possible before entering the hands of a reviewer</p></li>
-<li><p>Add reviewer comment rounds to the protocol and implementations rather than handle them out of band over encrypted email</p></li>
-<li><p>Begin integrating ACMVP research products into the production CMVP workflows</p></li>
-</ul>
 </section>
 </section>
 
@@ -640,16 +585,7 @@ openssl<span class="w"> </span>req<span class="w"> </span>-new<span class="w"> <
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proof-of-concept-server-features">Proof-of-Concept Server Features</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#server-implementation">Server Implementation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#client-implementations">Client Implementations</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#libamvp-cisco">Libamvp - Cisco</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#acvp-proxy-atsec">ACVP Proxy - atsec</a></li>
-</ul>
-</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-the-acmvp-demo-server">Accessing the ACMVP Demo Server</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#planned-work">Planned Work</a></li>
 </ul>
   </nav></div>
 
