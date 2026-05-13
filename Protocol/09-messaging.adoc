@@ -3,7 +3,7 @@
 
 The general flow of the protocol is to:
 
-0. Login to the system
+0. Login to the system via `POST /amvp/v1/login`
 1. Create a certificate request session and register a module via `POST /amvp/v1/certRequests`
 2. Submit functional test evidence (FT-TE) via `POST /amvp/v1/certRequests/<id>/evidence`
 3. Submit source code test evidence (SC-TE) via `POST /amvp/v1/certRequests/<id>/sourceCode`
