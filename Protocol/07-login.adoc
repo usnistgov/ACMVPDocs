@@ -2,7 +2,7 @@
 [[login]]
 == Login
 
-A login endpoint is mentioned throughout the document and how to authenticate is defined by the server. The following defines how the login endpoint to establish a session and obtain a <<jwtAuthFlows>>. 
+A login endpoint (at `/amvp/v1/login`) is mentioned throughout the document and how to authenticate is defined by the server. The following defines how the login endpoint to establish a session and obtain a <<jwtAuthFlows>>. 
 
 * *passcode* - `string`, a property for providing a passcode value
 * *accessToken* - `string`, a JWT associated with the current user for which renewal of the expiration is desired
