@@ -7,20 +7,18 @@ In the event of an unexpected error occuring within the protocol, the AMVP serve
 ----
 {
   "amvVersion": "{amvp-version}",
-  {
-    "category": 0,
-    "description": "{description of category}",
-    "errors": [
-      {
-        "code": 1,
-        "messages": ["First message", "Second message", "..."]
-      },
-      {
-        "code": 2,
-        "messages": ["First message", "Second message", "..."] 
-      },
-    ]
-  }
+  "category": 0,
+  "description": "{description of category}",
+  "errors": [
+    {
+      "code": 1,
+      "messages": ["First message", "Second message", "..."]
+    },
+    {
+      "code": 2,
+      "messages": ["First message", "Second message", "..."] 
+    },
+  ]
 }
 
 ----
