@@ -16,6 +16,8 @@ The general flow of the protocol is to:
 
 Details on the specific requests, payloads, and responses are covered in this section.
 
+Also note the existence of the `GET /amvp/v1/schemas/&lt;endpoint&gt;/&lt;optionally, version&gt;` endpoint, which provides a list of schema versions for each endpoint and additionally provides the associated schema itself when the version is appended to the request. For example, a user could run `GET /amvp/v1/schemas/securityPolicy` to see versions of the Security Policy submission schema, and `GET /amvp/v1/schemas/securityPolicy/0.2` to see specifically schema version 0.2 for the Security Policy submission. Currently, `certificateRequestRegister`, `evidence`, `sourceCode`, `otherDocumentation`, and `securityPolicy` are all supported.
+
 === Resource Registration Exchange
 
 The registration will utilize the URI resources <<xml_uriResources>> to register various resources associated with the module as well as module specific capabilities. This exchange will consist of several message exchanges and will provide a detailed list of module capabilities to be registered, see <<xml_regmsgFlows>>. A set of URI resources are also available to retrieve and manage the available metadata. The registration can be performed at any time prior to formal algorithm testing, formal entropy testing and the formal module validation request. 
