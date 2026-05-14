@@ -540,6 +540,9 @@ border: 1px solid;
 <div class="paragraph">
 <p>Details on the specific requests, payloads, and responses are covered in this section.</p>
 </div>
+<div class="paragraph">
+<p>Also note the existence of the <code>GET /amvp/v1/schemas/&lt;endpoint&gt;/&lt;optionally, version&gt;</code> endpoint, which provides a list of schema versions for each endpoint and additionally provides the associated schema itself when the version is appended to the request. For example, a user could run <code>GET /amvp/v1/schemas/securityPolicy</code> to see versions of the Security Policy submission schema, and <code>GET /amvp/v1/schemas/securityPolicy/0.2</code> to see specifically schema version 0.2 for the Security Policy submission. Currently, <code>certificateRequestRegister</code>, <code>evidence</code>, <code>sourceCode</code>, <code>otherDocumentation</code>, and <code>securityPolicy</code> are all supported.</p>
+</div>
 <div class="sect2">
 <h3 id="_resource_registration_exchange">Resource Registration Exchange</h3>
 <div class="paragraph">
