@@ -438,7 +438,7 @@ This endpoint allows a client to submit functional test evidence as requested by
 
 ==== Certificate Request Source Code Evidence (SC-TE) Submission
 
-*POST /certRequests/{certRequestId}/sourcecode*
+*POST /certRequests/{certRequestId}/sourceCode*
 
 This endpoint allows a client to submit source code evidence as requested by the server via the `GET /certRequests/{certRequestId}` response. Each test requirement is stored individually on the server and can be overwritten at any time with another POST. Subsequent `GET /certRequests/{certRequestId}` will update to reflect any remaining test requirements which need evidence submitted.
 
