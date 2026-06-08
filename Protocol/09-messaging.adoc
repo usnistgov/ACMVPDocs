@@ -5,7 +5,7 @@ The general flow of the protocol is to:
 
 0. Login to the system via `POST /amvp/v1/login`
 1. Create a certificate request session and register a module via `POST /amvp/v1/certRequests`
-2. Submit functional test evidence (FT-TE) via `POST /amvp/v1/certRequests/<id>/evidence`
+2. Submit functional test evidence (FT-TE) via `POST /amvp/v1/certRequests/<id>/functionalTest`
 3. Submit source code test evidence (SC-TE) via `POST /amvp/v1/certRequests/<id>/sourceCode`
 4. Submit other docmumentation test evidence (OD-TE) via `POST /amvp/v1/certRequests/<id>/otherDocumentation`
 5. Submit security policy evidence via `POST /amvp/v1/certRequests/<id>/securityPolicy`
@@ -16,15 +16,13 @@ The general flow of the protocol is to:
 
 Details on the specific requests, payloads, and responses are covered in this section.
 
-Also note the existence of the `GET /amvp/v1/schemas/&lt;endpoint&gt;/&lt;optionally, version&gt;` endpoint, which provides a list of schema versions for each endpoint and additionally provides the associated schema itself when the version is appended to the request. For example, a user could run `GET /amvp/v1/schemas/securityPolicy` to see versions of the Security Policy submission schema, and `GET /amvp/v1/schemas/securityPolicy/0.2` to see specifically schema version 0.2 for the Security Policy submission. Currently, `certificateRequestRegister`, `evidence`, `sourceCode`, `otherDocumentation`, and `securityPolicy` are all supported.
-
 === Resource Registration Exchange
 
 The registration will utilize the URI resources <<xml_uriResources>> to register various resources associated with the module as well as module specific capabilities. This exchange will consist of several message exchanges and will provide a detailed list of module capabilities to be registered, see <<xml_regmsgFlows>>. A set of URI resources are also available to retrieve and manage the available metadata. The registration can be performed at any time prior to formal algorithm testing, formal entropy testing and the formal module validation request. 
 
 === Test Evidence Exchange
 
-The test evidence exchange consists of the AMV client initiating a certRequest and then requesting evidenceSet(s) associated with the request. An evidenceSet may require a test to be performed or some documentation to be gathered and then presented to the server as test evidence. The client *MAY* retreive and process the evidenceSets in any order. The client *MAY* retreive an evidenceSet and immediately return results, or it *MAY* return results at a later time. The client repeats this process until all of the evidenceSets in the certRequest list have been processed. Once an evidenceSet result has been POSTed to the server the client may request success/failure results from the server at any time; however, if evidenceSets have not been completed, the overall status will be incomplete. A message flow overview is described below <<xml_msgFlows>>.
+The test evidence exchange consists of the AMV client initiating a certRequest and then requesting evidenceSet(s) associated with the request. An evidenceSet may require a test to be performed or some documentation to be gathered and then presented to the server as test evidence. The client *MAY* retrieve and process the evidenceSets in any order. The client *MAY* retrieve an evidenceSet and immediately return results, or it *MAY* return results at a later time. The client repeats this process until all of the evidenceSets in the certRequest list have been processed. Once an evidenceSet result has been POSTed to the server the client may request success/failure results from the server at any time; however, if evidenceSets have not been completed, the overall status will be incomplete. A message flow overview is described below <<xml_msgFlows>>.
 
 === Module Validation Request
 
@@ -33,6 +31,197 @@ Once a certRequest result has successfully completed the client will receive a m
 === Message Flows
 
 Message flows are provided in Appendix A, but the content and responses provided here are the expected content.
+
+[[schemas]]
+=== Schema Requests
+
+Schema requests exist outside of the mandatory flow. They act as a supplemental endpoint that clients may reference when creating their payloads for other endpoints.
+
+==== Retrieve All Schema Endpoints
+
+*GET /schemas*
+
+Returns a list of all available endpoints to retrieve schemas for.
+
+===== Response
+
+[source,json]
+----
+
+{
+    "endpointList": [
+        "certificateRequestRegister",
+        "functionalTest",
+        "otherDocumentation",
+        "securityPolicy",
+        "sourceCode"
+    ],
+    "amvVersion": "0.1"
+}
+
+----
+
+==== View Endpoint Schema Version
+
+*GET /schemas/&lt;endpoint&gt;*
+
+Returns a list of schema versions and their statuses for an endpoint.
+
+===== Response
+
+[source,json]
+----
+
+{
+    "schemaList": [
+        {
+            "endpoint": "certificateRequestRegister",
+            "version": "0.2",
+            "status": "deprecated"
+        },
+        {
+            "endpoint": "certificateRequestRegister",
+            "version": "0.3",
+            "status": "deprecated"
+        },
+        {
+            "endpoint": "certificateRequestRegister",
+            "version": "0.4",
+            "status": "preferred"
+        }
+    ],
+    "amvVersion": "0.1"
+}
+
+----
+
+==== View Schema
+
+*GET schemas/&lt;endpoint&gt;/&lt;version&gt;*
+
+Returns the schema for the specified endpoint and version.
+
+===== Response
+
+[source,json]
+----
+{
+    "endpoint": "certificateRequestRegister",
+    "version": "0.4",
+    "status": "preferred",
+    "schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "certificateRequestRegisterPayload",
+        "title": "certificateRequestRegisterPayload",
+        "description": "Certificate Request Register payload JSON schema",
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+            "amvVersion",
+            "vendorId",
+            "moduleId",
+            "testers",
+            "module"
+        ],
+        "properties": {
+            "amvVersion": {
+                "type": "string"
+            },
+            "vendorId": {
+                "type": "integer"
+            },
+            "moduleId": {
+                "type": "integer"
+            },
+            "testers": {
+                "type": "array",
+                "items": {
+                    "type": "string"
+                }
+            },
+            "module": {
+                "description": "The module registration information to be submitted",
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                    "schemaVersion",
+                    "moduleInfo",
+                    "secLevels",
+                    "filterProperties"
+                ],
+                "properties": {
+                    "schemaVersion": {
+                        "type": "string"
+                    },
+                    "moduleInfo": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                            "count": {
+                                "type": "integer"
+                            },
+                            "embodiment": {
+                                "type": "string"
+                            },
+                            "opEnvType": {
+                                "type": "string"
+                            },
+                            "submissionLevel": {
+                                "type": "string"
+                            },
+                            "itar": {
+                                "type": "boolean"
+                            },
+                            "overallSecurityLevel": {
+                                "type": "integer"
+                            }
+                        },
+                        "required": [
+                            "count",
+                            "embodiment",
+                            "opEnvType",
+                            "submissionLevel",
+                            "overallSecurityLevel"
+                        ]
+                    },
+                    "secLevels": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "section": {
+                                    "type": "integer"
+                                },
+                                "level": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    },
+                    "filterProperties": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                },
+                                "included": {
+                                    "type": "boolean"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "amvVersion": "0.1"
+}
+----
+
+[[module]]
+=== Module Requests
 
 [[module_get]]
 ==== Retrieve information for a Module
@@ -81,12 +270,6 @@ Create a new Certificate Request Session.
         "CVP-0-000001",
         "CVP-0-000002"
     ],
-            "algorithmCertificates":[
-            "A1"
-        ],
-        "entropyCertificates":[
-            "E1"
-        ],
     "module":
     {
         "schemaVersion": "initial",
@@ -203,29 +386,6 @@ Create a new Certificate Request Session.
     }
 }
 
-
-----
-
-Optionally, references to ACV and ESV certificate IDs *MAY* be provided.
-
-----
-
-    {
-        "amvVersion": "0.1",
-        "moduleId": 1,
-        "vendorId": 1,
-		"testers": [
-		        "CVP-0-000001",
-		        "CVP-0-000002"
-		    ],
-        "algorithmCertificates":[
-            "A1"
-        ],
-        "entropyCertificates":[
-            "E1"
-        ]
-    }
-
 ----
 
 ===== Response
@@ -244,25 +404,6 @@ The `accessToken` is a <<RFC7519>> which *MUST* be supplied as described in <<jw
     }
 
 ....
-
-[[prerequisite_post]]
-==== Adding Prerequisite Certificates to an Existing Certificate Request
-
-*POST /certRequests/{certRequestId}/prerequisiteCertificates*
-
-....
-    {
-        "amvVersion": "0.1",
-        "algorithmCertificates":[
-            "A1"
-        ],
-        "entropyCertificates":[
-            "E1"
-        ]
-    }
-....
-
-The response will match <<certRequest_get>>.
 
 [[certRequest_get]]
 ==== Certificate Request Session Information
@@ -391,9 +532,10 @@ After FT-TE, SC-TE, OD-TE and SP-TE evidence are POSTed and SP-TE is PUTed, the 
     "amvVersion": "0.1"
 }
 ....
+
 ==== Certificate Request Functional Test Evidence (FT-TE) Submission
 
-*POST /certRequests/{certRequestId}/evidence*
+*POST /certRequests/{certRequestId}/functionalTest*
 
 This endpoint allows a client to submit functional test evidence as requested by the server via the `GET /certRequests/{certRequestId}` response. Each test requirement is stored individually on the server and can be overwritten at any time with another POST. Subsequent `GET /certRequests/{certRequestId}` will update to reflect any remaining test requirements which need evidence submitted.
 
@@ -1099,7 +1241,7 @@ This endpoint allows a client to certify the certificate.
 }
 ....
 
-After POST /certify request completed, GET /certRequests/{certRequestId} request will have the status as "approved"
+After POST /certify request is completed, GET /certRequests/{certRequestId} request will have the status as "approved"
 
 [source,json]
 ....
