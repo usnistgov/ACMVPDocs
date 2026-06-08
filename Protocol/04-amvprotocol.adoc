@@ -55,12 +55,13 @@ An empty cell for a resource and HTTP Method combination denotes that the server
 | /modules/{moduleId} | <<module_get>> | | |
 | /certRequests/{certRequestId} | <<certRequest_get>> | | | 
 | /certRequests/{certRequestId}/prerequisiteCertificates | | <<certRequest_post>> | |
-| /certRequests/{certRequestId}/evidence | | <<certRequest_post>> | |
+| /certRequests/{certRequestId}/functionalTest | | <<certRequest_post>> | |
 | /certRequests/{certRequestId}/sourceCode | | <<certRequest_post>> | |
 | /certRequests/{certRequestId}/securityPolicy | <<certRequest_get>> | <<certRequest_post>> | <<certRequest_put>> |
 | /certRequests/{certRequestId}/securityPolicy/template | | <<certRequest_post>> | |
 | /certRequests/{certRequestId}/otherDocumentation | | <<certRequest_post>> | |
 | /certRequests/{certRequestId}/certify | | <<certRequest_post>> | |
+| /schemas | <<schemas_get>> |  | |
 | /schemas/{endpoint} | <<schemas_get>> |  | |
 | /schemas/{endpoint}/{version} | <<schemas_get>> | | |
 |===
