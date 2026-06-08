@@ -54,7 +54,6 @@ An empty cell for a resource and HTTP Method combination denotes that the server
 | /certRequests | | <<certRequest_post>> | |
 | /modules/{moduleId} | <<module_get>> | | |
 | /certRequests/{certRequestId} | <<certRequest_get>> | | | 
-| /certRequests/{certRequestId}/prerequisiteCertificates | | <<certRequest_post>> | |
 | /certRequests/{certRequestId}/functionalTest | | <<certRequest_post>> | |
 | /certRequests/{certRequestId}/sourceCode | | <<certRequest_post>> | |
 | /certRequests/{certRequestId}/securityPolicy | <<certRequest_get>> | <<certRequest_post>> | <<certRequest_put>> |
