@@ -66,15 +66,19 @@ POST certRequests - request a module validation certificate
          |        | "Url":                            |      |            |
          |        |     "/amvp/v1/certRequests/41763" |      |            |
 
+....
+
 The binding will look something like this:
 
+....
          [{  "moduleId" : 121,   <-- a single module
              "vendorId" : 12345,   <-- vendor ID from resource submission not shown above
-             "contacts" : ["CVP-012345", "CVP-67890"]  <-- CVP numbers represent people that have lab accredidation
+             "testers" : ["CVP-0-000001", "CVP-0-000002"]  <-- CVP numbers represent people that have lab accreditation
           }]
+....
 
-
-The Functional Test TE list sent from server to client will look like this
+The Functional Test TE list sent from client to server will look like this
+....
 {
     "amvVersion": "0.1",
 
@@ -110,10 +114,11 @@ The Functional Test TE list sent from server to client will look like this
       ]
     }
 }
+....
 
+The Source Code evidence sent from client to server will look like this
 
-The Souce Code evidence sent from server to client will look like this
-
+....
 {
     "amvVersion": "0.1",
     "sourceCode": {
@@ -150,9 +155,11 @@ The Souce Code evidence sent from server to client will look like this
         ]
     }
 }
+....
 
-The Other Documentation evidence sent from server to client will look like this
+The Other Documentation evidence sent from client to server will look like this
 
+....
 {
     "amvVersion": "0.1",
     "otherDocumentation": {
@@ -185,9 +192,11 @@ The Other Documentation evidence sent from server to client will look like this
         ]
     }
 }
+....
 
-The Security Policy sent from server to client will look like this
+The Security Policy sent from client to server will look like this
 
+....
 {
   "amvVersion": "0.1",
   "securityPolicy": {
@@ -668,19 +677,19 @@ The Security Policy sent from server to client will look like this
     ]
   }
 }
+....
 
 
 [AMVP]: POST Response Submission...
 
+....
 {
     "url": "/amvp/v1/certRequests/8",
     "moduleId": 2,
     "vendorId": 1,
     "status": "ready",
     "securityPolicyStatus": "acceptingSubmissions",
-    "evidenceStatus": "acceptingSubmissions"
-    "entropyCertificates": [],
-    "algorithmCertificates": [],
+    "evidenceStatus": "acceptingSubmissions",
     "missingSPTemplate": true,
     "missingSecurityPolicySubmission": true,
     "evidenceList": [
@@ -740,7 +749,7 @@ The Security Policy sent from server to client will look like this
 	],
     "amvVersion": "0.1"
 }
-
+....
 
 Once the validation is approved the functionalTest evidence, source code evidence, and security policy, draft certificate can be requested.
 
@@ -779,6 +788,8 @@ Module certificate is fully approved.
          |        |   Certificate request status      |      |            |
 
 [AMVP]: GET Response
+
+....
 {
     "certRequestId": 549,
     "moduleId": 190,

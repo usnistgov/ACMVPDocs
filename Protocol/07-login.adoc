@@ -83,7 +83,7 @@ This endpoint can be utilized for refreshing multiple JWTs with a single POST.  
 
 Note the order of JWTs between the request and response is preserved.
 
-In the event of an error ocurring during any of the above requests, the AMVP server *MUST* respond with a error response formatted as defined by section 11 of this specification. The category codes and error codes to use are defined by Table 1 below.
+In the event of an error occurring during any of the above requests, the AMVP server *MUST* respond with a error response formatted as defined by section 11 of this specification. The category codes and error codes to use are defined by Table 1 below.
 
 [[login_error_table_1.0]]
 .Errors related to login requests
