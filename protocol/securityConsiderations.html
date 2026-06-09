@@ -619,7 +619,7 @@ POST: [{"passcode":"66008332"}]
 <p>The JWT access tokens received from either the /login server endpoint <strong>SHALL</strong> be set to expire after a pre-defined period. The specific length of the expiration period is out of scope for this specification. However, the expiration period length impacts both the security and protocol overhead. Longer expiration periods reduce the overhead but increase the window for attacks. Attempting to access a service with an expired JWT <strong>SHALL</strong> result in a "401 Unauthorized" HTTP status code.</p>
 </div>
 <div class="paragraph">
-<p>A client may renew an expired JWT access token using the mechanism shown in <a href="#RenewalFlows">[RenewalFlows]</a> below.</p>
+<p>A client may renew an expired JWT access token using the mechanism shown in Renewal Flows below.</p>
 </div>
 <div id="RenewalFlows" class="paragraph">
 <p>JWT access token renewal flows. All exchanges shown are over HTTP.</p>

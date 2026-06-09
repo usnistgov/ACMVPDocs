@@ -501,7 +501,7 @@ border: 1px solid;
 <h2 id="_error_responses">Error Responses</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>In the event of an unexpected error occuring within the protocol, the AMVP server <strong>MUST</strong> respond with to AMVP client requests with a JSON encoded message following the format below.</p>
+<p>In the event of an unexpected error occurring within the protocol, the AMVP server <strong>MUST</strong> respond with to AMVP client requests with a JSON encoded message following the format below.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -544,7 +544,7 @@ border: 1px solid;
 <th class="tableblock halign-left valign-top">Category Code</th>
 <th class="tableblock halign-left valign-top">Description String</th>
 <th class="tableblock halign-left valign-top">HTTP[S] Code</th>
-<th class="tableblock halign-left valign-top">Protocol Descrption</th>
+<th class="tableblock halign-left valign-top">Protocol Description</th>
 </tr>
 </thead>
 <tbody>
@@ -556,7 +556,7 @@ border: 1px solid;
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">"Authentication and/or Authroization Error"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"Authentication and/or Authorization Error"</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">403</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">For errors caused by an AMVP client having insufficient credentials to access the requested endpoint or resource</p></td>
 </tr>
@@ -582,8 +582,6 @@ border: 1px solid;
 </table>
 <div class="paragraph">
 <p>Other sections of the specification may define required HTTP[S] codes for specific scenarios that do not have one defined in table 1. If an HTTP[S] code is not specified for a given error or category of errors, the AMVP server <strong>SHOULD</strong> use an HTTP[S] code that is most relevant to the error being returned to the AMVP client. While AMVP clients <strong>MAY</strong> use HTTP[S] codes to determine the general status of a request, AMVP clients <strong>SHOULD NOT</strong> depend on HTTP[S] codes for differentiating between types of errors; instead, they should rely on the contents of the response body described above.</p>
-</div>
-</div>
 </div>
 </div>
 </div>

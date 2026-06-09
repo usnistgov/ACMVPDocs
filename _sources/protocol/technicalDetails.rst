@@ -70,42 +70,9 @@ To meet the goals laid out here the strategy must be:
 - To provide evidence that avoids free text and replaces it with structured reproducible schema so it is automatable
 - To provide registration such that information is available to generate a security policy which meets SP800-140B
 
-Architecture
--------------
+.. raw:: html
+    :file: html/03-architecture.html
 
-A server/client/proxy model is used where the roles are defined as:
 
-- AMV Client/Proxy - Communicates with the AMV server using Java Script Object Notation (JSON [RFC7159]) and submits registration for various resources and test evidence that is module-centric.
-- AMV Server - Maintains registration information and processes test evidence for module validation requests.
-
-AMV Protocol
---------------
-
-The AMV protocol will utilize existing mechanisms for transport coordinated with JSON formatted messaging.
-
-Protocol Layering
-__________________
-
-.. code-block:: rst
-
-    +-----------------------------------------------+
-    | JSON Formatted AMVP request/response messages |
-    +-----------------------------------------------+
-    | HTTP[S] message transfer and signaling        |
-    +-----------------------------------------------+
-    | TLS for transport security                    |
-    +-----------------------------------------------+
-    | TCP for transport                             |
-    +-----------------------------------------------+
-
-HTTP URI Hierarchy
-___________________
-
-.. code-block:: rst
-
-    +-------------+------+---------+------------+
-    |   server    |path  | version | resource   |
-    |             |prefix|         |            | 
-    +-------------+------+---------+------------+
-    |https://amvts.nist.gov/amvp/v1/certRequests|
-    +-------------+------+---------+------------+
+.. raw:: html
+    :file: html/04-amvprotocol.html

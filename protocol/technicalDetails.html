@@ -482,12 +482,6 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strategy">Strategy</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture">Architecture</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#amv-protocol">AMV Protocol</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#protocol-layering">Protocol Layering</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#http-uri-hierarchy">HTTP URI Hierarchy</a></li>
-</ul>
-</li>
 </ul>
             </nav>
         </div>
@@ -554,44 +548,222 @@ document.write(`
 <li><p>To provide evidence that avoids free text and replaces it with structured reproducible schema so it is automatable</p></li>
 <li><p>To provide registration such that information is available to generate a security policy which meets SP800-140B</p></li>
 </ul>
-</section>
-</section>
-<section id="architecture">
-<h2>Architecture<a class="headerlink" href="#architecture" title="Link to this heading">#</a></h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.23">
+<title>Architecture</title>
+<style>
+table, th, td {
+border: 1px solid;
+}
+</style>
+</head>
+<body class="article">
+<div id="header">
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_architecture">Architecture</h2>
+<div class="sectionbody">
+<div class="paragraph">
 <p>A server/client/proxy model is used where the roles are defined as:</p>
-<ul class="simple">
-<li><p>AMV Client/Proxy - Communicates with the AMV server using Java Script Object Notation (JSON [RFC7159]) and submits registration for various resources and test evidence that is module-centric.</p></li>
-<li><p>AMV Server - Maintains registration information and processes test evidence for module validation requests.</p></li>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>AMV Client/Proxy - Communicates with the AMV server using Java Script Object Notation (JSON <a href="#RFC7159">[RFC7159]</a>) and submits registration for various resources and test evidence that is module-centric.</p>
+</li>
+<li>
+<p>AMV Server - Maintains registration information and processes test evidence for module validation requests.</p>
+</li>
 </ul>
-</section>
-<section id="amv-protocol">
-<h2>AMV Protocol<a class="headerlink" href="#amv-protocol" title="Link to this heading">#</a></h2>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.20">
+<title>AMV Protocol</title>
+<style>
+table, th, td {
+border: 1px solid;
+}
+</style>
+</head>
+<body class="article">
+<div id="header">
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_amv_protocol">AMV Protocol</h2>
+<div class="sectionbody">
+<div class="paragraph">
 <p>The AMV protocol will utilize existing mechanisms for transport coordinated with JSON formatted messaging.</p>
-<section id="protocol-layering">
-<h3>Protocol Layering<a class="headerlink" href="#protocol-layering" title="Link to this heading">#</a></h3>
-<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>+-----------------------------------------------+
-<span class="o">|</span> JSON Formatted AMVP request/response messages |
-+-----------------------------------------------+
-<span class="o">|</span> HTTP[S] message transfer and signaling        |
-+-----------------------------------------------+
-<span class="o">|</span> TLS for transport security                    |
-+-----------------------------------------------+
-<span class="o">|</span> TCP for transport                             |
-+-----------------------------------------------+
-</pre></div>
 </div>
-</section>
-<section id="http-uri-hierarchy">
-<h3>HTTP URI Hierarchy<a class="headerlink" href="#http-uri-hierarchy" title="Link to this heading">#</a></h3>
-<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>+-------------+------+---------+------------+
-<span class="o">|</span>   server    |path  | version | resource   |
-<span class="o">|</span>             |prefix|         |            |
-+-------------+------+---------+------------+
-|https://amvts.nist.gov/amvp/v1/certRequests|
-+-------------+------+---------+------------+
-</pre></div>
+<div id="xml_figure3" class="literalblock">
+<div class="title">Protocol Layering</div>
+<div class="content">
+<pre>+-----------------------------------------------+
+| JSON Formatted AMVP request/response messages |
++-----------------------------------------------+
+| HTTP[S] message transfer and signaling        |
++-----------------------------------------------+
+| TLS for transport security (recommended)      |
++-----------------------------------------------+
+| TCP for transport                             |
+|_______________________________________________|</pre>
 </div>
-</section>
+</div>
+<div class="sect2">
+<h3 id="uriComposition">HTTP URI Hierarchy</h3>
+<div id="uriDiagram" class="literalblock">
+<div class="content">
+<pre>        +-------------+------+-----------+
+        |   server    |path  | resource
+        |             |prefix|
+        +-------------+------+-----------+
+https://amvts.nist.gov/amvp/v1/certRequests
+        +-------------+------+-----------+
+                       version</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that deployments utilizing AMV Proxy server <strong>MAY</strong> use a different protocol, e.g., HTTP, custom server, context and port number to interact with the DUT.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="uriResources">HTTP URI Resources</h3>
+<div class="paragraph">
+<p>In the table below, any parts of a resource path enclosed in curly braces, { or }, are replaced by an instance of what is described in the braces. For example {requestId} could be replaced with 1.</p>
+</div>
+<div class="paragraph">
+<p>An empty cell for a resource and HTTP Method combination denotes that the server returns an HTTP Status 405 code <em>Method not allowed (405)</em>.</p>
+</div>
+<table id="uri_table" class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. Resources and their Available Operations</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Resource</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GET (read)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">POST (create)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PUT (update)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DELETE</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/certRequests</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#certRequest_post">[certRequest_post]</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/modules/{moduleId}</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#module_get">[module_get]</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/certRequests/{certRequestId}</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#certRequest_get">[certRequest_get]</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/certRequests/{certRequestId}/functionalTest</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#certRequest_post">[certRequest_post]</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/certRequests/{certRequestId}/sourceCode</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#certRequest_post">[certRequest_post]</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/certRequests/{certRequestId}/securityPolicy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#certRequest_get">[certRequest_get]</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#certRequest_post">[certRequest_post]</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#certRequest_put">[certRequest_put]</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/certRequests/{certRequestId}/securityPolicy/template</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#certRequest_post">[certRequest_post]</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/certRequests/{certRequestId}/otherDocumentation</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#certRequest_post">[certRequest_post]</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/certRequests/{certRequestId}/certify</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#certRequest_post">[certRequest_post]</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/schemas</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#schemas_get">[schemas_get]</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/schemas/{endpoint}</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#schemas_get">[schemas_get]</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/schemas/{endpoint}/{version}</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#schemas_get">[schemas_get]</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The resource path is appended to the path prefix to form the URI used with an HTTP Method to perform the desired AMVP operation. For example to create a new test session using the "/certRequests" resource is "/amvp/v1/certRequests" (assuming an empty context). To create a new certificate request session, the AMVP client would use the following HTTP request-line:</p>
+</div>
+<div class="paragraph">
+<p><code>POST /amvp/v1/certRequests HTTP/1.1</code></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html></section>
 </section>
 </section>
 
@@ -645,12 +817,6 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#audience">Audience</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#goals">Goals</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strategy">Strategy</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture">Architecture</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#amv-protocol">AMV Protocol</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#protocol-layering">Protocol Layering</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#http-uri-hierarchy">HTTP URI Hierarchy</a></li>
 </ul>
 </li>
 </ul>

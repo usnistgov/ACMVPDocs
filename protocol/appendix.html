@@ -486,7 +486,7 @@ document.write(`
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.20">
-<title>Appendix A</title>
+<title>Appendix</title>
 <style>
 table, th, td {
 border: 1px solid;
@@ -498,6 +498,7 @@ border: 1px solid;
 </div>
 <div id="content">
 <div class="sect1">
+<h2 id="_appendix_a">Appendix A</h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_flow_based_on_te_summary">Flow based on TE Summary</h3>
@@ -566,18 +567,26 @@ POST: {"amvVersion": "0.1", "passcode":"21887897"}
          |        |&lt;----------------------------------|      |            |
          |        | 200 OK    "status": "submitted"   |      |            |
          |        | "Url":                            |      |            |
-         |        |     "/amvp/v1/certRequests/41763" |      |            |
-
-The binding will look something like this:
-
-         [{  "moduleId" : 121,   &lt;-- a single module
+         |        |     "/amvp/v1/certRequests/41763" |      |            |</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The binding will look something like this:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>         [{  "moduleId" : 121,   &lt;-- a single module
              "vendorId" : 12345,   &lt;-- vendor ID from resource submission not shown above
-             "contacts" : ["CVP-012345", "CVP-67890"]  &lt;-- CVP numbers represent people that have lab accredidation
-          }]
-
-
-The Functional Test TE list sent from server to client will look like this
-{
+             "testers" : ["CVP-0-000001", "CVP-0-000002"]  &lt;-- CVP numbers represent people that have lab accreditation
+          }]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The Functional Test TE list sent from client to server will look like this</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>{
     "amvVersion": "0.1",
 
     "functionalTest":
@@ -611,12 +620,15 @@ The Functional Test TE list sent from server to client will look like this
         }
       ]
     }
-}
-
-
-The Souce Code evidence sent from server to client will look like this
-
-{
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The Source Code evidence sent from client to server will look like this</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>{
     "amvVersion": "0.1",
     "sourceCode": {
         "document": {
@@ -651,11 +663,15 @@ The Souce Code evidence sent from server to client will look like this
             }
         ]
     }
-}
-
-The Other Documentation evidence sent from server to client will look like this
-
-{
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The Other Documentation evidence sent from client to server will look like this</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>{
     "amvVersion": "0.1",
     "otherDocumentation": {
         "document": {
@@ -686,11 +702,15 @@ The Other Documentation evidence sent from server to client will look like this
             }
         ]
     }
-}
-
-The Security Policy sent from server to client will look like this
-
-{
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The Security Policy sent from client to server will look like this</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>{
   "amvVersion": "0.1",
   "securityPolicy": {
     "schemaVersion": "2.8.4",
@@ -1169,20 +1189,21 @@ The Security Policy sent from server to client will look like this
       "irure velit"
     ]
   }
-}
-
-
-[AMVP]: POST Response Submission...
-
-{
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>[AMVP]: POST Response Submission&#8230;&#8203;</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>{
     "url": "/amvp/v1/certRequests/8",
     "moduleId": 2,
     "vendorId": 1,
     "status": "ready",
     "securityPolicyStatus": "acceptingSubmissions",
-    "evidenceStatus": "acceptingSubmissions"
-    "entropyCertificates": [],
-    "algorithmCertificates": [],
+    "evidenceStatus": "acceptingSubmissions",
     "missingSPTemplate": true,
     "missingSecurityPolicySubmission": true,
     "evidenceList": [
@@ -1241,47 +1262,59 @@ The Security Policy sent from server to client will look like this
         },
 	],
     "amvVersion": "0.1"
-}
-
-
-Once the validation is approved the functionalTest evidence, source code evidence, and security policy, draft certificate can be requested.
-
-         |        |GET                                |      |            |
-         |        |/certRequests/1/securityPolicy     |      |  Retrieve  |
-         |        |----------------------------------&gt;|      |Sec Policy  |
-         |        |                                   |      |  ID = 1    |
-         |        |&lt;--------------------------------- |      | Retry as   |
-         |        |                                   |      | needed     |
-         |        |                                   |      |            |
-         |        |GET                                |      |            |
-         |        |/certRequests/1/securityPolicy     |      |  Retrieve  |
-         |        |----------------------------------&gt;|      |Sec Policy  |
-         |        |                                   |      |            |
-         |        |                                   |      |            |
-         |        |200 OK                             |      |            |
-         |        |&lt;-  -  -  -  -  -  -  -  -  -  -  -|      |            |
-         |        |   Security Policy                 |      |            |
-
-Module certificate is fully approved.
-
-         |        |POST                               |      |            |
-         |        |/certRequests/1/certify            |      |  Request   |
-         |        |----------------------------------&gt;|      |            |
-         |        |                                   |      |  ID = 1    |
-         |        |&lt;--------------------------------- |      | Retry as   |
-         |        |                                   |      | needed     |
-         |        |                                   |      |            |
-         |        |GET                                |      |            |
-         |        |/certRequests/1                    |      |  Retrieve  |
-         |        |----------------------------------&gt;|      | cert status|
-         |        |                                   |      |            |
-         |        |                                   |      |            |
-         |        |200 OK                             |      |            |
-         |        |&lt;-  -  -  -  -  -  -  -  -  -  -  -|      |            |
-         |        |   Certificate request status      |      |            |
-
-[AMVP]: GET Response
-{
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once the validation is approved the functionalTest evidence, source code evidence, and security policy, draft certificate can be requested.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>|        |GET                                |      |            |
+|        |/certRequests/1/securityPolicy     |      |  Retrieve  |
+|        |----------------------------------&gt;|      |Sec Policy  |
+|        |                                   |      |  ID = 1    |
+|        |&lt;--------------------------------- |      | Retry as   |
+|        |                                   |      | needed     |
+|        |                                   |      |            |
+|        |GET                                |      |            |
+|        |/certRequests/1/securityPolicy     |      |  Retrieve  |
+|        |----------------------------------&gt;|      |Sec Policy  |
+|        |                                   |      |            |
+|        |                                   |      |            |
+|        |200 OK                             |      |            |
+|        |&lt;-  -  -  -  -  -  -  -  -  -  -  -|      |            |
+|        |   Security Policy                 |      |            |</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Module certificate is fully approved.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>|        |POST                               |      |            |
+|        |/certRequests/1/certify            |      |  Request   |
+|        |----------------------------------&gt;|      |            |
+|        |                                   |      |  ID = 1    |
+|        |&lt;--------------------------------- |      | Retry as   |
+|        |                                   |      | needed     |
+|        |                                   |      |            |
+|        |GET                                |      |            |
+|        |/certRequests/1                    |      |  Retrieve  |
+|        |----------------------------------&gt;|      | cert status|
+|        |                                   |      |            |
+|        |                                   |      |            |
+|        |200 OK                             |      |            |
+|        |&lt;-  -  -  -  -  -  -  -  -  -  -  -|      |            |
+|        |   Certificate request status      |      |            |</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>[AMVP]: GET Response</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>{
     "certRequestId": 549,
     "moduleId": 190,
     "status": "approved",
@@ -1378,7 +1411,7 @@ periods reduce the overhead but increase the window for attacks. Attempting to a
 expired JWT <strong>SHALL</strong> result in a "401 Unauthorized" HTTP status code.</p>
 </div>
 <div class="paragraph">
-<p>A client may renew an expired JWT access token using the mechanism shown in <a href="#xml_figureRenewalFlows">[xml_figureRenewalFlows]</a>below.</p>
+<p>A client may renew an expired JWT access token using the mechanism shown in Renewal Flows below.</p>
 </div>
 <div class="paragraph">
 <p>JWT access token renewal flows. All exchanges shown are over HTTP.</p>
@@ -1438,7 +1471,7 @@ Log
 <div class="sect3">
 <h4 id="_v0_2_test_flows">V0.2 Test Flows</h4>
 <div id="xml_Flows02" class="paragraph">
-<p>Metadata creation and update example. The list of available reseource metadata endpoints can be found in <a href="#xml_uriResources">[xml_uriResources]</a>.
+<p>Metadata creation and update example. The list of available reseource metadata endpoints can be found in URI Resources.
 An example minimum message flow between client and server after receiving the JWT is seen in the figure below.</p>
 </div>
 <div class="literalblock">
@@ -1992,8 +2025,6 @@ Once audit completed, GET request approval.
 <h5 id="_modulespec">ModuleSpec</h5>
 <div id="json_Flows1" class="paragraph">
 <p>POSTed to /amvp/v1/modules</p>
-</div>
-</div>
 </div>
 </div>
 </div>

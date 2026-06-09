@@ -512,7 +512,7 @@ border: 1px solid;
 <p>Create a certificate request session and register a module via <code>POST /amvp/v1/certRequests</code></p>
 </li>
 <li>
-<p>Submit functional test evidence (FT-TE) via <code>POST /amvp/v1/certRequests/&lt;id&gt;/evidence</code></p>
+<p>Submit functional test evidence (FT-TE) via <code>POST /amvp/v1/certRequests/&lt;id&gt;/functionalTest</code></p>
 </li>
 <li>
 <p>Submit source code test evidence (SC-TE) via <code>POST /amvp/v1/certRequests/&lt;id&gt;/sourceCode</code></p>
@@ -540,19 +540,16 @@ border: 1px solid;
 <div class="paragraph">
 <p>Details on the specific requests, payloads, and responses are covered in this section.</p>
 </div>
-<div class="paragraph">
-<p>Also note the existence of the <code>GET /amvp/v1/schemas/&lt;endpoint&gt;/&lt;optionally, version&gt;</code> endpoint, which provides a list of schema versions for each endpoint and additionally provides the associated schema itself when the version is appended to the request. For example, a user could run <code>GET /amvp/v1/schemas/securityPolicy</code> to see versions of the Security Policy submission schema, and <code>GET /amvp/v1/schemas/securityPolicy/0.2</code> to see specifically schema version 0.2 for the Security Policy submission. Currently, <code>certificateRequestRegister</code>, <code>evidence</code>, <code>sourceCode</code>, <code>otherDocumentation</code>, and <code>securityPolicy</code> are all supported.</p>
-</div>
 <div class="sect2">
 <h3 id="_resource_registration_exchange">Resource Registration Exchange</h3>
 <div class="paragraph">
-<p>The registration will utilize the URI resources to register various resources associated with the module as well as module specific capabilities. This exchange will consist of several message exchanges and will provide a detailed list of module capabilities to be registered, see Message FLows. A set of URI resources are also available to retrieve and manage the available metadata. The registration can be performed at any time prior to formal algorithm testing, formal entropy testing and the formal module validation request.</p>
+<p>The registration will utilize the URI resources to register various resources associated with the module as well as module specific capabilities. This exchange will consist of several message exchanges and will provide a detailed list of module capabilities to be registered, see Message Flows below. A set of URI resources are also available to retrieve and manage the available metadata. The registration can be performed at any time prior to formal algorithm testing, formal entropy testing and the formal module validation request.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_test_evidence_exchange">Test Evidence Exchange</h3>
 <div class="paragraph">
-<p>The test evidence exchange consists of the AMV client initiating a certRequest and then requesting evidenceSet(s) associated with the request. An evidenceSet may require a test to be performed or some documentation to be gathered and then presented to the server as test evidence. The client <strong>MAY</strong> retreive and process the evidenceSets in any order. The client <strong>MAY</strong> retreive an evidenceSet and immediately return results, or it <strong>MAY</strong> return results at a later time. The client repeats this process until all of the evidenceSets in the certRequest list have been processed. Once an evidenceSet result has been POSTed to the server the client may request success/failure results from the server at any time; however, if evidenceSets have not been completed, the overall status will be incomplete. A message flow overview is described below</a>.</p>
+<p>The test evidence exchange consists of the AMV client initiating a certRequest and then requesting evidenceSet(s) associated with the request. An evidenceSet may require a test to be performed or some documentation to be gathered and then presented to the server as test evidence. The client <strong>MAY</strong> retrieve and process the evidenceSets in any order. The client <strong>MAY</strong> retrieve an evidenceSet and immediately return results, or it <strong>MAY</strong> return results at a later time. The client repeats this process until all of the evidenceSets in the certRequest list have been processed. Once an evidenceSet result has been POSTed to the server the client may request success/failure results from the server at any time; however, if evidenceSets have not been completed, the overall status will be incomplete. A message flow overview is described below.</p>
 </div>
 </div>
 <div class="sect2">
@@ -566,6 +563,206 @@ border: 1px solid;
 <div class="paragraph">
 <p>Message flows are provided in Appendix A, but the content and responses provided here are the expected content.</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="schemas">Schema Requests</h3>
+<div class="paragraph">
+<p>Schema requests exist outside of the mandatory flow. They act as a supplemental endpoint that clients may reference when creating their payloads for other endpoints.</p>
+</div>
+<div class="sect3">
+<h4 id="_retrieve_all_schema_endpoints">Retrieve All Schema Endpoints</h4>
+<div class="paragraph">
+<p><strong>GET /schemas</strong></p>
+</div>
+<div class="paragraph">
+<p>Returns a list of all available endpoints to retrieve schemas for.</p>
+</div>
+<div class="sect4">
+<h5 id="_response">Response</h5>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "endpointList": [
+        "certificateRequestRegister",
+        "functionalTest",
+        "otherDocumentation",
+        "securityPolicy",
+        "sourceCode"
+    ],
+    "amvVersion": "0.1"
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_view_endpoint_schema_version">View Endpoint Schema Version</h4>
+<div class="paragraph">
+<p><strong>GET /schemas/&lt;endpoint&gt;</strong></p>
+</div>
+<div class="paragraph">
+<p>Returns a list of schema versions and their statuses for an endpoint.</p>
+</div>
+<div class="sect4">
+<h5 id="_response_2">Response</h5>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "schemaList": [
+        {
+            "endpoint": "certificateRequestRegister",
+            "version": "0.2",
+            "status": "deprecated"
+        },
+        {
+            "endpoint": "certificateRequestRegister",
+            "version": "0.3",
+            "status": "deprecated"
+        },
+        {
+            "endpoint": "certificateRequestRegister",
+            "version": "0.4",
+            "status": "preferred"
+        }
+    ],
+    "amvVersion": "0.1"
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_view_schema">View Schema</h4>
+<div class="paragraph">
+<p><strong>GET schemas/&lt;endpoint&gt;/&lt;version&gt;</strong></p>
+</div>
+<div class="paragraph">
+<p>Returns the schema for the specified endpoint and version.</p>
+</div>
+<div class="sect4">
+<h5 id="_response_3">Response</h5>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "endpoint": "certificateRequestRegister",
+    "version": "0.4",
+    "status": "preferred",
+    "schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "certificateRequestRegisterPayload",
+        "title": "certificateRequestRegisterPayload",
+        "description": "Certificate Request Register payload JSON schema",
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+            "amvVersion",
+            "vendorId",
+            "moduleId",
+            "testers",
+            "module"
+        ],
+        "properties": {
+            "amvVersion": {
+                "type": "string"
+            },
+            "vendorId": {
+                "type": "integer"
+            },
+            "moduleId": {
+                "type": "integer"
+            },
+            "testers": {
+                "type": "array",
+                "items": {
+                    "type": "string"
+                }
+            },
+            "module": {
+                "description": "The module registration information to be submitted",
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                    "schemaVersion",
+                    "moduleInfo",
+                    "secLevels",
+                    "filterProperties"
+                ],
+                "properties": {
+                    "schemaVersion": {
+                        "type": "string"
+                    },
+                    "moduleInfo": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                            "count": {
+                                "type": "integer"
+                            },
+                            "embodiment": {
+                                "type": "string"
+                            },
+                            "opEnvType": {
+                                "type": "string"
+                            },
+                            "submissionLevel": {
+                                "type": "string"
+                            },
+                            "itar": {
+                                "type": "boolean"
+                            },
+                            "overallSecurityLevel": {
+                                "type": "integer"
+                            }
+                        },
+                        "required": [
+                            "count",
+                            "embodiment",
+                            "opEnvType",
+                            "submissionLevel",
+                            "overallSecurityLevel"
+                        ]
+                    },
+                    "secLevels": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "section": {
+                                    "type": "integer"
+                                },
+                                "level": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    },
+                    "filterProperties": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                },
+                                "included": {
+                                    "type": "boolean"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "amvVersion": "0.1"
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="module">Module Requests</h3>
 <div class="sect3">
 <h4 id="module_get">Retrieve information for a Module</h4>
 <div class="paragraph">
@@ -575,7 +772,7 @@ border: 1px solid;
 <p>Returns information about a specific module. The information is provided based on the <code>moduleInfo</code> section registered with the module when creating a new certificate request session. The <code>moduleId</code> can be found from a <code>GET amvp/v1/certRequests/{certRequestId}</code> on a successfully registered <code>certificateRequestId</code>.</p>
 </div>
 <div class="sect4">
-<h5 id="_response">Response</h5>
+<h5 id="_response_4">Response</h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-json" data-lang="json">    {
@@ -615,12 +812,6 @@ border: 1px solid;
         "CVP-0-000001",
         "CVP-0-000002"
     ],
-            "algorithmCertificates":[
-            "A1"
-        ],
-        "entropyCertificates":[
-            "E1"
-        ],
     "module":
     {
         "schemaVersion": "initial",
@@ -738,31 +929,9 @@ border: 1px solid;
 }</pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Optionally, references to ACV and ESV certificate IDs <strong>MAY</strong> be provided.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>    {
-        "amvVersion": "0.1",
-        "moduleId": 1,
-        "vendorId": 1,
-		"testers": [
-		        "CVP-0-000001",
-		        "CVP-0-000002"
-		    ],
-        "algorithmCertificates":[
-            "A1"
-        ],
-        "entropyCertificates":[
-            "E1"
-        ]
-    }</pre>
-</div>
-</div>
 </div>
 <div class="sect4">
-<h5 id="_response_2">Response</h5>
+<h5 id="_response_5">Response</h5>
 <div class="paragraph">
 <p>The <code>accessToken</code> is a <a href="#RFC7519">[RFC7519]</a> which <strong>MUST</strong> be supplied as described in <a href="#jwtToken">[jwtToken]</a> in order to access the Certificate Request Session.</p>
 </div>
@@ -780,28 +949,6 @@ border: 1px solid;
 </div>
 </div>
 <div class="sect3">
-<h4 id="prerequisite_post">Adding Prerequisite Certificates to an Existing Certificate Request</h4>
-<div class="paragraph">
-<p><strong>POST /certRequests/{certRequestId}/prerequisiteCertificates</strong></p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>    {
-        "amvVersion": "0.1",
-        "algorithmCertificates":[
-            "A1"
-        ],
-        "entropyCertificates":[
-            "E1"
-        ]
-    }</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The response will match <a href="#certRequest_get">Certificate Request Session Information</a>.</p>
-</div>
-</div>
-<div class="sect3">
 <h4 id="certRequest_get">Certificate Request Session Information</h4>
 <div class="paragraph">
 <p><strong>GET /certRequests/{certRequestId}</strong></p>
@@ -810,7 +957,7 @@ border: 1px solid;
 <p>Returns information about the specific Certificate Request Session. Several different responses could be provided depending on the status of the <code>certRequest</code>.</p>
 </div>
 <div class="sect4">
-<h5 id="_response_3">Response</h5>
+<h5 id="_response_6">Response</h5>
 <div class="paragraph">
 <p>If the <code>certRequest</code> is still in the <code>initial</code> state, the following response will be provided, indicating the client to try to access the resource again after <code>retry</code> seconds.</p>
 </div>
@@ -937,7 +1084,7 @@ border: 1px solid;
 <div class="sect3">
 <h4 id="_certificate_request_functional_test_evidence_ft_te_submission">Certificate Request Functional Test Evidence (FT-TE) Submission</h4>
 <div class="paragraph">
-<p><strong>POST /certRequests/{certRequestId}/evidence</strong></p>
+<p><strong>POST /certRequests/{certRequestId}/functionalTest</strong></p>
 </div>
 <div class="paragraph">
 <p>This endpoint allows a client to submit functional test evidence as requested by the server via the <code>GET /certRequests/{certRequestId}</code> response. Each test requirement is stored individually on the server and can be overwritten at any time with another POST. Subsequent <code>GET /certRequests/{certRequestId}</code> will update to reflect any remaining test requirements which need evidence submitted.</p>
@@ -985,7 +1132,7 @@ border: 1px solid;
 <div class="sect3">
 <h4 id="_certificate_request_source_code_evidence_sc_te_submission">Certificate Request Source Code Evidence (SC-TE) Submission</h4>
 <div class="paragraph">
-<p><strong>POST /certRequests/{certRequestId}/sourcecode</strong></p>
+<p><strong>POST /certRequests/{certRequestId}/sourceCode</strong></p>
 </div>
 <div class="paragraph">
 <p>This endpoint allows a client to submit source code evidence as requested by the server via the <code>GET /certRequests/{certRequestId}</code> response. Each test requirement is stored individually on the server and can be overwritten at any time with another POST. Subsequent <code>GET /certRequests/{certRequestId}</code> will update to reflect any remaining test requirements which need evidence submitted.</p>
@@ -1617,7 +1764,7 @@ border: 1px solid;
 <p>After PUT request, the following response will be provided. To view the .docx file generation status, use GET certRequests/{cerRequestId} as above. "securityPolicyStatus" will become "submitted" after .docx file is generated.</p>
 </div>
 <div class="sect4">
-<h5 id="_response_4">Response</h5>
+<h5 id="_response_7">Response</h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-json" data-lang="json">{
@@ -1642,7 +1789,7 @@ border: 1px solid;
 <p>This endpoint allows a client to get security policy information as a .docx file.</p>
 </div>
 <div class="sect4">
-<h5 id="_response_5">Response</h5>
+<h5 id="_response_8">Response</h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-json" data-lang="json">{
@@ -1665,7 +1812,7 @@ border: 1px solid;
 <p>This endpoint allows a client to certify the certificate.</p>
 </div>
 <div class="sect4">
-<h5 id="_response_6">Response</h5>
+<h5 id="_response_9">Response</h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-json" data-lang="json">{
@@ -1680,7 +1827,7 @@ border: 1px solid;
 </div>
 </div>
 <div class="paragraph">
-<p>After POST /certify request completed, GET /certRequests/{certRequestId} request will have the status as "approved"</p>
+<p>After POST /certify request is completed, GET /certRequests/{certRequestId} request will have the status as "approved"</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1697,11 +1844,6 @@ border: 1px solid;
 </div>
 </div>
 </div>
-</div>
-</div>
-<div id="footer">
-<div id="footer-text">
-Last updated 2026-05-13 11:00:37 -0400
 </div>
 </div>
 </body>
