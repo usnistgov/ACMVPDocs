@@ -344,7 +344,7 @@ Create a new Certificate Request Session.
             {"name": "hasPAAorPAI", "included": false},
             {"name": "hasEmbeddedOrBoundModule", "included": false},
             {"name": "hasCriticalFunctions", "included": false},
-            {"name": "hasNonApprovedAlgorithmsInApprovedMode", "included": false},
+            {"name": "hasNonApprovedsInApprovedMode", "included": false},
             {"name": "hasExternalInputDevice", "included": false},
             {"name": "hasExternalOutputDevice", "included": false},
             {"name": "usesTrustedChannel", "included": true},
@@ -439,8 +439,6 @@ If the `certRequest` is in the `ready` state, the following response will be pro
     "status": "ready",
     "securityPolicyStatus": "acceptingSubmissions",
     "evidenceStatus": "acceptingSubmissions",
-    "entropyCertificates": [],
-    "algorithmCertificates": [],
     "missingSPTemplate": true,
     "missingSecurityPolicySubmission": true,
     "evidenceList": [
