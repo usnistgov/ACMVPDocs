@@ -1751,12 +1751,12 @@ border: 1px solid;
 </table>
 </div>
 <div class="sect3">
-<h4 id="_security_policy_information_pdf_generation">Security Policy Information PDF Generation</h4>
+<h4 id="_security_policy_information_pdf_generation">Security Policy Information Document Generation</h4>
 <div class="paragraph">
 <p><strong>PUT /certRequests/{certRequestId}/securityPolicy</strong></p>
 </div>
 <div class="paragraph">
-<p>This endpoint allows a client to generate security policy information in PDF format. Security Policy must be submitted before this action. No payload is needed to submit the PUT request.</p>
+<p>This endpoint allows a client to generate security policy information in .docx format. Security Policy must be submitted before this action. No payload is needed to submit the PUT request.</p>
 </div>
 <div class="paragraph">
 <p>After PUT request, the following response will be provided. To view the .docx file generation status, use GET certRequests/{cerRequestId} as above. "securityPolicyStatus" will become "submitted" after .docx file is generated.</p>
@@ -1779,7 +1779,7 @@ border: 1px solid;
 </div>
 </div>
 <div class="sect3">
-<h4 id="_get_security_policy_information_in_pdf_format">Get Security Policy Information in PDF Format</h4>
+<h4 id="_get_security_policy_information_in_pdf_format">Get Security Policy Information</h4>
 <div class="paragraph">
 <p><strong>GET /certRequests/{certRequestId}/securityPolicy</strong></p>
 </div>
