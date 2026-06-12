@@ -1170,11 +1170,11 @@ This endpoint allows a client to submit security policy templates. Data is submi
 | documentTemplate | file | <SP Template File>
 |===
 
-==== Security Policy Information PDF Generation
+==== Security Policy Information Document Generation
 
 *PUT /certRequests/{certRequestId}/securityPolicy*
 
-This endpoint allows a client to generate security policy information in PDF format. Security Policy must be submitted before this action. No payload is needed to submit the PUT request.
+This endpoint allows a client to generate security policy information in .docx format. Security Policy must be submitted before this action. No payload is needed to submit the PUT request.
 
 After PUT request, the following response will be provided. To view the .docx file generation status, use GET certRequests/{cerRequestId} as above. "securityPolicyStatus" will become "submitted" after .docx file is generated.
 
@@ -1196,7 +1196,7 @@ After PUT request, the following response will be provided. To view the .docx fi
 
 ....
 
-==== Get Security Policy Information in PDF Format
+==== Get Security Policy Information
 
 *GET /certRequests/{certRequestId}/securityPolicy*
 
