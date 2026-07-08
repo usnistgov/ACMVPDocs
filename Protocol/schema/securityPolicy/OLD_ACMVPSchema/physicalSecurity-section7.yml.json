@@ -1,0 +1,219 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "mechanismsAndActionsRequired"
+  ],
+  "properties": {
+    "mechanismsAndActionsRequired": {
+      "type": "object",
+      "required": [
+        "physicalSecurityMechanismsList",
+        "image"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "physicalSecurityMechanismsList": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "physicalSecurityMechanism",
+              "recommendedFrequency",
+              "inspectionOrTestGuidanceDetails"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "physicalSecurityMechanism": {
+                "type": "string"
+              },
+              "recommendedFrequency": {
+                "type": "string"
+              },
+              "inspectionOrTestGuidanceDetails": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "additionalInformation": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        }
+      }
+    },
+    "userPlacedTamperSeals": {
+      "type": "object",
+      "required": [
+        "number",
+        "placement",
+        "surfacePreparation",
+        "operatorResponsibleForSecuringUnusedSeals",
+        "partNumbers",
+        "image"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "number": {
+          "type": "string"
+        },
+        "placement": {
+          "type": "string"
+        },
+        "surfacePreparation": {
+          "type": "string"
+        },
+        "operatorResponsibleForSecuringUnusedSeals": {
+          "type": "string"
+        },
+        "partNumbers": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        }
+      }
+    },
+    "fillerPanels": {
+      "type": "object",
+      "required": [
+        "image"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "additionalInformation": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        }
+      }
+    },
+    "faultInductionMitigation": {
+      "type": "string"
+    },
+    "efpEftInformation": {
+      "type": "object",
+      "required": [
+        "efpEftInfoList",
+        "lowTempMeasurement",
+        "lowTempEfpOrEft",
+        "lowTempResults",
+        "highTempMeasurement",
+        "highTempEfpOrEft",
+        "highTempResult",
+        "lowVoltMeasurement",
+        "lowVoltEfpOrEft",
+        "lowVoltResults",
+        "highVoltMeasurement",
+        "highVoltEfpOrEft",
+        "highVoltResults"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "efpEftInfoList": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "temperatureOrVoltageMeasurement",
+              "specifyIfEfpOrEft",
+              "specifyIfShutdownOrZerization"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "temperatureOrVoltageMeasurement": {
+                "type": "string"
+              },
+              "specifyIfEfpOrEft": {
+                "type": "string"
+              },
+              "specifyIfShutdownOrZerization": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "lowTempMeasurement": {
+          "type": "string"
+        },
+        "lowTempEfpOrEft": {
+          "type": "string"
+        },
+        "lowTempResults": {
+          "type": "string"
+        },
+        "highTempMeasurement": {
+          "type": "string"
+        },
+        "highTempEfpOrEft": {
+          "type": "string"
+        },
+        "highTempResult": {
+          "type": "string"
+        },
+        "lowVoltMeasurement": {
+          "type": "string"
+        },
+        "lowVoltEfpOrEft": {
+          "type": "string"
+        },
+        "lowVoltResults": {
+          "type": "string"
+        },
+        "highVoltMeasurement": {
+          "type": "string"
+        },
+        "highVoltEfpOrEft": {
+          "type": "string"
+        },
+        "highVoltResults": {
+          "type": "string"
+        },
+        "additionalInformation": {
+          "type": "string"
+        }
+      }
+    },
+    "hardnessTestingTemperatureRanges": {
+      "type": "object",
+      "required": [
+        "hardnessTestTempList",
+        "lowHardnessTemperatureMeasurement",
+        "highHardnessTemperatureMeasurement"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "hardnessTestTempList": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "hardnessTestTempMeasurement"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "hardnessTestTempMeasurement": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "lowHardnessTemperatureMeasurement": {
+          "type": "string"
+        },
+        "highHardnessTemperatureMeasurement": {
+          "type": "string"
+        },
+        "additionalInformation": {
+          "type": "string"
+        }
+      }
+    },
+    "additionalInformation": {
+      "type": "string"
+    }
+  }
+}

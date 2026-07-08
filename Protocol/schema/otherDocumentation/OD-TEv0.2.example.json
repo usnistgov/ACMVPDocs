@@ -1,0 +1,32 @@
+{
+    "amvVersion": "0.1",
+    "otherDocumentation": {
+        "document": {
+            "base-catalogVersion": "3.0",
+            "base-lastUpdated": "October-16-2023",
+            "otherDocumentation-EC": "0.6",
+            "otherDocumentation-lastUpdated": "October-29-2024"
+        },
+        "testEvidence": [
+            {
+                "teList": [
+                    "TE02.03.02"
+                ],
+                "documents":
+                [
+                    {
+                        "sectionName": "sample",
+                        "documentName": "sampleDocument"
+                    }
+                ],
+               
+                "results": {
+                    "summary": "sample summary",
+                    "digest": "0",
+                    "fileLocation": "location of test evidence",
+                    "integrityMechanism": "SHA2-512"
+                }
+            }
+        ]
+    }
+}

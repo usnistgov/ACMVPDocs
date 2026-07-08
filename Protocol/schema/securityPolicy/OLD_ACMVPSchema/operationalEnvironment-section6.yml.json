@@ -1,0 +1,32 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [ "operationalEnvironmentTypeAndRequirements" ],
+  "properties": {
+    "operationalEnvironmentTypeAndRequirements": {
+      "type": "object",
+      "required": [ "referenceToOEType", "requirementsSatisfied" ],
+      "additionalProperties": false,
+      "properties": {
+        "referenceToOEType": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "text": {
+              "type": "string"
+            }
+          }
+        },
+        "requirementsSatisfied": {
+          "type": "string"
+        }
+      }
+    },
+    "configurationSettingsAndRestrictions": {
+      "type": "string"
+    },
+    "additionalInformation": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+    "amvVersion": "0.1",
+    "document":
+    {
+        "schema": "functionalTest",
+        "version": "1.0"
+    },
+    "functionalTest":
+    {
+        "defaults":
+        {
+            "access": "physical remote observed",
+            "technique": "debugger simulation emulation harness manual other",
+            "description": "description of test procedure",
+            "setup": "String - reference into Catalog",
+            "errorInduction": "description of modifications",
+            "results":
+            {
+                "summary": "summary of the results, e.g., why does the result mean the requirement is met",
+                "digest": "####",
+                "fileLocation": "directory or location of test evidence",
+                "integrityMechanism": "SHA2-256"
+            }
+        },
+        "testEvidence":
+        [
+            {
+                "teList":
+                [
+                    "TE02.12.01"
+                ],
+                "description": "Verify that versioning info identifies distinct components.",
+                "access": "physical",
+                "technique": "debugger simulation emulation harness manual other",
+                "setup": "reference into Catalog",
+                "errorInduction": "description of",
+                "results":
+                {
+                    "summary": "summary of the results, e.g., why does the result mean the requirement is met",
+                    "digest": "########",
+                    "fileLocation": "location of test evidence",
+                    "integrityMechanism": "SHA2-512"
+                }
+            }
+        ]
+    }
+}

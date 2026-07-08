@@ -1,0 +1,258 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "sourceCodeEvidencePayload",
+    "title": "sourceCodeEvidencePayload",
+    "description": "Source Code Evidence payload JSON schema",
+    "type": "object",
+    "additionalProperties": false,
+    "required":
+    [
+        "sourceCode"
+    ],
+    "properties":
+    {
+        "sourceCode":
+        {
+            "description": "A set of source code evidences grouped by the client",
+            "type": "object",
+            "additionalProperties": false,
+            "required":
+            [
+                "testEvidence"
+            ],
+            "properties":
+            {
+                "defaults":
+                {
+                    "description": "Default values applied to all source code evidences provided in this payload. These values may be overwritten by individual elements in the list",
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties":
+                    {
+                        "access":
+                        {
+                            "description": "How the IUT was accessed during testing",
+                            "enum":
+                            [
+                                "physical",
+                                "remote",
+                                "observed"
+                            ]
+                        },
+                        "technique":
+                        {
+                            "description": "How the test was performed on the IUT",
+                            "enum":
+                            [
+                                "debugger",
+                                "simulation",
+                                "emulation",
+                                "harness",
+                                "manual",
+                                "other"
+                            ]
+                        },
+                        "description":
+                        {
+                            "description": "Description of the test procedure",
+                            "type": "string"
+                        },
+                        "version":
+                        {
+                            "description": "Version of the code reviewed",
+                            "type": "string"
+                        },
+                        "file":
+                        {
+                            "description": "Files reviewed in association with a requirement",
+                            "type": "array",
+                            "items":
+                            {
+                                "type": "string"
+                            }
+                        },
+                        "results":
+                        {
+                            "description": "A results object capturing the outcome of the test",
+                            "type": "object",
+                            "additionalProperties": false,
+                            "required":
+                            [
+                                "summary",
+                                "digest",
+                                "fileLocation",
+                                "integrityMechanism"
+                            ],
+                            "properties":
+                            {
+                                "summary":
+                                {
+                                    "description": "Summary of the results, why does the result mean the requirement is met",
+                                    "type": "string"
+                                },
+                                "digest":
+                                {
+                                    "description": "The committment to the files at the fileLocation using the integrityMechanism",
+                                    "type": "string",
+                                    "pattern": "[0-9a-fA-F]+"
+                                },
+                                "fileLocation":
+                                {
+                                    "description": "Location of the files associated with the TE relative to the base of the evidence catalog",
+                                    "type": "string"
+                                },
+                                "integrityMechanism":
+                                {
+                                    "description": "The algorithm used to commit the evidence catalog contents to the reported results",
+                                    "enum":
+                                    [
+                                        "SHA2-256",
+                                        "SHA2-512",
+                                        "SHA3-256",
+                                        "SHA3-512"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "testEvidence":
+                {
+                    "description": "List of objects containing a TE list and any overwritten properties from the defaults",
+                    "type": "array",
+                    "additionalProperties": false,
+                    "items":
+                    {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required":
+                        [
+                            "teList"
+                        ],
+                        "properties":
+                        {
+                            "teList":
+                            {
+                                "type": "array",
+                                "items":
+                                {
+                                    "type": "string"
+                                }
+                            },
+                            "access":
+                            {
+                                "description": "How the IUT was accessed during testing",
+                                "enum":
+                                [
+                                    "physical",
+                                    "remote",
+                                    "observed"
+                                ]
+                            },
+                            "technique":
+                            {
+                                "description": "How the test was performed on the IUT",
+                                "enum":
+                                [
+                                    "debugger",
+                                    "simulation",
+                                    "emulation",
+                                    "harness",
+                                    "manual",
+                                    "other"
+                                ]
+                            },
+                            "description":
+                            {
+                                "description": "Description of the function",
+                                "type": "string"
+                            },
+                            "version":
+                            {
+                                "description": "Version of the code reviewed",
+                                "type": "string"
+                            },
+                            "file":
+                            {
+                                "description": "Files reviewed in association with a requirement",
+                                "type": "array",
+                                "items":
+                                {
+                                    "type": "string"
+                                }
+                            },
+                            "function":
+                            {
+                                "description": "A reference to the catalog describing the initialization needed for the test and any inputs used",
+                                "type": "string"
+                            },
+                            "lines":
+                            {
+                                "description": "Line numbers evaluated",
+                                "type": "string"
+                            },
+                            "input":
+                            {
+                                "description": "Any inputs used to test the function",
+                                "type": "string"
+                            },
+                            "output":
+                            {
+                                "description": "The resulting output to from the test of the function",
+                                "type": "string"
+                            },
+                            "status":
+                            {
+                                "description": "Status of the test results",
+                                "type": "string"
+                            },
+                            "results":
+                            {
+                                "description": "A results object capturing the outcome of the test",
+                                "type": "object",
+                                "additionalProperties": false,
+                                "required":
+                                [
+                                    "summary",
+                                    "digest",
+                                    "fileLocation",
+                                    "integrityMechanism"
+                                ],
+                                "properties":
+                                {
+                                    "summary":
+                                    {
+                                        "description": "Summary of the results, why does the result mean the requirement is met",
+                                        "type": "string"
+                                    },
+                                    "digest":
+                                    {
+                                        "description": "The committment to the files at the fileLocation using the integrityMechanism",
+                                        "type": "string",
+                                        "pattern": "[0-9a-fA-F]+"
+                                    },
+                                    "fileLocation":
+                                    {
+                                        "description": "Location of the files associated with the TE relative to the base of the evidence catalog",
+                                        "type": "string"
+                                    },
+                                    "integrityMechanism":
+                                    {
+                                        "description": "The algorithm used to commit the evidence catalog contents to the reported results",
+                                        "enum":
+                                        [
+                                            "SHA2-256",
+                                            "SHA2-512",
+                                            "SHA3-256",
+                                            "SHA3-512"
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

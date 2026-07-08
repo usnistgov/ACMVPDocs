@@ -1,0 +1,15 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "mitigationTechniques": {
+      "type": "string"
+    },
+    "effectiveness": {
+      "type": "string"
+    },
+    "additionalInformation": {
+      "type": "string"
+    }
+  }
+}

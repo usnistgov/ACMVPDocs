@@ -1,0 +1,158 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "functionalTestEvidencePayload",
+	"title": "functionalTestEvidencePayload",
+	"description": "Functional Test Evidence payload JSON schema",
+	"type": "object",
+	"additionalProperties": false,
+	"required":
+	[
+		"functionalTest"
+	],
+	"properties":
+	{
+		"amvVersion": {
+			"type": "string"
+		},
+		"functionalTest":
+		{
+			"description": "A set of functional test evidences grouped by the client",
+			"type": "object",
+			"additionalProperties": false,
+			"required":
+			[
+				"testEvidence"
+			],
+			"properties":
+			{
+				"document":
+				{
+					"type": "object",
+					"additionalProperties": false,
+					"properties":{
+						"base-catalogVersion":
+						{
+							"type":"string"
+						},
+						"base-lastUpdated":
+						{
+							"type":"string"
+						},
+						"functionalTesting-EC":
+						{
+							"type":"string"
+						},
+						"functionalTesting-lastUpdated":
+						{
+							"type":"string"
+						}
+					}
+				},
+				"testEvidence":
+				{
+					"description": "List of objects containing a TE list and any overwritten properties from the defaults",
+					"type": "array",
+					"additionalProperties": false,
+					"items":
+					{
+						"type": "object",
+						"additionalProperties": false,
+						"required": ["teList"],
+						"properties":
+						{
+							"teList":
+							{
+								"type": "array",
+								"items":
+								{
+									"type": "string"
+								}
+							},
+							"access":
+							{
+								"description": "How the IUT was accessed during testing",
+								"enum":
+								[
+									"physical",
+									"remote",
+									"observed"
+								]
+							},
+							"technique":
+							{
+								"description": "How the test was performed on the IUT",
+								"enum":
+								[
+									"debugger",
+									"simulation",
+									"emulation",
+									"harness",
+									"manual",
+									"other"
+								]
+							},
+							"description":
+							{
+								"description": "Description of the test procedure",
+								"type": "string"
+							},
+							"setup":
+							{
+								"description": "A reference to the catalog describing the initialization needed for the test and any inputs used",
+								"type": "string"
+							},
+							"errorInduction":
+							{
+								"description": "Description of any modifications made to the IUT to trigger a desired condition for the test",
+								"type": "string"
+							},
+							"results":
+							{
+								"description": "A results object capturing the outcome of the test",
+								"type": "object",
+								"additionalProperties": false,
+								"required":
+								[
+									"summary",
+									"digest",
+									"fileLocation",
+									"integrityMechanism"
+								],
+								"properties":
+								{
+									"summary":
+									{
+										"description": "Summary of the results, why does the result mean the requirement is met",
+										"type": "string"
+									},
+									"digest":
+									{
+										"description": "The committment to the files at the fileLocation using the integrityMechanism",
+										"type": "string",
+										"pattern": "[0-9a-fA-F]+"
+									},
+									"fileLocation":
+									{
+										"description": "Location of the files associated with the TE relative to the base of the evidence catalog",
+										"type": "string"
+									},
+									"integrityMechanism":
+									{
+										"description": "The algorithm used to commit the evidence catalog contents to the reported results",
+										"enum":
+										[
+											"SHA2-256",
+											"SHA2-512",
+											"SHA3-256",
+											"SHA3-512"
+										]
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

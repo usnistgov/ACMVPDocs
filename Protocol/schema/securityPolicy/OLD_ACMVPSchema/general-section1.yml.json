@@ -1,0 +1,106 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "general": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "The main object for the entire security policy",
+      "required": [
+        "overallDescription",
+        "securityLevels"
+      ],
+      "properties": {
+        "overallDescription": {
+          "type": "string"
+        },
+        "securityLevels": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "overall",
+            "section1",
+            "section2",
+            "section3",
+            "section4",
+            "section5",
+            "section6",
+            "section7",
+            "section8",
+            "section9",
+            "section10",
+            "section11",
+            "section12"
+          ],
+          "properties": {
+            "overall": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 4
+            },
+            "section1": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 4
+            },
+            "section2": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 4
+            },
+            "section3": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 4
+            },
+            "section4": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 4
+            },
+            "section5": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 4
+            },
+            "section6": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 4
+            },
+            "section7": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 4
+            },
+            "section8": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 4
+            },
+            "section9": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 4
+            },
+            "section10": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 4
+            },
+            "section11": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 4
+            },
+            "section12": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 4
+            }
+          }
+        }
+      }
+    }
+  }
+}

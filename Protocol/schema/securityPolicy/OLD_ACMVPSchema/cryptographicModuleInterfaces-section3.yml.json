@@ -1,0 +1,50 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "portsAndInterfaces"
+  ],
+  "properties": {
+    "portsAndInterfaces": {
+      "type": "object",
+      "required": [
+        "text",
+        "portInterfaces"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "text": {
+          "type": "string"
+        },
+        "portInterfaces": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "port": {
+                "type": "string"
+              },
+              "logicalInterface": {
+                "type": "string"
+              },
+              "data": {
+                "type": "string"
+              },
+              "required": ["port", "logicalInterface", "data"]
+            }
+          }
+        }
+      }
+    },
+    "trustChannelSpec": {
+      "type": "string"
+    },
+    "controlInterfaceNotInhibited": {
+      "type": "string"
+    },
+    "additionalInformation": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,104 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "otherDocumentationEvidencePayload",
+	"title": "otherDocumentationEvidencePayload",
+	"description": "Other Documentation Evidence payload JSON schema",
+	"type": "object",
+	"additionalProperties": false,
+	"required":
+	[
+		"otherDocumentation"
+	],
+	"properties":
+	{
+		"otherDocumentation":
+		{
+			"description": "A set of other documentation evidences grouped by the client",
+			"type": "object",
+			"additionalProperties": false,
+			"required":
+			[
+				"testEvidence"
+			],
+			"properties":
+			{
+				"testEvidence":
+				{
+					"description": "List of objects containing a TE list and any overwritten properties from the defaults",
+					"type": "array",
+					"additionalProperties": false,
+					"items":
+					{
+						"type": "object",
+						"additionalProperties": false,
+						"required": ["teList"],
+						"properties":
+						{
+							"teList":
+							{
+								"type": "array",
+								"items":
+								{
+									"type": "string"
+								}
+							},
+							"sectionName":
+							{
+								"description": "Section of the referenced document",
+								"type": "string"
+							},
+							"documentName":
+							{
+								"description": "Name of the referenced document",
+								"type": "string"
+							},
+							"results":
+							{
+								"description": "A results object capturing the outcome of the test",
+								"type": "object",
+								"additionalProperties": false,
+								"required":
+								[
+									"summary",
+									"digest",
+									"fileLocation",
+									"integrityMechanism"
+								],
+								"properties":
+								{
+									"summary":
+									{
+										"description": "Summary of the results, why does the result mean the requirement is met",
+										"type": "string"
+									},
+									"digest":
+									{
+										"description": "The committment to the files at the fileLocation using the integrityMechanism",
+										"type": "string",
+										"pattern": "[0-9a-fA-F]+"
+									},
+									"fileLocation":
+									{
+										"description": "Location of the files associated with the TE relative to the base of the evidence catalog",
+										"type": "string"
+									},
+									"integrityMechanism":
+									{
+										"description": "The algorithm used to commit the evidence catalog contents to the reported results",
+										"enum":
+										[
+											"SHA2-256",
+											"SHA2-512",
+											"SHA3-256",
+											"SHA3-512"
+										]
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,1185 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/product.schema.json",
+  "title": "SecurityPolicyCatalog",
+  "description": "The security policy catalog",
+  "type": "object",
+  "items": {
+    "oneOf": [
+      {
+        "type": "object",
+        "properties": {
+          "amvVersion": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "amvVersion"
+        ]
+      },
+      {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "securityPolicy"
+        ],
+        "properties": {
+          "catalogVersion": {
+            "type": "string",
+            "description": "The SP schema version"
+          },
+          "vendorName": {
+            "type": "string",
+            "description": "The name of the vendor"
+          },
+          "version": {
+            "type": "string",
+            "description": "The version"
+          },
+          "moduleName": {
+            "type": "string",
+            "description": "The name of the module being submitted"
+          },
+          "docVersion": {
+            "type": "string",
+            "description": "The document version"
+          },
+          "lastUpdated": {
+            "type": "string",
+            "description": "The date dd/mm/yy Security Policy was last updated"
+          },
+          "securityPolicy": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "general",
+              "cryptographicModuleSpecification",
+              "cryptographicModuleInterfaces",
+              "rolesServicesAuthentication",
+              "softwareFirmwareSecurity",
+              "sensitiveSecurityParameterManagement",
+              "selfTests",
+              "lifeCycleAssurance",
+              "mitigationOfOtherAttacks"
+            ],
+            "properties": {
+              "logo": {
+                "type": "string"
+              },
+              "general": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "overallDescription",
+                  "securityLevels"
+                ],
+                "properties": {
+                  "overallDescription": {
+                    "type": "string"
+                  },
+                  "securityLevels": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "overall",
+                      "section1",
+                      "section2",
+                      "section3",
+                      "section4",
+                      "section5",
+                      "section6",
+                      "section7",
+                      "section8",
+                      "section9",
+                      "section10",
+                      "section11",
+                      "section12"
+                    ],
+                    "properties": {
+                      "overall": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 4
+                      },
+                      "section1": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 4
+                      },
+                      "section2": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 4
+                      },
+                      "section3": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 4
+                      },
+                      "section4": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 4
+                      },
+                      "section5": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 4
+                      },
+                      "section6": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 4
+                      },
+                      "section7": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 4
+                      },
+                      "section8": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 4
+                      },
+                      "section9": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 4
+                      },
+                      "section10": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 4
+                      },
+                      "section11": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 4
+                      },
+                      "section12": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 4
+                      }
+                    }
+                  }
+                }
+              },
+              "cryptographicModuleSpecification": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "description": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "purposeAndUse": {
+                        "type": "string"
+                      },
+                      "referenceToSubchip": {
+                        "type": "string"
+                      },
+                      "cryptographicBoundary": {
+                        "type": "string"
+                      },
+                      "TOEPP": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "blockDiagram": {
+                    "type": "string"
+                  },
+                  "testedSoftwareFirmwareHybrid": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": [
+                        "packagesFilenames",
+                        "softwareFirmwareVersion",
+                        "nonSecurityRelevantDistinguishingFeatures",
+                        "integrityTestImplemented"
+                      ],
+                      "properties": {
+                        "packagesFilenames": {
+                          "type": "string"
+                        },
+                        "softwareFirmwareVersion": {
+                          "type": "string"
+                        },
+                        "nonSecurityRelevantDistinguishingFeatures": {
+                          "type": "string"
+                        },
+                        "integrityTestImplemented": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "excludedComponents": {
+                    "type": "string"
+                  },
+                  "degradedMode": {
+                    "type": "string"
+                  },
+                  "modeChangeInstructionsAndStatus": {
+                    "type": "string"
+                  },
+                  "algorithms": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": [
+                        "algorithmName",
+                        "cavpCertNumbers",
+                        "algorithmCapabilities",
+                        "oe",
+                        "reference"
+                      ],
+                      "properties": {
+                        "algorithmName": {
+                          "type": "string"
+                        },
+                        "cavpCertNumbers": {
+                          "type": "string"
+                        },
+                        "algorithmCapabilities": {
+                          "type": "string"
+                        },
+                        "oe": {
+                          "type": "string"
+                        },
+                        "reference": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "algorithmSpecificInformation": {
+                    "type": "string"
+                  }
+                }
+              },
+              "cryptographicModuleInterfaces": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "portsAndInterfaces": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "text": {
+                        "type": "string"
+                      },
+                      "portInterfaces": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "additionalProperties": false,
+                          "properties": {
+                            "port": {
+                              "type": "string"
+                            },
+                            "logicalInterface": {
+                              "type": "string"
+                            },
+                            "data": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "trustChannelSpec": {
+                    "type": "string"
+                  },
+                  "controlInterfaceNotInhibited": {
+                    "type": "string"
+                  },
+                  "additionalInformation": {
+                    "type": "string"
+                  }
+                }
+              },
+              "rolesServicesAuthentication": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "authenticationMethods": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "authenticationMethodsList": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "additionalProperties": false,
+                          "required": [
+                            "name",
+                            "description",
+                            "mechanism",
+                            "strengthPerAttempt",
+                            "strengthPerMinute"
+                          ],
+                          "properties": {
+                            "name": {
+                              "type": "string"
+                            },
+                            "description": {
+                              "type": "string"
+                            },
+                            "mechanism": {
+                              "type": "string"
+                            },
+                            "strengthPerAttempt": {
+                              "type": "string"
+                            },
+                            "strengthPerMinute": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "text": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "roles": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": [
+                        "name",
+                        "type",
+                        "operatorType",
+                        "authenticationMethods"
+                      ],
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "type": {
+                          "type": "string"
+                        },
+                        "operatorType": {
+                          "type": "string"
+                        },
+                        "authenticationMethods": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "approvedServices": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "approvedServicesList": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "additionalProperties": false,
+                          "properties": {
+                            "name": {
+                              "type": "string"
+                            },
+                            "description": {
+                              "type": "string"
+                            },
+                            "indicator": {
+                              "type": "string"
+                            },
+                            "inputs": {
+                              "type": "string"
+                            },
+                            "outputs": {
+                              "type": "string"
+                            },
+                            "sfi": {
+                              "type": "string"
+                            },
+                            "roles": {
+                              "type": "string"
+                            },
+                            "sspAccess": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "text": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "nonApprovedServices": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "description": {
+                          "type": "string"
+                        },
+                        "algorithmsAccessed": {
+                          "type": "string"
+                        },
+                        "role": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "externalSoftwareFirmwareLoaded": {
+                    "type": "string"
+                  }
+                }
+              },
+              "softwareFirmwareSecurity": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "integrityTechniques": {
+                    "type": "string"
+                  },
+                  "initiateOnDemand": {
+                    "type": "string"
+                  },
+                  "openSourceParameters": {
+                    "type": "string"
+                  },
+                  "additionalInformation": {
+                    "type": "string"
+                  }
+                }
+              },
+              "sensitiveSecurityParameterManagement": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "storageAreas": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "storageAreaList": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "additionalProperties": false,
+                          "required": [
+                            "name",
+                            "description",
+                            "persistenceType"
+                          ],
+                          "properties": {
+                            "name": {
+                              "type": "string"
+                            },
+                            "description": {
+                              "type": "string"
+                            },
+                            "persistenceType": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "text": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "inputOutputMethods": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "sspInputOutputList": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "additionalProperties": false,
+                          "required": [
+                            "name",
+                            "from",
+                            "to",
+                            "formatType",
+                            "distributionType",
+                            "entryType",
+                            "SFIOrAlgorithm"
+                          ],
+                          "properties": {
+                            "name": {
+                              "type": "string"
+                            },
+                            "from": {
+                              "type": "string"
+                            },
+                            "to": {
+                              "type": "string"
+                            },
+                            "formatType": {
+                              "type": "string"
+                            },
+                            "distributionType": {
+                              "type": "string"
+                            },
+                            "entryType": {
+                              "type": "string"
+                            },
+                            "SFIOrAlgorithm": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "text": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "sspZeroizationMethods": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "sspZeroizationList": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "additionalProperties": false,
+                          "required": [
+                            "method",
+                            "description",
+                            "rationale",
+                            "operatorInitiationCapability"
+                          ],
+                          "properties": {
+                            "method": {
+                              "type": "string"
+                            },
+                            "description": {
+                              "type": "string"
+                            },
+                            "rationale": {
+                              "type": "string"
+                            },
+                            "operatorInitiationCapability": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "text": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "ssps": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "sspList": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "additionalProperties": false,
+                          "required": [
+                            "name",
+                            "description",
+                            "size",
+                            "strength",
+                            "type",
+                            "generatedBy",
+                            "establishedBy",
+                            "usedBy",
+                            "inputOutput",
+                            "storage",
+                            "temporaryStorageDuration",
+                            "zeroization",
+                            "category",
+                            "relatedSSPs"
+                          ],
+                          "properties": {
+                            "name": {
+                              "type": "string"
+                            },
+                            "description": {
+                              "type": "string"
+                            },
+                            "size": {
+                              "type": "string"
+                            },
+                            "strength": {
+                              "type": "string"
+                            },
+                            "type": {
+                              "type": "string"
+                            },
+                            "generatedBy": {
+                              "type": "string"
+                            },
+                            "establishedBy": {
+                              "type": "string"
+                            },
+                            "usedBy": {
+                              "type": "string"
+                            },
+                            "inputOutput": {
+                              "type": "string"
+                            },
+                            "storage": {
+                              "type": "string"
+                            },
+                            "temporaryStorageDuration": {
+                              "type": "string"
+                            },
+                            "zeroization": {
+                              "type": "string"
+                            },
+                            "category": {
+                              "type": "string"
+                            },
+                            "relatedSSPs": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "text": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "transitions": {
+                    "type": "string"
+                  },
+                  "additionalInformation": {
+                    "type": "string"
+                  }
+                }
+              },
+              "operationalEnvironment": {
+                "type": "object",
+                "additionalProperties": true,
+                "required": [],
+                "properties": {
+                  "operationalEnvironmentTypeAndRequirements": {
+                    "type": "object",
+                    "required": [],
+                    "additionalProperties": false,
+                    "properties": {
+                      "referenceToOEType": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                          "text": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "requirementsSatisfied": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "configurationSettingsAndRestrictions": {
+                    "type": "string"
+                  },
+                  "additionalInformation": {
+                    "type": "string"
+                  }
+                }
+              },
+              "physicalSecurity": {
+                "type": "object",
+                "additionalProperties": true,
+                "required": [],
+                "properties": {
+                  "mechanismsAndActionsRequired": {
+                    "type": "object",
+                    "required": [],
+                    "additionalProperties": false,
+                    "properties": {
+                      "physicalSecurityMechanismsList": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "required": [],
+                          "additionalProperties": false,
+                          "properties": {
+                            "physicalSecurityMechanism": {
+                              "type": "string"
+                            },
+                            "recommendedFrequency": {
+                              "type": "string"
+                            },
+                            "inspectionOrTestGuidanceDetails": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "additionalInformation": {
+                        "type": "string"
+                      },
+                      "image": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "userPlacedTamperSeals": {
+                    "type": "object",
+                    "required": [],
+                    "additionalProperties": false,
+                    "properties": {
+                      "number": {
+                        "type": "string"
+                      },
+                      "placement": {
+                        "type": "string"
+                      },
+                      "surfacePreparation": {
+                        "type": "string"
+                      },
+                      "operatorResponsibleForSecuringUnusedSeals": {
+                        "type": "string"
+                      },
+                      "partNumbers": {
+                        "type": "string"
+                      },
+                      "image": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "fillerPanels": {
+                    "type": "object",
+                    "required": [],
+                    "additionalProperties": false,
+                    "properties": {
+                      "additionalInformation": {
+                        "type": "string"
+                      },
+                      "image": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "faultInductionMitigation": {
+                    "type": "string"
+                  },
+                  "efpEftInformation": {
+                    "type": "object",
+                    "required": [
+                      "efpEftInfoList",
+                      "lowTempMeasurement",
+                      "lowTempEfpOrEft",
+                      "lowTempResults",
+                      "highTempMeasurement",
+                      "highTempEfpOrEft",
+                      "highTempResult",
+                      "lowVoltMeasurement",
+                      "lowVoltEfpOrEft",
+                      "lowVoltResults",
+                      "highVoltMeasurement",
+                      "highVoltEfpOrEft",
+                      "highVoltResults"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                      "efpEftInfoList": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "required": [
+                            "temperatureOrVoltageMeasurement",
+                            "specifyIfEfpOrEft",
+                            "specifyIfShutdownOrZerization"
+                          ],
+                          "additionalProperties": false,
+                          "properties": {
+                            "temperatureOrVoltageMeasurement": {
+                              "type": "string"
+                            },
+                            "specifyIfEfpOrEft": {
+                              "type": "string"
+                            },
+                            "specifyIfShutdownOrZerization": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "lowTempMeasurement": {
+                        "type": "string"
+                      },
+                      "lowTempEfpOrEft": {
+                        "type": "string"
+                      },
+                      "lowTempResults": {
+                        "type": "string"
+                      },
+                      "highTempMeasurement": {
+                        "type": "string"
+                      },
+                      "highTempEfpOrEft": {
+                        "type": "string"
+                      },
+                      "highTempResult": {
+                        "type": "string"
+                      },
+                      "lowVoltMeasurement": {
+                        "type": "string"
+                      },
+                      "lowVoltEfpOrEft": {
+                        "type": "string"
+                      },
+                      "lowVoltResults": {
+                        "type": "string"
+                      },
+                      "highVoltMeasurement": {
+                        "type": "string"
+                      },
+                      "highVoltEfpOrEft": {
+                        "type": "string"
+                      },
+                      "highVoltResults": {
+                        "type": "string"
+                      },
+                      "additionalInformation": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "hardnessTestingTemperatureRanges": {
+                    "type": "object",
+                    "required": [
+                      "hardnessTestTempList",
+                      "lowHardnessTemperatureMeasurement",
+                      "highHardnessTemperatureMeasurement"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                      "hardnessTestTempList": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "required": [
+                            "hardnessTestTempMeasurement"
+                          ],
+                          "additionalProperties": false,
+                          "properties": {
+                            "hardnessTestTempMeasurement": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "lowHardnessTemperatureMeasurement": {
+                        "type": "string"
+                      },
+                      "highHardnessTemperatureMeasurement": {
+                        "type": "string"
+                      },
+                      "additionalInformation": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "additionalInformation": {
+                    "type": "string"
+                  }
+                }
+              },
+              "noninvasiveSecurity": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "mitigationTechniques": {
+                    "type": "string"
+                  },
+                  "effectiveness": {
+                    "type": "string"
+                  },
+                  "additionalInformation": {
+                    "type": "string"
+                  }
+                }
+              },
+              "selfTests": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "preOperationalSelfTests": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "preOperationalSelfTestList": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "additionalProperties": false,
+                          "required": [
+                            "algorithm",
+                            "implementation",
+                            "testProperties",
+                            "testMethod",
+                            "type",
+                            "indicator",
+                            "details"
+                          ],
+                          "properties": {
+                            "algorithm": {
+                              "type": "string"
+                            },
+                            "implementation": {
+                              "type": "string"
+                            },
+                            "testProperties": {
+                              "type": "string"
+                            },
+                            "testMethod": {
+                              "type": "string"
+                            },
+                            "type": {
+                              "type": "string"
+                            },
+                            "indicator": {
+                              "type": "string"
+                            },
+                            "details": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "text": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "conditionalSelfTests": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "conditionalSelfTestList": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "additionalProperties": false,
+                          "required": [
+                            "algorithm",
+                            "implementation",
+                            "testProperties",
+                            "testMethod",
+                            "type",
+                            "indicator",
+                            "details",
+                            "condition"
+                          ],
+                          "properties": {
+                            "algorithm": {
+                              "type": "string"
+                            },
+                            "implementation": {
+                              "type": "string"
+                            },
+                            "testProperties": {
+                              "type": "string"
+                            },
+                            "testMethod": {
+                              "type": "string"
+                            },
+                            "type": {
+                              "type": "string"
+                            },
+                            "indicator": {
+                              "type": "string"
+                            },
+                            "details": {
+                              "type": "string"
+                            },
+                            "condition": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "text": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "preOperationalPeriodicSelfTests": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "preOperationalPeriodicSelfTestList": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "additionalProperties": false,
+                          "required": [
+                            "algorithm",
+                            "implementation",
+                            "testProperties",
+                            "testMethod",
+                            "type",
+                            "indicator",
+                            "details",
+                            "period",
+                            "periodicMethod"
+                          ],
+                          "properties": {
+                            "algorithm": {
+                              "type": "string"
+                            },
+                            "implementation": {
+                              "type": "string"
+                            },
+                            "testProperties": {
+                              "type": "string"
+                            },
+                            "testMethod": {
+                              "type": "string"
+                            },
+                            "type": {
+                              "type": "string"
+                            },
+                            "indicator": {
+                              "type": "string"
+                            },
+                            "details": {
+                              "type": "string"
+                            },
+                            "period": {
+                              "type": "string"
+                            },
+                            "periodicMethod": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "text": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "conditionalPeriodicSelfTests": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "conditionalPeriodicSelfTestList": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "additionalProperties": false,
+                          "required": [
+                            "algorithm",
+                            "implementation",
+                            "testProperties",
+                            "testMethod",
+                            "type",
+                            "indicator",
+                            "details",
+                            "period",
+                            "periodicMethod"
+                          ],
+                          "properties": {
+                            "algorithm": {
+                              "type": "string"
+                            },
+                            "implementation": {
+                              "type": "string"
+                            },
+                            "testProperties": {
+                              "type": "string"
+                            },
+                            "testMethod": {
+                              "type": "string"
+                            },
+                            "type": {
+                              "type": "string"
+                            },
+                            "indicator": {
+                              "type": "string"
+                            },
+                            "details": {
+                              "type": "string"
+                            },
+                            "period": {
+                              "type": "string"
+                            },
+                            "periodicMethod": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "text": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              },
+              "lifeCycleAssurance": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "installationInitializationAndStartupProcedures": {
+                    "type": "string"
+                  },
+                  "administratorGuidance": {
+                    "type": "string"
+                  },
+                  "nonAdministratorGuidance": {
+                    "type": "string"
+                  },
+                  "designAndRules": {
+                    "type": "string"
+                  },
+                  "maintenanceRequirements": {
+                    "type": "string"
+                  },
+                  "endOfLife": {
+                    "type": "string"
+                  },
+                  "additionalInformation": {
+                    "type": "string"
+                  }
+                }
+              },
+              "mitigationOfOtherAttacks": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "attacks": {
+                    "type": "string"
+                  },
+                  "mitigationEffectiveness": {
+                    "type": "string"
+                  },
+                  "guidanceAndConstraints": {
+                    "type": "string"
+                  },
+                  "additionalInformation": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

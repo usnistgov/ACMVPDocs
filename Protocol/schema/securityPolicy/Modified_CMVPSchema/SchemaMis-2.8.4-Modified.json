@@ -1,0 +1,1460 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "schemaMis-2.8.4.json",
+	"title": "MIS Schema",
+	"type": "object",
+	"additionalProperties": false,
+	"properties": {
+		"amvVersion": {
+			"type": "string"
+		},
+		"securityPolicy": {
+			"type": "object",
+			"additionalProperties" : false,
+			"properties": {
+				"schemaVersion": {
+					"type": "string",
+					"const": "2.8.4"
+				},
+				"cavpCertSet": {
+					"$ref": "#/$defs/cavpCertSet"
+				},
+				"esvCertList": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/esvCert"
+					}
+				},
+				"esvItarCertList": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"testedHwList": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/testedHw"
+					}
+				},
+				"testedSwFwHyList": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/testedSwFwHy"
+					}
+				},
+				"testedHyHwList": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/testedHyHw"
+					}
+				},
+				"opEnvSwFwHyTestedList": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/opEnvSwFwHyTested"
+					}
+				},
+				"opEnvSwFwHyVAList": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/opEnvSwFwHyVA"
+					}
+				},
+				"modeOfOpList": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/modeOfOp"
+					}
+				},
+				"vendorAffirmedAlgoList": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/vendorAffirmedAlgo"
+					}
+				},
+				"nonApprovedAllowedAlgoList": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/nonApprovedAllowedAlgo"
+					}
+				},
+				"nonApprovedAllowedAlgoNSCList": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/nonApprovedAllowedAlgoNSC"
+					}
+				},
+				"nonApprovedNotAllowedAlgoList": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/nonApprovedNotAllowedAlgo"
+					}
+				},
+				"secFunImplList": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/secFunImpl"
+					}
+				},
+				"entropySourceList": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/entropySource"
+					}
+				},
+				"portInterfaceList": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/portInterface"
+					}
+				},
+				"authMethodList": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/authMethod"
+					}
+				},
+				"roleList": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/role"
+					}
+				},
+				"approvedServiceList": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/approvedService"
+					}
+				},
+				"nonApprovedServiceList": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/nonApprovedService"
+					}
+				},
+				"phSecMechanismList": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/phSecMechanism"
+					}
+				},
+				"efpEftInfoList": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/efpEftInfo"
+					}
+				},
+				"hardnessTestTempList": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/hardnessTestTemp"
+					}
+				},
+				"storageAreaList": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/storageArea"
+					}
+				},
+				"sspInputOutputList": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/sspInputOutput"
+					}
+				},
+				"sspZeroizationList": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/sspZeroization"
+					}
+				},
+				"sspList": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/ssp"
+					}
+				},
+				"preOpSelfTestList": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/preOpSelfTest"
+					}
+				},
+				"condSelfTestList": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/condSelfTest"
+					}
+				},
+				"errorStateList": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/errorState"
+					}
+				},
+				"referenceList": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				}
+			},
+			"required": [
+				"schemaVersion",
+				"cavpCertSet",
+				"esvCertList",
+				"esvItarCertList",
+				"testedHwList",
+				"testedSwFwHyList",
+				"testedHyHwList",
+				"opEnvSwFwHyTestedList",
+				"opEnvSwFwHyVAList",
+				"modeOfOpList",
+				"vendorAffirmedAlgoList",
+				"nonApprovedAllowedAlgoList",
+				"nonApprovedAllowedAlgoNSCList",
+				"nonApprovedNotAllowedAlgoList",
+				"secFunImplList",
+				"entropySourceList",
+				"portInterfaceList",
+				"authMethodList",
+				"roleList",
+				"approvedServiceList",
+				"nonApprovedServiceList",
+				"phSecMechanismList",
+				"efpEftInfoList",
+				"hardnessTestTempList",
+				"storageAreaList",
+				"sspInputOutputList",
+				"sspZeroizationList",
+				"sspList",
+				"preOpSelfTestList",
+				"condSelfTestList",
+				"errorStateList",
+				"referenceList"
+			]
+		}
+},
+	"required": [
+		"amvVersion",
+		"securityPolicy"
+	],
+	"$defs": {
+		"cavpCertSet": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"cavpCertList": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/cavpCert"
+					}
+				},
+				"cavpOeList": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/cavpOe"
+					}
+				},
+				"cavpOeAlgoList": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/cavpOeAlgo"
+					}
+				},
+				"cavpImplAlgoList": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/cavpImplAlgo"
+					}
+				},
+				"cavpItarAlgoList": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/cavpItarAlgo"
+					}
+				}
+			},
+			"required": [
+				"cavpCertList",
+				"cavpOeList",
+				"cavpOeAlgoList",
+				"cavpImplAlgoList",
+				"cavpItarAlgoList"
+			]
+		},
+		"cavpCert": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"vendorName": {
+					"type": "string"
+				},
+				"certName": {
+					"type": "string"
+				},
+				"validationId": {
+					"type": "integer"
+				},
+				"implName": {
+					"type": "string"
+				},
+				"implVersion": {
+					"type": "string"
+				},
+				"implType": {
+					"type": "string"
+				},
+				"implOrganization": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"vendorName",
+				"certName",
+				"validationId",
+				"implName",
+				"implVersion",
+				"implType",
+				"implOrganization"
+			]
+		},
+		"cavpOe": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"oeId": {
+					"type": "integer"
+				}
+			},
+			"required": [
+				"oeId",
+				"name"
+			]
+		},
+		"cavpOeAlgo": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"validationOeAlgorithmId": {
+					"type": "integer"
+				},
+				"algoDisplayName": {
+					"type": "string"
+				},
+				"canonicalAlgorithmId": {
+					"type": "integer"
+				},
+				"validationId": {
+					"type": "integer"
+				},
+				"certName": {
+					"type": "string"
+				},
+				"implName": {
+					"type": "string"
+				},
+				"oeId": {
+					"type": "integer"
+				},
+				"selectedCapList": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/selectedCap"
+					}
+				}
+			},
+			"required": [
+				"validationOeAlgorithmId",
+				"algoDisplayName",
+				"canonicalAlgorithmId",
+				"validationId",
+				"certName",
+				"oeId",
+				"selectedCapList"
+			]
+		},
+		"selectedCap": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"capabilityId": {
+					"type": "integer"
+				},
+				"displayText": {
+					"type": "string"
+				},
+				"childCapabilities": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/selectedCap"
+					}
+				}
+			},
+			"required": [
+				"capabilityId",
+				"displayText",
+				"childCapabilities"
+			]
+		},
+		"cavpImplAlgo": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"algoDisplayName": {
+					"type": "string"
+				},
+				"canonicalAlgorithmId": {
+					"type": "integer"
+				},
+				"implName": {
+					"type": "string"
+				},
+				"validationId": {
+					"type": "integer"
+				},
+				"certName": {
+					"type": "string"
+				},
+				"category": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"algoDisplayName",
+				"canonicalAlgorithmId",
+				"implName",
+				"validationId",
+				"certName",
+				"category"
+			]
+		},
+		"cavpItarAlgo": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"certName": {
+					"type": "string"
+				},
+				"algoDisplayName": {
+					"type": "string"
+				},
+				"canonicalAlgorithmId": {
+					"type": "integer"
+				},
+				"capabilities": {
+					"type": "string"
+				},
+				"category": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"certName",
+				"algoDisplayName",
+				"canonicalAlgorithmId",
+				"category"
+			]
+		},
+		"securityFunction": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"sfId": {
+					"type": "string"
+				},
+				"sfAbbrev": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"sfId",
+				"sfAbbrev"
+			]
+		},
+		"esvCert": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"esvCertName": {
+					"type": "string"
+				},
+				"certId": {
+					"type": "integer"
+				},
+				"vendorName": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"esvCertName",
+				"certId",
+				"vendorName"
+			]
+		},
+		"testedHw": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"modelPartNum": {
+					"type": "string"
+				},
+				"hwVersion": {
+					"type": "string"
+				},
+				"fwVersion": {
+					"type": "string"
+				},
+				"processors": {
+					"type": "string"
+				},
+				"features": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"modelPartNum",
+				"hwVersion",
+				"fwVersion",
+				"processors",
+				"features"
+			]
+		},
+		"testedSwFwHy": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"packageFileName": {
+					"type": "string"
+				},
+				"swFwVersion": {
+					"type": "string"
+				},
+				"features": {
+					"type": "string"
+				},
+				"integrityTest": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"packageFileName",
+				"swFwVersion",
+				"features",
+				"integrityTest"
+			]
+		},
+		"testedHyHw": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"modelPartNum": {
+					"type": "string"
+				},
+				"hwVersion": {
+					"type": "string"
+				},
+				"fwVersion": {
+					"type": "string"
+				},
+				"processors": {
+					"type": "string"
+				},
+				"features": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"modelPartNum",
+				"hwVersion",
+				"fwVersion",
+				"processors",
+				"features"
+			]
+		},
+		"opEnvSwFwHyTested": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"operatingSystem": {
+					"type": "string"
+				},
+				"hardwarePlatform": {
+					"type": "string"
+				},
+				"processors": {
+					"type": "string"
+				},
+				"paaPai": {
+					"type": "string"
+				},
+				"hypervisorHostOs": {
+					"type": "string"
+				},
+				"swFwVersionList": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				}
+			},
+			"required": [
+				"operatingSystem",
+				"hardwarePlatform",
+				"processors",
+				"paaPai",
+				"hypervisorHostOs",
+				"swFwVersionList"
+			]
+		},
+
+		"opEnvSwFwHyVA": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"operatingSystem": {
+					"type": "string"
+				},
+				"hardwarePlatform": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"operatingSystem",
+				"hardwarePlatform"
+			]
+		},
+		"modeOfOp": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"description": {
+					"type": "string"
+				},
+				"type": {
+					"type": "string"
+				},
+				"statusIndicator": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"name",
+				"description",
+				"type",
+				"statusIndicator"
+			]
+		},
+		"vendorAffirmedAlgo": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"algoPropList": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/algoPropSimple"
+					}
+				},
+				"implName": {
+					"type": "string"
+				},
+				"reference": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"name",
+				"algoPropList",
+				"implName",
+				"reference"
+			]
+		},
+		"nonApprovedAllowedAlgo": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"algoPropList": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/algoPropSimple"
+					}
+				},
+				"implName": {
+					"type": "string"
+				},
+				"reference": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"name",
+				"algoPropList",
+				"implName",
+				"reference"
+			]
+		},
+		"nonApprovedAllowedAlgoNSC": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"caveat": {
+					"type": "string"
+				},
+				"useFunction": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"name",
+				"caveat",
+				"useFunction"
+			]
+		},
+		"nonApprovedNotAllowedAlgo": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"useFunction": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"name",
+				"useFunction"
+			]
+		},
+		"secFunImpl": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"sfTypeList": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/securityFunctionPair"
+					}
+				},
+				"description": {
+					"type": "string"
+				},
+				"sfPropList": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/algoPropSimple"
+					}
+				},
+				"algorithmList": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/algorithmImpl"
+					}
+				}
+			},
+			"required": [
+				"name",
+				"sfTypeList",
+				"description",
+				"sfPropList",
+				"algorithmList"
+			]
+		},
+		"securityFunctionPair": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"sfAbbrev": {
+					"type": "string"
+				},
+				"sfId": {
+					"type": "integer"
+				}
+			},
+			"required": [
+				"sfAbbrev",
+				"sfId"
+			]
+		},
+		"algorithmImpl": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"algoDisplayName": {
+					"type": "string"
+				},
+				"canonicalAlgorithmId": {
+					"type": "integer"
+				},
+				"implName": {
+					"type": "string"
+				},
+				"validationId": {
+					"type": "integer"
+				},
+				"algoPropList": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/algoPropSimple"
+					}
+				},
+				"certName": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"algoDisplayName",
+				"canonicalAlgorithmId",
+				"implName",
+				"validationId",
+				"algoPropList",
+				"certName"
+			]
+		},
+		"entropySource": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"type": {
+					"type": "string"
+				},
+				"opEnv": {
+					"type": "string"
+				},
+				"sampleSize": {
+					"type": "string"
+				},
+				"entropyPerSample": {
+					"type": "string"
+				},
+				"conditioningComp": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"name",
+				"type",
+				"opEnv",
+				"sampleSize",
+				"entropyPerSample",
+				"conditioningComp"
+			]
+		},
+		"portInterface": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"physicalPort": {
+					"type": "string"
+				},
+				"logicalInterfaceList": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"dataPasses": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"physicalPort",
+				"logicalInterfaceList",
+				"dataPasses"
+			]
+		},
+		"authMethod": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"description": {
+					"type": "string"
+				},
+				"mechanism": {
+					"type": "string"
+				},
+				"strengthEachAttempt": {
+					"type": "string"
+				},
+				"strengthPerMin": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"name",
+				"description",
+				"mechanism",
+				"strengthEachAttempt",
+				"strengthPerMin"
+			]
+		},
+		"role": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"type": {
+					"type": "string"
+				},
+				"operatorType": {
+					"type": "string"
+				},
+				"authMethodList": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				}
+			},
+			"required": [
+				"name",
+				"type",
+				"operatorType",
+				"authMethodList"
+			]
+		},
+		"algoPropSimple": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"value": {
+					"type": "string"
+				},
+				"propertyId": {
+					"type": "integer"
+				}
+			},
+			"required": [
+				"name",
+				"value",
+				"propertyId"
+			]
+		},
+		"approvedService": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"description": {
+					"type": "string"
+				},
+				"indicator": {
+					"type": "string"
+				},
+				"inputs": {
+					"type": "string"
+				},
+				"outputs": {
+					"type": "string"
+				},
+				"secFunImplList": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"roleSspAccessList": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/roleSspAccess"
+					}
+				}
+			},
+			"required": [
+				"name",
+				"description",
+				"indicator",
+				"inputs",
+				"outputs",
+				"secFunImplList",
+				"roleSspAccessList"
+			]
+		},
+		"roleSspAccess": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"roleName": {
+					"type": "string"
+				},
+				"sspAccessList": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/sspAccess"
+					}
+				}
+			},
+			"required": [
+				"roleName",
+				"sspAccessList"
+			]
+		},
+		"sspAccess": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"sspName": {
+					"type": "string"
+				},
+				"accessType": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				}
+			},
+			"required": [
+				"sspName",
+				"accessType"
+			]
+		},
+		"nonApprovedService": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"description": {
+					"type": "string"
+				},
+				"nonApprovedAlgoList": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"role": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"name",
+				"description",
+				"nonApprovedAlgoList",
+				"role"
+			]
+		},
+		"phSecMechanism": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"mechanism": {
+					"type": "string"
+				},
+				"inspectFreq": {
+					"type": "string"
+				},
+				"inspectGuidance": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"mechanism",
+				"inspectFreq",
+				"inspectGuidance"
+			]
+		},
+		"efpEftInfo": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"tempVoltType": {
+					"type": "string"
+				},
+				"tempVolt": {
+					"type": "string"
+				},
+				"efpOrEft": {
+					"type": "string"
+				},
+				"result": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"tempVoltType",
+				"tempVolt",
+				"efpOrEft",
+				"result"
+			]
+		},
+		"hardnessTestTemp": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"tempType": {
+					"type": "string"
+				},
+				"temp": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"tempType",
+				"temp"
+			]
+		},
+		"storageArea": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"description": {
+					"type": "string"
+				},
+				"persistenceType": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"name",
+				"description",
+				"persistenceType"
+			]
+		},
+		"sspInputOutput": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"from": {
+					"type": "string"
+				},
+				"to": {
+					"type": "string"
+				},
+				"formatType": {
+					"type": "string"
+				},
+				"distributionType": {
+					"type": "string"
+				},
+				"entryType": {
+					"type": "string"
+				},
+				"relatedSFI": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"name",
+				"from",
+				"to",
+				"formatType",
+				"distributionType",
+				"entryType",
+				"relatedSFI"
+			]
+		},
+		"sspZeroization": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"method": {
+					"type": "string"
+				},
+				"description": {
+					"type": "string"
+				},
+				"rationale": {
+					"type": "string"
+				},
+				"operatorInitiation": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"method",
+				"description",
+				"rationale",
+				"operatorInitiation"
+			]
+		},
+		"ssp": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"description": {
+					"type": "string"
+				},
+				"size": {
+					"type": "string"
+				},
+				"strength": {
+					"type": "string"
+				},
+				"type": {
+					"type": "string"
+				},
+				"generatedByList": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"establishedByList": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"usedByList": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"inputOutputList": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"storageItemList": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/storageItem"
+					}
+				},
+				"storageDuration": {
+					"type": "string"
+				},
+				"zeroizationList": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"category": {
+					"type": "string"
+				},
+				"relatedSspList": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/relatedSsp"
+					}
+				}
+			},
+			"required": [
+				"name",
+				"description",
+				"size",
+				"strength",
+				"type",
+				"generatedByList",
+				"establishedByList",
+				"usedByList",
+				"inputOutputList",
+				"storageItemList",
+				"storageDuration",
+				"zeroizationList",
+				"category",
+				"relatedSspList"
+			]
+		},
+		"storageItem": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"areaName": {
+					"type": "string"
+				},
+				"format": {
+					"type": "string"
+				},
+				"algorithmName": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"areaName",
+				"format",
+				"algorithmName"
+			]
+		},
+		"relatedSsp": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"sspName": {
+					"type": "string"
+				},
+				"relationship": {
+					"type": [
+						"string"
+					]
+				}
+			},
+			"required": [
+				"sspName",
+				"relationship"
+			]
+		},
+		"preOpSelfTest": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"algorithmOrTest": {
+					"type": "string"
+				},
+				"testProps": {
+					"type": "string"
+				},
+				"testMethod": {
+					"type": "string"
+				},
+				"type": {
+					"type": "string"
+				},
+				"indicator": {
+					"type": "string"
+				},
+				"details": {
+					"type": "string"
+				},
+				"period": {
+					"type": "string"
+				},
+				"periodicMethod": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"algorithmOrTest",
+				"testProps",
+				"testMethod",
+				"type",
+				"indicator",
+				"details",
+				"period",
+				"periodicMethod"
+			]
+		},
+		"condSelfTest": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"algorithmOrTest": {
+					"type": "string"
+				},
+				"testProps": {
+					"type": "string"
+				},
+				"testMethod": {
+					"type": "string"
+				},
+				"type": {
+					"type": "string"
+				},
+				"indicator": {
+					"type": "string"
+				},
+				"details": {
+					"type": "string"
+				},
+				"conditions": {
+					"type": "string"
+				},
+				"coverage": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/algorithmImpl"
+					}
+				},
+				"coverageNotes": {
+					"type": "string"
+				},
+				"period": {
+					"type": "string"
+				},
+				"periodicMethod": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"algorithmOrTest",
+				"testProps",
+				"testMethod",
+				"type",
+				"indicator",
+				"details",
+				"conditions",
+				"coverage",
+				"coverageNotes",
+				"period",
+				"periodicMethod"
+			]
+		},
+		"errorState": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"description": {
+					"type": "string"
+				},
+				"conditions": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"recoveryMethod": {
+					"type": "string"
+				},
+				"indicator": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"name",
+				"description",
+				"conditions",
+				"recoveryMethod",
+				"indicator"
+			]
+		}
+	}
+}

@@ -1,0 +1,221 @@
+{
+  "type": "object",
+  "required": [
+    "storageAreas",
+    "inputOutputMethods",
+    "sspZeroizationMethods",
+    "ssps"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "storageAreas": {
+      "type": "object",
+      "required": [
+        "storageAreaList",
+        "text"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "storageAreaList": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "name",
+              "description",
+              "persistenceType"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "persistenceType": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "text": {
+          "type": "string"
+        }
+      }
+    },
+    "inputOutputMethods": {
+      "type": "object",
+      "required": [
+        "sspInputOutputList",
+        "text"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "sspInputOutputList": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "name",
+              "from",
+              "to",
+              "formatType",
+              "distributionType",
+              "entryType"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "from": {
+                "type": "string"
+              },
+              "to": {
+                "type": "string"
+              },
+              "formatType": {
+                "type": "string"
+              },
+              "distributionType": {
+                "type": "string"
+              },
+              "entryType": {
+                "type": "string"
+              },
+              "SFIOrAlgorithm": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "text": {
+          "type": "string"
+        }
+      }
+    },
+    "sspZeroizationMethods": {
+      "type": "object",
+      "required": [
+        "sspZeroizationList",
+        "text"
+      ],
+      "additionalProperties": false,
+      "sspZeroizationList": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": [
+            "method",
+            "description",
+            "rationale",
+            "operatorInitiationCapability"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "method": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "rationale": {
+              "type": "string"
+            },
+            "operatorInitiationCapability": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "text": {
+        "type": "string"
+      }
+    },
+    "ssps": {
+      "type": "object",
+      "required": [
+        "sspList",
+        "text"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "sspList": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "name",
+              "description",
+              "size",
+              "strength",
+              "type",
+              "generatedBy",
+              "establishedBy",
+              "usedBy",
+              "inputOutput",
+              "storage",
+              "zeroization",
+              "category"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "size": {
+                "type": "string"
+              },
+              "strength": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "generatedBy": {
+                "type": "string"
+              },
+              "establishedBy": {
+                "type": "string"
+              },
+              "usedBy": {
+                "type": "string"
+              },
+              "inputOutput": {
+                "type": "string"
+              },
+              "storage": {
+                "type": "string"
+              },
+              "temporaryStorageDuration": {
+                "type": "string"
+              },
+              "zeroization": {
+                "type": "string"
+              },
+              "category": {
+                "type": "string"
+              },
+              "relatedSSPs": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "text": {
+          "type": "string"
+        }
+      }
+    },
+    "transitions": {
+      "type": "string"
+    },
+    "additionalInformation": {
+      "type": "string"
+    }
+  }
+}

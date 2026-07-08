@@ -1,0 +1,447 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "description",
+    "blockDiagram",
+    "excludedComponents",
+    "degradedMode",
+    "modeChangeInstructionsAndStatus",
+    "modesOfOperation",
+    "algorithms",
+    "algorithmSpecificInformation"
+  ],
+  "properties": {
+    "description": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "purposeAndUse",
+        "cryptographicBoundary"
+      ],
+      "properties": {
+        "purposeAndUse": {
+          "type": "string"
+        },
+        "referenceToType": {
+          "type": "string"
+        },
+        "referenceToEmbodiment": {
+          "type": "string"
+        },
+        "referenceToSubchip": {
+          "type": "string"
+        },
+        "cryptographicBoundary": {
+          "type": "string"
+        },
+        "TOEPP": {
+          "type": "string"
+        }
+      }
+    },
+    "blockDiagram": {
+      "type": "string"
+    },
+    "testedHardware": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "modelPartNumber",
+          "hardwareVersion",
+          "firmwareVersion",
+          "processor"
+        ],
+        "properties": {
+          "modelPartNumber": {
+            "type": "string"
+          },
+          "hardwareVersion": {
+            "type": "string"
+          },
+          "firmwareVersion": {
+            "type": "string"
+          },
+          "processor": {
+            "type": "string"
+          },
+          "nonSecurityRelevantDistinguishingFeatures": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "testedSoftwareFirmwareHybrid": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "packagesFilenames",
+          "softwareFirmwareVersion",
+          "integrityTestImplemented"
+        ],
+        "properties": {
+          "packagesFilenames": {
+            "type": "string"
+          },
+          "softwareFirmwareVersion": {
+            "type": "string"
+          },
+          "nonSecurityRelevantDistinguishingFeatures": {
+            "type": "string"
+          },
+          "integrityTestImplemented": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "testedHybridHardware": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "modelPartNumber",
+          "hardwareVersion",
+          "firmwareVersion",
+          "processor"
+        ],
+        "properties": {
+          "modelPartNumber": {
+            "type": "string"
+          },
+          "hardwareVersion": {
+            "type": "string"
+          },
+          "firmwareVersion": {
+            "type": "string"
+          },
+          "processor": {
+            "type": "string"
+          },
+          "nonSecurityRelevantDistinguishingFeatures": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "operatingEnvironmentSoftwareFirmwareHybrid": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "operatingSystem",
+          "hardwarePlatform",
+          "processor",
+          "PAAPAI",
+          "versions"
+        ],
+        "properties": {
+          "operatingSystem": {
+            "type": "string"
+          },
+          "hardwarePlatform": {
+            "type": "string"
+          },
+          "processor": {
+            "type": "string"
+          },
+          "PAAPAI": {
+            "type": "string"
+          },
+          "hypervisorAndHostOS": {
+            "type": "string"
+          },
+          "versions": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "excludedComponents": {
+      "type": "string"
+    },
+    "degradedMode": {
+      "type": "string"
+    },
+    "modeChangeInstructionsAndStatus": {
+      "type": "string"
+    },
+    "modesOfOperation": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "description",
+          "type",
+          "statusIndicator"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "statusIndicator": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "algorithms": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "algorithmName",
+          "cavpCertNumbers",
+          "algorithmCapabilities",
+          "oe",
+          "reference"
+        ],
+        "properties": {
+          "algorithmName": {
+            "type": "string"
+          },
+          "cavpCertNumbers": {
+            "type": "string"
+          },
+          "algorithmCapabilities": {
+            "type": "string"
+          },
+          "oe": {
+            "type": "string"
+          },
+          "reference": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "vendorAffirmedAlgorithms": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "algorithmName",
+          "algorithmCapabilities",
+          "oe",
+          "reference"
+        ],
+        "properties": {
+          "algorithmName": {
+            "type": "string"
+          },
+          "algorithmCapabilities": {
+            "type": "string"
+          },
+          "oe": {
+            "type": "string"
+          },
+          "reference": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "nonApprovedAllowedNSAlgorithms": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "algorithmName",
+          "caveat",
+          "useOrFunction"
+        ],
+        "properties": {
+          "algorithmName": {
+            "type": "string"
+          },
+          "caveat": {
+            "type": "string"
+          },
+          "useOrFunction": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "nonApprovedNotAllowedAlgorithms": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "algorithmName": {
+            "type": "string"
+          },
+          "useOrFunction": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "securityFunctionImplementations": {
+      "text": {
+        "type": "string"
+      },
+      "secFunImpl": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "name",
+            "type",
+            "description",
+            "sfCapabilities",
+            "algorithmCapabilities",
+            "algorithms"
+          ],
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "sfCapabilities": {
+              "type": "string"
+            },
+            "algorithmCapabilities": {
+              "type": "string"
+            },
+            "algorithms": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "algorithmSpecificInformation": {
+      "type": "string"
+    },
+    "rbgAndEntropy": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "entropyInfo": {
+          "type": "string"
+        },
+        "rngInfo": {
+          "type": "string"
+        },
+        "entropyCertNumbers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "vendorName": {
+                "type": "string"
+              },
+              "entropyCert": {
+                "type": "string"
+              },
+              "entropyCertificate": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "entropySources": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "esvCertNumber": {
+                "type": "string"
+              },
+              "operationalEnvironment": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "keyGeneration": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "properties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "keyAgreement": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "properties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "keyTransport": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "properties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "industryProtocols": {
+      "type": "string"
+    },
+    "additionalInformation": {
+      "type": "string"
+    }
+  }
+}

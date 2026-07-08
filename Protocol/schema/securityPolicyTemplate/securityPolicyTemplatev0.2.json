@@ -1,0 +1,20 @@
+{
+    "description": "securityPolicyTemplate submission format",
+    "type": "form-data",
+    "properties":
+    {
+        "amvVersion":
+        {
+            "type": "string"
+        },
+        "documentTemplate":
+        {
+            "type": "file"
+        }
+    },
+    "required":
+    [
+        "documentTemplate",
+        "amvVersion"
+    ]
+}

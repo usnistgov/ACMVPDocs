@@ -1,0 +1,32 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "installationInitializationAndStartupProcedures",
+    "administratorGuidance",
+    "nonadminstratorGuidance"
+  ],
+  "properties": {
+    "installationInitializationAndStartupProcedures": {
+      "type": "string"
+    },
+    "administratorGuidance": {
+      "type": "string"
+    },
+    "nonAdministratorGuidance": {
+      "type": "string"
+    },
+    "designAndRules": {
+      "type": "string"
+    },
+    "maintenanceRequirements": {
+      "type": "string"
+    },
+    "endOfLife": {
+      "type": "string"
+    },
+    "additionalInformation": {
+      "type": "string"
+    }
+  }
+}

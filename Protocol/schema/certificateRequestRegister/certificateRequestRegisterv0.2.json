@@ -1,0 +1,174 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "certificateRequestRegisterPayload",
+    "title": "certificateRequestRegisterPayload",
+    "description": "Certificate Request Register payload JSON schema",
+    "type": "object",
+    "additionalProperties": false,
+    "required":
+    [
+        "amvVersion",
+        "vendorId",
+        "testers",
+        "reviewers",
+        "module"        
+    ],
+    "properties":
+    {
+		"amvVersion": 
+        {
+			"type": "string"
+		},
+        "vendorId":
+        {
+            "type": "integer"
+        },
+        "testers":
+        {
+            "type": "array",
+            "items":
+            {
+                "type": "string"
+            }
+        },
+        "reviewers":
+        {
+            "type": "array",
+            "items":
+            {
+                "type": "string"
+            }
+        },
+        "algorithmCertificates":
+        {
+            "type": "array",
+            "items":
+            {
+                "type": "string"
+            }
+        },
+        "entropyCertificates":
+        {
+            "type": "array",
+            "items":
+            {
+                "type": "string"
+            }
+        },
+        "module":
+        {
+            "description": "The module registration information to be submitted",
+            "type": "object",
+            "additionalProperties": false,
+            "required":
+            [
+                "schemaVersion",
+                "moduleInfo",
+                "secLevels",
+                "filterProperties"
+            ],
+            "properties": 
+            {
+                "schemaVersion":
+                {
+                    "type": "string"
+                },
+                "moduleInfo":
+                {
+                    "type": "object",
+                    "properties":
+                    {
+                        "name": 
+                        {
+                            "type": "string"
+                        },
+                        "count": 
+                        {
+                            "type": "integer"
+                        },
+                        "description": 
+                        {
+                            "type": "string"
+                        },
+                        "embodiment": 
+                        {
+                            "type": "string"
+                        },
+                        "type": 
+                        {
+                            "type": "string"
+                        },
+                        "opEnvType": 
+                        {
+                            "type": "string"
+                        },
+                        "submissionLevel": 
+                        {
+                            "type": "string"
+                        },
+                        "itar": 
+                        {
+                            "type": "boolean"
+                        },
+                        "overallSecurityLevel": 
+                        {
+                            "type": "integer"
+                        }
+                    },
+                    "required":
+                    [
+                        "name",
+                        "count",
+                        "description",
+                        "embodiment",
+                        "type",
+                        "opEnvType",
+                        "submissionLevel",
+                        "itar",
+                        "overallSecurityLevel"
+                    ]
+                },
+                "secLevels":
+                {
+                    "type": "array",
+                    "items":
+                    {
+                        "type": "object",
+                        "properties":
+                        {
+                            "section":
+                            {
+                                "type": "integer"
+                            },
+                            "level":
+                            {
+                                "type": "integer"
+                            }
+                        }
+                    }
+                },
+                "filterProperties":
+                {
+                    "type": "array",
+                    "items":
+                    {
+                        "type": "object",
+                        "properties":
+                        {
+                            "name":
+                            {
+                                "type": "string"
+                            },
+                            "included":
+                            {
+                                "type": "boolean"
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+}
+

@@ -1,0 +1,22 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "integrityTechniques",
+    "initiateOnDemand"
+  ],
+  "properties": {
+    "integrityTechniques": {
+      "type": "string"
+    },
+    "initiateOnDemand": {
+      "type": "string"
+    },
+    "openSourceParameters": {
+      "type": "string"
+    },
+    "additionalInformation": {
+      "type": "string"
+    }
+  }
+}

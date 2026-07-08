@@ -1,0 +1,284 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "preOperationalSelfTests",
+    "conditionalSelfTests",
+    "periodicSelfTests",
+    "errorStates"
+  ],
+  "properties": {
+    "preOperationalSelfTests": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "preOperationalSelfTestList",
+        "text"
+      ],
+      "properties": {
+        "preOperationalSelfTestList": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "algorithm",
+              "implementation",
+              "testProperties",
+              "testMethod",
+              "type",
+              "indicator",
+              "details"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "algorithm": {
+                "type": "string"
+              },
+              "implementation": {
+                "type": "string"
+              },
+              "testProperties": {
+                "type": "string"
+              },
+              "testMethod": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "indicator": {
+                "type": "string"
+              },
+              "details": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "text": {
+          "type": "string"
+        }
+      }
+    },
+    "conditionalSelfTests": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "conditionalSelfTests",
+        "text"
+      ],
+      "properties": {
+        "conditionalSelfTestList": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "algorithm",
+              "implementation",
+              "testProperties",
+              "testMethod",
+              "type",
+              "indicator",
+              "details",
+              "condition"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "algorithm": {
+                "type": "string"
+              },
+              "implementation": {
+                "type": "string"
+              },
+              "testProperties": {
+                "type": "string"
+              },
+              "testMethod": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "indicator": {
+                "type": "string"
+              },
+              "details": {
+                "type": "string"
+              },
+              "condition": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "text": {
+          "type": "string"
+        }
+      }
+    },
+    "preOperationalPeriodicSelfTests": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "preOperationalPeriodicSelfTestList",
+        "text"
+      ],
+      "properties": {
+        "preOperationalPeriodicSelfTestList": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "algorithm",
+              "implementation",
+              "testProperties",
+              "testMethod",
+              "type",
+              "indicator",
+              "details",
+              "period",
+              "periodicMethod"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "algorithm": {
+                "type": "string"
+              },
+              "implementation": {
+                "type": "string"
+              },
+              "testProperties": {
+                "type": "string"
+              },
+              "testMethod": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "indicator": {
+                "type": "string"
+              },
+              "details": {
+                "type": "string"
+              },
+              "period": {
+                "type": "string"
+              },
+              "periodicMethod": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "text": {
+          "type": "string"
+        }
+      }
+    },
+    "conditionalPeriodicSelfTests": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["conditionalPeriodicSelfTestList", "text"],
+      "properties": {
+        "conditionalPeriodicSelfTestList": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "algorithm",
+              "implementation",
+              "testProperties",
+              "testMethod",
+              "type",
+              "indicator",
+              "details",
+              "period",
+              "periodicMethod"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "algorithm": {
+                "type": "string"
+              },
+              "implementation": {
+                "type": "string"
+              },
+              "testProperties": {
+                "type": "string"
+              },
+              "testMethod": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "indicator": {
+                "type": "string"
+              },
+              "details": {
+                "type": "string"
+              },
+              "period": {
+                "type": "string"
+              },
+              "periodicMethod": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "text": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "errorStates": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["errorStatesList", "text"],
+    "properties": {
+      "errorStateList": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": [
+            "stateName",
+            "description",
+            "conditions",
+            "recoveryMethod",
+            "indicator"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "stateName": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "conditions": {
+              "type": "string"
+            },
+            "recoveryMethod": {
+              "type": "string"
+            },
+            "indicator": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "text": {
+        "type": "string"
+      }
+    }
+  },
+  "operatorInitiationOfSelfTests": {
+    "type": "string"
+  },
+  "additionalInformation": {
+    "type": "string"
+  }
+}

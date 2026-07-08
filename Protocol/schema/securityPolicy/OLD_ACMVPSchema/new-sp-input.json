@@ -1,0 +1,425 @@
+{
+    "catalogVersion": "1.0",
+    "vendorName": "NIST",
+    "version": "1.0",
+    "moduleName": "Test Module",
+    "docVersion": "1.0",
+    "lastUpdated": "8/23/24",
+    "securityPolicy": {
+        "general": {
+            "overallDescription": "dolore aliqua dolor",
+            "securityLevels": {
+                "overall": 1,
+                "section1": 2,
+                "section2": 3,
+                "section3": 2,
+                "section4": 4,
+                "section5": 2,
+                "section6": 4,
+                "section7": 1,
+                "section8": 4,
+                "section9": 2,
+                "section10": 3,
+                "section11": 4,
+                "section12": 4
+            }
+        },
+        "cryptographicModuleSpecification": {
+            "description": {
+                "purposeAndUse": "occaecat amet dolor consequat",
+                "referenceToSubchip": "qui incididunt adipisicing tempor sit",
+                "cryptographicBoundary": "Excepteur",
+                "TOEPP": "sed officia dolor Duis in"
+            },
+            "blockDiagram": "elit eu Excepteur",
+            "testedSoftwareFirmwareHybrid": [
+                {
+                    "packagesFilenames": "ut adipisicing cupidatat",
+                    "softwareFirmwareVersion": "eiusmod",
+                    "nonSecurityRelevantDistinguishingFeatures": "non",
+                    "integrityTestImplemented": "Ut culpa occaecat"
+                }
+            ],
+            "excludedComponents": "Ut occaecat",
+            "degradedMode": "voluptate consectetur",
+            "modeChangeInstructionsAndStatus": "esse",
+            "algorithms": [
+                {
+                    "algorithmName": "magna",
+                    "cavpCertNumbers": "minim",
+                    "algorithmCapabilities": "quis aliquip",
+                    "oe": "adipisicing exercitation fugiat cupidatat do",
+                    "reference": "aliquip enim Ut qui sunt"
+                },
+                {
+                    "algorithmName": "sint in Ut exercitation Lorem",
+                    "cavpCertNumbers": "in minim",
+                    "algorithmCapabilities": "mollit dolor officia aliqua",
+                    "oe": "et adipisicing cupidatat aute reprehenderit",
+                    "reference": "voluptate"
+                },
+                {
+                    "algorithmName": "sint consequat reprehenderit pariatur fugiat",
+                    "cavpCertNumbers": "nisi ex minim",
+                    "algorithmCapabilities": "dolor do exercitation",
+                    "oe": "occaecat",
+                    "reference": "sint ut Excepteur cupidatat dolore"
+                },
+                {
+                    "algorithmName": "reprehenderit consectetur exercitation",
+                    "cavpCertNumbers": "Lorem incididunt pariatur nostrud dolore",
+                    "algorithmCapabilities": "voluptate",
+                    "oe": "sunt cupidatat ipsum ad",
+                    "reference": "officia consequat"
+                }
+            ],
+            "algorithmSpecificInformation": "incididunt"
+        },
+        "cryptographicModuleInterfaces": {
+            "portsAndInterfaces": {
+                "text": "sit adipisicing enim elit proident",
+                "portInterfaces": [
+                    {
+                        "port": "As a software-only module, the module does not have physical ports. Physical ports are interpreted to be the physical ports of the hardware platforms on which it runs.",
+                        "logicalInterface": "Data Input",
+                        "data": "API input parameters for data."
+                    },
+                    {
+                        "port": "As a software-only module, the module does not have physical ports. Physical ports are interpreted to be the physical ports of the hardware platforms on which it runs.",
+                        "logicalInterface": "Data Output",
+                        "data": "API output parameters for data."
+                    },
+                    {
+                        "port": "As a software-only module, the module does not have physical ports. Physical ports are interpreted to be the physical ports of the hardware platforms on which it runs.",
+                        "logicalInterface": "Control Output",
+                        "data": "API function calls."
+                    },
+                    {
+                        "port": "As a software-only module, the module does not have physical ports. Physical ports are interpreted to be the physical ports of the hardware platforms on which it runs.",
+                        "logicalInterface": "Status Output",
+                        "data": "API return codes, error message."
+                    }
+                ]
+            },
+            "trustChannelSpec": "ut irure non",
+            "controlInterfaceNotInhibited": "mollit voluptate in",
+            "additionalInformation": "tempor aliqua quis do minim"
+        },
+        "rolesServicesAuthentication": {
+            "authenticationMethods": {
+                "authenticationMethodsList": [
+                    {
+                        "name": "abc",
+                        "description": "def",
+                        "mechanism": "ghi",
+                        "strengthPerAttempt": "jkl",
+                        "strengthPerMinute": "mno"
+                    }
+                ],
+                "text": "The module does not support authentication. The module does not support concurrent operators."
+            },
+            "roles": [
+                {
+                    "name": "Crypto Officer",
+                    "type": "Role",
+                    "operatorType": "CO",
+                    "authenticationMethods": "N/A (Implicitly assumed)"
+                }
+            ],
+            "approvedServices": {
+                "approvedServicesList": [
+                    {
+                        "name": "Encryption",
+                        "description": "Encryption",
+                        "indicator": "Return value 1 from the function FIPS_service_indicator_check_approved()",
+                        "inputs": "Plaintext, key",
+                        "outputs": "Ciphertext",
+                        "sfi": "AES CBC, CTR, ECB listed in the Approved Algorithms Table",
+                        "roles": "CO",
+                        "sspAccess": "W, E"
+                    },
+                    {
+                        "name": "Decryption",
+                        "description": "Decryption",
+                        "indicator": "Return value 1 from the function FIPS_service_indicator_check_approved()",
+                        "inputs": "Ciphertext, key",
+                        "outputs": "Plaintext",
+                        "sfi": "AES CBC, CTR, ECB listed in the Approved Algorithms Table",
+                        "roles": "CO",
+                        "sspAccess": "W, E"
+                    }
+                ],
+                "text": "For the above table, the convention below applies when specifying the access permissions (types) that the service has for each SSP.\n\bG = Generate: The module generates or derives the SSP.\n\bR = Read: The SSP is read from the module (e.g., the SSP is output).\n\bW = Write: The SSP is updated, imported, or written to the module.\n\bE = Execute: The module uses the SSP in performing a cryptographic operation.\n\bZ = Zeroize: The module zeroizes the SSP.\nFor the role, CO indicates “Crypto Officer”.\nThe module implements a service indicator that indicates whether the invoked service is approved. The service indicator is a return value 1 from the FIPS_service_indicator_check_approved function. This function is used together with two other functions. The usage is as follows:\n\bSTEP 1: Should be called before invoking the service.\nint before = FIPS_service_indicator_before_call();\n\bSTEP 2: Make a service call i.e., API function for performing a service.\nfunc;\n\bSTEP 3: Should be called after invoking the service.\nint after = FIPS_service_indicator_after_call();\n\bSTEP 4: Return value 1 indicates approved service was invoked.\nint Return= FIPS_service_indicator_check_approved(before, after);\nAlternatively, all the above steps can be done by using a single call using the function CALL_SERVICE_AND_CHECK_APPROVED(approved, func)."
+            },
+            "nonApprovedServices": [
+                {
+                    "name": "Encryption",
+                    "description": "Encryption",
+                    "algorithmsAccessed": "AES, DES, Triple-DES listed in the Non-Approved Algorithms Table",
+                    "role": "CO"
+                },
+                {
+                    "name": "Decryption",
+                    "description": "Decryption",
+                    "algorithmsAccessed": "AES, DES, Triple-DES listed in the Non-Approved Algorithms Table",
+                    "role": "CO"
+                }
+            ],
+            "externalSoftwareFirmwareLoaded": "The module does not support loading of external software or firmware."
+        },
+        "softwareFirmwareSecurity": {
+            "integrityTechniques": "sint pariatur aliquip fugiat",
+            "initiateOnDemand": "mollit anim",
+            "openSourceParameters": "anim veniam velit ad voluptate",
+            "additionalInformation": "Nothing else to add."
+        },
+        "operationalEnvironment": {},
+        "physicalSecurity": {},
+        "noninvasiveSecurity": {},
+        "sensitiveSecurityParameterManagement": {
+            "storageAreas": {
+                "storageAreaList": [
+                    {
+                        "name": "sed ut",
+                        "description": "id proident ad",
+                        "persistenceType": "aliqua"
+                    },
+                    {
+                        "name": "ut Ut et",
+                        "description": "ea dolore sit laborum voluptate",
+                        "persistenceType": "in"
+                    },
+                    {
+                        "name": "esse qui Lorem quis",
+                        "description": "do laboris irure proident dolor",
+                        "persistenceType": "amet"
+                    },
+                    {
+                        "name": "esse id laborum",
+                        "description": "consectetur deserunt tempor",
+                        "persistenceType": "ad elit aliquip in et"
+                    },
+                    {
+                        "name": "nostrud",
+                        "description": "consectetur aute eiusmod",
+                        "persistenceType": "deserunt magna"
+                    }
+                ],
+                "text": "nulla aliquip reprehenderit anim"
+            },
+            "inputOutputMethods": {
+                "sspInputOutputList": [
+                    {
+                        "name": "adipisicing officia quis fugiat irure",
+                        "from": "est Duis ut velit",
+                        "to": "non do eu velit",
+                        "formatType": "qui ut eu",
+                        "distributionType": "officia",
+                        "entryType": "magna occaecat eiusmod non sunt",
+                        "SFIOrAlgorithm": "occaecat aliqua labore"
+                    },
+                    {
+                        "name": "occaecat anim voluptate est",
+                        "from": "do laboris minim exercitation",
+                        "to": "in",
+                        "formatType": "exercitation dolor",
+                        "distributionType": "ex",
+                        "entryType": "culpa commodo non",
+                        "SFIOrAlgorithm": "consectetur nisi ut Lorem"
+                    },
+                    {
+                        "name": "elit amet in sit",
+                        "from": "sit magna",
+                        "to": "dolore laboris irure Lorem veniam",
+                        "formatType": "et deserunt est elit",
+                        "distributionType": "do magna id dolor amet",
+                        "entryType": "Excepteur ut",
+                        "SFIOrAlgorithm": "velit reprehenderit voluptate mollit"
+                    },
+                    {
+                        "name": "ex do eu anim",
+                        "from": "minim",
+                        "to": "ut nulla culpa elit",
+                        "formatType": "aliquip",
+                        "distributionType": "Duis deserunt eiusmod Lorem fugiat",
+                        "entryType": "fugiat esse magna Ut veniam",
+                        "SFIOrAlgorithm": "aute eiusmod consequat cillum"
+                    }
+                ],
+                "text": "enim reprehenderit occaecat"
+            },
+            "sspZeroizationMethods": {
+                "sspZeroizationList": [
+                    {
+                        "method": "aliqua occaecat sunt",
+                        "description": "eiusmod aliqua dolor quis",
+                        "rationale": "est",
+                        "operatorInitiationCapability": "incididunt sit aliqua"
+                    },
+                    {
+                        "method": "Duis",
+                        "description": "ex dolor anim nisi",
+                        "rationale": "aute est dolore non",
+                        "operatorInitiationCapability": "Lorem"
+                    },
+                    {
+                        "method": "et",
+                        "description": "ipsum",
+                        "rationale": "eu ipsum Ut cupidatat",
+                        "operatorInitiationCapability": "veniam nulla irure"
+                    },
+                    {
+                        "method": "aute labore tempor quis",
+                        "description": "pariatur quis",
+                        "rationale": "esse ut",
+                        "operatorInitiationCapability": "qui elit deserunt in veniam"
+                    }
+                ],
+                "text": ""
+            },
+            "ssps": {
+                "sspList": [
+                    {
+                        "name": "anim aliqua voluptate Ut nostrud",
+                        "description": "exercitation et cillum dolore",
+                        "size": "dolor adipisicing incididunt",
+                        "strength": "laborum ad Ut in",
+                        "type": "officia enim",
+                        "generatedBy": "sunt et adipisicing ad in",
+                        "establishedBy": "irure",
+                        "usedBy": "do ea voluptate",
+                        "inputOutput": "aliqua aliquip quis",
+                        "storage": "sint ipsum exercitation Lorem enim",
+                        "temporaryStorageDuration": "non enim",
+                        "zeroization": "consectetur cupidatat ad",
+                        "category": "et",
+                        "relatedSSPs": "nulla"
+                    }
+                ],
+                "text": "dolor minim"
+            },
+            "transitions": "deserunt velit",
+            "additionalInformation": "exercitation"
+        },
+        "selfTests": {
+            "preOperationalSelfTests": {
+              "preOperationalSelfTestList": [
+                {
+                  "algorithm": "Excepteur sunt sint enim veniam",
+                  "implementation": "do Excepteur qui",
+                  "testProperties": "magna irure sunt",
+                  "testMethod": "ad tempor voluptate officia occaecat",
+                  "type": "quis laborum veniam occaecat",
+                  "indicator": "sunt",
+                  "details": "ea Duis esse"
+                },
+                {
+                  "algorithm": "dolor",
+                  "implementation": "magna do",
+                  "testProperties": "anim Duis adipisicing elit",
+                  "testMethod": "reprehenderit",
+                  "type": "est eu irure",
+                  "indicator": "proident elit",
+                  "details": "sed dolore"
+                }
+              ],
+              "text": "quis"
+            },
+            "conditionalSelfTests": {
+              "conditionalSelfTestList": [
+                {
+                  "algorithm": "veniam proident consectetur est",
+                  "implementation": "Excepteur",
+                  "testProperties": "officia deserunt in do",
+                  "testMethod": "ad tempor incididunt sint aute",
+                  "type": "Lorem",
+                  "indicator": "non in commodo nisi amet",
+                  "details": "ullamco irure",
+                  "condition": "sit in tempor"
+                }
+              ],
+              "text": "dolor sit Lorem nulla"
+            },
+            "preOperationalPeriodicSelfTests": {
+              "preOperationalPeriodicSelfTestList": [
+                {
+                  "algorithm": "ex velit",
+                  "implementation": "esse enim velit dolor ex",
+                  "testProperties": "ullamco elit ad",
+                  "testMethod": "id aliqua adipisicing cillum ut",
+                  "type": "irure Ut officia ea",
+                  "indicator": "sit",
+                  "details": "cupidatat cillum ad magna",
+                  "period": "irure veniam amet",
+                  "periodicMethod": "dolor do Excepteur aute"
+                },
+                {
+                  "algorithm": "ut id consectetur magna",
+                  "implementation": "labore officia enim deserunt irure",
+                  "testProperties": "deserunt",
+                  "testMethod": "dolor",
+                  "type": "amet dolore pariatur laborum Ut",
+                  "indicator": "anim",
+                  "details": "ullamco",
+                  "period": "dolore",
+                  "periodicMethod": "laboris id Excepteur"
+                }
+              ],
+              "text": "consectetur adipisicing"
+            },
+            "conditionalPeriodicSelfTests": {
+              "conditionalPeriodicSelfTestList": [
+                {
+                  "algorithm": "in nostrud amet ipsum sed",
+                  "implementation": "et aliquip in sit reprehenderit",
+                  "testProperties": "magna",
+                  "testMethod": "occaecat sed dolore est",
+                  "type": "Duis culpa sunt veniam labore",
+                  "indicator": "eu magna laboris eiusmod",
+                  "details": "in aute",
+                  "period": "incididunt laboris non pariatur Duis",
+                  "periodicMethod": "consectetur veniam adipisicing"
+                },
+                {
+                  "algorithm": "Duis eu ex ipsum sit",
+                  "implementation": "Lorem ullamco culpa fugiat eiusmod",
+                  "testProperties": "in officia",
+                  "testMethod": "incididunt ut Lorem",
+                  "type": "dolore labore consectetur nostrud",
+                  "indicator": "pariatur cupidatat officia ullamco ipsum",
+                  "details": "veniam eiusmod deserunt ullamco ut",
+                  "period": "esse aute commodo veniam",
+                  "periodicMethod": "et ad"
+                },
+                {
+                  "algorithm": "est ad elit",
+                  "implementation": "qui",
+                  "testProperties": "ad proident dolor ut",
+                  "testMethod": "sint nulla in est",
+                  "type": "elit qui ad eu sunt",
+                  "indicator": "Lorem aute voluptate",
+                  "details": "dolor",
+                  "period": "proident voluptate aute quis sint",
+                  "periodicMethod": "proident officia est culpa aute"
+                }
+              ],
+              "text": "id"
+            }
+          },
+        "lifeCycleAssurance": {
+            "installationInitializationAndStartupProcedures": "elit dolor eu officia",
+            "administratorGuidance": "mollit voluptate magna",
+            "nonAdministratorGuidance": "magna qui veniam ad",
+            "designAndRules": "nisi in",
+            "maintenanceRequirements": "Lorem",
+            "endOfLife": "esse enim",
+            "additionalInformation": "id ut"
+        },
+        "mitigationOfOtherAttacks": {
+            "attacks": "Duis",
+            "mitigationEffectiveness": "amet labore commodo",
+            "guidanceAndConstraints": "mollit pariatur",
+            "additionalInformation": "dolor"
+        }
+    }
+}

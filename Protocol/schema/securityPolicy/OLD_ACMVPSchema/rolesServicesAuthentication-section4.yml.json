@@ -1,0 +1,163 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "authenticationMethods": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authenticationMethodsList",
+        "text"
+      ],
+      "properties": {
+        "authenticationMethodsList": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "name",
+              "description",
+              "mechanism",
+              "strengthEachAttempt",
+              "strengthPerMinute"
+            ],
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "mechanism": {
+                "type": "string"
+              },
+              "strengthEachAttempt": {
+                "type": "string"
+              },
+              "strengthPerMinute": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "text": {
+          "type": "string"
+        }
+      }
+    },
+    "roles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "type",
+          "operatorType",
+          "authenticationMethods"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "operatorType": {
+            "type": "string"
+          },
+          "authenticationMethods": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "approvedServices": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "approvedServicesList",
+        "text"
+      ],
+      "properties": {
+        "approvedServicesList": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "name",
+              "description",
+              "indicator",
+              "inputs",
+              "outputs",
+              "sfi",
+              "roles",
+              "sspAccess"
+            ],
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "indicator": {
+                "type": "string"
+              },
+              "inputs": {
+                "type": "string"
+              },
+              "outputs": {
+                "type": "string"
+              },
+              "sfi": {
+                "type": "string"
+              },
+              "roles": {
+                "type": "string"
+              },
+              "sspAccess": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "text": {
+          "type": "string"
+        }
+      }
+    },
+    "nonApprovedServices": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "algorithmsAccessed": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "externalSoftwareFirmwareLoaded": {
+      "type": "string"
+    },
+    "bypassActionsAndStatus": {
+      "type": "string"
+    },
+    "cryptographicOutputActionsAndStatus": {
+      "type": "string"
+    }
+  }
+}
