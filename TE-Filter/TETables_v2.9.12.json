@@ -1,9 +1,7 @@
 {
     "schemaVersion": "v0.08",
     "TETableVersion": "v2.9.12",
-    "VersioningNOTE": "Version should take form v2.{month}.{day}",
     "date": "2025-09-12",
-    "NOTES": "Re-expanding OR tags SC-TE/OD-TE and FT-TE/OD-TE",
     "TETable": [
         {
             "name": "TE02.03.01",
