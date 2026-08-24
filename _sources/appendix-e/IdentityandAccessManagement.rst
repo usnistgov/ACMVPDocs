@@ -131,12 +131,12 @@ All traffic in the NCCoE Research Cloud is hair-pinned back to NIST, forcing tra
 
 An `example policy <https://github.com/usnistgov/ACMVPDocs/blob/main/Infrastructure/ec2%2BIWGEgress_policy_example.json>`__ for denying the creation IGWs can be found in the ACMVP Documentation repository.
 
-Deny Quad Zeros (AWS System Manager Documents)
-----------------------------------------------
+Deny Open Security Groups (AWS System Manager Documents)
+-------------------------------------------------------------
 
-The NCCoE utilizes `AWS Systems Manager Documents <https://docs.aws.amazon.com/systems-manager/latest/userguide/what-is-systems-manager.html>`__ to restrict the use of quad zeros (0.0.0.0) in security groups, ensuring adherence to security best practices. All security groups are audited for quad zeros on an established frequency. If any are identified, the quad zeros are replaced with a local network.
+The NCCoE utilizes `AWS Systems Manager Documents <https://docs.aws.amazon.com/systems-manager/latest/userguide/what-is-systems-manager.html>`__ to restrict the use of quad zeros (0.0.0.0) in security groups, ensuring adherence to security best practices and limiting traffic from the public internet. All security groups are audited for quad zeros on an established frequency. If any are identified, the quad zeros are replaced with a local network.
 
-Additional details on the implementation can be found in :ref:`Deny Quad Zeros`.
+Additional details on the implementation can be found in :ref:`Security Groups`.
 
 Deny Non-secure Config AMIs
 ---------------------------

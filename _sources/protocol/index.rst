@@ -1,13 +1,5 @@
-Appendix C: CMVP Demo Server
+ACMVP Demo Server
 =============================================
-
-.. toctree::
-   :maxdepth: 2
-   :titlesonly:
-   :glob:
-   :hidden:
-
-   technicalDetails.rst
 
 Accessing the ACMVP Demo Server
 --------------------------------
@@ -26,7 +18,7 @@ Please send the CSR file in PEM format following these requirements:
         - No spaces in the filename
         - No more than 3 underscore "_" characters in the filename
     - Do not zip the file; send it exactly as specified above. Any file submitted beyond a reasonable CSR size (maximum 10KB) will be automatically rejected. 
-    - Use a minimum 2048-bit RSA key pair.
+    - Use a minimum 2048-bit RSA key pair (recommended 4096-bit RSA key pair).
     - Sign using at least a SHA-256 hash.
     - Include the EMAILADDRESS attribute in the certificate subject. If a single user email address is used, the generated certificate is non-transferable. This can either be the user's email address OR a group alias email address (if applicable). If a single user email address is used, the generated certificate is non-transferable.
     - Include the CN attribute in the certificate subject. This can either be the user's first and last name OR the name of the organization.

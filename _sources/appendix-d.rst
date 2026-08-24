@@ -1,7 +1,7 @@
 Appendix D: Application Modernization
 ======================================
 
-The Infrastructure Workstream researched containerization approaches, Containers and EC2 launch types, Elastic Load Balancers, and Authentication layers that led to the final iteration. The services explored are summarized in this appendix.
+The :ref:`Infrastructure Workstream <Research Infrastructure>` researched containerization approaches, Containers and EC2 launch types, Elastic Load Balancers, and Authentication layers that led to the final iteration. The services explored are summarized in this appendix.
 
 Microsoft Windows Containers
 ------------------------------

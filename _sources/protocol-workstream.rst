@@ -1,55 +1,126 @@
 Protocol Workstream 
 =====================
 
-The Protocol Workstream defines the interactions between the automated CMVP server and the ACMVP clients supporting a proof-of-concept of automation capabilities. The CMVP hosts a demonstration server for interoperability and testing purposes through NIST. This is referred to as the ACMVP Demo Server covered in :ref:`Accessing the ACMVP Demo Server`. 
+.. toctree::
+   :titlesonly:
+   :maxdepth: 4
+   :glob:
+   :hidden:
+
+   protocol/index.rst
+
+The Protocol Workstream defines the interactions between the automated CMVP server and the ACMVP clients supporting a proof-of-concept of automation capabilities. The CMVP hosts a demonstration server for interoperability and testing purposes through NIST. This is referred to as the ACMVP Demo Server. The ACMVP Demo Server supports testing labs to connect the outputs of their testing results with the CMVP with minimal human intervention, enabling streamlined submissions with less potential for delay.
+and to support testing labs to connect the outputs of their testing results with the CMVP with minimal human intervention.
+
 
 Protocol Workstream Collaborators
 ------------------------------------
 
 The ACMVP Protocol Workstream is led by Barry Fussell and Andrew Karcher of Cisco and Christopher Celi of NIST, with contributions from Panos Kampanakis of Amazon, Michael McCarl and Deborah Harrington of AEGISOLVE, Alex Thurston of Lightship, Stephan Mueller and Walker Riley of atsec information security, Mike Grimm of Microsoft, Chih-Kao Liao of Intertek, Robert Staples of NIST, and Raoul Gabiam, Michael Dimond, Kyle Vitale, Doris Rui, and Matthew Fortes of the MITRE Corporation.
 
-Proof-of-Concept Server Features
----------------------------------
+Technical Details
+-------------------
 
-The proof-of-concept server currently implements the following features:
+Intro
+________
 
-- Two-factor authentication using TOTP and mTLS, which improves the TOTP from ACVP by allowing a user to maintain multiple seeds for simultaneous connections.
-- Module registration that defines the security levels, embodiment, and other properties of the cryptographic module, and automatically determines which TEs are applicable to the cryptographic module.
-- Module evidence submission that prompts a client to provide evidence addressing TEs that are applicable to the cryptographic module, and will show which TEs have not yet been addressed by the submission to ensure completeness. 
-- Module security policy submission defined entirely in JSON, which will generate the security policy automatically, allowing the client to retrieve the completed document, and ensuring that all sections are present and completed.
-- Automatic processing of functional test evidence (FT-TEs) based on the test type selected by the lab.
-- Accepts source code test evidence (SC-TE) based on the test procedure selected by the lab.
-- Provides endpoints that list the accepted schemas for submission endpoints and defines a query to obtain a specific version of a schema.
-- Handles other documentation test evidence (OD-TE), rounding out all the evidence types defined by the TE Workstream.
-- Applies an automated rule checking engine on completed submissions. This is introduced on the ACMVP Demo Server as a proof of concept to do things like ensure a submission is consistent with itself. Submissions for a full module can be very large, needing several hundred TEs addressed, cryptographic algorithm and entropy source validations, etc. The rule checks can be expanded to complete cross-references to algorithm and entropy certificates to ensure that all content in the current request is accurate. Much of this work is done manually by a reviewer looking at the publicly available algorithm validation certificate and the registered capabilities of the submitted cryptographic module. 
+The Automated Module Validation Protocol (AMVP) defines a mechanism to submit registration, test evidence and validation requests for a software, firmware and hardware crypto modules. It works in conjunction with ACVTS and ESVTS to improve the speed of validations at a rate which meets typical industry development cycles; providing the ability to deploy validated crypto with CVE fixes much faster than previous methods.
 
-Server Implementation
-----------------------
+The AMVP specification describes how the protocol is structured with respect to the client-server model, messaging, optional features, and flows. It defines how the registrar and evidence submission client communicates with an AMVP server; including module capabilities, session management, authentication, vector processing and more. AMVP leverages many of the message flows originally defined for ACVP and incorporates them into a module-specific concept and adds new flows for module test evidence submission and validation requests.
 
-The server uses much of the same infrastructure as ACVP and ESV, which is intended to keep the same team available to maintain the systems once they are integrated by the CMVP. The system is comprised of C# and Python applications along with SQL Server databases.
 
-The server implementation can be broken down into two major applications. The first is WebPublic, the front-facing application that serves the application programming interface (API) with which clients interact. This application handles HTTPS requests from users to retrieve or submit data to the CMVP. The second application is the MessageQueueProcessor. As tasks to create or update data are collected through WebPublic, they enter a queue. The MessageQueueProcessor reads those requests using a first-in, first-out ordering to fulfill them. This handles the core logic of creating modules, applying the TE Filter, building security policy documents, and running the core automation checks on a module seeking validation. 
+Protocol Overview
+___________________
 
-Client Implementations
--------------------------
+AMVP has the following goals:
 
-This section describes the two open-source clients, Libamvp and ACVP Proxy, that provide foundational code for developers to build upon when interfacing with the server.
+- To communicate registration information for one to many cryptographic modules for lab, vendor, module and OE.
+- To submit test evidence as defined by FIPS SP 800-140Br1.
+- To enable automated registration and test evidence submission with minimal human interaction.
+- To provide extensibility that can be used to introduce registration for new module types and new test evidence as needed.
+- To be compatible with emerging automated validation systems wherever possible, especially the FIPS-140 Cryptographic Module Validation Program.
 
-Libamvp - Cisco
+AMVP defines how to communicate registration information, test evidence and validation requests with a validation authority. It is dependent upon existing technologies such as HTTPS, JSON and TLS to perform the message exchanges. In addition it is dependent on submissions to the validation authority from ACVP and the ESV protocol. The relationship between the three protocols can be summarized as follows.
+
+- AMVP registers the lab, vendor, module and OE information.
+- ACVP performs algorithm testing on an OE and submits the results assigned to the module/OE registered by AMVP.
+- ESV performs entropy testing on an OE and submits the results assigned to the module/OE registered by AMVP.
+- AMVP submits additional module-centric test evidence and documentation to meet FIPS SP 800-140Br1 requirements.
+- AMVP submits a request for FIPS 140-3 module validation.
+
+Protocol Audience
+''''''''''''''''''
+
+This document is written to address multiple audiences:
+
+- Crypto module developers who require validation testing
+- Crypto validation organizations who will perform validation testing
+- Crypto module customers that desire validation testing results or verifiable artifacts of testing
+
+Goals
+'''''''
+
+The goals for this document are to provide a messaging protocol that can be used with existing authentication and communication protocols to provide a way to validate crypto modules. The following functions are outside the scope of this document:
+
+- The API to the cryptographic module
+- Where AMVP is located within the client premise
+- How the results/artifacts are stored or managed
+- Scalability
+- Management interface
+
+Strategy
+'''''''''''
+
+To meet the goals laid out here the strategy must be:
+
+- To perform module registration in such a way the server is able to limit requests to only applicable evidence sets
+- To provide evidence that avoids free text and replaces it with structured reproducible schema so it is automatable
+- To provide registration such that information is available to generate a security policy which meets SP 800-140B
+
+Architecture
 ________________
 
-Libamvp is an example client for the AMVP protocol developed by Cisco engineers. It is C-based and interacts with the server by parsing user-generated JSON and is intended to be a simple tool to showcase the protocol and assist developers as they create workflows for the generation and submission of AMVP data. Libamvp can create modules and certification requests, submit all required evidence and security policy information, retrieve security policy PDFs, check for the status of a certification request, and perform other actions, as development continues.
+.. raw:: html
+    :file: protocol/html/03-architecture.html
 
-Libamvp can be found here: https://github.com/cisco/libamvp.
+AMV Protocol
+________________
 
-ACVP Proxy - atsec information security
-_________________________________________
+.. raw:: html
+    :file: protocol/html/04-amvprotocol.html
 
-The client is called the ACVP Proxy and is supported by atsec information security. The name is ACVP Proxy because this is a continuation of an older project designed to interact with the NIST ACVP servers. It now provides the interface to access the NIST ACVP, ESV, and ACMVP services. The code is open source and available at the public repository: https://github.com/smuellerDD/acvpproxy.
+Security
+________________
 
-The ACVP Proxy has many options, allows a flexible deployment, and is extendable to cover an arbitrary number of IUT definitions. The ACVP Proxy implements the entire interaction with the NIST servers to obtain the data from the server and upload all required data to the server.
+.. raw:: html
+    :file: protocol/html/05-security.html
 
-Accessing the ACMVP Demo Server
---------------------------------
+Login
+__________
 
-Detailed instructions on accessing the ACMVP Demo Server hosted by NIST can be found at https://pages.nist.gov/ACMVPDocs/protocol/index.html#accessing-the-acmvp-demo-server.
+.. raw:: html
+    :file: protocol/html/07-login.html
+
+Versioning
+___________
+
+.. raw:: html
+    :file: protocol/html/08-versioning.html
+
+Messaging
+__________
+
+.. raw:: html
+    :file: protocol/html/09-messaging.html
+
+Error Responses
+___________________
+
+.. raw:: html
+    :file: protocol/html/11-errorresponses.html
+
+Examples
+__________
+
+.. raw:: html
+    :file: protocol/html/14-appendix.html

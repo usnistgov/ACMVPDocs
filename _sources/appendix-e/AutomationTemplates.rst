@@ -22,10 +22,10 @@ The NCCoE notifies security personnel of all member account changes automaticall
 
 An `example CloudFormation template <https://github.com/usnistgov/ACMVPDocs/blob/main/Infrastructure/account_event_notification_example.yml>`__ for sending email notifications to security personnel for each account creation, removal, suspension, or assignment event can be found in the ACMVP Documentation repository. Because this approach uses AWS's Simple Notification Service (SNS), this template can be modified to send notifications to other destinations, depending on the use case.
 
-Deny Quad Zeros
----------------
+Deny Open Security Groups
+---------------------------------------
 
-The NCCoE regularly audits security groups for quad zeros using an SSM Automation Document that runs on a schedule. This document includes a trust policy configuration designed to prevent Confused Deputy attacks.
+The NCCoE regularly audits security groups for "quad zeros" (a CIDR range of 0.0.0.0/0) using an SSM Automation Document that runs on a schedule. This document includes a trust policy configuration designed to prevent Confused Deputy attacks.
 
 An `example CloudFormation Template <https://github.com/usnistgov/ACMVPDocs/blob/main/Infrastructure/deny_quad_zeroes_example.yml>`__ for creating an SSM Automation Document and an IAM Role for the purposes of regularly auditing AWS security groups can be found in the ACMVP Documentation repository. A second CloudFormation template is also available to demonstrate the `creation of a custom maintenance window <https://github.com/usnistgov/ACMVPDocs/blob/main/Infrastructure/maintenance_window_example.yml>`__.
 

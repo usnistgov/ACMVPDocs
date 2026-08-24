@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Protocol Workstream &#8212; Automated Cryptographic Module Validation Project  documentation</title>
+    <title>Protocol Workstream &#8212; Automated Cryptographic Module Validation Project</title>
   
   
   
@@ -33,8 +33,10 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/css/lightbox.min.css?v=6e7d0de0" />
     <link rel="stylesheet" type="text/css" href="_static/content.css?v=59cd0ab0" />
-    <link rel="stylesheet" type="text/css" href="_static/tables.css?v=1ae3e97c" />
+    <link rel="stylesheet" type="text/css" href="_static/authors.css?v=0c53199a" />
+    <link rel="stylesheet" type="text/css" href="_static/tables.css?v=4a1b2b33" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -55,6 +57,8 @@
     <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/js/lightbox-plus-jquery.min.js?v=f0ca4bb6"></script>
+    <script>lightbox.option({"alwaysShowNavOnTouchDevices": false, "albumLabel": "Image %1 of %2", "disableScrolling": false, "fadeDuration": 600, "fitImagesInViewport": true, "imageFadeDuration": 600, "positionFromTop": 50, "resizeDuration": 700, "showImageNumberLabel": true, "wrapAround": true})</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'protocol-workstream';</script>
     <script src="_static/jquery.visible.js?v=5b129ffc"></script>
     <script src="_static/jquery.leaveNotice-nist.js?v=21f5b3a4"></script>
@@ -62,8 +66,8 @@
     <script src="_static/smoothNavScroll.js?v=2ce98a12"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Research Infrastructure" href="re-workstream.html" />
-    <link rel="prev" title="Test Evidence Workstream" href="te-workstream.html" />
+    <link rel="next" title="ACMVP Demo Server" href="protocol/index.html" />
+    <link rel="prev" title="Annex Tables" href="te-tables/annex.html" />
     
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -127,6 +131,9 @@
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
 </div>
+<aside class="bd-header-announcement" aria-label="Announcement">
+  <div class="bd-header-announcement__content">Content on this site will be updated periodically to keep it up to date with how the CMVP uses this system for real validations. Check the <a href=https://github.com/usnistgov/ACMVPDocs/releases style='color:white'>GitHub Releases</a> to see a history of changes.</div>
+</aside>
 
   
     <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
@@ -163,7 +170,7 @@
   
   
   
-    <p class="title logo__title">Automated Cryptographic Module Validation Project  documentation</p>
+    <p class="title logo__title">Automated Cryptographic Module Validation Project</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -188,145 +195,150 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="executive-summary.html">Executive Summary</a></li>
-<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="approach.html">Approach</a></li>
-<li class="toctree-l1"><a class="reference internal" href="te-workstream.html">Test Evidence Workstream</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Protocol Workstream</a></li>
-<li class="toctree-l1"><a class="reference internal" href="re-workstream.html">Research Infrastructure</a></li>
-<li class="toctree-l1"><a class="reference internal" href="findings.html">Findings and Recommendations for Future Work</a></li>
+<li class="toctree-l1"><a class="reference internal" href="home/executivesummary.html">Executive Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="home/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="home/approach.html">Approach</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="te-workstream.html">Test Evidence Workstream</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="te-tables/te-table1.html">Table 1 - Dividing 140A-TEs into non-140B-TEs and SP-TEs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="te-tables/te-table2.html">Table 2 - TEs Requiring Functional Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="te-tables/te-table3.html">Table 3 - TE Tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="te-tables/te-table4.html">Table 4 - Allowed Test Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="te-tables/te-table5.html">Table 5 - Summary of FIPS 140-3 Security Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="te-tables/te-table6.html">Table 6 - An overview of the number of Security Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="te-tables/te-table7.html">Table 7 - Area 2 TEs Filtered by Security Level for Software Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="te-tables/te-table8.html">Table 8 - Area 7 TEs Filtered by Security Level for Single Chip Hardware Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="te-tables/te-table9.html">Table 9 - TEs Affected by the Supplemental Filtering Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="te-tables/te-table10.html">Table 10 - Assertions (ASes) not separately tested</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="te-tables/tetables.html">Appendix B: TE Tables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="te-tables/area2.html">Area 2 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="te-tables/area3.html">Area 3 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="te-tables/area4.html">Area 4 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="te-tables/area5.html">Area 5 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="te-tables/area6.html">Area 6 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="te-tables/area7.html">Area 7 Tables</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="te-tables/area8.html">Area 8 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="te-tables/area9.html">Area 9 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="te-tables/area10.html">Area 10 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="te-tables/area11.html">Area 11 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="te-tables/area12.html">Area 12 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="te-tables/annex.html">Annex Tables</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+</details></li>
+</ul>
+</details></li>
+
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Protocol Workstream</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="protocol/index.html">ACMVP Demo Server</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="re-workstream.html">Research Infrastructure</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendix-d.html">Appendix D: Application Modernization</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="appendix-e/index.html">Appendix E: Research Infrastructure</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="appendix-e/AWSAccountOrganization.html">AWS Account Organization</a></li>
+
+<li class="toctree-l3"><a class="reference internal" href="appendix-e/AWSResearchCloudSystemArchitecture.html">AWS Research Cloud System Architecture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-e/IdentityandAccessManagement.html">Identity and Access Management</a></li>
+
+<li class="toctree-l3"><a class="reference internal" href="appendix-e/AWSResearchCloudSecurity.html">AWS Research Cloud Security</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-e/AWSResearchCloudOperations.html">AWS Research Cloud Operations</a></li>
+
+
+<li class="toctree-l3"><a class="reference internal" href="appendix-e/MappingtoNIST800Series.html">Mapping to NIST 800 Series</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-e/AutomationTemplates.html">Automation Templates</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 <li class="toctree-l1"><a class="reference internal" href="appendix-a.html">Appendix A: List of Symbols, Abbreviations, and Acronyms</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="te/tables/tetables.html">Appendix B: TE Tables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="te/tables/area2.html">Area 2 Tables</a></li>
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="te/tables/area3.html">Area 3 Tables</a></li>
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="te/tables/area4.html">Area 4 Tables</a></li>
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="te/tables/area5.html">Area 5 Tables</a></li>
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="te/tables/area6.html">Area 6 Tables</a></li>
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="te/tables/area7.html">Area 7 Tables</a></li>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="te/tables/area8.html">Area 8 Tables</a></li>
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="te/tables/area9.html">Area 9 Tables</a></li>
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="te/tables/area10.html">Area 10 Tables</a></li>
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="te/tables/area11.html">Area 11 Tables</a></li>
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="te/tables/area12.html">Area 12 Tables</a></li>
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="te/tables/annex.html">Annex Tables</a></li>
-
-
-
-
-
-
-
-
-
-
-
-
-</ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="protocol/index.html">Appendix C: CMVP Demo Server</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2 has-children"><a class="reference internal" href="protocol/technicalDetails.html">Protocol Workstream Technical Details</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="protocol/securityConsiderations.html">Security Considerations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="protocol/login.html">Login</a></li>
-<li class="toctree-l3"><a class="reference internal" href="protocol/versioning.html">Versioning</a></li>
-<li class="toctree-l3"><a class="reference internal" href="protocol/messaging.html">Messaging</a></li>
-<li class="toctree-l3"><a class="reference internal" href="protocol/errorResponses.html">Error Responses</a></li>
-<li class="toctree-l3"><a class="reference internal" href="protocol/appendix.html">Appendix</a></li>
-</ul>
-</details></li>
-</ul>
-</details></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix-d.html">Appendix D: Application Modernization</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="appendix-e/index.html">Appendix E: Research Infrastructure</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="appendix-e/AWSAccountOrganization.html">AWS Account Organization</a></li>
-
-<li class="toctree-l2"><a class="reference internal" href="appendix-e/AWSResearchCloudSystemArchitecture.html">AWS Research Cloud System Architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="appendix-e/IdentityandAccessManagement.html">Identity and Access Management</a></li>
-
-<li class="toctree-l2"><a class="reference internal" href="appendix-e/AWSResearchCloudSecurity.html">AWS Research Cloud Security</a></li>
-<li class="toctree-l2"><a class="reference internal" href="appendix-e/AWSResearchCloudOperations.html">AWS Research Cloud Operations</a></li>
-
-
-<li class="toctree-l2"><a class="reference internal" href="appendix-e/MappingtoNIST800Series.html">Mapping to NIST 800 Series</a></li>
-<li class="toctree-l2"><a class="reference internal" href="appendix-e/AutomationTemplates.html">Automation Templates</a></li>
-</ul>
-</details></li>
 </ul>
 
     </div>
@@ -476,14 +488,24 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#protocol-workstream-collaborators">Protocol Workstream Collaborators</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proof-of-concept-server-features">Proof-of-Concept Server Features</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#server-implementation">Server Implementation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#client-implementations">Client Implementations</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#libamvp-cisco">Libamvp - Cisco</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#acvp-proxy-atsec-information-security">ACVP Proxy - atsec information security</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#technical-details">Technical Details</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#intro">Intro</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#protocol-overview">Protocol Overview</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#protocol-audience">Protocol Audience</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#goals">Goals</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#strategy">Strategy</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-the-acmvp-demo-server">Accessing the ACMVP Demo Server</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture">Architecture</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#amv-protocol">AMV Protocol</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#security">Security</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#login">Login</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#versioning">Versioning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#messaging">Messaging</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#error-responses">Error Responses</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -497,48 +519,3574 @@ document.write(`
                   
   <section id="protocol-workstream">
 <h1>Protocol Workstream<a class="headerlink" href="#protocol-workstream" title="Link to this heading">#</a></h1>
-<p>The Protocol Workstream defines the interactions between the automated CMVP server and the ACMVP clients supporting a proof-of-concept of automation capabilities. The CMVP hosts a demonstration server for interoperability and testing purposes through NIST. This is referred to as the ACMVP Demo Server covered in <a class="reference internal" href="protocol/index.html#accessing-the-acmvp-demo-server"><span class="std std-ref">Accessing the ACMVP Demo Server</span></a>.</p>
+<div class="toctree-wrapper compound">
+</div>
+<p>The Protocol Workstream defines the interactions between the automated CMVP server and the ACMVP clients supporting a proof-of-concept of automation capabilities. The CMVP hosts a demonstration server for interoperability and testing purposes through NIST. This is referred to as the ACMVP Demo Server. The ACMVP Demo Server supports testing labs to connect the outputs of their testing results with the CMVP with minimal human intervention, enabling streamlined submissions with less potential for delay.
+and to support testing labs to connect the outputs of their testing results with the CMVP with minimal human intervention.</p>
 <section id="protocol-workstream-collaborators">
 <h2>Protocol Workstream Collaborators<a class="headerlink" href="#protocol-workstream-collaborators" title="Link to this heading">#</a></h2>
 <p>The ACMVP Protocol Workstream is led by Barry Fussell and Andrew Karcher of Cisco and Christopher Celi of NIST, with contributions from Panos Kampanakis of Amazon, Michael McCarl and Deborah Harrington of AEGISOLVE, Alex Thurston of Lightship, Stephan Mueller and Walker Riley of atsec information security, Mike Grimm of Microsoft, Chih-Kao Liao of Intertek, Robert Staples of NIST, and Raoul Gabiam, Michael Dimond, Kyle Vitale, Doris Rui, and Matthew Fortes of the MITRE Corporation.</p>
 </section>
-<section id="proof-of-concept-server-features">
-<h2>Proof-of-Concept Server Features<a class="headerlink" href="#proof-of-concept-server-features" title="Link to this heading">#</a></h2>
-<p>The proof-of-concept server currently implements the following features:</p>
+<section id="technical-details">
+<h2>Technical Details<a class="headerlink" href="#technical-details" title="Link to this heading">#</a></h2>
+<section id="intro">
+<h3>Intro<a class="headerlink" href="#intro" title="Link to this heading">#</a></h3>
+<p>The Automated Module Validation Protocol (AMVP) defines a mechanism to submit registration, test evidence and validation requests for a software, firmware and hardware crypto modules. It works in conjunction with ACVTS and ESVTS to improve the speed of validations at a rate which meets typical industry development cycles; providing the ability to deploy validated crypto with CVE fixes much faster than previous methods.</p>
+<p>The AMVP specification describes how the protocol is structured with respect to the client-server model, messaging, optional features, and flows. It defines how the registrar and evidence submission client communicates with an AMVP server; including module capabilities, session management, authentication, vector processing and more. AMVP leverages many of the message flows originally defined for ACVP and incorporates them into a module-specific concept and adds new flows for module test evidence submission and validation requests.</p>
+</section>
+<section id="protocol-overview">
+<h3>Protocol Overview<a class="headerlink" href="#protocol-overview" title="Link to this heading">#</a></h3>
+<p>AMVP has the following goals:</p>
 <ul class="simple">
-<li><p>Two-factor authentication using TOTP and mTLS, which improves the TOTP from ACVP by allowing a user to maintain multiple seeds for simultaneous connections.</p></li>
-<li><p>Module registration that defines the security levels, embodiment, and other properties of the cryptographic module, and automatically determines which TEs are applicable to the cryptographic module.</p></li>
-<li><p>Module evidence submission that prompts a client to provide evidence addressing TEs that are applicable to the cryptographic module, and will show which TEs have not yet been addressed by the submission to ensure completeness.</p></li>
-<li><p>Module security policy submission defined entirely in JSON, which will generate the security policy automatically, allowing the client to retrieve the completed document, and ensuring that all sections are present and completed.</p></li>
-<li><p>Automatic processing of functional test evidence (FT-TEs) based on the test type selected by the lab.</p></li>
-<li><p>Accepts source code test evidence (SC-TE) based on the test procedure selected by the lab.</p></li>
-<li><p>Provides endpoints that list the accepted schemas for submission endpoints and defines a query to obtain a specific version of a schema.</p></li>
-<li><p>Handles other documentation test evidence (OD-TE), rounding out all the evidence types defined by the TE Workstream.</p></li>
-<li><p>Applies an automated rule checking engine on completed submissions. This is introduced on the ACMVP Demo Server as a proof of concept to do things like ensure a submission is consistent with itself. Submissions for a full module can be very large, needing several hundred TEs addressed, cryptographic algorithm and entropy source validations, etc. The rule checks can be expanded to complete cross-references to algorithm and entropy certificates to ensure that all content in the current request is accurate. Much of this work is done manually by a reviewer looking at the publicly available algorithm validation certificate and the registered capabilities of the submitted cryptographic module.</p></li>
+<li><p>To communicate registration information for one to many cryptographic modules for lab, vendor, module and OE.</p></li>
+<li><p>To submit test evidence as defined by FIPS SP 800-140Br1.</p></li>
+<li><p>To enable automated registration and test evidence submission with minimal human interaction.</p></li>
+<li><p>To provide extensibility that can be used to introduce registration for new module types and new test evidence as needed.</p></li>
+<li><p>To be compatible with emerging automated validation systems wherever possible, especially the FIPS-140 Cryptographic Module Validation Program.</p></li>
+</ul>
+<p>AMVP defines how to communicate registration information, test evidence and validation requests with a validation authority. It is dependent upon existing technologies such as HTTPS, JSON and TLS to perform the message exchanges. In addition it is dependent on submissions to the validation authority from ACVP and the ESV protocol. The relationship between the three protocols can be summarized as follows.</p>
+<ul class="simple">
+<li><p>AMVP registers the lab, vendor, module and OE information.</p></li>
+<li><p>ACVP performs algorithm testing on an OE and submits the results assigned to the module/OE registered by AMVP.</p></li>
+<li><p>ESV performs entropy testing on an OE and submits the results assigned to the module/OE registered by AMVP.</p></li>
+<li><p>AMVP submits additional module-centric test evidence and documentation to meet FIPS SP 800-140Br1 requirements.</p></li>
+<li><p>AMVP submits a request for FIPS 140-3 module validation.</p></li>
+</ul>
+<section id="protocol-audience">
+<h4>Protocol Audience<a class="headerlink" href="#protocol-audience" title="Link to this heading">#</a></h4>
+<p>This document is written to address multiple audiences:</p>
+<ul class="simple">
+<li><p>Crypto module developers who require validation testing</p></li>
+<li><p>Crypto validation organizations who will perform validation testing</p></li>
+<li><p>Crypto module customers that desire validation testing results or verifiable artifacts of testing</p></li>
 </ul>
 </section>
-<section id="server-implementation">
-<h2>Server Implementation<a class="headerlink" href="#server-implementation" title="Link to this heading">#</a></h2>
-<p>The server uses much of the same infrastructure as ACVP and ESV, which is intended to keep the same team available to maintain the systems once they are integrated by the CMVP. The system is comprised of C# and Python applications along with SQL Server databases.</p>
-<p>The server implementation can be broken down into two major applications. The first is WebPublic, the front-facing application that serves the application programming interface (API) with which clients interact. This application handles HTTPS requests from users to retrieve or submit data to the CMVP. The second application is the MessageQueueProcessor. As tasks to create or update data are collected through WebPublic, they enter a queue. The MessageQueueProcessor reads those requests using a first-in, first-out ordering to fulfill them. This handles the core logic of creating modules, applying the TE Filter, building security policy documents, and running the core automation checks on a module seeking validation.</p>
+<section id="goals">
+<h4>Goals<a class="headerlink" href="#goals" title="Link to this heading">#</a></h4>
+<p>The goals for this document are to provide a messaging protocol that can be used with existing authentication and communication protocols to provide a way to validate crypto modules. The following functions are outside the scope of this document:</p>
+<ul class="simple">
+<li><p>The API to the cryptographic module</p></li>
+<li><p>Where AMVP is located within the client premise</p></li>
+<li><p>How the results/artifacts are stored or managed</p></li>
+<li><p>Scalability</p></li>
+<li><p>Management interface</p></li>
+</ul>
 </section>
-<section id="client-implementations">
-<h2>Client Implementations<a class="headerlink" href="#client-implementations" title="Link to this heading">#</a></h2>
-<p>This section describes the two open-source clients, Libamvp and ACVP Proxy, that provide foundational code for developers to build upon when interfacing with the server.</p>
-<section id="libamvp-cisco">
-<h3>Libamvp - Cisco<a class="headerlink" href="#libamvp-cisco" title="Link to this heading">#</a></h3>
-<p>Libamvp is an example client for the AMVP protocol developed by Cisco engineers. It is C-based and interacts with the server by parsing user-generated JSON and is intended to be a simple tool to showcase the protocol and assist developers as they create workflows for the generation and submission of AMVP data. Libamvp can create modules and certification requests, submit all required evidence and security policy information, retrieve security policy PDFs, check for the status of a certification request, and perform other actions, as development continues.</p>
-<p>Libamvp can be found here: <a class="github reference external" href="https://github.com/cisco/libamvp">cisco/libamvp</a>.</p>
-</section>
-<section id="acvp-proxy-atsec-information-security">
-<h3>ACVP Proxy - atsec information security<a class="headerlink" href="#acvp-proxy-atsec-information-security" title="Link to this heading">#</a></h3>
-<p>The client is called the ACVP Proxy and is supported by atsec information security. The name is ACVP Proxy because this is a continuation of an older project designed to interact with the NIST ACVP servers. It now provides the interface to access the NIST ACVP, ESV, and ACMVP services. The code is open source and available at the public repository: <a class="github reference external" href="https://github.com/smuellerDD/acvpproxy">smuellerDD/acvpproxy</a>.</p>
-<p>The ACVP Proxy has many options, allows a flexible deployment, and is extendable to cover an arbitrary number of IUT definitions. The ACVP Proxy implements the entire interaction with the NIST servers to obtain the data from the server and upload all required data to the server.</p>
+<section id="strategy">
+<h4>Strategy<a class="headerlink" href="#strategy" title="Link to this heading">#</a></h4>
+<p>To meet the goals laid out here the strategy must be:</p>
+<ul class="simple">
+<li><p>To perform module registration in such a way the server is able to limit requests to only applicable evidence sets</p></li>
+<li><p>To provide evidence that avoids free text and replaces it with structured reproducible schema so it is automatable</p></li>
+<li><p>To provide registration such that information is available to generate a security policy which meets SP 800-140B</p></li>
+</ul>
 </section>
 </section>
-<section id="accessing-the-acmvp-demo-server">
-<h2>Accessing the ACMVP Demo Server<a class="headerlink" href="#accessing-the-acmvp-demo-server" title="Link to this heading">#</a></h2>
-<p>Detailed instructions on accessing the ACMVP Demo Server hosted by NIST can be found at <a class="reference external" href="https://pages.nist.gov/ACMVPDocs/protocol/index.html#accessing-the-acmvp-demo-server">https://pages.nist.gov/ACMVPDocs/protocol/index.html#accessing-the-acmvp-demo-server</a>.</p>
+<section id="architecture">
+<h3>Architecture<a class="headerlink" href="#architecture" title="Link to this heading">#</a></h3>
+<div class="sect1">
+
+<div class="sectionbody">
+<div class="paragraph">
+<p>A server/client/proxy model is used where the roles are defined as:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>AMV Client/Proxy - Communicates with the AMV server using Java Script Object Notation (JSON <a href="#RFC7159">[RFC7159]</a>) and submits registration for various resources and test evidence that is module-centric.</p>
+</li>
+<li>
+<p>AMV Server - Maintains registration information and processes test evidence for module validation requests.</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_terminology">Terminology</h3>
+<div class="paragraph">
+<p>The following terms are consistently used throughout this document and <strong>SHOULD</strong> be used throughout its extensions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Registration - The JSON from the client to the server that describes the capabilities for which the client is seeking test cases and a validation. Evidence required will be broken into individual Test evidenceSets.</p>
+</li>
+<li>
+<p>Request - The JSON sent from the server to the client defining a single Test evidenceSet to use as inputs for testing. Exactly one request will exist for each Test evidenceSet.</p>
+</li>
+<li>
+<p>Response - The JSON from the client providing the desired output for each of the Test Cases defined in the corresponding Request file. These are linked via the Test evidenceSet evId. As exactly one request exists for each esId, one response will exist for each request.</p>
+</li>
+<li>
+<p>Disposition - The JSON from the server after the Response is submitted by the client detailing the correctness of the Test Evidence. A "passed" disposition indicates that the particular test in the Test evidenceSet is ready for validation.</p>
+</li>
+<li>
+<p>OE - Operational Environment - The specific hardware and/or software the client&#8217;s cryptographic implementation uses to run.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div></section>
+<section id="amv-protocol">
+<h3>AMV Protocol<a class="headerlink" href="#amv-protocol" title="Link to this heading">#</a></h3>
+<div class="sect1">
+
+<div class="sectionbody">
+<div class="paragraph">
+<p>The AMV protocol will utilize existing mechanisms for transport coordinated with JSON formatted messaging.</p>
+</div>
+<div id="xml_figure3" class="literalblock">
+<div class="title">Protocol Layering</div>
+<div class="content">
+<pre>+-----------------------------------------------+
+| JSON Formatted AMVP request/response messages |
++-----------------------------------------------+
+| HTTP[S] message transfer and signaling        |
++-----------------------------------------------+
+| TLS for transport security (recommended)      |
++-----------------------------------------------+
+| TCP for transport                             |
+|_______________________________________________|</pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="uriComposition">HTTP URI Hierarchy</h3>
+<div id="uriDiagram" class="literalblock">
+<div class="content">
+<pre>        +-------------+------+-----------+
+        |   server    |path  | resource
+        |             |prefix|
+        +-------------+------+-----------+
+https://amvts.nist.gov/amvp/v1/certRequests
+        +-------------+------+-----------+
+                       version</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that deployments utilizing AMV Proxy server <strong>MAY</strong> use a different protocol, e.g., HTTP, custom server, context and port number to interact with the DUT.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="uriResources">HTTP URI Resources</h3>
+<div class="paragraph">
+<p>In the table below, any parts of a resource path enclosed in curly braces, { or }, are replaced by an instance of what is described in the braces. For example {requestId} could be replaced with 1.</p>
+</div>
+<div class="paragraph">
+<p>An empty cell for a resource and HTTP Method combination denotes that the server returns an HTTP Status 405 code <em>Method not allowed (405)</em>.</p>
+</div>
+<table id="uri_table" class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. Resources and their Available Operations</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Resource</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GET (read)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">POST (create)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PUT (update)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/certRequests</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#certRequest_post">[certRequest_post]</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/modules/{moduleId}</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#module_get">[module_get]</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/certRequests/{certRequestId}</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#certRequest_get">[certRequest_get]</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/certRequests/{certRequestId}/functionalTest</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#certRequest_post">[certRequest_post]</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/certRequests/{certRequestId}/sourceCode</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#certRequest_post">[certRequest_post]</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/certRequests/{certRequestId}/securityPolicy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#certRequest_get">[certRequest_get]</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#certRequest_post">[certRequest_post]</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#certRequest_put">[certRequest_put]</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/certRequests/{certRequestId}/securityPolicy/template</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#certRequest_post">[certRequest_post]</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/certRequests/{certRequestId}/otherDocumentation</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#certRequest_post">[certRequest_post]</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/certRequests/{certRequestId}/certify</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#certRequest_post">[certRequest_post]</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/schemas</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#schemas_get">[schemas_get]</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/schemas/{endpoint}</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#schemas_get">[schemas_get]</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/schemas/{endpoint}/{version}</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#schemas_get">[schemas_get]</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The resource path is appended to the path prefix to form the URI used with an HTTP Method to perform the desired AMVP operation. For example to create a new test session using the "/certRequests" resource is "/amvp/v1/certRequests" (assuming an empty context). To create a new certificate request session, the AMVP client would use the following HTTP request-line:</p>
+</div>
+<div class="paragraph">
+<p><code>POST /amvp/v1/certRequests HTTP/1.1</code></p>
+</div>
+</div>
+</div>
+</div></section>
+<section id="security">
+<h3>Security<a class="headerlink" href="#security" title="Link to this heading">#</a></h3>
+<div class="sect1">
+
+<div class="sectionbody">
+<div class="paragraph">
+<p>HTTPS and TLS 1.2 or greater <strong>SHALL</strong> be used in order to enforce a secure communication method.</p>
+</div>
+<div class="sect2">
+<h3 id="_authentication">Authentication</h3>
+<div class="paragraph">
+<p>A JSON Web Token (JWT) <strong>SHALL</strong> be created by the server upon successful client authentication and returned to the client to use as an authorization mechanism for accessing the server resources - see <a href="#jwtToken">JSON Web Token (JWT)</a> below for more information. Since AMVP is targeted for validation authorities only, it <strong>SHALL</strong> use TLS mutual certificate authentication.</p>
+</div>
+<div class="paragraph">
+<p>The client <strong>SHALL</strong> return the token to the server via the Authorization Bearer header in all subsequent HTTP requests.</p>
+</div>
+<div class="paragraph">
+<p>The server <strong>MAY</strong> provide a JWT that includes additional claims. The claims will link the user to a set of data created by the user. If the user wishes to interact with that data, the user <strong>SHALL</strong> use the JWT with the claims.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="jwtToken">JSON Web Token (JWT)</h3>
+<div class="paragraph">
+<p>JSON Web Token is described in <a href="#RFC7519">[RFC7519]</a> and is used as an authorization mechanism for gaining access to different resources.</p>
+</div>
+<div class="paragraph">
+<p>The JWT can be secured if desired using the header encryption "alg" value defined to HS256(HMAC-SHA256) or one of the other secure values. Key agreement would follow RFC7518.</p>
+</div>
+<div id="jwt_example_signed" class="listingblock">
+<div class="title">Signed JWT</div>
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+  "alg": "HS256",
+  "typ": "JWT"
+}
+{
+  "iss" : "NIST AMVP",
+  "nbf": 1598293915,
+  "exp": 1598295715,
+  "iat": 1598293915,
+  "pkey" : "cc74f56acdba635079383a03941d68db55c7b3c2f (truncated)"
+}
+{
+    "{signature}"
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>where "{signature}" is made up of:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>HMACSHA256(
+  base64UrlEncode(header) + "." +
+  base64UrlEncode(payload),
+  secret)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>and where "HMACSHA256" is the algorithm specified in the JWT header.</p>
+</div>
+<div class="paragraph">
+<p>The first four claims are required, however "pkey" is an optional private claim used to pass the key used for encrypting the database at the server. Enabling this option is discussed further in <a href="#certRequests_post">[certRequests_post]</a></p>
+</div>
+<div class="sect3">
+<h4 id="jwtAuthFlows">Authorization flows with JWT</h4>
+<div class="paragraph">
+<p>JSON Web Token is described in <a href="#RFC7519">[RFC7519]</a> and is used as an authorization mechanism for gaining access to different resources.</p>
+</div>
+<div class="paragraph">
+<p>In order to access any resource which requires authorization a client must supply the JWT
+as an <code>Authorization</code> header value as a <code>Bearer</code> token. An example header value is:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5c (truncated)"</pre>
+</div>
+</div>
+<div id="xml_figureFlows" class="paragraph">
+<p>Workflow authorization flows. All exchanges shown are over HTTP.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>         +--------+---------------------------------+------+--------+
+         | Client |                                 |Server|  Notes |
+         +--------+---------------------------------+------+--------+
+         |        |POST to /login or similar with   |      |        |
+         |        |appropriate credentials          |      |        |
+         |        |--------------------------------&gt;|      |        |
+         |        |                                 |      |        |
+         |        |receive the access token         |      |        |
+         |        |&lt;-  -  -  -  -  -  -  -  -  -  - |      |        |
+         |        |                                 |      |        |
+
+
+POST: [{"passcode":"66008332"}]
+
+200 OK: [{"accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9....}]</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="jwtExpire">JWT Expiration/Renewal</h4>
+<div class="paragraph">
+<p>The JWT access tokens received from either the /login server endpoint <strong>SHALL</strong> be set to expire after a
+pre-defined period. The specific length of the expiration period is out of scope for this specification.
+However, the expiration period length impacts both the security and protocol overhead. Longer expiration
+periods reduce the overhead but increase the window for attacks. Attempting to access a service with an
+expired JWT <strong>SHALL</strong> result in a "401 Unauthorized" HTTP status code.</p>
+</div>
+<div class="paragraph">
+<p>A client may renew an expired JWT access token using the mechanism shown in <a href="#xml_figureRenewalFlows">Renewal Flows</a> below.</p>
+</div>
+<div id="xml_figureRenewalFlows" class="paragraph">
+<div class="title">Renewal Flows</div>
+<p>JWT access token renewal flows. All exchanges shown are over HTTP.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>         +--------+---------------------------------+------+--------+
+         | Client |                                 |Server|  Notes |
+         +--------+---------------------------------+------+--------+
+         |        |POST to /login or similar with   |      |        |
+         |        |appropriate credentials          |      |        |
+         |        |and expired JWT access token     |      |        |
+         |        |--------------------------------&gt;|      |session |
+         |        |                                 |      |or      |
+         |        |                                 |      |login   |
+         |        |                                 |      |JWT     |
+         |        |receive the renewed access token |      |        |
+         |        |&lt;-  -  -  -  -  -  -  -  -  -  - |      |        |
+
+
+Server returns 401
+
+POST: [[{"passcode":"47682787","accessToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9....}]]
+
+200 OK: [{"accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.....}]</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></section>
+<section id="login">
+<h3>Login<a class="headerlink" href="#login" title="Link to this heading">#</a></h3>
+<div class="sect1">
+
+<div class="sectionbody">
+<div class="paragraph">
+<p>A login endpoint (at <code>/amvp/v1/login</code>) is mentioned throughout the document and how to authenticate is defined by the server. The following defines how the login endpoint to establish a session and obtain a <a href="#jwtAuthFlows">[jwtAuthFlows]</a>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>passcode</strong> - <code>string</code>, a property for providing a passcode value</p>
+</li>
+<li>
+<p><strong>accessToken</strong> - <code>string</code>, a JWT associated with the current user for which renewal of the expiration is desired</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_request">Request</h3>
+<div class="paragraph">
+<p>There are two forms of a login request. There is the initial form which just provides the authentication
+information without any JWT, and there is a renewal login that allows a user to obtain a new JWT containing the
+claims from an expired JWT in order to access a resource protected with those claims.</p>
+</div>
+<div class="paragraph">
+<p><strong>POST /login</strong> (Initial)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "amvVersion": "0.1",
+    "passcode": "{passcode}"
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>POST /login</strong> (Renewal)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "amvVersion": "0.1",
+    "passcode": "{passcode}",
+    "accessToken": "{jwt value}"
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_response">Response</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "accessToken": "{jwt value}",
+    "amvVersion": "0.1"
+ }</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="multiRefresh">Multi Refresh JWT</h3>
+<div class="paragraph">
+<p>This endpoint can be utilized for refreshing multiple JWTs with a single POST.  Because a JWT with claims is issued for each test session created and clients have the option of performing more than one test session at a time, a mechanism for refreshing multiple JWTs across multiple test sessions simultaneously <strong>MAY</strong> be made available.</p>
+</div>
+<div class="sect3">
+<h4 id="_request_2">Request</h4>
+<div class="paragraph">
+<p><strong>POST /login/refresh</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "amvVersion": "0.1",
+    "passcode": "{passcode}",
+    "accessToken": [
+      "{jwt1}",
+      "{jwt2}",
+      "..."
+    ]
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_response_2">Response</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "accessToken": [
+      "{newJwt1}",
+      "{newJwt2}",
+      "..."
+    ],
+    "amvVersion": "0.1"
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note the order of JWTs between the request and response is preserved.</p>
+</div>
+<div class="paragraph">
+<p>In the event of an error occurring during any of the above requests, the AMVP server <strong>MUST</strong> respond with a error response formatted as defined by section 11 of this specification. The category codes and error codes to use are defined by Table 1 below.</p>
+</div>
+<table id="login_error_table_1.0" class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. Errors related to login requests</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Category Code</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Scenario</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Error code</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="4"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Expected an access token but was not provided</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A provided access token did not verify</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A provided access token has expired</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The provided "passcode" was incorrect</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Provided payload is not valid JSON</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="6"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JSON payload not in array format</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JSON missing initial expected amvVersion</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Provided amvVersion is invalid or not supported</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JSON missing other expected value</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Wrong data type used for expected value</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Data for given value is invalid</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Note: The login endpoints are unique in that the payload contents are specific to the end user for authentication. This is why the errors fall under category 1 instead of category 3, which handles more general cases of all other semantically incorrect JSON.</p>
+</div>
+<div class="paragraph">
+<p>When using the multi refresh JWT process described above, the AMVP server <strong>SHALL</strong> include an error object for each separate JWT that encounters an error.</p>
+</div>
+</div>
+</div>
+</div>
+</div></section>
+<section id="versioning">
+<h3>Versioning<a class="headerlink" href="#versioning" title="Link to this heading">#</a></h3>
+<div class="sect1">
+
+<div class="sectionbody">
+<div class="paragraph">
+<p>The version of the AMVP protocol will be carried with each message and will contain a simple major.minor format. Major version changes will not be backward compatible, however additions and enhancements that do not disrupt compatibility will be indicated with a minor version change. A server <strong>MAY</strong> accept a down-level version from the client if it can process at a lower level. If not, it will reject the session. All subsequent messages will carry the negotiated version value.</p>
+</div>
+<div class="paragraph">
+<p>The version is represented in all messages to and from the server with the following format.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>  {
+    "amvVersion": "0.1",
+    &lt;message payload&gt;
+  }</code></pre>
+</div>
+</div>
+</div>
+</div></section>
+<section id="messaging">
+<h3>Messaging<a class="headerlink" href="#messaging" title="Link to this heading">#</a></h3>
+<div class="sect1">
+
+<div class="sectionbody">
+<div class="paragraph">
+<p>The general flow of the protocol is to:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Login to the system via <code>POST /amvp/v1/login</code></p>
+</li>
+<li>
+<p>Create a certificate request session and register a module via <code>POST /amvp/v1/certRequests</code></p>
+</li>
+<li>
+<p>Submit functional test evidence (FT-TE) via <code>POST /amvp/v1/certRequests/&lt;id&gt;/functionalTest</code></p>
+</li>
+<li>
+<p>Submit source code test evidence (SC-TE) via <code>POST /amvp/v1/certRequests/&lt;id&gt;/sourceCode</code></p>
+</li>
+<li>
+<p>Submit other docmumentation test evidence (OD-TE) via <code>POST /amvp/v1/certRequests/&lt;id&gt;/otherDocumentation</code></p>
+</li>
+<li>
+<p>Submit security policy evidence via <code>POST /amvp/v1/certRequests/&lt;id&gt;/securityPolicy</code></p>
+</li>
+<li>
+<p>Submit security policy template via <code>POST /amvp/v1/certRequests/&lt;id&gt;/securityPolicy/template</code></p>
+</li>
+<li>
+<p>Generate the security policy via <code>PUT /amvp/v1/certRequests/&lt;id&gt;/securityPolicy</code></p>
+</li>
+<li>
+<p>Certify the submission via <code>POST /amvp/v1/certRequests/&lt;id&gt;/certify</code></p>
+</li>
+<li>
+<p>Receive the validation certificate via <code>GET /amvp/v1/certRequests/&lt;id&gt;</code></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Details on the specific requests, payloads, and responses are covered in this section.</p>
+</div>
+<div class="sect2">
+<h3 id="_resource_registration_exchange">Resource Registration Exchange</h3>
+<div class="paragraph">
+<p>The registration will utilize the URI resources <a href="#xml_uriResources">[xml_uriResources]</a> to register various resources associated with the module as well as module specific capabilities. This exchange will consist of several message exchanges and will provide a detailed list of module capabilities to be registered, see <a href="#xml_regmsgFlows">[xml_regmsgFlows]</a>. A set of URI resources are also available to retrieve and manage the available metadata. The registration can be performed at any time prior to formal algorithm testing, formal entropy testing and the formal module validation request.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_test_evidence_exchange">Test Evidence Exchange</h3>
+<div class="paragraph">
+<p>The test evidence exchange consists of the AMV client initiating a certRequest and then requesting evidenceSet(s) associated with the request. An evidenceSet may require a test to be performed or some documentation to be gathered and then presented to the server as test evidence. The client <strong>MAY</strong> retrieve and process the evidenceSets in any order. The client <strong>MAY</strong> retrieve an evidenceSet and immediately return results, or it <strong>MAY</strong> return results at a later time. The client repeats this process until all of the evidenceSets in the certRequest list have been processed. Once an evidenceSet result has been POSTed to the server the client may request success/failure results from the server at any time; however, if evidenceSets have not been completed, the overall status will be incomplete. A message flow overview is described below <a href="#xml_msgFlows">[xml_msgFlows]</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_module_validation_request">Module Validation Request</h3>
+<div class="paragraph">
+<p>Once a certRequest result has successfully completed the client will receive a module validation certificate, via GET on the certRequest session.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_message_flows">Message Flows</h3>
+<div class="paragraph">
+<p>Message flows are provided in Appendix A, but the content and responses provided here are the expected content.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="schemas">Schema Requests</h3>
+<div class="paragraph">
+<p>Schema requests exist outside of the mandatory flow. They act as a supplemental endpoint that clients may reference when creating their payloads for other endpoints.</p>
+</div>
+<div class="sect3">
+<h4 id="_retrieve_all_schema_endpoints">Retrieve All Schema Endpoints</h4>
+<div class="paragraph">
+<p><strong>GET /schemas</strong></p>
+</div>
+<div class="paragraph">
+<p>Returns a list of all available endpoints to retrieve schemas for.</p>
+</div>
+<div class="sect4">
+<h5 id="_response">Response</h5>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "endpointList": [
+        "certificateRequestRegister",
+        "functionalTest",
+        "otherDocumentation",
+        "securityPolicy",
+        "sourceCode"
+    ],
+    "amvVersion": "0.1"
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_view_endpoint_schema_version">View Endpoint Schema Version</h4>
+<div class="paragraph">
+<p><strong>GET /schemas/&lt;endpoint&gt;</strong></p>
+</div>
+<div class="paragraph">
+<p>Returns a list of schema versions and their statuses for an endpoint.</p>
+</div>
+<div class="sect4">
+<h5 id="_response_2">Response</h5>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "schemaList": [
+        {
+            "endpoint": "certificateRequestRegister",
+            "version": "0.2",
+            "status": "deprecated"
+        },
+        {
+            "endpoint": "certificateRequestRegister",
+            "version": "0.3",
+            "status": "deprecated"
+        },
+        {
+            "endpoint": "certificateRequestRegister",
+            "version": "0.4",
+            "status": "preferred"
+        }
+    ],
+    "amvVersion": "0.1"
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_view_schema">View Schema</h4>
+<div class="paragraph">
+<p><strong>GET schemas/&lt;endpoint&gt;/&lt;version&gt;</strong></p>
+</div>
+<div class="paragraph">
+<p>Returns the schema for the specified endpoint and version.</p>
+</div>
+<div class="sect4">
+<h5 id="_response_3">Response</h5>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "endpoint": "certificateRequestRegister",
+    "version": "0.4",
+    "status": "preferred",
+    "schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "certificateRequestRegisterPayload",
+        "title": "certificateRequestRegisterPayload",
+        "description": "Certificate Request Register payload JSON schema",
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+            "amvVersion",
+            "vendorId",
+            "moduleId",
+            "testers",
+            "module"
+        ],
+        "properties": {
+            "amvVersion": {
+                "type": "string"
+            },
+            "vendorId": {
+                "type": "integer"
+            },
+            "moduleId": {
+                "type": "integer"
+            },
+            "testers": {
+                "type": "array",
+                "items": {
+                    "type": "string"
+                }
+            },
+            "module": {
+                "description": "The module registration information to be submitted",
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                    "schemaVersion",
+                    "moduleInfo",
+                    "secLevels",
+                    "filterProperties"
+                ],
+                "properties": {
+                    "schemaVersion": {
+                        "type": "string"
+                    },
+                    "moduleInfo": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                            "count": {
+                                "type": "integer"
+                            },
+                            "embodiment": {
+                                "type": "string"
+                            },
+                            "opEnvType": {
+                                "type": "string"
+                            },
+                            "submissionLevel": {
+                                "type": "string"
+                            },
+                            "itar": {
+                                "type": "boolean"
+                            },
+                            "overallSecurityLevel": {
+                                "type": "integer"
+                            }
+                        },
+                        "required": [
+                            "count",
+                            "embodiment",
+                            "opEnvType",
+                            "submissionLevel",
+                            "overallSecurityLevel"
+                        ]
+                    },
+                    "secLevels": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "section": {
+                                    "type": "integer"
+                                },
+                                "level": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    },
+                    "filterProperties": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                },
+                                "included": {
+                                    "type": "boolean"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "amvVersion": "0.1"
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="module">Module Requests</h3>
+<div class="sect3">
+<h4 id="module_get">Retrieve information for a Module</h4>
+<div class="paragraph">
+<p><strong>GET /modules/{moduleId}</strong></p>
+</div>
+<div class="paragraph">
+<p>Returns information about a specific module. The information is provided based on the <code>moduleInfo</code> section registered with the module when creating a new certificate request session. The <code>moduleId</code> can be found from a <code>GET amvp/v1/certRequests/{certRequestId}</code> on a successfully registered <code>certificateRequestId</code>.</p>
+</div>
+<div class="sect4">
+<h5 id="_response_4">Response</h5>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">    {
+        "id": 165,
+        "name": "OpenSSL FIPS Provider",
+        "description": "FIPS Provider V3.0.0",
+        "embodiment": "Single Chip",
+        "type": "software",
+        "opEnvType": "Intel X86_64",
+        "overallSecurityLevel": 1,
+        "amvVersion": "0.1"
+    }</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="certRequest">Certificate Request Sessions</h3>
+<div class="sect3">
+<h4 id="certRequests_post">Create a New Certificate Request Session</h4>
+<div class="paragraph">
+<p><strong>POST /certRequests</strong></p>
+</div>
+<div class="paragraph">
+<p>Create a new Certificate Request Session.</p>
+</div>
+<div class="sect4">
+<h5 id="_request">Request</h5>
+<div class="listingblock">
+<div class="content">
+<pre>{
+    "amvVersion": "0.1",
+    "vendorId": 1,
+    "moduleId": 1,
+    "testers": [
+        "CVP-0-000001",
+        "CVP-0-000002"
+    ],
+    "module":
+    {
+        "schemaVersion": "initial",
+
+        "moduleInfo":
+        {
+            "count": 1,
+            "embodiment": "singlechip",
+            "opEnvType": "modifiable",
+            "submissionLevel": "Level 1",
+            "itar": false,
+            "overallSecurityLevel": 2
+        },
+        "secLevels":
+        [
+            {
+                "section": 1,
+                "level": 1
+            },
+            {
+                "section": 2,
+                "level": 1
+            },
+            {
+                "section": 3,
+                "level": 1
+            },
+            {
+                "section": 4,
+                "level": 1
+            },
+            {
+                "section": 5,
+                "level": 1
+            },
+            {
+                "section": 6,
+                "level": 1
+            },
+            {
+                "section": 7,
+                "level": 1
+            },
+            {
+                "section": 8,
+                "level": 1
+            },
+            {
+                "section": 9,
+                "level": 1
+            },
+            {
+                "section": 10,
+                "level": 1
+            },
+            {
+                "section": 11,
+                "level": 1
+            },
+            {
+                "section": 12,
+                "level": 1
+            }
+        ],
+        "filterProperties":
+        [
+            {"name": "implementsOtar", "included": true},
+            {"name": "hasNonApprovedMode", "included": true},
+            {"name": "requiresInitialization", "included": true},
+            {"name": "hasExcludedComponents", "included": true},
+            {"name": "hasDegradedMode", "included": false},
+            {"name": "hasPAAorPAI", "included": false},
+            {"name": "hasEmbeddedOrBoundModule", "included": false},
+            {"name": "hasCriticalFunctions", "included": false},
+            {"name": "hasNonApprovedsInApprovedMode", "included": false},
+            {"name": "hasExternalInputDevice", "included": false},
+            {"name": "hasExternalOutputDevice", "included": false},
+            {"name": "usesTrustedChannel", "included": true},
+            {"name": "supportsConcurrentOperators", "included": true},
+            {"name": "usesIdentityBasedAuthentication", "included": true},
+            {"name": "hasMaintenanceRole", "included": true},
+            {"name": "allowsOperatorToChangeRoles", "included": false},
+            {"name": "hasDefaultAuthenticationData", "included": true},
+            {"name": "usesEDC", "included": true},
+            {"name": "allowsExternalLoadingOfSoftwareOrFirmware", "included": false},
+            {"name": "containsNonReconfigurableMemory", "included": true},
+            {"name": "usesOpenSource", "included": false},
+            {"name": "providesMaintenanceAccessInterface", "included": false},
+            {"name": "hasVentilationOrSlits", "included": false},
+            {"name": "hasRemovableCover", "included": false},
+            {"name": "hasTamperSeals", "included": false},
+            {"name": "hasOperatorAppliedTamperSeals", "included": false},
+            {"name": "hasEFPorEFT", "included": false},
+            {"name": "outputsSensitiveDataAsPlaintext", "included": false},
+            {"name": "supportsManualSSPEntry", "included": true},
+            {"name": "usesSplitKnowledge", "included": true},
+            {"name": "hasCVE", "included": true},
+            {"name": "hasAdditionalMitigations", "included": false},
+            {"name": "usesOtherCurve", "included": true},
+            {"name": "supportsBypassCapability", "included": false},
+            {"name": "hasOTPMemory", "included": false},
+            {"name": "hasEFP", "included": false},
+            {"name": "hasEFT", "included": false},
+            {"name": "hasUserRole", "included": false},
+            {"name": "allowsSelfInitiatedCryptographicOutput", "included": false},
+            {"name": "usesAuthentication", "included": false},
+            {"name": "usesHashMacIntegrity", "included": false},
+            {"name": "usesDigitalSignatureIntegrity", "included": false},
+            {"name": "supportsSensitiveDataIO", "included": false},
+            {"name": "supportsCompleteImageReplacement", "included": false},
+            {"name": "hasControlOutput", "included": false},
+            {"name": "usesRoleBasedAuthentication", "included": false}
+        ]
+    }
+}</pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_response_5">Response</h5>
+<div class="paragraph">
+<p>The <code>accessToken</code> is a <a href="#RFC7519">[RFC7519]</a> which <strong>MUST</strong> be supplied as described in <a href="#jwtToken">[jwtToken]</a> in order to access the Certificate Request Session.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">    {
+        "url": "/amvp/v1/certRequests/2",
+        "vendorId": 1,
+        "status": "initial",
+        "accessToken" : "eyJhbGciOiJIUzI1NiIsInR5cCI6Ik (truncated)",
+        "amvVersion": "0.1",
+    }</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="certRequest_get">Certificate Request Session Information</h4>
+<div class="paragraph">
+<p><strong>GET /certRequests/{certRequestId}</strong></p>
+</div>
+<div class="paragraph">
+<p>Returns information about the specific Certificate Request Session. Several different responses could be provided depending on the status of the <code>certRequest</code>.</p>
+</div>
+<div class="sect4">
+<h5 id="_response_6">Response</h5>
+<div class="paragraph">
+<p>If the <code>certRequest</code> is still in the <code>initial</code> state, the following response will be provided, indicating the client to try to access the resource again after <code>retry</code> seconds.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">    {
+        "amvVersion": "0.1",
+        "certRequestId": 2,
+        "retry": 30,
+        "status": "initial"
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If the <code>certRequest</code> is in the <code>ready</code> state, the following response will be provided. This indicates which test requirements the server determined to be applicable to the module based on the registration. The client <strong>shall</strong> provide evidence for each test requirement and the client <strong>shall</strong> provide security policy information in order for the <code>certRequest</code> to advance to the <code>requirementsSubmitted</code> state.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "url": "/amvp/v1/certRequests/8",
+    "moduleId": 2,
+    "vendorId": 1,
+    "status": "ready",
+    "securityPolicyStatus": "acceptingSubmissions",
+    "evidenceStatus": "acceptingSubmissions",
+    "missingSPTemplate": true,
+    "missingSecurityPolicySubmission": true,
+    "evidenceList": [
+        {
+            "te": "TE02.10.01",
+            "required": [],
+            "oneOf": [
+                {
+                    "types": [
+                        "SC-TE",
+                        "FT-TE"
+                    ],
+                    "submitted": []
+                }
+            ],
+            "complete": false
+        },
+        {
+            "te": "TE02.12.01",
+            "required": [
+                {
+                    "types": [
+                        "FT-TE"
+                    ],
+                    "submitted": []
+                }
+            ],
+            "oneOf": [],
+            "complete": false
+        },
+        {
+            "te": "TE02.19.02",
+            "required": [
+                {
+                    "types": [
+                        "FT-TE"
+                    ],
+                    "submitted": []
+                }
+            ],
+            "oneOf": [],
+            "complete": false
+        },
+        {
+            "te": "TE02.22.02",
+            "required": [
+                {
+                    "types": [
+                        "FT-TE"
+                    ],
+                    "submitted": []
+                }
+            ],
+            "oneOf": [],
+            "complete": false
+        }
+	],
+    "amvVersion": "0.1"
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If the <code>certRequest&#8217;s</code> FT-TE, SC-TE, OD-TE and SP-TE evidence are submitted, it will be in the <code>requirementSubmitted</code> state, the following response will be provided. The FT-TE and SC-TE status will either be in <code>processing</code> or <code>submitted</code> state. The SP-TE can be in <code>processingGeneration</code>, <code>pendingGeneration</code>, or <code>submitted</code> state.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "url": "/amvp/v1/certRequests/745",
+    "moduleId": 262,
+    "vendorId": 1,
+    "status": "requirementsSubmitted",
+    "securityPolicyStatus": "pendingGeneration",
+    "evidenceStatus": "submitted",
+    "amvVersion": "0.1"
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>After FT-TE, SC-TE, OD-TE and SP-TE evidence are POSTed and SP-TE is PUTed, the following response will be provided.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "url": "/amvp/v1/certRequests/746",
+    "moduleId": 263,
+    "vendorId": 1,
+    "status": "requirementsSubmitted",
+    "securityPolicyStatus": "submitted",
+    "functionalTestStatus": "submitted",
+    "sourceCodeStatus": "submitted",
+    "amvVersion": "0.1"
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_certificate_request_functional_test_evidence_ft_te_submission">Certificate Request Functional Test Evidence (FT-TE) Submission</h4>
+<div class="paragraph">
+<p><strong>POST /certRequests/{certRequestId}/functionalTest</strong></p>
+</div>
+<div class="paragraph">
+<p>This endpoint allows a client to submit functional test evidence as requested by the server via the <code>GET /certRequests/{certRequestId}</code> response. Each test requirement is stored individually on the server and can be overwritten at any time with another POST. Subsequent <code>GET /certRequests/{certRequestId}</code> will update to reflect any remaining test requirements which need evidence submitted.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "amvVersion": "0.1",
+
+    "functionalTest":
+    {
+      "document":
+      {
+        "base-catalogVersion": "3.0",
+        "base-lastUpdated": "October-16-2023",
+        "functionalTesting-EC": "0.6",
+        "functionalTesting-lastUpdated": "October-29-2024"
+      },
+      "testEvidence":
+      [
+        {
+            "teList":
+            [
+                "TE02.12.01"
+            ],
+            "description": "Verify that versioning info identifies distinct components.",
+            "access": "physical",
+            "technique": "debugger simulation emulation harness manual other",
+            "setup": "reference into Catalog",
+            "errorInduction": "description of",
+            "results":
+            {
+                "summary": "sample summary",
+                "digest": "000000",
+                "fileLocation": "location of test evidence",
+                "integrityMechanism": "SHA2-512"
+            }
+        }
+      ]
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_certificate_request_source_code_evidence_sc_te_submission">Certificate Request Source Code Evidence (SC-TE) Submission</h4>
+<div class="paragraph">
+<p><strong>POST /certRequests/{certRequestId}/sourceCode</strong></p>
+</div>
+<div class="paragraph">
+<p>This endpoint allows a client to submit source code evidence as requested by the server via the <code>GET /certRequests/{certRequestId}</code> response. Each test requirement is stored individually on the server and can be overwritten at any time with another POST. Subsequent <code>GET /certRequests/{certRequestId}</code> will update to reflect any remaining test requirements which need evidence submitted.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "amvVersion": "0.1",
+    "sourceCode": {
+        "document": {
+            "base-catalogVersion": "3.0",
+            "base-lastUpdated": "October-16-2023",
+            "sourceCode-EC": "0.6",
+            "sourceCode-lastUpdated": "October-29-2024"
+        },
+        "testEvidence": [
+            {
+                "teList": [
+                    "TE02.10.01",
+                    "TE02.07.01",
+                    "TE02.07.02"
+                ],
+                "file": [
+                    "full path to file"
+                ],
+                "function": "Source code method/function(s)",
+                "lines": "Source code line numbers",
+                "description": "Summarize how the source code review aspect of the TE was accomplished.",
+                "input": "may not always be applicable",
+                "output": "may not always be applicable",
+                "status": "",
+                "results":
+                {
+                  "summary": "sample summary",
+                  "digest": "000000",
+                  "fileLocation": "location of test evidence",
+                  "integrityMechanism": "SHA2-512"
+                }
+            }
+        ]
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_certificate_request_other_documentation_evidence_od_te_submission">Certificate Request Other Documentation Evidence (OD-TE) Submission</h4>
+<div class="paragraph">
+<p><strong>POST /certRequests/{certRequestId}/otherDocumentation</strong></p>
+</div>
+<div class="paragraph">
+<p>This endpoint allows a client to submit other documentation evidence as requested by the server via the <code>GET /certRequests/{certRequestId}</code> response. Each test requirement is stored individually on the server and can be overwritten at any time with another POST. Subsequent <code>GET /certRequests/{certRequestId}</code> will update to reflect any remaining test requirements which need evidence submitted.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "amvVersion": "0.1",
+    "otherDocumentation": {
+        "document": {
+            "base-catalogVersion": "3.0",
+            "base-lastUpdated": "October-16-2023",
+            "otherDocumentation-EC": "0.6",
+            "otherDocumentation-lastUpdated": "October-29-2024"
+        },
+        "testEvidence": [
+            {
+                "teList": [
+                    "TE02.03.02"
+                ],
+                "documents":
+                [
+                  {
+                    "sectionName": "sample",
+                    "documentName": "sampleDocument",
+                  }
+                ],
+                "results":
+                {
+                  "summary": "sample summary",
+                  "digest": "000000",
+                  "fileLocation": "location of test evidence",
+                  "integrityMechanism": "SHA2-512"
+                }
+            }
+        ]
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_certificate_request_security_policy_submission">Certificate Request Security Policy Submission</h4>
+<div class="paragraph">
+<p><strong>POST /certRequests/{certRequestId}/securityPolicy</strong></p>
+</div>
+<div class="paragraph">
+<p>This endpoint allows a client to submit missing security policy information as requested during the <code>GET /certRequests/{certRequestId}</code>. Each security policy is stored individually on the server and can be overwritten at any time with another POST. Subsequent <code>GET /certRequests/{certRequestId}</code> will update to reflect any remaining security policy sections that need information submitted.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+  "amvVersion": "0.1",
+  "securityPolicy": {
+    "schemaVersion": "2.8.4",
+    "cavpCertSet": {
+      "cavpCertList": [
+        {
+          "vendorName": "Duis ea",
+          "certName": "in sed nulla do dolor",
+          "validationId": 11023992,
+          "implName": "exercitation tempor ad",
+          "implVersion": "ut sed cillum",
+          "implType": "esse est ea quis cillum",
+          "implOrganization": "magna ipsum aliqua proident sit"
+        }
+      ],
+      "cavpOeList": [
+        {
+          "name": "consectetur do cupidatat Ut",
+          "oeId": 3
+        }
+      ],
+      "cavpOeAlgoList": [
+        {
+          "validationOeAlgorithmId": 1,
+          "algoDisplayName": "exercitation ad",
+          "canonicalAlgorithmId": 1,
+          "validationId": 1,
+          "certName": "anim fugiat nisi Lorem enim",
+          "implName": "velit exercitation irure magna eu",
+          "oeId": 8308,
+          "selectedCapList": [
+            {
+              "capabilityId": 31642322,
+              "displayText": "esse",
+              "childCapabilities": []
+            }
+          ]
+        }
+      ],
+      "cavpImplAlgoList": [
+        {
+          "algoDisplayName": "AES-CBC",
+          "canonicalAlgorithmId": 1,
+          "implName": "in Lorem",
+          "validationId": 7,
+          "certName": "nisi ex sint",
+          "category": "laboris velit"
+        }
+      ],
+      "cavpItarAlgoList": [
+        {
+          "certName": "elit esse est",
+          "algoDisplayName": "AES-CBC-CS3",
+          "canonicalAlgorithmId": 4,
+          "capabilities": "deserunt est sed ad eiusmod",
+          "category": "Duis mollit magna"
+        }
+      ]
+    },
+    "esvCertList": [
+      {
+        "esvCertName": "laboris veniam sunt dolore reprehenderit",
+        "certId": 33293608,
+        "vendorName": "cupidatat sit amet sunt"
+      }
+    ],
+    "esvItarCertList": [
+      "pariatur",
+      "Lorem"
+    ],
+    "testedHwList": [
+      {
+        "modelPartNum": "sint aute cillum quis",
+        "hwVersion": "et cupidatat",
+        "fwVersion": "consequat",
+        "processors": "consequat",
+        "features": "laborum id exercitation laboris veniam"
+      }
+    ],
+    "testedSwFwHyList": [
+      {
+        "packageFileName": "laborum commodo consectetur nulla",
+        "swFwVersion": "magna",
+        "features": "anim Ut dolor occaecat in",
+        "integrityTest": "consequat ipsum dolor elit"
+      }
+    ],
+    "testedHyHwList": [
+      {
+        "modelPartNum": "quis ullamco",
+        "hwVersion": "nisi laboris",
+        "fwVersion": "aliquip Lorem est in tempor",
+        "processors": "mollit sunt",
+        "features": "cupidatat"
+      }
+    ],
+    "opEnvSwFwHyTestedList": [
+      {
+        "operatingSystem": "nostrud aliquip proident",
+        "hardwarePlatform": "in ut enim quis irure",
+        "processors": "nulla cupidatat",
+        "paaPai": "esse",
+        "hypervisorHostOs": "Excepteur ipsum labore elit",
+        "swFwVersionList": [
+          "deserunt est consequat pariatur ex",
+          "tempor dolor eiusmod",
+          "ipsum dolor",
+          "Ut cupidatat",
+          "et consequat"
+        ]
+      }
+    ],
+    "opEnvSwFwHyVAList": [
+      {
+        "operatingSystem": "reprehenderit culpa ut",
+        "hardwarePlatform": "pariatur esse in consectetur"
+      }
+    ],
+    "modeOfOpList": [
+      {
+        "name": "officia commodo",
+        "description": "in ipsum",
+        "type": "aliquip",
+        "statusIndicator": "laborum"
+      }
+    ],
+    "vendorAffirmedAlgoList": [
+      {
+        "name": "in ad in",
+        "algoPropList": [
+          {
+            "name": "id velit anim Ut veniam",
+            "value": "enim voluptate",
+            "propertyId": 11387443
+          }
+        ],
+        "implName": "sed Excepteur",
+        "reference": "ullamco culpa"
+      }
+    ],
+    "nonApprovedAllowedAlgoList": [
+      {
+        "name": "deserunt laboris non",
+        "algoPropList": [
+          {
+            "name": "ea aute consectetur Duis",
+            "value": "in ut",
+            "propertyId": -57056207
+          }
+        ],
+        "implName": "incididunt enim anim",
+        "reference": "consectetur"
+      }
+    ],
+    "nonApprovedAllowedAlgoNSCList": [
+      {
+        "name": "quis in",
+        "caveat": "ut adipisicing",
+        "useFunction": "non eu"
+      }
+    ],
+    "nonApprovedNotAllowedAlgoList": [
+      {
+        "name": "in Ut incididunt",
+        "useFunction": "irure"
+      }
+    ],
+    "secFunImplList": [
+      {
+        "name": "nostrud ex",
+        "sfTypeList": [
+          {
+            "sfAbbrev": "ad Excepteur sed id",
+            "sfId": 53184293
+          }
+        ],
+        "description": "ad quis irure nisi",
+        "sfPropList": [
+          {
+            "name": "non veniam sint tempor occaecat",
+            "value": "et",
+            "propertyId": -30179093
+          }
+        ],
+        "algorithmList": [
+          {
+            "algoDisplayName": "magna cupidatat laborum Ut in",
+            "canonicalAlgorithmId": 47899832,
+            "implName": "velit laborum sint id nostrud",
+            "validationId": 5,
+            "algoPropList": [],
+            "certName": "et"
+          }
+        ]
+      }
+    ],
+    "entropySourceList": [
+      {
+        "name": "labore ex",
+        "type": "reprehenderit",
+        "opEnv": "eu est",
+        "sampleSize": "exercitation",
+        "entropyPerSample": "cillum laborum",
+        "conditioningComp": "fugiat"
+      }
+    ],
+    "portInterfaceList": [
+      {
+        "physicalPort": "ullamco",
+        "logicalInterfaceList": [
+          "ex qui velit eu",
+          "est",
+          "Duis sit labore aute ex",
+          "laborum fugiat adipisicing"
+        ],
+        "dataPasses": "ullamco voluptate in ut veniam"
+      }
+    ],
+    "authMethodList": [
+      {
+        "name": "labore exercitation dolore do dolore",
+        "description": "deserunt non ut",
+        "mechanism": "nostrud culpa",
+        "strengthEachAttempt": "exercitation reprehenderit dolor sed cillum",
+        "strengthPerMin": "deserunt"
+      }
+    ],
+    "roleList": [
+      {
+        "name": "aliquip fugiat",
+        "type": "sint ut dolore Duis veniam",
+        "operatorType": "ea elit aliquip officia",
+        "authMethodList": [
+          "adipisicing Ut in",
+          "velit cillum cupidatat consectetur",
+          "labore adipisicing",
+          "Ut"
+        ]
+      }
+    ],
+    "approvedServiceList": [
+      {
+        "name": "ut",
+        "description": "labore eu irure",
+        "indicator": "qui",
+        "inputs": "ea cupidatat ullamco pariatur irure",
+        "outputs": "Ut aute",
+        "secFunImplList": [
+          "in",
+          "minim sed",
+          "ad pariatur"
+        ],
+        "roleSspAccessList": [
+          {
+            "roleName": "aute esse do laborum",
+            "sspAccessList": [
+              {
+                "sspName": "quis consequat tempor laboris reprehenderit",
+                "accessType": [
+                  "veniam laborum tempor",
+                  "cupidatat aute",
+                  "ut esse sint Lorem",
+                  "culpa nulla",
+                  "sit consequat incididunt occaecat"
+                ]
+              }
+            ]
+          },
+          {
+            "roleName": "incididunt id adipisicing et",
+            "sspAccessList": [
+              {
+                "sspName": "amet esse",
+                "accessType": [
+                  "sunt dolore mollit",
+                  "ipsum incididunt nisi in"
+                ]
+              }
+            ]
+          },
+          {
+            "roleName": "non Lorem est incididunt sit",
+            "sspAccessList": [
+              {
+                "sspName": "reprehenderit pariatur nisi sed",
+                "accessType": [
+                  "consequat",
+                  "amet"
+                ]
+              }
+            ]
+          },
+          {
+            "roleName": "non enim proident ex",
+            "sspAccessList": [
+              {
+                "sspName": "dolor voluptate",
+                "accessType": [
+                  "aliquip esse",
+                  "et laborum eiusmod veniam"
+                ]
+              }
+            ]
+          },
+          {
+            "roleName": "elit",
+            "sspAccessList": [
+              {
+                "sspName": "do sit dolor",
+                "accessType": [
+                  "veniam ad do",
+                  "irure"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "nonApprovedServiceList": [
+      {
+        "name": "anim quis elit",
+        "description": "commodo et deserunt",
+        "nonApprovedAlgoList": [
+          "nisi ea incididunt deserunt",
+          "Duis cillum",
+          "voluptate elit aute in",
+          "veniam"
+        ],
+        "role": "exercitation aliquip"
+      }
+    ],
+    "phSecMechanismList": [
+      {
+        "mechanism": "sunt",
+        "inspectFreq": "quis cupidatat in",
+        "inspectGuidance": "ullamco nulla in commodo sit"
+      }
+    ],
+    "efpEftInfoList": [
+      {
+        "tempVoltType": "ullamco non",
+        "tempVolt": "non irure consectetur mollit",
+        "efpOrEft": "consectetur",
+        "result": "ad"
+      }
+    ],
+    "hardnessTestTempList": [
+      {
+        "tempType": "aute veniam",
+        "temp": "culpa in"
+      }
+    ],
+    "storageAreaList": [
+      {
+        "name": "sit exercitation nostrud veniam",
+        "description": "aliquip amet dolor deserunt Lorem",
+        "persistenceType": "sit consectetur ad ipsum irure"
+      }
+    ],
+    "sspInputOutputList": [
+      {
+        "name": "aliquip do",
+        "from": "eu sint amet Duis Excepteur",
+        "to": "Excepteur commodo",
+        "formatType": "magna",
+        "distributionType": "dolor ea nostrud laboris ut",
+        "entryType": "officia voluptate ipsum adipisicing",
+        "relatedSFI": "non irure"
+      }
+    ],
+    "sspZeroizationList": [
+      {
+        "method": "sint in",
+        "description": "veniam",
+        "rationale": "nostrud",
+        "operatorInitiation": "culpa cillum proident"
+      }
+    ],
+    "sspList": [
+      {
+        "name": "nulla",
+        "description": "in non minim",
+        "size": "id",
+        "strength": "Lorem consequat sunt mollit",
+        "type": "id",
+        "generatedByList": [
+          "est",
+          "mollit in dolor eu Duis",
+          "irure exercitation est commodo",
+          "anim eu aliqua Excepteur",
+          "ullamco ad mollit"
+        ],
+        "establishedByList": [
+          "anim eiusmod",
+          "sed enim tempor",
+          "officia cillum ex nostrud",
+          "elit voluptate amet laborum labore",
+          "Duis amet culpa"
+        ],
+        "usedByList": [
+          "quis",
+          "proident",
+          "adipisicing ea mollit",
+          "cupidatat nisi incididunt dolore",
+          "voluptate tempor"
+        ],
+        "inputOutputList": [
+          "aliqua ut nisi consequat",
+          "nulla in cillum est"
+        ],
+        "storageItemList": [
+          {
+            "areaName": "est consequat dolore",
+            "format": "in",
+            "algorithmName": "ad"
+          }
+        ],
+        "storageDuration": "nostrud",
+        "zeroizationList": [
+          "ad nostrud occaecat",
+          "minim ad incididunt irure",
+          "aute eiusmod"
+        ],
+        "category": "elit do aliquip",
+        "relatedSspList": [
+          {
+            "sspName": "quis laborum qui",
+            "relationship": "mollit laborum nostrud in ut"
+          }
+        ]
+      }
+    ],
+    "preOpSelfTestList": [
+      {
+        "algorithmOrTest": "reprehenderit exercitation commodo velit",
+        "testProps": "ullamco nostrud",
+        "testMethod": "amet sit minim",
+        "type": "veniam",
+        "indicator": "ut irure pariatur adipisicing",
+        "details": "labore voluptate nisi",
+        "period": "in eu ex",
+        "periodicMethod": "in eu officia minim"
+      }
+    ],
+    "condSelfTestList": [
+      {
+        "algorithmOrTest": "sed laboris Ut",
+        "testProps": "culpa",
+        "testMethod": "ea",
+        "type": "laborum dolore tempor nisi",
+        "indicator": "sit sed cillum qui",
+        "details": "enim adipisicing eu cupidatat amet",
+        "conditions": "amet laboris",
+        "coverage": [],
+        "coverageNotes": "velit culpa officia",
+        "period": "sit",
+        "periodicMethod": "dolor reprehenderit Duis"
+      }
+    ],
+    "errorStateList": [
+      {
+        "name": "velit in",
+        "description": "ex",
+        "conditions": [
+          "reprehenderit nostrud cillum anim labore",
+          "do dolor officia",
+          "adipisicing voluptate do tempor"
+        ],
+        "recoveryMethod": "aliquip",
+        "indicator": "irure amet"
+      }
+    ],
+    "referenceList": [
+      "do occaecat sunt",
+      "irure velit"
+    ]
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_security_policy_template_submission">Security Policy Template Submission</h4>
+<div class="paragraph">
+<p><strong>POST /certRequests/{certRequestId}/securityPolicy/template</strong></p>
+</div>
+<div class="paragraph">
+<p>This endpoint allows a client to submit security policy templates. Data is submitted as form-data.</p>
+</div>
+<table id="uri_table" class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. Form-Data for Security Policy Generation</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Key</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">amvVersion</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"0.1"</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">documentTemplate</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">file</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;SP Template File&gt;</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_security_policy_information_document_generation">Security Policy Information Document Generation</h4>
+<div class="paragraph">
+<p><strong>PUT /certRequests/{certRequestId}/securityPolicy</strong></p>
+</div>
+<div class="paragraph">
+<p>This endpoint allows a client to generate security policy information in .docx format. Security Policy must be submitted before this action. No payload is needed to submit the PUT request.</p>
+</div>
+<div class="paragraph">
+<p>After PUT request, the following response will be provided. To view the .docx file generation status, use GET certRequests/{cerRequestId} as above. "securityPolicyStatus" will become "submitted" after .docx file is generated.</p>
+</div>
+<div class="sect4">
+<h5 id="_response_7">Response</h5>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "url": "/amvp/v1/certRequests/549",
+    "moduleId": 190,
+    "vendorId": 1,
+    "status": "requirementsSubmitted",
+    "securityPolicyStatus": "processingGeneration",
+    "evidenceStatus": "submitted",
+    "amvVersion": "0.1"
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_get_security_policy_information">Get Security Policy Information</h4>
+<div class="paragraph">
+<p><strong>GET /certRequests/{certRequestId}/securityPolicy</strong></p>
+</div>
+<div class="paragraph">
+<p>This endpoint allows a client to get security policy information as a .docx file.</p>
+</div>
+<div class="sect4">
+<h5 id="_response_8">Response</h5>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "status": "success",
+    "content": "JVBERi0xLjQKJZOMi54gUmVwb3J0TGFiI(truncated) ",
+    "digest": "qXHfhkXrVJQlTk4Wsa1RwfqmxPS8jxPvZfz4XwjGSOc=",
+    "dateTime": "2025-01-23T18:22:51.717",
+    "amvVersion": "0.1"
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_post_certify">Post Certify</h4>
+<div class="paragraph">
+<p><strong>POST /certRequests/{certRequestId}/certify</strong></p>
+</div>
+<div class="paragraph">
+<p>This endpoint allows a client to certify the certificate.</p>
+</div>
+<div class="sect4">
+<h5 id="_response_9">Response</h5>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "url": "/amvp/v1/certRequests/549",
+    "moduleId": 190,
+    "vendorId": 1,
+    "status": "requirementsSubmitted",
+    "securityPolicyStatus": "submitted",
+    "evidenceStatus": "submitted"
+    "amvVersion": "0.1"
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>After POST /certify request is completed, GET /certRequests/{certRequestId} request will have the status as "approved"</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "certRequestId": 549,
+    "moduleId": 190,
+    "status": "approved",
+    "validationCertificate": "AMV-10",
+    "amvVersion": "0.1"
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></section>
+<section id="error-responses">
+<h3>Error Responses<a class="headerlink" href="#error-responses" title="Link to this heading">#</a></h3>
+<div class="sect1">
+
+<div class="sectionbody">
+<div class="paragraph">
+<p>In the event of an unexpected error occurring within the protocol, the AMVP server <strong>MUST</strong> respond with to AMVP client requests with a JSON encoded message following the format below.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+  "amvVersion": "{amvp-version}",
+  "category": 0,
+  "description": "{description of category}",
+  "errors": [
+    {
+      "code": 1,
+      "messages": ["First message", "Second message", "..."]
+    },
+    {
+      "code": 2,
+      "messages": ["First message", "Second message", "..."]
+    },
+  ]
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The integer value for "category" <strong>MUST</strong> match a category code defined in table 1 below.</p>
+</div>
+<div class="paragraph">
+<p>Individual error codes are defined in each section of the specification. Codes that are used between different sections should still appear in each section. If an error occurs that is not defined in the specification, the AMVP server <strong>MUST</strong> use an error code of 0. If multiple error codes exist that could describe a given error, the AMVP server <strong>SHALL</strong> use the one most specific to that situation.</p>
+</div>
+<div class="paragraph">
+<p>An error response from the AMVP server <strong>MUST</strong> have at least a single error object within the "errors" array. The AMVP server also <strong>SHALL</strong> include at least one message for each error object, and <strong>SHOULD</strong> include as many messages as are relevant to each object. The AMVP server <strong>MAY</strong> also add additional key/value pairs to each error object depending on the implementation, but any added key/value pairs <strong>MUST</strong> be relevant to describing or troubleshooting the error. For the sake of consistency, the AMVP server <strong>MUST NOT</strong> include errors from different categories of errors in a single response.</p>
+</div>
+<table id="error_table_1.0" class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. AMVP Error Categories and Descriptions</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Category Code</th>
+<th class="tableblock halign-left valign-top">Description String</th>
+<th class="tableblock halign-left valign-top">HTTP[S] Code</th>
+<th class="tableblock halign-left valign-top">Protocol Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"General or Undefined Error"</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">For errors that do not fit into another category</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"Authentication and/or Authorization Error"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">403</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">For errors caused by an AMVP client having insufficient credentials to access the requested endpoint or resource</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"Malformed Payload Error"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">400</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">For errors caused by syntactically incorrect requests. Possible examples include invalid JSON or invalid HTTP[S] request headers</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"Invalid Data or Request Error"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">422</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">For errors caused by requests that are properly formatted but semantically incorrect. This includes errors related to a client sending data that is invalid within the bounds of the protocol; for example, out of bounds registration values</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"Server Error"</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">For unexpected errors generated by server logic or outages</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Other sections of the specification may define required HTTP[S] codes for specific scenarios that do not have one defined in table 1. If an HTTP[S] code is not specified for a given error or category of errors, the AMVP server <strong>SHOULD</strong> use an HTTP[S] code that is most relevant to the error being returned to the AMVP client. While AMVP clients <strong>MAY</strong> use HTTP[S] codes to determine the general status of a request, AMVP clients <strong>SHOULD NOT</strong> depend on HTTP[S] codes for differentiating between types of errors; instead, they should rely on the contents of the response body described above.</p>
+</div>
+</div>
+</div></section>
+<section id="examples">
+<h3>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h3>
+<div class="sect1">
+
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_flow_based_on_te_summary">Flow based on TE Summary</h3>
+<div class="sect3">
+<h4 id="_login_to_obtain_accesstoken">Login to obtain accessToken</h4>
+<div class="literalblock">
+<div class="content">
+<pre>         +--------+--------------------------------------+------+------------+
+         | Client |                                      |Server|    Notes   |
+         +--------+--------------------------------------+------+------------+
+         |        |POST to /login or similar with        |      |            |
+         |        |appropriate credentials               |      |            |
+         |        |--------------------------------&gt;     |      |            |
+         |        |                                      |      |            |
+         |        |200  OK receive the access token      |      |            |
+         |        |&lt;-  -  -  -  -  -  -  -  -  -  -      |      |            |
+         |        |                                      |      |            |
+
+POST: {"amvVersion": "0.1", "passcode":"21887897"}
+
+200 OK: {"accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9....}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>POST certRequests - request a module validation certificate</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>         +--------+-----------------------------------+------+------------+
+         | Client |                                   |Server|  Notes     |
+         +--------+-----------------------------------+------+------------+
+         |        |POST certRequests                  |      |   Submit   |
+         |        |----------------------------------&gt;|      |Module Cert |
+         |        | w/URIs to bind modules, vendors,  |      |   Request  |
+         |        | and contacts                      |      |            |
+         |        |                                   |      |            |
+         |        |200 OK                             |      | Returns    |
+         |        |&lt;-  -  -  -  -  -  -  -  -  -  -  -|      | CR ID      |
+         |        | "url": "/amvp/v1/certRequests/550"|      |            |
+         |        | "vendorId": 137,                  |      |            |
+         |        | "status": "initial",              |      |            |
+         |        | "accessToken": ""                 |      |            |
+         |        |                                   |      |            |
+
+         |        |                                   |      |            |
+         |        |GET                                |      |            |
+         |        |/certRequests/1                    |      |  Retrieve  |
+         |        |----------------------------------&gt;|      |   CR ID    |
+         |        |                                   |      |   TE List  |
+         |        |200 OK with List of TEs, moduleId  |      |            |
+         |        |&lt;-  -  -  -  -  -  -  -  -  -  -  -|      |            |
+         |        |                                   |      |            |
+         |        |POST Test Evidence                 |      |            |
+         |        |/certRequests/1/evidence           |      |   Submit   |
+         |        |----------------------------------&gt;|      |  Response  |
+         |        |                                   |      |            |
+         |        |200 OK                             |      |            |
+         |        |&lt;-  -  -  -  -  -  -  -  -  -  -  -|      |            |
+         |        | vendorId : 1                      |      |            |
+         |        | status: processing                |      |            |
+
+         |        |GET                                |      |            |
+         |        |/certRequests/1                    |      |  GET       |
+         |        |----------------------------------&gt;|      | Results    |
+         |        |                                   |      |            |
+         |        |&lt;----------------------------------|      |            |
+         |        | 200 OK    "status": "submitted"   |      |            |
+         |        | "Url":                            |      |            |
+         |        |     "/amvp/v1/certRequests/41763" |      |            |</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The binding will look something like this:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>         [{  "moduleId" : 121,   &lt;-- a single module
+             "vendorId" : 12345,   &lt;-- vendor ID from resource submission not shown above
+             "testers" : ["CVP-0-000001", "CVP-0-000002"]  &lt;-- CVP numbers represent people that have lab accreditation
+          }]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The Functional Test TE list sent from client to server will look like this</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>{
+    "amvVersion": "0.1",
+
+    "functionalTest":
+    {
+      "document":
+      {
+        "base-catalogVersion": "3.0",
+        "base-lastUpdated": "October-16-2023",
+        "functionalTesting-EC": "0.6",
+        "functionalTesting-lastUpdated": "October-29-2024"
+      },
+      "testEvidence":
+      [
+        {
+            "teList":
+            [
+                "TE02.12.01","TE02.10.01"
+            ],
+            "description": "Verify that versioning info identifies distinct components.",
+            "access": "physical",
+            "technique": "debugger simulation emulation harness manual other",
+            "setup": "reference into Catalog",
+            "errorInduction": "description of",
+            "results":
+            {
+                "summary": "sample summary",
+                "digest": "000000",
+                "fileLocation": "location of test evidence",
+                "integrityMechanism": "SHA2-512"
+            }
+        }
+      ]
+    }
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The Source Code evidence sent from client to server will look like this</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>{
+    "amvVersion": "0.1",
+    "sourceCode": {
+        "document": {
+            "base-catalogVersion": "3.0",
+            "base-lastUpdated": "October-16-2023",
+            "sourceCode-EC": "0.6",
+            "sourceCode-lastUpdated": "October-29-2024"
+        },
+        "testEvidence": [
+            {
+                "teList": [
+                    "TE02.10.01",
+                    "TE02.07.01",
+                    "TE02.07.02"
+                ],
+                "file": [
+                    "full path to file"
+                ],
+                "function": "Source code method/function(s)",
+                "lines": "Source code line numbers",
+                "description": "Summarize how the source code review aspect of the TE was accomplished.",
+                "input": "may not always be applicable",
+                "output": "may not always be applicable",
+                "status": "",
+                "results":
+                {
+                    "summary": "sample summary",
+                    "digest": "000000",
+                    "fileLocation": "location of test evidence",
+                    "integrityMechanism": "SHA2-512"
+                }
+            }
+        ]
+    }
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The Other Documentation evidence sent from client to server will look like this</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>{
+    "amvVersion": "0.1",
+    "otherDocumentation": {
+        "document": {
+            "base-catalogVersion": "3.0",
+            "base-lastUpdated": "October-16-2023",
+            "otherDocumentation-EC": "0.6",
+            "otherDocumentation-lastUpdated": "October-29-2024"
+        },
+        "testEvidence": [
+            {
+                "teList": [
+                    "TE02.03.02"
+                ],
+                "documents":
+                [
+                  {
+                    "sectionName": "sample",
+                    "documentName": "sampleDocument"
+                  }
+                ],
+                "results":
+                {
+                    "summary": "sample summary",
+                    "digest": "000000",
+                    "fileLocation": "location of test evidence",
+                    "integrityMechanism": "SHA2-512"
+                }
+            }
+        ]
+    }
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The Security Policy sent from client to server will look like this</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>{
+  "amvVersion": "0.1",
+  "securityPolicy": {
+    "schemaVersion": "2.8.4",
+    "cavpCertSet": {
+      "cavpCertList": [
+        {
+          "vendorName": "Duis ea",
+          "certName": "in sed nulla do dolor",
+          "validationId": 11023992,
+          "implName": "exercitation tempor ad",
+          "implVersion": "ut sed cillum",
+          "implType": "esse est ea quis cillum",
+          "implOrganization": "magna ipsum aliqua proident sit"
+        }
+      ],
+      "cavpOeList": [
+        {
+          "name": "consectetur do cupidatat Ut",
+          "oeId": 3
+        }
+      ],
+      "cavpOeAlgoList": [
+        {
+          "validationOeAlgorithmId": 1,
+          "algoDisplayName": "exercitation ad",
+          "canonicalAlgorithmId": 1,
+          "validationId": 1,
+          "certName": "anim fugiat nisi Lorem enim",
+          "implName": "velit exercitation irure magna eu",
+          "oeId": 8308,
+          "selectedCapList": [
+            {
+              "capabilityId": 31642322,
+              "displayText": "esse",
+              "childCapabilities": []
+            }
+          ]
+        }
+      ],
+      "cavpImplAlgoList": [
+        {
+          "algoDisplayName": "AES-CBC",
+          "canonicalAlgorithmId": 1,
+          "implName": "in Lorem",
+          "validationId": 7,
+          "certName": "nisi ex sint",
+          "category": "laboris velit"
+        }
+      ],
+      "cavpItarAlgoList": [
+        {
+          "certName": "elit esse est",
+          "algoDisplayName": "AES-CBC-CS3",
+          "canonicalAlgorithmId": 4,
+          "capabilities": "deserunt est sed ad eiusmod",
+          "category": "Duis mollit magna"
+        }
+      ]
+    },
+    "esvCertList": [
+      {
+        "esvCertName": "laboris veniam sunt dolore reprehenderit",
+        "certId": 33293608,
+        "vendorName": "cupidatat sit amet sunt"
+      }
+    ],
+    "esvItarCertList": [
+      "pariatur",
+      "Lorem"
+    ],
+    "testedHwList": [
+      {
+        "modelPartNum": "sint aute cillum quis",
+        "hwVersion": "et cupidatat",
+        "fwVersion": "consequat",
+        "processors": "consequat",
+        "features": "laborum id exercitation laboris veniam"
+      }
+    ],
+    "testedSwFwHyList": [
+      {
+        "packageFileName": "laborum commodo consectetur nulla",
+        "swFwVersion": "magna",
+        "features": "anim Ut dolor occaecat in",
+        "integrityTest": "consequat ipsum dolor elit"
+      }
+    ],
+    "testedHyHwList": [
+      {
+        "modelPartNum": "quis ullamco",
+        "hwVersion": "nisi laboris",
+        "fwVersion": "aliquip Lorem est in tempor",
+        "processors": "mollit sunt",
+        "features": "cupidatat"
+      }
+    ],
+    "opEnvSwFwHyTestedList": [
+      {
+        "operatingSystem": "nostrud aliquip proident",
+        "hardwarePlatform": "in ut enim quis irure",
+        "processors": "nulla cupidatat",
+        "paaPai": "esse",
+        "hypervisorHostOs": "Excepteur ipsum labore elit",
+        "swFwVersionList": [
+          "deserunt est consequat pariatur ex",
+          "tempor dolor eiusmod",
+          "ipsum dolor",
+          "Ut cupidatat",
+          "et consequat"
+        ]
+      }
+    ],
+    "opEnvSwFwHyVAList": [
+      {
+        "operatingSystem": "reprehenderit culpa ut",
+        "hardwarePlatform": "pariatur esse in consectetur"
+      }
+    ],
+    "modeOfOpList": [
+      {
+        "name": "officia commodo",
+        "description": "in ipsum",
+        "type": "aliquip",
+        "statusIndicator": "laborum"
+      }
+    ],
+    "vendorAffirmedAlgoList": [
+      {
+        "name": "in ad in",
+        "algoPropList": [
+          {
+            "name": "id velit anim Ut veniam",
+            "value": "enim voluptate",
+            "propertyId": 11387443
+          }
+        ],
+        "implName": "sed Excepteur",
+        "reference": "ullamco culpa"
+      }
+    ],
+    "nonApprovedAllowedAlgoList": [
+      {
+        "name": "deserunt laboris non",
+        "algoPropList": [
+          {
+            "name": "ea aute consectetur Duis",
+            "value": "in ut",
+            "propertyId": -57056207
+          }
+        ],
+        "implName": "incididunt enim anim",
+        "reference": "consectetur"
+      }
+    ],
+    "nonApprovedAllowedAlgoNSCList": [
+      {
+        "name": "quis in",
+        "caveat": "ut adipisicing",
+        "useFunction": "non eu"
+      }
+    ],
+    "nonApprovedNotAllowedAlgoList": [
+      {
+        "name": "in Ut incididunt",
+        "useFunction": "irure"
+      }
+    ],
+    "secFunImplList": [
+      {
+        "name": "nostrud ex",
+        "sfTypeList": [
+          {
+            "sfAbbrev": "ad Excepteur sed id",
+            "sfId": 53184293
+          }
+        ],
+        "description": "ad quis irure nisi",
+        "sfPropList": [
+          {
+            "name": "non veniam sint tempor occaecat",
+            "value": "et",
+            "propertyId": -30179093
+          }
+        ],
+        "algorithmList": [
+          {
+            "algoDisplayName": "magna cupidatat laborum Ut in",
+            "canonicalAlgorithmId": 47899832,
+            "implName": "velit laborum sint id nostrud",
+            "validationId": 5,
+            "algoPropList": [],
+            "certName": "et"
+          }
+        ]
+      }
+    ],
+    "entropySourceList": [
+      {
+        "name": "labore ex",
+        "type": "reprehenderit",
+        "opEnv": "eu est",
+        "sampleSize": "exercitation",
+        "entropyPerSample": "cillum laborum",
+        "conditioningComp": "fugiat"
+      }
+    ],
+    "portInterfaceList": [
+      {
+        "physicalPort": "ullamco",
+        "logicalInterfaceList": [
+          "ex qui velit eu",
+          "est",
+          "Duis sit labore aute ex",
+          "laborum fugiat adipisicing"
+        ],
+        "dataPasses": "ullamco voluptate in ut veniam"
+      }
+    ],
+    "authMethodList": [
+      {
+        "name": "labore exercitation dolore do dolore",
+        "description": "deserunt non ut",
+        "mechanism": "nostrud culpa",
+        "strengthEachAttempt": "exercitation reprehenderit dolor sed cillum",
+        "strengthPerMin": "deserunt"
+      }
+    ],
+    "roleList": [
+      {
+        "name": "aliquip fugiat",
+        "type": "sint ut dolore Duis veniam",
+        "operatorType": "ea elit aliquip officia",
+        "authMethodList": [
+          "adipisicing Ut in",
+          "velit cillum cupidatat consectetur",
+          "labore adipisicing",
+          "Ut"
+        ]
+      }
+    ],
+    "approvedServiceList": [
+      {
+        "name": "ut",
+        "description": "labore eu irure",
+        "indicator": "qui",
+        "inputs": "ea cupidatat ullamco pariatur irure",
+        "outputs": "Ut aute",
+        "secFunImplList": [
+          "in",
+          "minim sed",
+          "ad pariatur"
+        ],
+        "roleSspAccessList": [
+          {
+            "roleName": "aute esse do laborum",
+            "sspAccessList": [
+              {
+                "sspName": "quis consequat tempor laboris reprehenderit",
+                "accessType": [
+                  "veniam laborum tempor",
+                  "cupidatat aute",
+                  "ut esse sint Lorem",
+                  "culpa nulla",
+                  "sit consequat incididunt occaecat"
+                ]
+              }
+            ]
+          },
+          {
+            "roleName": "incididunt id adipisicing et",
+            "sspAccessList": [
+              {
+                "sspName": "amet esse",
+                "accessType": [
+                  "sunt dolore mollit",
+                  "ipsum incididunt nisi in"
+                ]
+              }
+            ]
+          },
+          {
+            "roleName": "non Lorem est incididunt sit",
+            "sspAccessList": [
+              {
+                "sspName": "reprehenderit pariatur nisi sed",
+                "accessType": [
+                  "consequat",
+                  "amet"
+                ]
+              }
+            ]
+          },
+          {
+            "roleName": "non enim proident ex",
+            "sspAccessList": [
+              {
+                "sspName": "dolor voluptate",
+                "accessType": [
+                  "aliquip esse",
+                  "et laborum eiusmod veniam"
+                ]
+              }
+            ]
+          },
+          {
+            "roleName": "elit",
+            "sspAccessList": [
+              {
+                "sspName": "do sit dolor",
+                "accessType": [
+                  "veniam ad do",
+                  "irure"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "nonApprovedServiceList": [
+      {
+        "name": "anim quis elit",
+        "description": "commodo et deserunt",
+        "nonApprovedAlgoList": [
+          "nisi ea incididunt deserunt",
+          "Duis cillum",
+          "voluptate elit aute in",
+          "veniam"
+        ],
+        "role": "exercitation aliquip"
+      }
+    ],
+    "phSecMechanismList": [
+      {
+        "mechanism": "sunt",
+        "inspectFreq": "quis cupidatat in",
+        "inspectGuidance": "ullamco nulla in commodo sit"
+      }
+    ],
+    "efpEftInfoList": [
+      {
+        "tempVoltType": "ullamco non",
+        "tempVolt": "non irure consectetur mollit",
+        "efpOrEft": "consectetur",
+        "result": "ad"
+      }
+    ],
+    "hardnessTestTempList": [
+      {
+        "tempType": "aute veniam",
+        "temp": "culpa in"
+      }
+    ],
+    "storageAreaList": [
+      {
+        "name": "sit exercitation nostrud veniam",
+        "description": "aliquip amet dolor deserunt Lorem",
+        "persistenceType": "sit consectetur ad ipsum irure"
+      }
+    ],
+    "sspInputOutputList": [
+      {
+        "name": "aliquip do",
+        "from": "eu sint amet Duis Excepteur",
+        "to": "Excepteur commodo",
+        "formatType": "magna",
+        "distributionType": "dolor ea nostrud laboris ut",
+        "entryType": "officia voluptate ipsum adipisicing",
+        "relatedSFI": "non irure"
+      }
+    ],
+    "sspZeroizationList": [
+      {
+        "method": "sint in",
+        "description": "veniam",
+        "rationale": "nostrud",
+        "operatorInitiation": "culpa cillum proident"
+      }
+    ],
+    "sspList": [
+      {
+        "name": "nulla",
+        "description": "in non minim",
+        "size": "id",
+        "strength": "Lorem consequat sunt mollit",
+        "type": "id",
+        "generatedByList": [
+          "est",
+          "mollit in dolor eu Duis",
+          "irure exercitation est commodo",
+          "anim eu aliqua Excepteur",
+          "ullamco ad mollit"
+        ],
+        "establishedByList": [
+          "anim eiusmod",
+          "sed enim tempor",
+          "officia cillum ex nostrud",
+          "elit voluptate amet laborum labore",
+          "Duis amet culpa"
+        ],
+        "usedByList": [
+          "quis",
+          "proident",
+          "adipisicing ea mollit",
+          "cupidatat nisi incididunt dolore",
+          "voluptate tempor"
+        ],
+        "inputOutputList": [
+          "aliqua ut nisi consequat",
+          "nulla in cillum est"
+        ],
+        "storageItemList": [
+          {
+            "areaName": "est consequat dolore",
+            "format": "in",
+            "algorithmName": "ad"
+          }
+        ],
+        "storageDuration": "nostrud",
+        "zeroizationList": [
+          "ad nostrud occaecat",
+          "minim ad incididunt irure",
+          "aute eiusmod"
+        ],
+        "category": "elit do aliquip",
+        "relatedSspList": [
+          {
+            "sspName": "quis laborum qui",
+            "relationship": "mollit laborum nostrud in ut"
+          }
+        ]
+      }
+    ],
+    "preOpSelfTestList": [
+      {
+        "algorithmOrTest": "reprehenderit exercitation commodo velit",
+        "testProps": "ullamco nostrud",
+        "testMethod": "amet sit minim",
+        "type": "veniam",
+        "indicator": "ut irure pariatur adipisicing",
+        "details": "labore voluptate nisi",
+        "period": "in eu ex",
+        "periodicMethod": "in eu officia minim"
+      }
+    ],
+    "condSelfTestList": [
+      {
+        "algorithmOrTest": "sed laboris Ut",
+        "testProps": "culpa",
+        "testMethod": "ea",
+        "type": "laborum dolore tempor nisi",
+        "indicator": "sit sed cillum qui",
+        "details": "enim adipisicing eu cupidatat amet",
+        "conditions": "amet laboris",
+        "coverage": [],
+        "coverageNotes": "velit culpa officia",
+        "period": "sit",
+        "periodicMethod": "dolor reprehenderit Duis"
+      }
+    ],
+    "errorStateList": [
+      {
+        "name": "velit in",
+        "description": "ex",
+        "conditions": [
+          "reprehenderit nostrud cillum anim labore",
+          "do dolor officia",
+          "adipisicing voluptate do tempor"
+        ],
+        "recoveryMethod": "aliquip",
+        "indicator": "irure amet"
+      }
+    ],
+    "referenceList": [
+      "do occaecat sunt",
+      "irure velit"
+    ]
+  }
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>[AMVP]: POST Response Submission&#8230;&#8203;</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>{
+    "url": "/amvp/v1/certRequests/8",
+    "moduleId": 2,
+    "vendorId": 1,
+    "status": "ready",
+    "securityPolicyStatus": "acceptingSubmissions",
+    "evidenceStatus": "acceptingSubmissions",
+    "missingSPTemplate": true,
+    "missingSecurityPolicySubmission": true,
+    "evidenceList": [
+        {
+            "te": "TE02.10.01",
+            "required": [],
+            "oneOf": [
+                {
+                    "types": [
+                        "SC-TE",
+                        "FT-TE"
+                    ],
+                    "submitted": []
+                }
+            ],
+            "complete": false
+        },
+        {
+            "te": "TE02.12.01",
+            "required": [
+                {
+                    "types": [
+                        "FT-TE"
+                    ],
+                    "submitted": []
+                }
+            ],
+            "oneOf": [],
+            "complete": false
+        },
+        {
+            "te": "TE02.19.02",
+            "required": [
+                {
+                    "types": [
+                        "FT-TE"
+                    ],
+                    "submitted": []
+                }
+            ],
+            "oneOf": [],
+            "complete": false
+        },
+        {
+            "te": "TE02.22.02",
+            "required": [
+                {
+                    "types": [
+                        "FT-TE"
+                    ],
+                    "submitted": []
+                }
+            ],
+            "oneOf": [],
+            "complete": false
+        },
+	],
+    "amvVersion": "0.1"
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once the validation is approved the functionalTest evidence, source code evidence, and security policy, draft certificate can be requested.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>|        |GET                                |      |            |
+|        |/certRequests/1/securityPolicy     |      |  Retrieve  |
+|        |----------------------------------&gt;|      |Sec Policy  |
+|        |                                   |      |  ID = 1    |
+|        |&lt;--------------------------------- |      | Retry as   |
+|        |                                   |      | needed     |
+|        |                                   |      |            |
+|        |GET                                |      |            |
+|        |/certRequests/1/securityPolicy     |      |  Retrieve  |
+|        |----------------------------------&gt;|      |Sec Policy  |
+|        |                                   |      |            |
+|        |                                   |      |            |
+|        |200 OK                             |      |            |
+|        |&lt;-  -  -  -  -  -  -  -  -  -  -  -|      |            |
+|        |   Security Policy                 |      |            |</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Module certificate is fully approved.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>|        |POST                               |      |            |
+|        |/certRequests/1/certify            |      |  Request   |
+|        |----------------------------------&gt;|      |            |
+|        |                                   |      |  ID = 1    |
+|        |&lt;--------------------------------- |      | Retry as   |
+|        |                                   |      | needed     |
+|        |                                   |      |            |
+|        |GET                                |      |            |
+|        |/certRequests/1                    |      |  Retrieve  |
+|        |----------------------------------&gt;|      | cert status|
+|        |                                   |      |            |
+|        |                                   |      |            |
+|        |200 OK                             |      |            |
+|        |&lt;-  -  -  -  -  -  -  -  -  -  -  -|      |            |
+|        |   Certificate request status      |      |            |</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>[AMVP]: GET Response</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>{
+    "certRequestId": 549,
+    "moduleId": 190,
+    "status": "approved",
+    "validationCertificate": "AMV-10",
+    "amvVersion": "0.1"
+}</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_proof_of_concept_flowsoutdated_remaining_here_for_reference">Proof of Concept Flows(outdated, remaining here for reference)</h3>
+<div class="paragraph">
+<p>The initial Proof of Concept(PoC) developed will be limited to communication flows that are needed to demo the protocol. Separate auotmated and non-automated evidence will not be included in the PoC. These flows can also be used to define the exact testing that will be required for the various server and client milestones. Some milestones are server centric thus testing is limited here since minimal external communication flows are exercised. Error codes and retries will be tested when possible in all test flows.</p>
+</div>
+<div class="sect3">
+<h4 id="_v0_1_test_flows">V0.1 Test Flows</h4>
+<div class="paragraph">
+<p>Prerequiste for V0.1 testing is VPN between client and server, TOTP and client certificate.</p>
+</div>
+<div id="xml_Flows01" class="paragraph">
+<p>Workflow authorization flows.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>         +--------+--------------------------------------+------+------------+
+         | Client |                                      |Server|    Notes   |
+         +--------+--------------------------------------+------+------------+
+         |        |POST to /login or similar with        |      |            |
+         |        |appropriate credentials               |      |            |
+         |        |--------------------------------&gt;     |      |            |
+         |        |                                      |      |            |
+         |        |200  OK receive the access token      |      |            |
+         |        |&lt;-  -  -  -  -  -  -  -  -  -  -      |      |            |
+         |        |                                      |      |            |
+         |        |POST /amvp/v1/vendors                 |      |   POST     |
+         |        |----------------------------------&gt;   |      |  vendor    |  *** vendor resource as an example
+         |        |                                      |      | resource   |  *** flow is to show login sequence
+         |        |                                      |      |            |
+         |        |                                      |      |            |
+         |        |200 OK vendors URI                    |      |            |
+
+
+POST: [{"passcode":"21887897"}]
+
+200 OK: [{"accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9....}]
+
+
+
+Vendor POST prior to login(should fail) and after login(should be accepted). Server shall respond to valid vendor POST with 200 OK.
+
+
+Expected Client Log(failing case)
+
+[AMVP]: POST...
+	Status: 404
+	Url: https://localhost:8085/amvp/v1/vendors
+	Resp: The path specified is not recognized.
+
+
+[AMVP][ERROR]: 404 error received from server. Message:
+[AMVP][ERROR]: The path specified is not recognized.
+
+
+
+Expected Client Log(successful case)
+
+[AMVP]: Logging in...
+[AMVP]:     Login info: [{"passcode":"21887897"}]
+[AMVP]: POST Login...
+	Status: 200
+	Url: https://localhost:8085/amvp/v1/login
+	Resp: [{ "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...."}]
+
+[AMVP]: Login successful
+[AMVP]: POST...
+	Status: 200
+	Url: https://localhost:8085/amvp/v1/vendors</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_jwt_expirationrenewal">JWT Expiration/Renewal</h4>
+<div id="xml_figureRenewalFlows" class="paragraph">
+<p>The JWT access tokens received from either the /login server endpoint <strong>SHALL</strong> be set to expire after a
+pre-defined period. The specific length of the expiration period is out of scope for this specification.
+However, the expiration period length impacts both the security and protocol overhead. Longer expiration
+periods reduce the overhead but increase the window for attacks. Attempting to access a service with an
+expired JWT <strong>SHALL</strong> result in a "401 Unauthorized" HTTP status code.</p>
+</div>
+<div class="paragraph">
+<p>A client may renew an expired JWT access token using the mechanism shown in <a href="#xml_figureRenewalFlows">[xml_figureRenewalFlows]</a>below.</p>
+</div>
+<div class="paragraph">
+<p>JWT access token renewal flows. All exchanges shown are over HTTP.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>         +--------+---------------------------------+------+--------+
+         | Client |                                 |Server|  Notes |
+         +--------+---------------------------------+------+--------+
+         |        |POST to /login or similar with   |      |        |
+         |        |appropriate credentials          |      |        |
+         |        |and expired JWT access token     |      |        |
+         |        |--------------------------------&gt;|      |session |
+         |        |                                 |      |or      |
+         |        |                                 |      |login   |
+         |        |                                 |      |JWT     |
+         |        |receive the renewed access token |      |        |
+         |        |&lt;-  -  -  -  -  -  -  -  -  -  - |      |        |
+         |        |                                 |      |        |
+
+
+
+JWT authorization has timed out, curl rc=401
+
+POST: [{"passcode":"47682787","accessToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9....}]
+
+200 OK: [{"accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.....}]
+
+Log
+
+[AMVP]: Logging in...
+[AMVP]:     Login info: [{"passcode":"63127656"}]
+[AMVP]: POST Login...
+	Status: 200
+	Url: https://localhost:8085/amvp/v1/login
+	Resp: [{ "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...."}]
+
+[AMVP]: Login successful
+[AMVP]: POST Data: /amvp/v1/vendors
+
+[AMVP][WARNING]: JWT authorization has timed out, curl rc=401. Refreshing session...
+[AMVP]: Logging in...
+[AMVP]:     Login info: [{"passcode":"12345678","accessToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...."}]
+[AMVP]: POST Login...
+	Status: 200
+	Url: https://localhost:8085/amvp/v1/login
+	Resp: [{ "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...."}]
+
+[AMVP]: Login successful
+[AMVP]: Refresh successful, attempting to continue...
+[AMVP]: POST...
+	Status: 200
+	Url: https://localhost:8085/amvp/v1/vendors</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_v0_2_test_flows">V0.2 Test Flows</h4>
+<div id="xml_Flows02" class="paragraph">
+<p>Metadata creation and update example. The list of available reseource metadata endpoints can be found in <a href="#xml_uriResources">[xml_uriResources]</a>.
+An example minimum message flow between client and server after receiving the JWT is seen in the figure below.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Test vendors, modules and evidence catalog.
+
+
+   +--------+-----------------------------------+------+------------+
+   | Client |                                   |Server|  Notes     |
+   +--------+-----------------------------------+------+------------+
+   |        |POST /amvp/v1/modules              |      | Create     |
+   |        |----------------------------------&gt;|      | Metadata   |
+   |        |                                   |      |            |
+   |        |receive request identifier         |      |            |
+   |        |&lt;-  -  -  -  -  -  -  -  -  -  -  -|      |            |
+   |        |                                   |      |            |
+
+   |        |PUT /modules                       |      | Update     |
+   |        |----------------------------------&gt;|      | Metadata   |
+   |        |                                   |      |            |
+   |        |receive request identifier         |      |            |
+   |        |&lt;-  -  -  -  -  -  -  -  -  -  -  -|      |            |
+   |        |                                   |      |            |
+
+
+
+Log
+
+[AMVP]: Logging in...
+[AMVP]:     Login info: [{"passcode":"37362840"}]
+[AMVP]: POST Login...
+	Status: 200
+	Url: https://localhost:8085/amvp/v1/login
+	Resp: [{ "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."}]
+
+[AMVP]: Login successful
+[AMVP]: POST...
+	Status: 200
+	Url: https://localhost:8085/amvp/v1/modules
+	Resp: [{  "url": "/amvp/v1/requests/28665",    "status": "approved",    "approvedUrl": "/amvp/v1/modules/13780" }] ** Immediate approval or just 200 OK ?</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_v0_3_test_flows">V0.3 Test Flows</h4>
+<div id="xml_Flows03" class="paragraph">
+<p>Re-test V0.1 and V0.2 verify server creates objects.  Use GET for resource objects and evidence.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>After re-running V0.2 perform GET on objects following POST.
+
+
+   |        |GET                                |      |            |
+   |        |/requests/1                        |      | Retrieve   |
+   |        |----------------------------------&gt;|      | Request    |
+   |        |                                   |      |            |
+   |        |receive module URL                 |      |            |
+   |        |&lt;-  -  -  -  -  -  -  -  -  -  -  -|      |            |
+   |        |  /amvp/v1/modules/11208           |      |            |
+   |        |                                   |      |            |
+
+
+After re-running V0.2 perform GET on objects following PUT.
+
+   |        |GET                                |      |            |
+   |        |/requests/2                        |      |  Retrieve  |
+   |        |----------------------------------&gt;|      |  Request   |
+   |        |                                   |      |            |
+   |        |module URL:                        |      |  updated   |
+   |        |&lt;-  -  -  -  -  -  -  -  -  -  -  -|      |  or new    |
+   |        |  /amvp/v1/modules/11208           |      |            |
+   |        |                                   |      |            |
+
+GET after POST or PUT log
+
+[AMVP]: Logging in...
+[AMVP]:     Login info: [{"passcode":"25008415"}]
+[AMVP]: POST Login...
+	Status: 200
+	Url: https://localhost:8085/amvp/v1/login
+	Resp: [{ "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...."}]
+
+[AMVP]: Login successful
+[AMVP]: GET...
+	Status: 200
+	Url: https://localhost:8085/amvp/v1/modules/13780
+	Resp: [{
+   {
+    "schemaVersion": "initial",
+    "moduleInfo": {
+      "name": "OpenSSL FIPS Provider",
+      "count": 1,
+      "description": "FIPS Provider V3.0.0",
+      "embodiment": "Single Chip",
+      "type": "software",
+      "opEnvType": "Intel X86_64",
+      "submissionLevel": "Level 1",
+      "itar": false,
+      "overallSecurityLevel": 1
+    },
+      "secLevels": [
+        {
+          "section": 1,
+          "level": 1
+        },
+        {
+          "section": 2,
+          "level": 1
+        },
+        {
+          "section": 3,
+          "level": 1
+        },
+        {
+          "section": 4,
+          "level": 1
+        },
+        {
+          "section": 5,
+          "level": 1
+        },
+        {
+          "section": 6,
+          "level": 1
+        },
+        {
+          "section": 7,
+          "level": 1
+        },
+        {
+          "section": 8,
+          "level": 1
+        },
+        {
+          "section": 9,
+          "level": 1
+        },
+        {
+          "section": 10,
+          "level": 1
+        },
+        {
+          "section": 11,
+          "level": 1
+        },
+        {
+          "section": 12,
+          "level": 1
+        }
+      ],
+    "implementsOtar": true,
+    "hasNonApprovedMode": true,
+    "requiresInitialization": true,
+    "hasExcludedComponents": true,
+    "hasDegradedMode": false,
+    "hasPPAorPAI": false,
+    "hasEmbeddedOrBoundModule": false,
+    "hasCriticalFunctions": false,
+    "hasNonApprovedAlgorithmsInApprovedMode": false,
+    "hasExternalInputDevice": false,
+    "hasExternalOutputDevice": false,
+    "usesTrustedChannel": true,
+    "supportsConcurrentOperators": true,
+    "usesIdentityBasedAuthentication": true,
+    "hasMaintenanceRole": true,
+    "allowsOperatorToChangeRoles": false,
+    "hasDefaultAuthenticationData": true,
+    "usesEDC": true,
+    "allowsExternalLoadingOfSoftwareOrFirmware": false,
+    "containsNonReconfigurableMemory": true,
+    "usesOpenSource": false,
+    "providesMaintenanceAccessInterface": false,
+    "hasVentilationOrSlits": false,
+    "hasRemovableCover": false,
+    "hasTamperSeals": false,
+    "hasOperatorAppliedTamperSeals": false,
+    "hasEFPorEFT": false,
+    "outputsSensitiveDataAsPlaintext": false,
+    "supportsManualSSPEntry": true,
+    "usesSplitKnowledge": true,
+    "hasCVE": true,
+    "hasAdditionalMitigations": false,
+    "usesOtherCurve": true,
+    "supportsBypassCapability": false,
+    "hasOTPMemory": false
+    }</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_v0_4_test_flows">V0.4 Test Flows</h4>
+<div id="xml_Flows04" class="paragraph">
+<p>Submit evidence to server and return results.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>   +--------+-----------------------------------+------+------------+
+   | Client |                                   |Server|  Notes     |
+   +--------+-----------------------------------+------+------------+
+   |        |POST certRequests                  |      |   Submit   |
+   |        |----------------------------------&gt;|      |Module Cert |
+   |        | w/URIs to bind modules, vendors,  |      |   Request  |
+   |        | and contacts                      |      |            |
+   |        |                                   |      |            |
+   |        |200 OK certRequests URLs           |      |            |
+   |        |&lt;-  -  -  -  -  -  -  -  -  -  -  -|      |            |
+   |        |    certRequests/1/evidence        |      |            |
+   |        |                                   |      |            |
+   |        |GET  (automatable evidence)        |      |            |
+   |        |/certRequests/1/evidence           |      |  Retrieve  | ** GET supported in V0.5 ?
+   |        |----------------------------------&gt;|      |Cert Request|
+   |        |                                   |      | assertions |
+   |        |200 OK assertions for evidence 1   |      |            |
+   |        |&lt;-  -  -  -  -  -  -  -  -  -  -  -|      |            |
+   |        |                                   |      |            |
+   |        |POST Test Evidence for assertions  |      |            |
+   |        |for automatable evidence           |      |   Submit   |
+   |        |----------------------------------&gt;|      |  Response  |
+   |        |                                   |      |            |
+   |        |200 OK                             |      |            |
+   |        |&lt;-  -  -  -  -  -  -  -  -  -  -  -|      |            |
+   |        |   state: autoInReview             |      |            |
+   |        |                                   |      |            |
+
+Log
+
+[AMVP]: Logging in...
+[AMVP]:     Login info: [{"passcode":"33222621"}]
+[AMVP]: POST Login...
+	Status: 200
+	Url: https://localhost:8085/amvp/v1/login
+	Resp: [{ "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...."}]
+
+[AMVP]: Login successful
+[AMVP]: Reading module cert request file...
+[AMVP]: Sending module cert request...
+[AMVP]: POST...
+	Status: 200
+	Url: https://localhost:8085/amvp/v1/certRequests
+
+        {
+            "moduleId" : 121,
+            "vendorId" : 12345,
+            "contacts" : ["CVP-012345", "CVP-67890"]
+        }
+
+	Resp: [{ "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9....",
+                 "url": "/amvp/v1/certRequests/287357", "crUrls": [ "/amvp/v1/certRequests/287357/evidence/1146094" ]}]
+
+[AMVP]: Successfully sent mod cert req and received list of TE URLs
+[AMVP]: GET /amvp/v1/certRequests/287357/evidence/1146094
+[AMVP]: GET Vector Set...
+	Status: 200
+	Url: https://localhost:8085/amvp/v1/certRequests/287357/evidence/1146094
+	Resp:
+[{ "evidenceId": 1146094, "revision": "1.0",  "teGroups": [ { "teId": 1, "autoTE": ["TE02.20.01", "TE02.20.02", "TE11.16.01","TE04.11.01", "TE04.11.02"]}]}]
+
+[AMVP]: Processing ie set: 1146094
+[AMVP]: Successfully processed vector set
+[AMVP]: Posting ie set responses for vsId 1146094 to URL: /amvp/v1/certRequests/287357/evidence/1146094...
+[AMVP]: POST Response Submission...
+	Status: 200
+	Url: https://localhost:8085/amvp/v1/certRequests/287357/evidence/1146094/results</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_v0_5_test_flows">V0.5 Test Flows</h4>
+<div id="xml_Flows05" class="paragraph">
+<p>Server will complete processing of evidence and return status.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>   +--------+-----------------------------------+------+------------+
+   | Client |                                   |Server|  Notes     |
+   +--------+-----------------------------------+------+------------+
+   |        |POST certRequests                  |      |   Submit   |
+   |        |----------------------------------&gt;|      |Module Cert |
+   |        | w/URIs to bind modules, vendors,  |      |   Request  |
+   |        | and contacts                      |      |            |
+   |        |                                   |      |            |
+   |        |200 OK certRequests URLs           |      |            |
+   |        |&lt;-  -  -  -  -  -  -  -  -  -  -  -|      |            |
+   |        |   state: IUT                      |      |            |
+   |        |    certRequests/1/evidence/1      |      |            |
+   |        |                                   |      |            |
+   |        |GET                                |      |            |
+   |        |/certRequests/1/evidence/1         |      |  Retrieve  |
+   |        |----------------------------------&gt;|      |Cert Request|
+   |        |                                   |      | assertions |
+   |        |200 OK assertions for evidence 1   |      |            |
+   |        |&lt;-  -  -  -  -  -  -  -  -  -  -  -|      |            |
+   |        |                                   |      |            |
+   |        |POST Test Evidence for assertions  |      |   Submit   |
+   |        |----------------------------------&gt;|      |  Response  |
+   |        |                                   |      |            |
+   |        |200 OK                             |      |            |
+   |        |&lt;-  -  -  -  -  -  -  -  -  -  -  -|      |            |
+   |        |   state: autoInReview             |      |            |
+   |        |                                   |      |            |
+   |        |GET                                |      |            |
+   |        |certRequests/1/results             |      |  Retrieve  |
+   |        |----------------------------------&gt;|      |Disposition |
+   |        |                                   |      |            |
+   |        |200 OK receive results             |      |            |
+   |        |&lt;-  -  -  -  -  -  -  -  -  -  -  -|      |            |
+   |        |   state: autoInReview             |      |            |
+
+--- Poll periodically ---
+
+   |        |GET                                |      |            |
+   |        |certRequests/1/results             |      |  Retrieve  |
+   |        |----------------------------------&gt;|      |Disposition |
+   |        |                                   |      |            |
+   |        |200 OK receive results             |      |            |
+   |        |&lt;-  -  -  -  -  -  -  -  -  -  -  -|      |            |
+   |        |   state: autoCoordination         |      |            |
+   |        | "passed": true                    |      |            |
+   |        |                                   |      |            |
+
+
+   |        | PUT                               |      |            |
+   |        | certRequests/1/evidence/1         |      |            |
+   |        |----------------------------------&gt;|      |            |
+   |        |                                   |      |            |
+   |        |200 OK receive results             |      |            |
+   |        |&lt;-  -  -  -  -  -  -  -  -  -  -  -|      |            |
+   |        |   state: autoCoordination         |      |            |
+   |        | "url": "/amvp/v1/requests/1",     |      |            |
+   |        | "status": "initial"}              |      |            |
+   |        |                                   |      |            |
+   |        |GET                                |      |            |
+   |        |certRequests/1/results             |      |  Retrieve  |
+   |        |----------------------------------&gt;|      |Disposition |
+   |        |                                   |      |            |
+   |        |200 OK receive results             |      |            |
+   |        |&lt;-  -  -  -  -  -  -  -  -  -  -  -|      |            |
+   |        |   state: pendingAudit             |      |            |
+   |        |  "url" : "/amvp/v1/requests/1"    |      |            |
+   |        |                                   |      |            |
+
+   |        |GET                                |      |            |
+   |        |/requests/1                        |      |            |
+   |        |----------------------------------&gt;|      |  Retrieve  |
+   |        |                                   |      |  Request   |
+   |        |200 OK receive cert                |      |            |
+   |        |&lt;-  -  -  -  -  -  -  -  -  -  -  -|      |            |
+   |        |   state: finalization             |      | Complete   |
+   |        | "approvedUrl" : "/amvp/v1/validations/1",
+   |        |                 “modValidationId": "M1"
+
+
+Optional Flow:
+Independently GET docs as needed
+
+
+   |        |GET                                |      |            |
+   |        |certRequests/1/docs                |      |  Retrieve  |
+   |        |----------------------------------&gt;|      |  Docs      |
+   |        |                                   |      |            |
+
+--- Poll periodically ---
+
+   |        |200 OK receive results             |      |            |
+   |        |&lt;-  -  -  -  -  -  -  -  -  -  -  -|      | Doc URLs   |
+   |        |"secPolicy" : "/amvp/v1/sp0001"    |      |            |
+   |        |"draftCert" : "/amvp/v1/dc0001"    |      |            |
+   |        |                                   |      |            |
+
+
+
+
+[AMVP]: Logging in...
+[AMVP]:     Login info: [{"passcode":"03363978"}]
+[AMVP]: POST Login...
+	Status: 200
+	Url: https://localhost:8085/amvp/v1/login
+	Resp: [{ "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...."}]
+
+[AMVP]: Login successful
+[AMVP]: Reading module cert request file...
+[AMVP]: Sending module cert request...
+
+[AMVP]: POST...
+	Status: 200
+	Url: https://localhost:8085/amvp/v1/certRequest
+
+        POST /amvp/v1/certRequests/1
+         [{"moduleId" :  [{"/amvp/v1/modules/0918273546"}]
+            },{ "vendorId" : {"/amvp/v1/vendors/12345"}
+            }, { "contacts" : [{"John Smith", {"CVP" : "012345"}}, {"Jane Smith", {"CVP" : "67890"}}]
+            }]
+	Resp: [{ "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...."},
+                 "url": "/amvp/v1/certRequests/287357", "crUrls": [ "/amvp/v1/certRequests/287357/evidence/1146094" ]}]
+
+[AMVP]: Successfully sent mod cert req and received list of TE URLs
+[AMVP]: GET /amvp/v1/certRequests/287357/evidence/1146094
+[AMVP]: GET Vector Set...
+	Status: 200
+	Url: https://localhost:8085/amvp/v1/certRequests/287357/evidence/1146094
+	Resp:
+[{ "evidenceId": 1146094, "revision": "1.0",  "teGroups": [ { "teId": 1, "autoTE": ["TE02.20.01", "TE02.20.02", "TE11.16.01","TE04.11.01", "TE04.11.02"]}]}]
+[AMVP]: Processing ie set: 1146094
+[AMVP]: Successfully processed vector set
+[AMVP]: Posting ie set responses for vsId 1146094 to URL: /amvp/v1/certRequests/287357/evidence/1146094...
+[AMVP]: POST Response Submission...
+
+    {
+        "evidenceSet": [
+            {
+                "testRequirement": "TE02.20.01",
+                "evidence": "\/acvp\/v1\/validations\/99999",
+                "note": "this is a fake endpoint"
+            },
+            {
+                "testRequirement": "TE02.20.02",
+                "evidence": "none"
+            },
+            {
+                "testRequirement": "TE11.16.01",
+                "evidence": "Version X.Y.Z of the module meets the assertion"
+            },
+            {
+                "testRequirement": "TE04.11.01",
+                "evidence": "&lt;BASE64(table of services.pdf) compliant with SP 800-140Br&gt;"
+            },
+            {
+                "testRequirement": "TE04.11.02",
+                "evidence": "\/www.cisco.com\/amvpevidence\/log_te041102.txt",
+                "note": "this is a fake endpoint"
+            },
+            {
+                "testRequirement": "TE10.10.01",
+                "evidence": "Degraded mode not supported, no algorithms can be used...goes directly into SP."
+            },
+            {
+                "testRequirement": "TE10.10.02",
+                "evidence": "\/www.cisco.com\/amvpevidence\/log_te041102.txt",
+                "note": "this is a fake endpoint"
+            },
+            {
+                "testRequirement": "TE11.08.01",
+                "evidence": "\/www.cisco.com\/amvpevidence\/FSM.pdf",
+                "note": "this is a fake endpoint"
+            },
+            {
+                "testRequirement": "TE11.08.02",
+                "evidence": "See TE11.08.01"
+            }
+        ]
+    }
+
+        Status: 200
+	Url: https://localhost:8085/amvp/v1/certRequests/287357/evidence/1146094/results
+[AMVP]: GET Vector Set Result...
+	Status: 200
+	Url: https://localhost:8085/amvp/v1/certRequests/287357/results
+	Resp:
+[ { "passed": true, "results": [ { "evSetUrl": "/amvp/v1/certRequests/287357/evidence/1146094", "status": "passed" }]} ]
+
+[AMVP]: Passed all evidence in test session!
+
+--optional--
+
+[AMVP]: Tests complete, request SP and DC...
+[AMVP]: GET SP and DC...
+	Status: 200
+	Url: https://localhost:8085/amvp/v1/certRequests/287357/docs
+	Resp:
+[ {"secPolicyUrl" :  "/amvp/v1/requests/287355", "draftCertUrl" : "/amvp/v1/requests/287356"}]
+
+[AMVP]: Security Policy url: /amvp/v1/requests/287355
+[AMVP]: Draft Certificate url: /amvp/v1/requests/287356
+
+[AMVP]: PUT testSession Validation...
+	Status: 200
+	Url: https://localhost:8085/amvp/v1/certRequests/287357
+        {"moduleUrl": "/amvp/v1/modules/11630}
+
+	Resp: [ {  "url": "/amvp/v1/requests/27358",  "status": "initial"}]
+
+[AMVP]: Validation requested -- status initial -- url: /amvp/v1/requests/27358
+
+Once audit completed, GET request approval.
+
+[AMVP]: Logging in...
+[AMVP]:     Login info: [{"passcode":"85380204"}]
+[AMVP]: POST Login...
+	Status: 200
+	Url: https://localhost:8085/amvp/v1/login
+	Resp: [{ "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...."}]
+
+[AMVP]: Login successful
+[AMVP]: GET Response:
+
+[ {  "url": "/amvp/v1/requests/27358",  "status": "approved",  "approvedUrl": "/amvp/v1/validations/41763"}]</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_v1_0_test_flows">V1.0 Test Flows</h4>
+<div id="xml_Flows10" class="paragraph">
+<p>Full flow support through validation completion.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_json_for_ut">JSON for UT</h4>
+<div class="sect4">
+<h5 id="json_Flows1">Lab</h5>
+
+</div>
+<div class="sect4">
+<h5 id="_vendor">Vendor</h5>
+<div id="json_Flows1" class="paragraph">
+<p>POSTed to /amvp/v1/vendors</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>{
+  "vendor": {
+    "name": "Cisco Systems, Inc.",
+    "addresses": [
+      {
+        "street": "170 West Tasman Dr.",
+        "locality": "San Jose",
+        "region": "CA",
+        "country": "USA",
+        "postalCode": "95134"
+      }
+    ],
+    "website": "www.cisco.com",
+    "productLink": "www.cisco.com/product/cr9000",
+    "contacts": [
+      {
+        "name": "Tom Smith",
+        "phoneNumbers": [
+          "123-456-7890"
+        ],
+        "emails": [
+          "certteam@cisco.com"
+        ]
+      }
+    ]
+  }
+}</pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_modulespec">ModuleSpec</h5>
+<div id="json_Flows1" class="paragraph">
+<p>POSTed to /amvp/v1/modules</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></section>
 </section>
 </section>
 
@@ -554,20 +4102,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="te-workstream.html"
+       href="te-tables/annex.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Test Evidence Workstream</p>
+        <p class="prev-next-title">Annex Tables</p>
       </div>
     </a>
     <a class="right-next"
-       href="re-workstream.html"
+       href="protocol/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Research Infrastructure</p>
+        <p class="prev-next-title">ACMVP Demo Server</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -588,14 +4136,24 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#protocol-workstream-collaborators">Protocol Workstream Collaborators</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proof-of-concept-server-features">Proof-of-Concept Server Features</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#server-implementation">Server Implementation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#client-implementations">Client Implementations</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#libamvp-cisco">Libamvp - Cisco</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#acvp-proxy-atsec-information-security">ACVP Proxy - atsec information security</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#technical-details">Technical Details</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#intro">Intro</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#protocol-overview">Protocol Overview</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#protocol-audience">Protocol Audience</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#goals">Goals</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#strategy">Strategy</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-the-acmvp-demo-server">Accessing the ACMVP Demo Server</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture">Architecture</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#amv-protocol">AMV Protocol</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#security">Security</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#login">Login</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#versioning">Versioning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#messaging">Messaging</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#error-responses">Error Responses</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

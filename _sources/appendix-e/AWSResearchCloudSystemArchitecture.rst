@@ -3,7 +3,7 @@ AWS Research Cloud System Architecture
 
 The following diagram illustrates the AWS research cloud architecture, including network connectivity to the on-premises NCCoE campus.
 
-.. figure:: images/Figure2.png
+.. figure:: images/Figure2.svg
    :alt: Figure 2 depicts the NCCoE AWS research cloud architecture diagram
 
    Figure 2: AWS research cloud architecture diagram

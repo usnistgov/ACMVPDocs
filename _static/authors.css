@@ -1,0 +1,17 @@
+/* Compact the author list on the home page without affecting other tables. */
+#automation-of-the-nist-cryptographic-module-validation-program
+  > .pst-scrollable-table-container > .table td {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+#automation-of-the-nist-cryptographic-module-validation-program
+  > .pst-scrollable-table-container > .table td > p {
+  margin-bottom: 0.25rem;
+  line-height: 1.2;
+}
+
+#automation-of-the-nist-cryptographic-module-validation-program
+  > .pst-scrollable-table-container > .table td > p:last-child {
+  margin-bottom: 0;
+}

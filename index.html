@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Automation of the NIST Cryptographic Module Validation Program &#8212; Automated Cryptographic Module Validation Project  documentation</title>
+    <title>Automation of the NIST Cryptographic Module Validation Program &#8212; Automated Cryptographic Module Validation Project</title>
   
   
   
@@ -33,8 +33,10 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/css/lightbox.min.css?v=6e7d0de0" />
     <link rel="stylesheet" type="text/css" href="_static/content.css?v=59cd0ab0" />
-    <link rel="stylesheet" type="text/css" href="_static/tables.css?v=1ae3e97c" />
+    <link rel="stylesheet" type="text/css" href="_static/authors.css?v=0c53199a" />
+    <link rel="stylesheet" type="text/css" href="_static/tables.css?v=4a1b2b33" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -55,6 +57,8 @@
     <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/js/lightbox-plus-jquery.min.js?v=f0ca4bb6"></script>
+    <script>lightbox.option({"alwaysShowNavOnTouchDevices": false, "albumLabel": "Image %1 of %2", "disableScrolling": false, "fadeDuration": 600, "fitImagesInViewport": true, "imageFadeDuration": 600, "positionFromTop": 50, "resizeDuration": 700, "showImageNumberLabel": true, "wrapAround": true})</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'index';</script>
     <script src="_static/jquery.visible.js?v=5b129ffc"></script>
     <script src="_static/jquery.leaveNotice-nist.js?v=21f5b3a4"></script>
@@ -62,7 +66,7 @@
     <script src="_static/smoothNavScroll.js?v=2ce98a12"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Executive Summary" href="executive-summary.html" />
+    <link rel="next" title="Executive Summary" href="home/executivesummary.html" />
     
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -126,6 +130,9 @@
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
 </div>
+<aside class="bd-header-announcement" aria-label="Announcement">
+  <div class="bd-header-announcement__content">Content on this site will be updated periodically to keep it up to date with how the CMVP uses this system for real validations. Check the <a href=https://github.com/usnistgov/ACMVPDocs/releases style='color:white'>GitHub Releases</a> to see a history of changes.</div>
+</aside>
 
   
     <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
@@ -164,7 +171,7 @@
   
   
   
-    <p class="title logo__title">Automated Cryptographic Module Validation Project  documentation</p>
+    <p class="title logo__title">Automated Cryptographic Module Validation Project</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -189,145 +196,150 @@
             </li>
         </ul>
         <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="executive-summary.html">Executive Summary</a></li>
-<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="approach.html">Approach</a></li>
-<li class="toctree-l1"><a class="reference internal" href="te-workstream.html">Test Evidence Workstream</a></li>
-<li class="toctree-l1"><a class="reference internal" href="protocol-workstream.html">Protocol Workstream</a></li>
-<li class="toctree-l1"><a class="reference internal" href="re-workstream.html">Research Infrastructure</a></li>
-<li class="toctree-l1"><a class="reference internal" href="findings.html">Findings and Recommendations for Future Work</a></li>
+<li class="toctree-l1"><a class="reference internal" href="home/executivesummary.html">Executive Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="home/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="home/approach.html">Approach</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="te-workstream.html">Test Evidence Workstream</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="te-tables/te-table1.html">Table 1 - Dividing 140A-TEs into non-140B-TEs and SP-TEs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="te-tables/te-table2.html">Table 2 - TEs Requiring Functional Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="te-tables/te-table3.html">Table 3 - TE Tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="te-tables/te-table4.html">Table 4 - Allowed Test Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="te-tables/te-table5.html">Table 5 - Summary of FIPS 140-3 Security Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="te-tables/te-table6.html">Table 6 - An overview of the number of Security Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="te-tables/te-table7.html">Table 7 - Area 2 TEs Filtered by Security Level for Software Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="te-tables/te-table8.html">Table 8 - Area 7 TEs Filtered by Security Level for Single Chip Hardware Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="te-tables/te-table9.html">Table 9 - TEs Affected by the Supplemental Filtering Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="te-tables/te-table10.html">Table 10 - Assertions (ASes) not separately tested</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="te-tables/tetables.html">Appendix B: TE Tables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="te-tables/area2.html">Area 2 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="te-tables/area3.html">Area 3 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="te-tables/area4.html">Area 4 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="te-tables/area5.html">Area 5 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="te-tables/area6.html">Area 6 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="te-tables/area7.html">Area 7 Tables</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="te-tables/area8.html">Area 8 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="te-tables/area9.html">Area 9 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="te-tables/area10.html">Area 10 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="te-tables/area11.html">Area 11 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="te-tables/area12.html">Area 12 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="te-tables/annex.html">Annex Tables</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+</details></li>
+</ul>
+</details></li>
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="protocol-workstream.html">Protocol Workstream</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="protocol/index.html">ACMVP Demo Server</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="re-workstream.html">Research Infrastructure</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendix-d.html">Appendix D: Application Modernization</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="appendix-e/index.html">Appendix E: Research Infrastructure</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="appendix-e/AWSAccountOrganization.html">AWS Account Organization</a></li>
+
+<li class="toctree-l3"><a class="reference internal" href="appendix-e/AWSResearchCloudSystemArchitecture.html">AWS Research Cloud System Architecture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-e/IdentityandAccessManagement.html">Identity and Access Management</a></li>
+
+<li class="toctree-l3"><a class="reference internal" href="appendix-e/AWSResearchCloudSecurity.html">AWS Research Cloud Security</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-e/AWSResearchCloudOperations.html">AWS Research Cloud Operations</a></li>
+
+
+<li class="toctree-l3"><a class="reference internal" href="appendix-e/MappingtoNIST800Series.html">Mapping to NIST 800 Series</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-e/AutomationTemplates.html">Automation Templates</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 <li class="toctree-l1"><a class="reference internal" href="appendix-a.html">Appendix A: List of Symbols, Abbreviations, and Acronyms</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="te/tables/tetables.html">Appendix B: TE Tables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="te/tables/area2.html">Area 2 Tables</a></li>
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="te/tables/area3.html">Area 3 Tables</a></li>
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="te/tables/area4.html">Area 4 Tables</a></li>
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="te/tables/area5.html">Area 5 Tables</a></li>
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="te/tables/area6.html">Area 6 Tables</a></li>
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="te/tables/area7.html">Area 7 Tables</a></li>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="te/tables/area8.html">Area 8 Tables</a></li>
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="te/tables/area9.html">Area 9 Tables</a></li>
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="te/tables/area10.html">Area 10 Tables</a></li>
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="te/tables/area11.html">Area 11 Tables</a></li>
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="te/tables/area12.html">Area 12 Tables</a></li>
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="te/tables/annex.html">Annex Tables</a></li>
-
-
-
-
-
-
-
-
-
-
-
-
-</ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="protocol/index.html">Appendix C: CMVP Demo Server</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2 has-children"><a class="reference internal" href="protocol/technicalDetails.html">Protocol Workstream Technical Details</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="protocol/securityConsiderations.html">Security Considerations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="protocol/login.html">Login</a></li>
-<li class="toctree-l3"><a class="reference internal" href="protocol/versioning.html">Versioning</a></li>
-<li class="toctree-l3"><a class="reference internal" href="protocol/messaging.html">Messaging</a></li>
-<li class="toctree-l3"><a class="reference internal" href="protocol/errorResponses.html">Error Responses</a></li>
-<li class="toctree-l3"><a class="reference internal" href="protocol/appendix.html">Appendix</a></li>
-</ul>
-</details></li>
-</ul>
-</details></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix-d.html">Appendix D: Application Modernization</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="appendix-e/index.html">Appendix E: Research Infrastructure</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="appendix-e/AWSAccountOrganization.html">AWS Account Organization</a></li>
-
-<li class="toctree-l2"><a class="reference internal" href="appendix-e/AWSResearchCloudSystemArchitecture.html">AWS Research Cloud System Architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="appendix-e/IdentityandAccessManagement.html">Identity and Access Management</a></li>
-
-<li class="toctree-l2"><a class="reference internal" href="appendix-e/AWSResearchCloudSecurity.html">AWS Research Cloud Security</a></li>
-<li class="toctree-l2"><a class="reference internal" href="appendix-e/AWSResearchCloudOperations.html">AWS Research Cloud Operations</a></li>
-
-
-<li class="toctree-l2"><a class="reference internal" href="appendix-e/MappingtoNIST800Series.html">Mapping to NIST 800 Series</a></li>
-<li class="toctree-l2"><a class="reference internal" href="appendix-e/AutomationTemplates.html">Automation Templates</a></li>
-</ul>
-</details></li>
 </ul>
 
     </div>
@@ -476,17 +488,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#disclaimer">Disclaimer</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feedback">Feedback</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#national-cybersecurity-center-of-excellence">NATIONAL CYBERSECURITY CENTER OF EXCELLENCE</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nist-cybersecurity-practice-guides">NIST CYBERSECURITY PRACTICE GUIDES</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">Abstract</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#audience">Audience</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-contents">Table of Contents</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keywords">Keywords</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#collaborators">Collaborators</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgements">Acknowledgements</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#document-conventions">DOCUMENT CONVENTIONS</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#call-for-patent-claims">CALL FOR PATENT CLAIMS</a></li>
 </ul>
             </nav>
         </div>
@@ -505,75 +511,76 @@ document.write(`
 <tbody>
 <tr class="row-odd"><td><p><strong>Christopher Celi</strong></p>
 <p><strong>Alex Calis</strong></p>
-<p><strong>Murugiah Souppaya*</strong></p>
+<p><strong>Murugiah Souppaya</strong></p>
 <p><em>Computer Security Division</em></p>
-<p><em>Information Technology Laboratory</em></p>
-<p><strong>William Barker</strong></p>
-<p><em>Domestic Guest Researcher</em></p>
-<p><em>Information Technology Laboratory</em></p>
-<p><strong>Karen Kent</strong></p>
-<p><em>Trusted Cyber Annex</em></p>
-<p><strong>Shawn Geddis</strong></p>
-<p><em>Katalyst</em></p>
+<p><em>NIST Information Technology Laboratory</em></p>
 </td>
 <td><p><strong>Raoul Gabiam</strong></p>
+<p><strong>Kyle Vitale</strong></p>
 <p><em>The MITRE Corporation</em></p>
-<p><strong>Stephan Mueller</strong></p>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>William Barker</strong></p>
+<p><em>Domestic Guest Researcher</em></p>
+<p><em>NIST Information Technology Laboratory</em></p>
+</td>
+<td><p><strong>Stephan Mueller</strong></p>
 <p><strong>Yi Mao</strong></p>
 <p><em>atsec information security</em></p>
-<p><strong>Barry Fussell</strong></p>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>Karen Kent</strong></p>
+<p><em>Trusted Cyber Annex</em></p>
+</td>
+<td><p><strong>Barry Fussell</strong></p>
 <p><strong>Andrew Karcher</strong></p>
 <p><em>Cisco</em></p>
-<p><strong>Douglas Boldt</strong></p>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Shawn Geddis</strong></p>
+<p><em>Katalyst</em></p>
+</td>
+<td><p><strong>Douglas Boldt</strong></p>
 <p><em>Amazon Web Services</em></p>
 </td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>*Former employee; all work for this publication was done while at that organization.</p>
-<p>April 2026</p>
-<p>INITIAL PUBLIC DRAFT</p>
-<section id="disclaimer">
-<h2>Disclaimer<a class="headerlink" href="#disclaimer" title="Link to this heading">#</a></h2>
-<p>Certain commercial entities, equipment, products, or materials may be identified by name or company logo or other insignia in order to acknowledge their participation in this collaboration or to describe an experimental procedure or concept adequately. Such identification is not intended to imply special status or relationship with NIST or recommendation or endorsement by NIST or NCCoE; neither is it intended to imply that the entities, equipment, products, or materials are necessarily the best available for the purpose.</p>
-<p>While NIST and the NCCoE address goals of improving management of cybersecurity and privacy risk through outreach and application of standards and best practices, it is the stakeholder’s responsibility to fully perform a risk assessment to include the current threat, vulnerabilities, likelihood of a compromise, and the impact should the threat be realized before adopting cybersecurity measures such as this recommendation.</p>
-<p>National Institute of Standards and Technology Special Publication 1800-40, Natl. Inst. Stand. Technol. Spec. Publ. 1800-40B, 89 pages, (April 2026), CODEN: NSPUE2</p>
-</section>
-<section id="feedback">
-<h2>Feedback<a class="headerlink" href="#feedback" title="Link to this heading">#</a></h2>
-<p>You can view or download the guide at the NCCoE Automation of the NIST Cryptographic Module Validation Program project page.</p>
-<p>With this initial public draft of the final report, NIST NCCoE is now asking for feedback where clarifications might be beneficial.</p>
-<p>Comments on this publication may be submitted to: <a class="reference external" href="mailto:applied-crypto-testing&#37;&#52;&#48;nist&#46;gov">applied-crypto-testing<span>&#64;</span>nist<span>&#46;</span>gov</a></p>
-<p>Public comment period: April 15, 2026 through June 1, 2026</p>
-<p>All comments are subject to release under the Freedom of Information Act.</p>
-<div class="line-block">
-<div class="line">National Cybersecurity Center of Excellence</div>
-<div class="line">National Institute of Standards and Technology</div>
-<div class="line">100 Bureau Drive</div>
-<div class="line">Mailstop 2002</div>
-<div class="line">Gaithersburg, MD 20899</div>
-<div class="line">Email: <a class="reference external" href="mailto:nccoe&#37;&#52;&#48;nist&#46;gov">nccoe<span>&#64;</span>nist<span>&#46;</span>gov</a></div>
-</div>
-</section>
-<section id="national-cybersecurity-center-of-excellence">
-<h2>NATIONAL CYBERSECURITY CENTER OF EXCELLENCE<a class="headerlink" href="#national-cybersecurity-center-of-excellence" title="Link to this heading">#</a></h2>
-<p>The National Cybersecurity Center of Excellence (NCCoE), a part of the National Institute of Standards and Technology (NIST), is a collaborative hub where industry organizations, government agencies, and academic institutions work together to address businesses’ most pressing cybersecurity issues. This public-private partnership enables the creation of practical cybersecurity solutions for specific industries, as well as for broad, cross-sector technology challenges. Through consortia under Cooperative Research and Development Agreements (CRADAs), including technology partners—from Fortune 50 market leaders to smaller companies specializing in information technology security—the NCCoE applies standards and best practices to develop modular, adaptable example cybersecurity solutions using commercially available technology. The NCCoE documents these example solutions in the NIST Special Publication 1800 series, which maps capabilities to the NIST Cybersecurity Framework and details the steps needed for another entity to re-create the example solution. The NCCoE was established in 2012 by NIST in partnership with the State of Maryland and Montgomery County, Maryland.</p>
-<p>To learn more about the NCCoE, visit <a class="reference external" href="https://www.nccoe.nist.gov/">https://www.nccoe.nist.gov/</a>. To learn more about NIST, visit <a class="reference external" href="https://www.nist.gov">https://www.nist.gov</a>.</p>
-</section>
-<section id="nist-cybersecurity-practice-guides">
-<h2>NIST CYBERSECURITY PRACTICE GUIDES<a class="headerlink" href="#nist-cybersecurity-practice-guides" title="Link to this heading">#</a></h2>
-<p>NIST Cybersecurity Practice Guides (Special Publication 1800 series) target specific cybersecurity challenges in the public and private sectors. They are practical, user-friendly guides that facilitate the adoption of standards-based approaches to cybersecurity. They show members of the information security community how to implement example solutions that help them align with relevant standards and best practices, and provide users with the materials lists, configuration files, and other information they need to implement a similar approach.</p>
-<p>The documents in this series describe example implementations of cybersecurity practices that businesses and other organizations may voluntarily adopt. These documents do not describe regulations or mandatory practices, nor do they carry statutory authority.</p>
-</section>
+<p>*All work was done while at that organization.</p>
 <section id="abstract">
 <h2>Abstract<a class="headerlink" href="#abstract" title="Link to this heading">#</a></h2>
 <p>The Cryptographic Module Validation Program (CMVP) validates third-party assertions that cryptographic module implementations satisfy the requirements of Federal Information Processing Standards (FIPS) Publication 140-3, Security Requirements for Cryptographic Modules. Historically, the CMVP validation review process has struggled to keep pace with the volume of cryptographic modules and accelerated software release cycles, contributing to delays in validation timelines. The NIST National Cybersecurity Center of Excellence (NCCoE) has undertaken the Automated Cryptographic Module Validation Project (ACMVP) to explore how automation can improve the efficiency and timeliness of CMVP operations and processes. The project demonstrates how structured test evidence, standardized submission protocols, and supporting modernized computing infrastructure can streamline the submission and review of validation artifacts.</p>
-<p>This publication describes the approaches and tools demonstrated by the ACMVP team. The publication describes the results of an ACMVP Test Evidence (TE) Workstream and Protocol Workstream, as demonstrated in a laboratory environment developed by the project’s Research Infrastructure Workstream. The combined impact of these workstreams is intended to provide automation improvements to improve submission quality and enable a more efficient CMVP review process.</p>
+<p>This publication describes the approaches and tools demonstrated by the ACMVP team through the results of the ACMVP Test Evidence (TE) Workstream, Protocol Workstream, and as demonstrated in a laboratory environment developed by the project’s Research Infrastructure Workstream. The combined impact of these workstreams is intended to provide automation improvements to improve submission quality and enable a more efficient CMVP review process.</p>
 </section>
-<section id="audience">
-<h2>Audience<a class="headerlink" href="#audience" title="Link to this heading">#</a></h2>
-<p>The primary audience for this report is technology, security, and privacy program managers, architects, software developers, engineers, and IT professionals involved with the CMVP, and accredited cryptography and security testing labs, and conformance offices at companies that produce security software and hardware.</p>
+<section id="table-of-contents">
+<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Link to this heading">#</a></h2>
+<p><a class="reference internal" href="home/executivesummary.html"><span class="doc">Executive Summary</span></a></p>
+<p><a class="reference internal" href="home/overview.html"><span class="doc">Overview: Challenge and Solution Statements</span></a></p>
+<p><a class="reference internal" href="home/approach.html"><span class="doc">Approach: How the Project Defined its Scope</span></a></p>
+<dl>
+<dt><a class="reference internal" href="te-workstream.html"><span class="doc">Test Evidence Workstream: Work completed for the TE requirements</span></a></dt><dd><p><a class="reference internal" href="te-tables/tetables.html"><span class="doc">Appendix B: TE Tables</span></a></p>
+<p><a class="reference internal" href="te-tables/area2.html"><span class="doc">Area 2 Tables</span></a></p>
+<p><a class="reference internal" href="te-tables/area3.html"><span class="doc">Area 3 Tables</span></a></p>
+<p><a class="reference internal" href="te-tables/area4.html"><span class="doc">Area 4 Tables</span></a></p>
+<p><a class="reference internal" href="te-tables/area5.html"><span class="doc">Area 5 Tables</span></a></p>
+<p><a class="reference internal" href="te-tables/area6.html"><span class="doc">Area 6 Tables</span></a></p>
+<p><a class="reference internal" href="te-tables/area7.html"><span class="doc">Area 7 Tables</span></a></p>
+<p><a class="reference internal" href="te-tables/area8.html"><span class="doc">Area 8 Tables</span></a></p>
+<p><a class="reference internal" href="te-tables/area9.html"><span class="doc">Area 9 Tables</span></a></p>
+<p><a class="reference internal" href="te-tables/area10.html"><span class="doc">Area 10 Tables</span></a></p>
+<p><a class="reference internal" href="te-tables/area11.html"><span class="doc">Area 11 Tables</span></a></p>
+<p><a class="reference internal" href="te-tables/area12.html"><span class="doc">Area 12 Tables</span></a></p>
+<p><a class="reference internal" href="te-tables/annex.html"><span class="doc">Annex Tables</span></a></p>
+</dd>
+<dt><a class="reference internal" href="protocol-workstream.html"><span class="doc">Protocol Workstream: Work completed for the ACMVP demo server</span></a></dt><dd><p><a class="reference internal" href="protocol/index.html"><span class="doc">ACMVP Demo Server</span></a></p>
+</dd>
+<dt><a class="reference internal" href="re-workstream.html"><span class="doc">Research Infrastructure: Work completed for the Cloud Infrastructure</span></a></dt><dd><p><a class="reference internal" href="appendix-d.html"><span class="doc">Appendix D: Application Modernization</span></a></p>
+<p><a class="reference internal" href="appendix-e/index.html"><span class="doc">Appendix E: Research Infrastructure</span></a></p>
+</dd>
+</dl>
+<p><a class="reference internal" href="references.html"><span class="doc">References</span></a></p>
+<p><a class="reference internal" href="appendix-a.html"><span class="doc">Appendix A: List of Symbols, Abbreviations, and Acronyms and their Meanings</span></a></p>
 </section>
 <section id="keywords">
 <h2>Keywords<a class="headerlink" href="#keywords" title="Link to this heading">#</a></h2>
@@ -595,30 +602,11 @@ document.write(`
 <li><p>NXP Semiconductors</p></li>
 <li><p>SUSE</p></li>
 </ul>
-<p>Certain commercial entities, equipment, products, or materials may be identified by name or company logo or other insignia in order to acknowledge their participation in this collaboration or to describe an experimental procedure or concept adequately. Such identification is not intended to imply special status or relationship with NIST or recommendation or endorsement by NIST or NCCoE and neither is it intended to imply that the entities, equipment, products, or materials are necessarily the best available for the purpose.</p>
 </section>
 <section id="acknowledgements">
 <h2>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Link to this heading">#</a></h2>
 <p>Contributors to each workstream are listed in the corresponding sections below. Additionally, the following people and organizations contributed to the project outside of a workstream: Courtney Maatta, Rochelle Casey, Alicia Squires, Margaret Salter, Tim Ness, Damian Zell, Derrick Williams III, Jeff Wright, Mickey Iqbal, and David Browning of Amazon; Dave Hawes, Gavin O’Brien, Tim Hall, Matt Scholl, Cherilyn Pascoe, Jim St. Pierre, Kevin Stine, Ann Rickerds, Shawn Winhoven, Jeffrey J McIntyre, Anil Das, Edgar Garay, Jim Simmons, Robert Staples, Rob Densock, and Blair Heiserman of NIST; Jason Arnold of HII; William Barker of Strativia LLC; Karen Scarfone of Scarfone Cybersecurity; and Heather Flanagan of Spherical Cow Consulting.</p>
 <p>The project team recognizes and appreciates Apostol Vassilev of NIST for leading the project at the inception and formulating the three workstreams and associated activities.</p>
-</section>
-<section id="document-conventions">
-<h2>DOCUMENT CONVENTIONS<a class="headerlink" href="#document-conventions" title="Link to this heading">#</a></h2>
-<p>The terms “shall” and “shall not” indicate requirements to be followed strictly to conform to the publication and from which no deviation is permitted. The terms “should” and “should not” indicate that among several possibilities, one is recommended as particularly suitable without mentioning or excluding others, or that a certain course of action is preferred but not necessarily required, or that (in the negative form) a certain possibility or course of action is discouraged but not prohibited. The terms “may” and “may not” indicate a course of action permissible within the limits of the publication. The terms “can” and “cannot” indicate a possibility and capability, whether material, physical, or causal.</p>
-</section>
-<section id="call-for-patent-claims">
-<h2>CALL FOR PATENT CLAIMS<a class="headerlink" href="#call-for-patent-claims" title="Link to this heading">#</a></h2>
-<p>This public review includes a call for information on essential patent claims (claims whose use would be required for compliance with the guidelines or requirements in this Information Technology Laboratory (ITL) draft publication). Such guidelines and/or requirements may be directly stated in this ITL Publication or by reference to another publication. This call also includes disclosure, where known, of the existence of pending U.S. or foreign patent applications relating to this ITL draft publication and of any relevant unexpired U.S. or foreign patents.</p>
-<p>ITL may require from the patent holder, or a party authorized to make assurances on its behalf, in written or electronic form, either:</p>
-<ol class="loweralpha simple">
-<li><p>assurance in the form of a general disclaimer to the effect that such party does not hold and does not currently intend to hold any essential patent claim(s); or</p></li>
-<li><p>assurance that a license to such essential patent claim(s) will be made available to applicants desiring to utilize the license for the purpose of complying with the guidelines or requirements in this ITL draft publication, either:</p></li>
-</ol>
-<p>under reasonable terms and conditions that are demonstrably free of any unfair discrimination; or</p>
-<p>without compensation and under reasonable terms and conditions that are demonstrably free of any unfair discrimination.</p>
-<p>Such assurance shall indicate that the patent holder (or third party authorized to make assurances on its behalf) will include in any documents transferring ownership of patents subject to the assurance, provisions sufficient to ensure that the commitments in the assurance are binding on the transferee, and that the transferee will similarly include appropriate provisions in the event of future transfers with the goal of binding each successor-in-interest.</p>
-<p>The assurance shall also indicate that it is intended to be binding on successors-in-interest regardless of whether such provisions are included in the relevant transfer documents.
-Such statements should be addressed to: <a class="reference external" href="mailto:applied-crypto-testing&#37;&#52;&#48;nist&#46;gov">applied-crypto-testing<span>&#64;</span>nist<span>&#46;</span>gov</a></p>
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -636,7 +624,7 @@ Such statements should be addressed to: <a class="reference external" href="mail
                   
 <div class="prev-next-area">
     <a class="right-next"
-       href="executive-summary.html"
+       href="home/executivesummary.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
@@ -660,17 +648,11 @@ Such statements should be addressed to: <a class="reference external" href="mail
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#disclaimer">Disclaimer</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feedback">Feedback</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#national-cybersecurity-center-of-excellence">NATIONAL CYBERSECURITY CENTER OF EXCELLENCE</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nist-cybersecurity-practice-guides">NIST CYBERSECURITY PRACTICE GUIDES</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">Abstract</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#audience">Audience</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-contents">Table of Contents</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keywords">Keywords</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#collaborators">Collaborators</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgements">Acknowledgements</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#document-conventions">DOCUMENT CONVENTIONS</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#call-for-patent-claims">CALL FOR PATENT CLAIMS</a></li>
 </ul>
   </nav></div>
 

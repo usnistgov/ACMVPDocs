@@ -1,0 +1,10 @@
+Executive Summary
+===================
+
+The National Institute of Standards and Technology (NIST) and the Canadian Centre for Cyber Security (CCCS) jointly conduct the Cryptographic Module Validation Program (CMVP) to verify that cryptographic module implementations conform to the Federal Information Processing Standard (FIPS) 140-3. Federal agencies, many private sector companies, and foreign government organizations require cryptographic products to be CMVP-validated prior to being purchased and used. Module testing is performed at an accredited testing laboratory where a report that justifies how the module is compliant with the requirements is submitted to the CMVP. The CMVP reviews the report, discusses questions with the testing lab, and issues the validation certificate stating the module does conform to FIPS 140-3. In many ways the report submitted is free form. The test methods used, the level of detail provided, the inclusion of certain requirements may vary from report to report even if the same module was tested. 
+
+NIST is undertaking a broad effort to modernize and automate CMVP processes with the goal to reduce dependence on manual review and timeliness and scalability of the validation process. This guide presents the approach developed by the National Cybersecurity Center of Excellence (NCCoE) and its collaborators to demonstrate automation capabilities that support the modernization of CMVP, helping align cryptographic validation processes with modern software development and deployment environments. 
+
+The scope of the NCCoE ACMVP project focused on machine readable payloads to ensure the completeness, accuracy and consistency of validation submissions for new Full Submissions (FS) of cryptographic modules to automate the validation process as this was expected to be the more challenging submission track. Validation update submission tracks are not included in the scope of the NCCoE ACMVP project.
+
+The capabilities described in this guide are actively being integrated into the production CMVP environment in 2026 to support a faster time-to-market of validated cryptographic modules.

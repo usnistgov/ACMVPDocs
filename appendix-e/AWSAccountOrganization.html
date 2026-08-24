@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>AWS Account Organization &#8212; Automated Cryptographic Module Validation Project  documentation</title>
+    <title>AWS Account Organization &#8212; Automated Cryptographic Module Validation Project</title>
   
   
   
@@ -33,8 +33,10 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/lightbox.min.css?v=6e7d0de0" />
     <link rel="stylesheet" type="text/css" href="../_static/content.css?v=59cd0ab0" />
-    <link rel="stylesheet" type="text/css" href="../_static/tables.css?v=1ae3e97c" />
+    <link rel="stylesheet" type="text/css" href="../_static/authors.css?v=0c53199a" />
+    <link rel="stylesheet" type="text/css" href="../_static/tables.css?v=4a1b2b33" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -55,6 +57,8 @@
     <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/js/lightbox-plus-jquery.min.js?v=f0ca4bb6"></script>
+    <script>lightbox.option({"alwaysShowNavOnTouchDevices": false, "albumLabel": "Image %1 of %2", "disableScrolling": false, "fadeDuration": 600, "fitImagesInViewport": true, "imageFadeDuration": 600, "positionFromTop": 50, "resizeDuration": 700, "showImageNumberLabel": true, "wrapAround": true})</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'appendix-e/AWSAccountOrganization';</script>
     <script src="../_static/jquery.visible.js?v=5b129ffc"></script>
     <script src="../_static/jquery.leaveNotice-nist.js?v=21f5b3a4"></script>
@@ -127,6 +131,9 @@
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
 </div>
+<aside class="bd-header-announcement" aria-label="Announcement">
+  <div class="bd-header-announcement__content">Content on this site will be updated periodically to keep it up to date with how the CMVP uses this system for real validations. Check the <a href=https://github.com/usnistgov/ACMVPDocs/releases style='color:white'>GitHub Releases</a> to see a history of changes.</div>
+</aside>
 
   
     <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
@@ -163,7 +170,7 @@
   
   
   
-    <p class="title logo__title">Automated Cryptographic Module Validation Project  documentation</p>
+    <p class="title logo__title">Automated Cryptographic Module Validation Project</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -188,145 +195,150 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../executive-summary.html">Executive Summary</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../approach.html">Approach</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../te-workstream.html">Test Evidence Workstream</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../protocol-workstream.html">Protocol Workstream</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../re-workstream.html">Research Infrastructure</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../findings.html">Findings and Recommendations for Future Work</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../home/executivesummary.html">Executive Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../home/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../home/approach.html">Approach</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../te-workstream.html">Test Evidence Workstream</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../te-tables/te-table1.html">Table 1 - Dividing 140A-TEs into non-140B-TEs and SP-TEs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../te-tables/te-table2.html">Table 2 - TEs Requiring Functional Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../te-tables/te-table3.html">Table 3 - TE Tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../te-tables/te-table4.html">Table 4 - Allowed Test Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../te-tables/te-table5.html">Table 5 - Summary of FIPS 140-3 Security Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../te-tables/te-table6.html">Table 6 - An overview of the number of Security Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../te-tables/te-table7.html">Table 7 - Area 2 TEs Filtered by Security Level for Software Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../te-tables/te-table8.html">Table 8 - Area 7 TEs Filtered by Security Level for Single Chip Hardware Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../te-tables/te-table9.html">Table 9 - TEs Affected by the Supplemental Filtering Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../te-tables/te-table10.html">Table 10 - Assertions (ASes) not separately tested</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../te-tables/tetables.html">Appendix B: TE Tables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../te-tables/area2.html">Area 2 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="../te-tables/area3.html">Area 3 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="../te-tables/area4.html">Area 4 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="../te-tables/area5.html">Area 5 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="../te-tables/area6.html">Area 6 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="../te-tables/area7.html">Area 7 Tables</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="../te-tables/area8.html">Area 8 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="../te-tables/area9.html">Area 9 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="../te-tables/area10.html">Area 10 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="../te-tables/area11.html">Area 11 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="../te-tables/area12.html">Area 12 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="../te-tables/annex.html">Annex Tables</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+</details></li>
+</ul>
+</details></li>
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="../protocol-workstream.html">Protocol Workstream</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../protocol/index.html">ACMVP Demo Server</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../re-workstream.html">Research Infrastructure</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../appendix-d.html">Appendix D: Application Modernization</a></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">Appendix E: Research Infrastructure</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">AWS Account Organization</a></li>
+
+<li class="toctree-l3"><a class="reference internal" href="AWSResearchCloudSystemArchitecture.html">AWS Research Cloud System Architecture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="IdentityandAccessManagement.html">Identity and Access Management</a></li>
+
+<li class="toctree-l3"><a class="reference internal" href="AWSResearchCloudSecurity.html">AWS Research Cloud Security</a></li>
+<li class="toctree-l3"><a class="reference internal" href="AWSResearchCloudOperations.html">AWS Research Cloud Operations</a></li>
+
+
+<li class="toctree-l3"><a class="reference internal" href="MappingtoNIST800Series.html">Mapping to NIST 800 Series</a></li>
+<li class="toctree-l3"><a class="reference internal" href="AutomationTemplates.html">Automation Templates</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../appendix-a.html">Appendix A: List of Symbols, Abbreviations, and Acronyms</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../te/tables/tetables.html">Appendix B: TE Tables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../te/tables/area2.html">Area 2 Tables</a></li>
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="../te/tables/area3.html">Area 3 Tables</a></li>
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="../te/tables/area4.html">Area 4 Tables</a></li>
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="../te/tables/area5.html">Area 5 Tables</a></li>
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="../te/tables/area6.html">Area 6 Tables</a></li>
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="../te/tables/area7.html">Area 7 Tables</a></li>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="../te/tables/area8.html">Area 8 Tables</a></li>
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="../te/tables/area9.html">Area 9 Tables</a></li>
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="../te/tables/area10.html">Area 10 Tables</a></li>
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="../te/tables/area11.html">Area 11 Tables</a></li>
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="../te/tables/area12.html">Area 12 Tables</a></li>
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="../te/tables/annex.html">Annex Tables</a></li>
-
-
-
-
-
-
-
-
-
-
-
-
-</ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../protocol/index.html">Appendix C: CMVP Demo Server</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../protocol/technicalDetails.html">Protocol Workstream Technical Details</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="../protocol/securityConsiderations.html">Security Considerations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../protocol/login.html">Login</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../protocol/versioning.html">Versioning</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../protocol/messaging.html">Messaging</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../protocol/errorResponses.html">Error Responses</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../protocol/appendix.html">Appendix</a></li>
-</ul>
-</details></li>
-</ul>
-</details></li>
-<li class="toctree-l1"><a class="reference internal" href="../appendix-d.html">Appendix D: Application Modernization</a></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Appendix E: Research Infrastructure</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">AWS Account Organization</a></li>
-
-<li class="toctree-l2"><a class="reference internal" href="AWSResearchCloudSystemArchitecture.html">AWS Research Cloud System Architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="IdentityandAccessManagement.html">Identity and Access Management</a></li>
-
-<li class="toctree-l2"><a class="reference internal" href="AWSResearchCloudSecurity.html">AWS Research Cloud Security</a></li>
-<li class="toctree-l2"><a class="reference internal" href="AWSResearchCloudOperations.html">AWS Research Cloud Operations</a></li>
-
-
-<li class="toctree-l2"><a class="reference internal" href="MappingtoNIST800Series.html">Mapping to NIST 800 Series</a></li>
-<li class="toctree-l2"><a class="reference internal" href="AutomationTemplates.html">Automation Templates</a></li>
-</ul>
-</details></li>
 </ul>
 
     </div>
@@ -503,7 +515,9 @@ document.write(`
 <h1>AWS Account Organization<a class="headerlink" href="#aws-account-organization" title="Link to this heading">#</a></h1>
 <p>The AWS research environment consists of multiple accounts that follow best practices to ensure the isolation and segregation of administrative functions, security, and each independent research lab. It is deployed leveraging <a class="reference external" href="https://docs.aws.amazon.com/controltower/">AWS Control Tower</a> for orchestration and <a class="reference external" href="https://aws.amazon.com/organizations/">AWS Organizations</a> to consolidate the various accounts into the NCCoE Organization and manage them centrally. Various Organizational Units (OU) were also created to easily allocate resources, group accounts, and apply governance policies to accounts or groups.</p>
 <figure class="align-default" id="id1">
+<a href="../_images/Figure1.png" data-lightbox="image-set">
 <img alt="Figure 1 depicts the NCCoE AWS research cloud AWS account organization structure" src="../_images/Figure1.png" />
+</a>
 <figcaption>
 <p><span class="caption-text">Figure 1: AWS account organization structure</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
 </figcaption>

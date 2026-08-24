@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Appendix A: List of Symbols, Abbreviations, and Acronyms &#8212; Automated Cryptographic Module Validation Project  documentation</title>
+    <title>Appendix A: List of Symbols, Abbreviations, and Acronyms &#8212; Automated Cryptographic Module Validation Project</title>
   
   
   
@@ -33,8 +33,10 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/css/lightbox.min.css?v=6e7d0de0" />
     <link rel="stylesheet" type="text/css" href="_static/content.css?v=59cd0ab0" />
-    <link rel="stylesheet" type="text/css" href="_static/tables.css?v=1ae3e97c" />
+    <link rel="stylesheet" type="text/css" href="_static/authors.css?v=0c53199a" />
+    <link rel="stylesheet" type="text/css" href="_static/tables.css?v=4a1b2b33" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -55,6 +57,8 @@
     <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/js/lightbox-plus-jquery.min.js?v=f0ca4bb6"></script>
+    <script>lightbox.option({"alwaysShowNavOnTouchDevices": false, "albumLabel": "Image %1 of %2", "disableScrolling": false, "fadeDuration": 600, "fitImagesInViewport": true, "imageFadeDuration": 600, "positionFromTop": 50, "resizeDuration": 700, "showImageNumberLabel": true, "wrapAround": true})</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'appendix-a';</script>
     <script src="_static/jquery.visible.js?v=5b129ffc"></script>
     <script src="_static/jquery.leaveNotice-nist.js?v=21f5b3a4"></script>
@@ -62,7 +66,6 @@
     <script src="_static/smoothNavScroll.js?v=2ce98a12"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Appendix B: TE Tables" href="te/tables/tetables.html" />
     <link rel="prev" title="References" href="references.html" />
     
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -127,6 +130,9 @@
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
 </div>
+<aside class="bd-header-announcement" aria-label="Announcement">
+  <div class="bd-header-announcement__content">Content on this site will be updated periodically to keep it up to date with how the CMVP uses this system for real validations. Check the <a href=https://github.com/usnistgov/ACMVPDocs/releases style='color:white'>GitHub Releases</a> to see a history of changes.</div>
+</aside>
 
   
     <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
@@ -163,7 +169,7 @@
   
   
   
-    <p class="title logo__title">Automated Cryptographic Module Validation Project  documentation</p>
+    <p class="title logo__title">Automated Cryptographic Module Validation Project</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -188,145 +194,150 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="executive-summary.html">Executive Summary</a></li>
-<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="approach.html">Approach</a></li>
-<li class="toctree-l1"><a class="reference internal" href="te-workstream.html">Test Evidence Workstream</a></li>
-<li class="toctree-l1"><a class="reference internal" href="protocol-workstream.html">Protocol Workstream</a></li>
-<li class="toctree-l1"><a class="reference internal" href="re-workstream.html">Research Infrastructure</a></li>
-<li class="toctree-l1"><a class="reference internal" href="findings.html">Findings and Recommendations for Future Work</a></li>
+<li class="toctree-l1"><a class="reference internal" href="home/executivesummary.html">Executive Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="home/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="home/approach.html">Approach</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="te-workstream.html">Test Evidence Workstream</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="te-tables/te-table1.html">Table 1 - Dividing 140A-TEs into non-140B-TEs and SP-TEs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="te-tables/te-table2.html">Table 2 - TEs Requiring Functional Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="te-tables/te-table3.html">Table 3 - TE Tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="te-tables/te-table4.html">Table 4 - Allowed Test Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="te-tables/te-table5.html">Table 5 - Summary of FIPS 140-3 Security Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="te-tables/te-table6.html">Table 6 - An overview of the number of Security Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="te-tables/te-table7.html">Table 7 - Area 2 TEs Filtered by Security Level for Software Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="te-tables/te-table8.html">Table 8 - Area 7 TEs Filtered by Security Level for Single Chip Hardware Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="te-tables/te-table9.html">Table 9 - TEs Affected by the Supplemental Filtering Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="te-tables/te-table10.html">Table 10 - Assertions (ASes) not separately tested</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="te-tables/tetables.html">Appendix B: TE Tables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="te-tables/area2.html">Area 2 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="te-tables/area3.html">Area 3 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="te-tables/area4.html">Area 4 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="te-tables/area5.html">Area 5 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="te-tables/area6.html">Area 6 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="te-tables/area7.html">Area 7 Tables</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="te-tables/area8.html">Area 8 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="te-tables/area9.html">Area 9 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="te-tables/area10.html">Area 10 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="te-tables/area11.html">Area 11 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="te-tables/area12.html">Area 12 Tables</a></li>
+
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="te-tables/annex.html">Annex Tables</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+</details></li>
+</ul>
+</details></li>
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="protocol-workstream.html">Protocol Workstream</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="protocol/index.html">ACMVP Demo Server</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="re-workstream.html">Research Infrastructure</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendix-d.html">Appendix D: Application Modernization</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="appendix-e/index.html">Appendix E: Research Infrastructure</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="appendix-e/AWSAccountOrganization.html">AWS Account Organization</a></li>
+
+<li class="toctree-l3"><a class="reference internal" href="appendix-e/AWSResearchCloudSystemArchitecture.html">AWS Research Cloud System Architecture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-e/IdentityandAccessManagement.html">Identity and Access Management</a></li>
+
+<li class="toctree-l3"><a class="reference internal" href="appendix-e/AWSResearchCloudSecurity.html">AWS Research Cloud Security</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-e/AWSResearchCloudOperations.html">AWS Research Cloud Operations</a></li>
+
+
+<li class="toctree-l3"><a class="reference internal" href="appendix-e/MappingtoNIST800Series.html">Mapping to NIST 800 Series</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-e/AutomationTemplates.html">Automation Templates</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Appendix A: List of Symbols, Abbreviations, and Acronyms</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="te/tables/tetables.html">Appendix B: TE Tables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="te/tables/area2.html">Area 2 Tables</a></li>
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="te/tables/area3.html">Area 3 Tables</a></li>
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="te/tables/area4.html">Area 4 Tables</a></li>
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="te/tables/area5.html">Area 5 Tables</a></li>
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="te/tables/area6.html">Area 6 Tables</a></li>
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="te/tables/area7.html">Area 7 Tables</a></li>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="te/tables/area8.html">Area 8 Tables</a></li>
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="te/tables/area9.html">Area 9 Tables</a></li>
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="te/tables/area10.html">Area 10 Tables</a></li>
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="te/tables/area11.html">Area 11 Tables</a></li>
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="te/tables/area12.html">Area 12 Tables</a></li>
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="te/tables/annex.html">Annex Tables</a></li>
-
-
-
-
-
-
-
-
-
-
-
-
-</ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="protocol/index.html">Appendix C: CMVP Demo Server</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2 has-children"><a class="reference internal" href="protocol/technicalDetails.html">Protocol Workstream Technical Details</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="protocol/securityConsiderations.html">Security Considerations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="protocol/login.html">Login</a></li>
-<li class="toctree-l3"><a class="reference internal" href="protocol/versioning.html">Versioning</a></li>
-<li class="toctree-l3"><a class="reference internal" href="protocol/messaging.html">Messaging</a></li>
-<li class="toctree-l3"><a class="reference internal" href="protocol/errorResponses.html">Error Responses</a></li>
-<li class="toctree-l3"><a class="reference internal" href="protocol/appendix.html">Appendix</a></li>
-</ul>
-</details></li>
-</ul>
-</details></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix-d.html">Appendix D: Application Modernization</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="appendix-e/index.html">Appendix E: Research Infrastructure</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="appendix-e/AWSAccountOrganization.html">AWS Account Organization</a></li>
-
-<li class="toctree-l2"><a class="reference internal" href="appendix-e/AWSResearchCloudSystemArchitecture.html">AWS Research Cloud System Architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="appendix-e/IdentityandAccessManagement.html">Identity and Access Management</a></li>
-
-<li class="toctree-l2"><a class="reference internal" href="appendix-e/AWSResearchCloudSecurity.html">AWS Research Cloud Security</a></li>
-<li class="toctree-l2"><a class="reference internal" href="appendix-e/AWSResearchCloudOperations.html">AWS Research Cloud Operations</a></li>
-
-
-<li class="toctree-l2"><a class="reference internal" href="appendix-e/MappingtoNIST800Series.html">Mapping to NIST 800 Series</a></li>
-<li class="toctree-l2"><a class="reference internal" href="appendix-e/AutomationTemplates.html">Automation Templates</a></li>
-</ul>
-</details></li>
 </ul>
 
     </div>
@@ -484,53 +495,90 @@ document.write(`
 <p><strong>ACVP</strong> - Automated Cryptographic Validation Protocol</p>
 <p><strong>AD DS</strong> - Active Directory Domain Services</p>
 <p><strong>ALB</strong> - Application Load Balancer</p>
+<p><strong>AMI</strong> - Amazon Machine Image</p>
 <p><strong>API</strong> - Applications Programming Interface</p>
 <p><strong>AS</strong> - Assertion</p>
+<p><strong>AWS</strong> - Amazon Web Services</p>
+<p><strong>CA</strong> - Certificate Authority</p>
 <p><strong>CAVP</strong> - Cryptographic Algorithm Validation Program</p>
 <p><strong>CCCS</strong> - Canadian Centre for Cyber Security</p>
+<p><strong>CI/CD</strong> - Continuous Integration and Continuous Delivery</p>
 <p><strong>CL</strong> - Component List</p>
 <p><strong>CMVP</strong> - Cryptographic Module Validation Program</p>
+<p><strong>CN</strong> - Common Name</p>
 <p><strong>CRADA</strong> - Cooperative Research and Development Agreement</p>
+<p><strong>CSP</strong> - Critical Security Parameter</p>
+<p><strong>CSR</strong> - Certificate Signing Request</p>
 <p><strong>CSTL</strong> - Cryptographic and Security Testing Laboratory</p>
 <p><strong>CVE</strong> - Common Vulnerabilities and Exposures</p>
 <p><strong>DMS</strong> - Database Migration Service</p>
+<p><strong>DNS</strong> - Domain Name System</p>
+<p><strong>EC2</strong> - Elastic Compute Cloud</p>
 <p><strong>ECR</strong> - Elastic Container Registry</p>
 <p><strong>ECS</strong> - Elastic Container Service</p>
 <p><strong>EDC</strong> - Error Detection Code</p>
 <p><strong>EFP</strong> - Environmental Failure Protection</p>
 <p><strong>EFT</strong> - Environmental Failure Testing</p>
 <p><strong>EKS</strong> - Elastic Kubernetes Service</p>
-<p><strong>ESV</strong> - Entropy Source Validation</p>
+<p><strong>ENI</strong> - Elastic Network Interface</p>
+<p><strong>ESV/ESVTS</strong> - Entropy Source Validation/Entropy Source Validation Test System</p>
 <p><strong>FIPS</strong> - Federal Information Processing Standards</p>
 <p><strong>FSM</strong> - Finite State Model</p>
 <p><strong>FT</strong> - Functional Test</p>
 <p><strong>FW</strong> - Firmware</p>
+<p><strong>FW-H</strong> - Firmware Hardware Hybrid</p>
+<p><strong>FSx</strong> - File System X</p>
+<p><strong>HB</strong> - NIST Handbook</p>
+<p><strong>HDL</strong> - Hardware Description Language</p>
+<p><strong>HFMI</strong> - Hybrid Firmware Module Interface</p>
+<p><strong>HSMI</strong> - Hybrid Software Module Interface</p>
+<p><strong>HTTP</strong> - Hypertext Transfer Protocol</p>
 <p><strong>HW</strong> - Hardware</p>
+<p><strong>IAM</strong> - Identity and Access Management</p>
 <p><strong>ICMC</strong> - International Cryptographic Module Conference</p>
 <p><strong>IEC</strong> - International Electrotechnical Commission</p>
 <p><strong>IG</strong> - Implementation Guidance</p>
+<p><strong>IIS</strong> - Internet Information Services</p>
+<p><strong>IP</strong> - Internet Protocol</p>
 <p><strong>ISO</strong> - International Organization for Standardization</p>
+<p><strong>ITAR</strong> - International Traffic and Arms Restrictions</p>
 <p><strong>IUT</strong> - Implementation Under Test</p>
+<p><strong>JSON</strong> - JavaScript Object Notation</p>
+<p><strong>JWT</strong> - JSON Web Token</p>
 <p><strong>MAC</strong> - Message Authentication Code</p>
 <p><strong>MIS</strong> - Module Information Structure</p>
+<p><strong>MQ</strong> - Message Queue</p>
 <p><strong>MQP</strong> - Message Queue Processor</p>
+<p><strong>MSI</strong> - Module Supplemental Information</p>
+<p><strong>mTLS</strong> - Mutual Transport Layer Security</p>
 <p><strong>NCCoE</strong> - National Cybersecurity Center of Excellence</p>
+<p><strong>NIST</strong> - National Institute of Standards and Technology</p>
 <p><strong>NLB</strong> - Network Load Balancer</p>
 <p><strong>NVLAP</strong> - National Voluntary Laboratory Accreditation Program</p>
 <p><strong>OD</strong> - Other Documents</p>
+<p><strong>OS</strong> - Operating System</p>
 <p><strong>OTAR</strong> - Over the Air Rekeying</p>
 <p><strong>OTP</strong> - One-time Programmable</p>
-<p><strong>PAA</strong> - Processor Augmented Algorithm</p>
+<p><strong>PAA</strong> - Processor Algorithm Accelerator</p>
 <p><strong>PAI</strong> - Processor Algorithm Implementation</p>
+<p><strong>PQC</strong> - Post-Quantum Cryptography</p>
 <p><strong>RDS</strong> - Relational Database Service</p>
+<p><strong>REST</strong> - Representational State Transfer (API)</p>
 <p><strong>S3</strong> - Simple Storage Service</p>
 <p><strong>SC</strong> - Source Code</p>
-<p><strong>SP</strong> - Security Policy</p>
+<p><strong>SFC</strong> - Secure File Collaboration</p>
+<p><strong>SFMI</strong> - Software Firmware Module Interface</p>
+<p><strong>SP</strong> - Special Publication</p>
 <p><strong>SQL</strong> - Structured Query Language</p>
+<p><strong>SQS</strong> - Simple Queue Service</p>
+<p><strong>SSDF</strong> - Secure Software Development Framework</p>
 <p><strong>SSP</strong> - Sensitive Security Parameter</p>
 <p><strong>SW</strong> - Software</p>
+<p><strong>SW-H</strong> - SW-HW hybrid</p>
 <p><strong>TE</strong> - Test Evidence</p>
+<p><strong>TOTP</strong> - Time-based One Time Password</p>
 <p><strong>VE</strong> - Vendor Evidence</p>
+<p><strong>VPC</strong> - Virtual Private Cloud</p>
 <p><strong>WS</strong> - Workstream</p>
 </section>
 
@@ -553,15 +601,6 @@ document.write(`
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">References</p>
       </div>
-    </a>
-    <a class="right-next"
-       href="te/tables/tetables.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Appendix B: TE Tables</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>

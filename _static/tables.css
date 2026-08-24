@@ -6,4 +6,29 @@ table.table tbody tr:hover {
     .table tbody tr:hover {
     background-color: transparent !important;
     }
-    
+
+/* Target the table specifically using the classes in HTML */
+table.tableblock.frame-all.grid-all {
+    display: block !important;       
+    overflow-x: auto !important;     
+    border-collapse: collapse !important;
+}
+
+/* Target the cells specifically */
+table.tableblock.frame-all.grid-all td, 
+table.tableblock.frame-all.grid-all th {
+    border: 1px solid #ccc !important;
+    padding: 8px !important;
+    box-sizing: border-box !important;
+}
+
+/* Ensure the paragraphs inside the cells don't add weird spacing that hides borders */
+.tableblock td p {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+table.tableblock.frame-all.grid-all td {
+    min-width: 120px !important;     /* Prevents cells from squishing too much */
+    border: 1px solid #ccc !important;
+}
