@@ -491,6 +491,14 @@ document.write(`
                   
   <section id="appendix-b-te-tables">
 <h1>Appendix B: TE Tables<a class="headerlink" href="#appendix-b-te-tables" title="Link to this heading">#</a></h1>
+<p>TE filters serve as a pivotal mechanism to streamline the classification and evaluation of TE, ensuring that only relevant and applicable tests are conducted based on specific module characteristics. A properly tailored set of applicable TEs, based on a given module specification, refines the required assessments and optimizes the validation process.</p>
+<p>With the growing complexity of cryptographic modules and the need for efficient validation, TE filters are designed to:</p>
+<ul class="simple">
+<li><p>Target specific needs through focusing on applicable tests by narrowing down evidence requirements based on module attributes such as type, security level, and operational environment;</p></li>
+<li><p>Reduce redundancy through minimizing repetitive validation steps by filtering out TEs that are not relevant to a given module’s configuration or features;</p></li>
+<li><p>Enhance automation through supporting automated workflows by integrating filters into structured JSON schemas, aligning with automation tools like WebCryptik.</p></li>
+</ul>
+<p>By leveraging these filters, vendors and validators can focus on precise compliance requirements, reducing manual overhead while maintaining robust security standards. The TETables.json file provides a machine-readable filter for the TEs. This is leveraged by the ACMVP server to determine the applicability of TEs for a given module under test.</p>
 <p>The tables in this section depict applicable TEs for each combination of the basic filtering criteria based on TETables_v2.3.03.json developed by the NCCoE ACMVP project team. The latest TE Tables document can be found on the <a class="reference external" href="https://github.com/usnistgov/ACMVPDocs/tree/main/TE-Filter">ACMVPDocs GitHub repository</a>.</p>
 <div class="toctree-wrapper compound">
 </div>
